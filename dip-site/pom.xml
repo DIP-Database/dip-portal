@@ -38,17 +38,6 @@
     <dipsite.recaptcha.apiURL>*****</dipsite.recaptcha.apiURL>
     <dipsite.recaptcha.verifyURL>*****</dipsite.recaptcha.verifyURL>
 
-
-    
-    <!-- foo.org: global key -->
-    <!--
-   <recaptcha.publicKey>6LcdTggAAAAAADLxCaxWmh0s-H_aaviTRxaTzFSH</recaptcha.publicKey>
-   <recaptcha.privateKey>6LcdTggAAAAAANFs1X1x8xM8uV-Ho75A3-Wx320P</recaptcha.privateKey>
-   <recaptcha.recaptchaServer>https://api-secure.recaptcha.net</recaptcha.recaptchaServer>
-    -->
-
-
-    
    <!--
     <property name="privateKey" value="6LfVAwcAAAAAAAVpzD05-mBbK5_HRJ9StEvSPAIn"/>
     <property name="publicKey" value="6LfVAwcAAAAAACFlY-X-icWpaoVMxHFyFVu3eIgc"/>
@@ -59,8 +48,8 @@
 
    <dipuser.dburl>jdbc:postgresql://10.1.3.1:5432/dip_auth</dipuser.dburl>
 <!--   <dipuser.dburl>jdbc:postgresql://10.1.1.15:5432/dip_auth_test</dipuser.dburl> -->
-   <dipuser.user>dip</dipuser.user>
-   <dipuser.pass>444dip444</dipuser.pass>
+   <dipuser.user>***</dipuser.user>
+   <dipuser.pass>***</dipuser.pass>
 
 <!--   <dipdb.endpoint>http://dip.doe-mbi.ucla.edu:50606/axis2/services/dipPublic</dipdb.endpoint> -->
 
