@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+    <bean id="queryServices" scope="prototype"
+        class="edu.ucla.mbi.service.RecordServices">
+
+      <property name="serviceConfig">
+       <map>
+        <entry><key><value>txt-query</value></key>       <!-- text query -->
+         <list>
+          <map>                                  <!-- nodes tab -->
+           <entry><key><value>label</value></key>
+                  <value>Proteins</value> 
+           </entry>
+           <entry><key><value>service</value></key>
+                  <ref bean="dipDbService"/>
+           </entry>
+            <entry><key><value>service-type</value></key>
+                  <value>nodelist</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+                  <value>N</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+          <map>                                  <!-- interactions tab -->
+           <entry><key><value>label</value></key>
+                  <value>Interactions</value>
+           </entry>
+
+           <entry><key><value>service</value></key>
+                  <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>reflist</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+                  <value>E</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+          <map>                                  <!-- experiments tab -->
+           <entry><key><value>label</value></key>
+                  <value>Experiments</value> 
+           </entry>
+           <entry><key><value>service</value></key>
+                  <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>reflist</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+                  <value>X</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+          <map>                                  <!-- sources tab -->
+           <entry><key><value>label</value></key>
+                  <value>Articles</value> 
+           </entry>
+           <entry><key><value>service</value></key>
+                  <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>reflist</value>
+           </entry>
+
+           <entry><key><value>tag</value></key>
+                  <value>S</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+          </list>
+        </entry>
+       </map>
+      </property>
+    </bean>
+
+    <bean id="recordServices" scope="prototype"
+        class="edu.ucla.mbi.service.RecordServices">
+
+      <property name="serviceConfig">
+       <map>
+        <entry><key><value>N</value></key>       <!-- node records -->
+         <list>
+          <map>                                  <!-- #0 details tab -->
+           <entry><key><value>label</value></key>
+                  <value>Details</value> 
+           </entry>
+           <entry><key><value>service</value></key>
+                  <ref bean="dipDbService"/>
+           </entry>
+            <entry><key><value>service-type</value></key>
+                  <value>nodelist</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+                  <value>deep</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+
+           <map>                                  <!-- #1: partners tab -->
+           <entry><key><value>label</value></key>
+                  <value>Interacting Partners</value>
+           </entry>
+<!--
+           <entry><key><value>vlabel</value></key>
+                  <value>npc</value>
+           </entry>
+-->
+           <entry><key><value>service</value></key>
+                  <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>reflist</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+                  <value>N</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+
+          <map>                                  <!-- #2: interactions tab -->
+           <entry><key><value>label</value></key>
+                  <value>Interactions</value> 
+           </entry>
+           <entry><key><value>service</value></key>
+                  <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>reflist</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+                  <value>E</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+
+          <map>                                  <!-- #3: experiments tab -->
+           <entry><key><value>label</value></key>
+                  <value>Experiments</value> 
+           </entry>
+           <entry><key><value>service</value></key>
+                  <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>reflist</value>
+           </entry>
+
+           <entry><key><value>tag</value></key>
+                  <value>X</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+          <map>                                  <!-- #4: sources/papers tab -->
+           <entry><key><value>label</value></key>
+                  <value>Articles</value> 
+           </entry>
+           <entry><key><value>service</value></key>
+                  <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>reflist</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+                  <value>S</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+          <map>                                  <!-- #5: gene ontology/annotation tab -->
+           <entry><key><value>label</value></key>
+                  <value>GO Annotation</value>
+           </entry>
+           <entry><key><value>service</value></key>
+                  <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>reflist</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+                  <value>full</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+
+          <map>                                  <!-- #6: xrefs tab -->
+           <entry><key><value>label</value></key>
+                  <value>Cross References</value>
+           </entry>
+           <entry><key><value>service</value></key>
+                  <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>reflist</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+                  <value>full</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+
+          <map>                                  <!-- #7: prolinks tab -->
+           <entry><key><value>label</value></key>
+                  <value>Functional Links</value>
+           </entry>
+           <entry><key><value>service</value></key>
+                  <ref bean="prlDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>node</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+                  <value>PRL</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+          </list>
+        </entry>
+
+        <entry><key><value>E</value></key>  <!-- edge/link records -->
+         <list>
+          <map>                              <!-- details tab -->
+           <entry><key><value>label</value></key>       
+             <value>Details</value> 
+           </entry>
+           <entry><key><value>service</value></key>
+             <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>nodelist</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+             <value>deep</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+          <map>                              <!-- experiments tab -->
+           <entry><key><value>label</value></key>       
+             <value>Experiments</value> 
+           </entry>
+           <entry><key><value>service</value></key>
+             <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>reflist</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+             <value>X</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+          <map>                             <!-- sources/papers tab -->
+           <entry><key><value>label</value></key>
+                  <value>Articles</value>
+           </entry>
+           <entry><key><value>service</value></key>
+                  <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>reflist</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+                  <value>S</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+          <map>                              <!-- validation tab -->
+           <entry><key><value>label</value></key>
+             <value>CORE Evaluation</value>
+           </entry>
+           <entry><key><value>service</value></key>
+             <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>reflist</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+             <value>full</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+         </list>
+        </entry>
+
+        <entry><key><value>X</value></key> <!-- evidence/experiment records -->
+         <list>  
+          <map>                              <!-- details tab -->
+           <entry><key><value>label</value></key>
+             <value>Details</value> 
+           </entry>
+           <entry><key><value>service</value></key>
+             <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>node</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+             <value>full</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+          <map>                                  <!-- interactor details tab -->
+           <entry><key><value>label</value></key>
+                  <value>Interactor Details</value>
+           </entry>
+           <entry><key><value>service</value></key>
+                  <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>reflist</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+                  <value>full</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+
+          <map>                             <!-- miscellaneous tab -->
+           <entry><key><value>label</value></key>
+                  <value>Additional Information</value>
+           </entry>
+           <entry><key><value>service</value></key>
+                  <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>reflist</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+                  <value>full</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+         </list>
+        </entry>
+
+        <entry><key><value>S</value></key>  <!-- source/article records -->
+         <list>
+          <map>
+           <entry><key><value>label</value></key>
+             <value>Abstract</value> 
+           </entry>
+           <entry><key><value>service</value></key>
+             <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>node</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+             <value>full</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+          <map>                                  <!-- nodes/proteins tab -->
+           <entry><key><value>label</value></key>
+                  <value>Proteins</value>
+           </entry>
+           <entry><key><value>service</value></key>
+                  <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>reflist</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+                  <value>N</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+          <map>                                  <!-- interactions tab -->
+           <entry><key><value>label</value></key>
+                  <value>Interactions</value>
+           </entry>
+           <entry><key><value>service</value></key>
+                  <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>tag</value></key>
+                  <value>E</value>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>reflist</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+          <map>                                  <!-- experiments tab -->
+           <entry><key><value>label</value></key>
+                  <value>Experiments</value>
+           </entry>
+           <entry><key><value>service</value></key>
+                  <ref bean="dipDbService"/>
+           </entry>
+           <entry><key><value>service-type</value></key>
+                  <value>reflist</value>
+           </entry>
+           <entry><key><value>tag</value></key>
+                  <value>X</value>
+           </entry>
+           <entry><key><value>active</value></key>
+                  <value>true</value>
+           </entry>
+          </map>
+         </list>
+        </entry>
+       </map>
+      </property>
+    </bean>
+
+</beans>
+

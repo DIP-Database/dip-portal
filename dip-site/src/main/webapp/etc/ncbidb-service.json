@@ -1,0 +1,11 @@
+{
+  serviceConfig:{
+    endpoint:[
+      {"url":"http://dip.doe-mbi.ucla.edu:80/dip-proxy/ncbi-service",
+       "priority":1.0
+      }
+    ] 
+  }
+}
+
+

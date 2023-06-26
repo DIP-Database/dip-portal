@@ -1,0 +1,161 @@
+<xsl:stylesheet version="1.0"
+   xmlns="http://dip.doe-mbi.ucla.edu/services/dxf14"
+   xmlns:mif="http://psi.hupo.org/mi/mif"
+   xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
+
+<!-- ======================================================================= -->
+<!-- XSLT transformation  PSQ MIF25 format to DXF                            -->
+<!--   parameters:                                                           -->
+<!--                                                                         -->
+<!--  2013/06/18:  initial version                                           -->
+<!--                                                                         -->                          
+<!-- ======================================================================= -->
+<!--                                                                         -->
+<!--                                                                         -->  
+<!-- ======================================================================= -->
+
+ <xsl:output method="xml" indent="yes" encoding="UTF-8" />
+<!--  <xsl:param name="debug">false</xsl:param> -->
+   <xsl:param name="text-query-string"></xsl:param>
+
+ <xsl:template match="/mif:entrySet">
+  <xsl:element name="dataset"> 
+    <node id="0">
+    <type ac="0026" name="search-report" ns="dxf"/>
+    <label>PSICQUIC Search Report</label>
+    <attrList>
+     <attr name="text-query-string">
+       <value><xsl:value-of select='$text-query-string'/></value>
+     </attr>
+    </attrList>
+    <xsl:apply-templates mode="hit-list" select="."/>
+   </node>
+  </xsl:element>
+ </xsl:template>
+
+ <xsl:template match="*" mode="hit-list">
+  <xsl:element name="partList">
+
+   <xsl:apply-templates mode="interaction-hit" 
+      select="mif:entry/mif:interactionList/mif:interaction"/>
+
+   <xsl:apply-templates mode="evidence-hit" 
+      select="mif:entry/mif:interactionList/mif:interaction/mif:experimentList/mif:experimentDescription"/>
+  </xsl:element>
+ </xsl:template>
+
+ <xsl:template match="*" mode="interaction-hit">
+  <xsl:element name="part">
+    <type name="search-result" ac="0027" ns="dxf"/>
+     <xsl:element name="node">
+      <xsl:attribute name="id">0</xsl:attribute>       
+      <xsl:attribute name="ns">
+        <xsl:text>imex</xsl:text>
+      </xsl:attribute>
+      <xsl:attribute name="ac">
+        <xsl:value-of select="@imexId"/>
+      </xsl:attribute>       
+      <type name="link" ac="dxf:0004" ns="dxf"/>
+      <xsl:element name="label">
+       <xsl:value-of select="@imexId"/>
+      </xsl:element>
+      <xrefList>
+       <xsl:apply-templates mode="xref" select="mif:xref/*[@refType='identity']"/>
+      </xrefList>
+     </xsl:element>
+<!--
+     <attrList>
+      <attr name="search-score"><value>0.75</value></attr>
+     </attrList>
+-->
+  </xsl:element>
+ </xsl:template>
+
+ <xsl:template match="*" mode="evidence-hit">
+     <xsl:element name="part">
+   <type name="search-result" ac="0027" ns="dxf"/>
+
+     <xsl:element name="node">
+      <xsl:attribute name="id">0</xsl:attribute>       
+      <xsl:attribute name="ns">
+        <xsl:text>imex</xsl:text>
+      </xsl:attribute>
+      <xsl:attribute name="ac">
+        <xsl:value-of select="../../@imexId"/>
+      </xsl:attribute>       
+      <type name="evidence" ac="dxf:0015" ns="dxf"/>
+      <xsl:element name="label">
+       <xsl:value-of select="../../@imexId"/>
+      </xsl:element>
+      <xrefList>
+
+       <xsl:if test='../../@imexId != ""'>
+        <xsl:call-template name="xref">
+         <xsl:with-param name="type">identical-to</xsl:with-param>
+         <xsl:with-param name="typeAc">dxf:0009</xsl:with-param>
+         <xsl:with-param name="typeNs">dxf</xsl:with-param>
+         <xsl:with-param name="ns">imex</xsl:with-param>
+         <xsl:with-param name="ac" select='../../@imexId'/>
+        </xsl:call-template>
+       </xsl:if>
+
+       <xsl:apply-templates mode="xref" select="mif:xref/*[@refType='identity']"/>
+       
+      </xrefList>
+     </xsl:element>
+
+<!--
+     <attrList>
+      <attr name="search-score"><value>0.75</value></attr>
+     </attrList>
+-->
+
+  </xsl:element>
+ </xsl:template>
+
+ <xsl:template match="*" mode="xref">
+  <xsl:element name="xref">
+   <xsl:attribute name="type">identical-to</xsl:attribute>
+   <xsl:attribute name="typeAc">dxf:0009</xsl:attribute>
+   <xsl:attribute name="typeNs">dxf</xsl:attribute>
+   <xsl:attribute name="ns">
+     <xsl:value-of select="@db"/>
+   </xsl:attribute>
+   <xsl:attribute name="ac">
+    <xsl:value-of select="@id"/>
+   </xsl:attribute>
+  </xsl:element>
+ </xsl:template>  
+
+ <xsl:template name="xref">
+   <xsl:param name="ns"/>
+   <xsl:param name="ac" />
+   <xsl:param name="type" />
+   <xsl:param name="typeNs" />
+   <xsl:param name="typeAc" />
+
+  <xsl:element name="xref">
+   <xsl:attribute name="type"><xsl:value-of select="$type"/></xsl:attribute>
+   <xsl:attribute name="typeAc"><xsl:value-of select="$typeAc"/></xsl:attribute>
+   <xsl:attribute name="typeNs"><xsl:value-of select="$typeNs"/></xsl:attribute>
+   <xsl:attribute name="ns"><xsl:value-of select="$ns"/></xsl:attribute>
+   <xsl:attribute name="ac"><xsl:value-of select="$ac"/></xsl:attribute>
+  </xsl:element>
+ </xsl:template>  
+
+</xsl:stylesheet>
+
+
+<!--
+<experimentDescription id="181">
+ <bibref>
+  <xref>
+     <primaryRef db="pubmed" dbAc="MI:0446" id="15045029" refType="identity" refTypeAc="MI:0356"/>
+  </xref>
+ </bibref>
+ <xref>
+  <primaryRef db="imex" dbAc="MI:0670" id="IM-13620-20" refType="imex-primary" refTypeAc="MI:0662"/>
+  <secondaryRef db="dip" dbAc="MI:0465" id="DIP-132385X" refType="identity" refTypeAc="MI:0356"/>
+ </xref>
+
+-->

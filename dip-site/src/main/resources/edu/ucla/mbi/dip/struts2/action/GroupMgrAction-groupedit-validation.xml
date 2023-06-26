@@ -1,0 +1,21 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+       "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+ <field name="id">
+  <field-validator type="int">
+   <param name="min">1</param>
+   <message>Group id missing.</message>
+  </field-validator>
+ </field>
+ <field name="group.name">
+  <field-validator type="requiredstring">
+   <message>Group name cannot be empty.</message>
+  </field-validator>
+  <field-validator type="stringlength">
+   <param name="min">2</param>
+   <param name="max">64</param>
+   <message>Group name must be between 2 and 64 characters long.</message>
+  </field-validator>
+ </field>
+
+</validators>

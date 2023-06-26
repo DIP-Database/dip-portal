@@ -1,0 +1,54 @@
+<p>This page gives a general overview of the DIP website and database.  For specific problems, try 
+one of the links below, or <a href="feedback">contact us</a>.
+ 
+<ul>
+   <li>Help with <a href="page?id=guide-search">SEARCHING</a> for proteins or interactions in DIP</li>
+   <li>Help with <a href="page?id=submit">SUBMITTING</a> interactions to DIP</li>
+   <li>Help with <a href="page?id=guide-visual">VISUALIZING</a> DIP interactions</li>
+</ul>
+
+<h2>Contents of DIP: nodes and edges</h2>
+
+DIP keeps track of proteins and their interactions.  Graphically, proteins can 
+be represented by <i>nodes</i> (circles) and interactions by <i>edges</i> 
+(lines):<br/>
+<font size="-2"><br/>
+<center><img src="images/guide/kinetochore.png" alt="(kinetochore network graph)"/><br/></center>
+<br/></font>
+The above <i>graph</i> shows the protein-protein interaction network of the 
+kinetochore, the protein complex responsible for separating chromosomes during
+eukaryotic cell division. Notice that some of the edges, the curved ones, 
+indicate a self interaction: an interaction between a protein and another copy 
+of itself.
+
+<p><b>DIP nodes</b> (proteins)<br/>
+Each protein node in DIP is assigned a unique identifier of the form 'DIP-###N' ('N' for node).  
+   Each node is also cross-referenced to at least one of the major protein databases
+   <a href="http://www.pir.uniprot.org/" target="window"> UniProt</a> and 
+   <a href="http://www.ncbi.nlm.nih.gov/RefSeq/" target="window">RefSeq</a>.  
+   DIP additionally stores some basic information about each protein, including name, organism, and a 
+   description.<br /><font size="-2"><br /></font>
+   <i><a href="page?id=guide-molecule">Help with </i>'DIP node'<i> pages</a></i></p>
+   <p><b>DIP edges</b> (interactions)<br />
+   Each interaction edge in DIP is assigned a unique identifier of the form 'DIP-###E' ('E' for edge).
+   DIP stores information such as the region involved in the interaction, the dissociation constant and the 
+   experimental methods used to identify and characterize the interaction.<br />
+   <font size="-2"><br /></font>
+   <i><a href="page?id=guide-interaction">Help with </i>'DIP edge'<i> pages</a><br />
+   <a href="page?id=guide-evidence">Help with </i>'DIP experiment'<i> pages</a></i></p> 
+  
+<h2>Classifying interactions</h2>
+
+Interactions may be classified according to the level of contact between the interacting proteins.
+   Thus, interactions may be:
+   <ul>
+    <li><b>direct</b>, if the interacting proteins touch each other directly;</li>
+    <li><b>physical</b>, if the proteins physically associate, with the possibility that another molecule 
+     mediates the association; or</li>
+    <li><b>functional</b>, if the proteins are linked by a related function, regardless of whether they 
+     physically associate.</li>
+   </ul>
+   DIP currently records <i>direct</i> and <i>physical</i> interactions.  For functional interactions, try the 
+   <a href="http://mysql5.mbi.ucla.edu/cgi-bin/functionator/pronav">Prolinks</a> database.<br /><br />
+
+

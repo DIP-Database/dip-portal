@@ -1,0 +1,612 @@
+
+    <link rel="stylesheet" type="text/css" href="skin/pfl/css/prolinks.css" />
+      
+      <div id="pl_tutorial_page">
+
+	<br />
+
+	<table class="pl_outer_frame">
+
+	  <!-- The header -->
+	  <tr>
+	    <td class="pl_tutorial_header_row pl_arrow_cell">
+	      <a href="page?id=pl_tut_mainpage">
+		<img class="pl_tut_arrow"
+                       src="images/pl_tut_left_arrow.png" 
+		     width="60px"
+		       alt="Previous tutorial" />
+	      </a>
+	    </td>
+
+	    <td class="pl_tutorial_header_row"> 
+	      <b>How to build queries</b>
+	    </td>
+
+	    <td class="pl_tutorial_header_row pl_arrow_cell"> 
+	      <a href="page?site=prl&id=pl_tut_keyword">
+		<img class="pl_tut_arrow" 
+                       src="images/pl_tut_right_arrow.png" 
+		     width="60px"
+		       alt="Next tutorial" />
+	      </a>
+	    </td>
+	  </tr>
+
+
+	  <!-- The body of the tutorial from here -->
+	  <tr>
+	    <td class="pl_tutorial_body_row" colspan="3">
+
+	      <table class="pl_tutorial_inner_frame">
+		<tr>
+		  <td class="pl_tutorial_info_data">
+
+		    <br />
+
+		    <p>
+		      If you don't know, or can't exactly remember, the unique protein 
+		      identifier for a given protein (e.g. GI, RefSec, locus_tag, 
+		      etc.) ProLinks can help you find it.
+		      All you have to do is type keywords related to your protein 
+		      in any of the available 
+		      <a class="pl_general" 
+			href="http://prl.mbi.ucla.edu/prldev/page?id=pl_tut_mainpage#basic_query"
+			target="_blank">search boxes</a>. 
+		      Here you will find many examples that will help you submit basic 
+		      and more complex queries to ProLinks.
+		    </p>
+
+		    <p>
+		      ProLinks searches are powered by the
+		      <a class="pl_general" 
+		        href="http://lucene.apache.org/solr/"
+                        target="_blank">Solr engine</a> from the 
+		      <a class="pl_general"
+		        href="http://lucene.apache.org/"
+			target="_blank">Apache Lucene project</a>, 
+		      so there is a lot of flexibility on how to write 
+		      queries for ProLinks. Check the 
+		      <a class="pl_general" 
+			href="http://www.amazon.com/Solr-1-4-Enterprise-Search-Server/dp/1847195881"
+			target="_blank">book</a> and the 
+		      <a class="pl_general" 
+			href="http://wiki.apache.org/solr/FrontPage"
+			target="_blank">online documentation</a> for more details on how Solr works.
+		      This tutorial is organized in the following sections:
+		    </p>
+
+		    <ul>
+		      <li>
+			<a class="pl_general" href="#basic_query">
+			  Basic queries</a>:
+			the fast and easy way to write queries to ProLinks
+			
+			<ul>
+
+			  <li>
+			    <a class="pl_general" href="#default_behavior">
+			     Default behavior</a>.
+			  </li>
+
+			  <li>
+			    <a class="pl_general" href="#logic_operators">
+			      Boolean operators</a>.
+			  </li>
+
+			  <li>
+			    <a class="pl_general" href="#sign_operators">
+			     Mandatory and prohibited clauses</a>.
+			  </li>
+
+			</ul>
+			<br />
+		      </li>
+
+		      <li>
+			<a class="pl_general" href="#advanced_query">Advanced queries:</A>
+			Making the searches more powerful, but may require basic 
+			understanding of how the information in ProLinks is structured.
+			
+			<ul>
+			  <li>
+			    <a class="pl_general" href="#subexpression">
+			     Sub-expressions (or sub-queries)</a>.
+			  </li>
+
+			  <li>
+			    <a class="pl_general" href="#wildcards">
+			      Wildcards</a>.
+			  </li>
+
+			  <li>
+			    <a class="pl_general" href="#field_qualifier">
+			      Field qualifiers</a>.
+			  </li>
+
+			  <li>
+			    <a class="pl_general" href="#phrases">
+			      Phrases</a>.
+			  </li>
+			  
+			</ul>
+			<br />
+		      </li>
+		    </ul>
+
+		    <br />
+		    <a name="basic_query"></a>
+		    <h1>Basic queries</h1>
+
+		    <p>
+		      <a class="pl_general" href="http://lucene.apache.org/solr/"
+                        target="_blank">Solr</a> is a very powerful search platform, 
+		      so writing basic queries in ProLinks is similar to writing queries 
+		      in google.
+		    </p>
+
+		    <br />
+		    <a name="default_behavior"></a>
+		    <h2>Default behavior</h2>
+
+		    <p>
+		      If only keywords related to your query are typed, ProLinks assumes an 
+		      <b>AND</b> operator between keywords. For example, if you 
+		      type in the search box the keywords: 
+		    </p>
+
+		    <p class="pl_help_command">kinase escherichia</p>
+
+		    <a name="figure1"></a>
+		    <a href="images/pl_tut_query_1.png" target="_blank">
+		      <img class="pl_center_img" src="images/pl_tut_query_1.png" 
+			   width="400px"
+			     alt="query: kinase escherichia" /> 
+		    </a>
+		    <br />
+
+		    <p>
+		      Very fast you will get the list of all proteins containing the word <b>kinase</b>
+		      in their annotations in <b><i>Escherichia</i></b> genomes:
+		    </p>
+
+		    <a name="figure2"></a>
+		    <a href="images/pl_tut_qry_res_1.png" target="_blank">
+		      <img class="pl_center_img" src="images/pl_tut_qry_res_1.png" 
+			   width="400px"
+			     alt="query: kinase escherichia" /> 
+		    </a>
+		    <br />
+
+		    <p>
+		      Of course this is not very useful since there are both many 
+                      <i>Escherichia</i> genomes currently available and many annotated 
+                      kinase proteins in each one of these genomes. The point 
+		      of this example is to illustrate, firstly,  how fast ProLinks 
+                      returns the results; secondly, how the typed keywords are 
+                      highlighted for each matching protein; and, how you can browse 
+                      through the matches by clicking on the navigation arrows 
+                      (i.e. <b>></b>, <b><</b>, <b>>></b>, and <b><<</b>). If you 
+                      find that your protein of interest is in the list returned by 
+                      ProLinks, just select it and click on the button "<b>Search ProLinks</b>". 
+                      This action will start the search for functional linkages based 
+                      on the protein you selected.
+		    </p>
+
+                    <p>
+                      Also notice how the original query  is displayed again in the text
+		      box on the upper right corner of the screen. You can refine your 
+		      query by adding terms to the query (e.g. the strain of the 
+		      genome of inerest) without the need to go back to main page.
+                    </p>
+		    <br /><br /><br />
+
+
+		    
+		    <a name="logic_operators"></a>
+		    <h2>Boolean operators</h2>
+
+		    It is also possible to use standard logic operators to write more complex queries.
+		    As mentioned <a class="pl_general" href="#basic_query">above</a>, the default 
+		    treatment for typed keywords corresponds to <b>AND</b> logic. So the 
+		    <a class="pl_general" href="#figure1">first query</a> can also be written as:
+		    <br /><br />
+
+		    <p class="pl_help_command">kinase <b>AND</b> escherichia</p>
+		    <br />
+
+		    <p>
+		      The other operators you can use are: <b>OR</b> and <b>NOT</b>. Let's put them to 
+		      work with one example. In order to find all actin proteins in <i>Escherichia </i>
+		      genomes but excluding those from the substrain <i>Escherichia coli</i> K12 substr W3110, 
+		      we can type the query:
+		    </p>
+
+		    <br />		    
+		    <a name="example_2"></a>
+		    <p class="pl_help_command">actin <b>AND</b> escherichia <b>NOT</b> W3110</p>
+		    <br />
+		    
+		    <p>
+		      Given the default <b>AND</b> logic in ProLinks, we can also rewrite the query as:
+		    </p>
+		    <br />
+
+		    <p class="pl_help_command">actin escherichia <b>NOT</b> W3110</p>
+		    <br />
+
+		    <p>
+		      The query will return the following matches:
+		    </p>
+
+		    <a name="figure3"></a>
+		    <a href="images/pl_tut_qry_res_2.png" target="_blank">
+		      <img class="pl_center_img" src="images/pl_tut_qry_res_2.png" 
+			   width="400px"
+			   alt="query: actin escherichia NOT W3110" /> 
+		    </a>
+		    <br /><br />
+		    
+
+		    <p>
+		      If you remove the <i class="pl_color_text">NOT W3110</i> part of the query, it's possible to
+		      see the actin protein in <i>E. coli</i> K12 substr W3110 that was removed by the 
+		      <a class="pl_general" href="#example_2">original query</a>. 
+		    </p>
+		    <br />
+
+		    <p>
+		      ProLinks also supports the synonym operators <b>||</b> (OR) and <b>&&</b> (AND). So 
+		      <i class="pl_color_text">actin <b>OR</b> rubisco</i> is equivalent 
+		      <i class="pl_color_text">actin <b>||</b> rubisco</i>, and
+		      <i class="pl_color_text">actin <b>AND</b> escherichia</i> is the same as 
+		      <i class="pl_color_text">actin <b>&&</b> escherichia</i>.
+		    </p>
+		    <br /><br />
+
+		    
+
+		    <a name="sign_operators"></a>
+		    <h2>Mandatory and prohibited clauses</h2>
+
+		    <p>
+		      In order to force a specific keywork to be in the results, just precede the word with a plus 
+		      sign (<b>+</b>), or if you want to exclude it use a minus sigh (<b>-</b>). To illustrate how
+		      to do this, we can rewrite the <a class="pl_general" href="#example_2">previous query</a>
+		      as:
+		    </p>
+		    <br />
+		    
+		    
+		    <p class="pl_help_command"><b>+</b>actin <b>+</b>escherichia <b>-</b>W3110</p>
+		    <br />
+		    
+		    <p>
+		      It's possible to combine logic operators with mandatory and prohibited clauses in any order.
+		      For example, to obtain the same results we can retype the query as:
+		    </p>
+		    <br />
+
+		    <p class="pl_help_command">actin <b>AND</b> escherichia <b>-</b>W3110</p>
+		    <br /><br />
+
+
+
+		    <a name="advanced_query"></a>
+		    <h1>Advanced queries</h1>
+
+		    <p>
+		      The Solr engine supports much more complex
+		      queries, in this section we will work on
+		      additional tools you can use to refine your
+		      search.
+		    </p>
+		    <br /><br />
+		    
+
+
+		    <a name="subexpression"></a>
+		    <h2>Sub-expressions (or sub-queries)</h2>
+
+		    <p>
+		      It's possible to use parenthesis to write a
+		      query that is composed of smaller queries. For
+		      example, the query:
+		    </p>
+		    <br />
+
+		    <p class="pl_help_command">actin <b>AND</b> escherichia <b>NOT</b> W3110</p>
+
+		    <p>
+		      can be rewritten as:
+		    </p>
+		    <br />
+		    
+		    <p class="pl_help_command">(actin <b>AND</b> escherichia) <b>NOT</b> W3110</p>
+		    <br />
+
+		    
+		    <p>
+		      Let's work on a little bit more complicated
+		      example. Let's extract all proteins who have
+		      annotations that contain the words <b>actin</b>
+		      or <b>proline</b> from the genomes
+		      <i>Escherichia coli</i> K12 substr
+		      <b>MG1655</b>, and <i>Escherichia coli</i> K12
+		      substr <b>W3110</b>. We will use the substrain
+		      to identify the genomes:
+		    </p>
+		    <br />
+
+		    <p class="pl_help_command">(actin <b>OR</b> proline) <b>AND</b> (MG1655 <b>OR</b> W3110)</p>
+		    <br />
+		    
+		    <p>
+		      Based on what we have learned so far, this query
+		      can also be written as:
+		    </p>
+		    <br />
+
+		    <p class="pl_help_command">(actin <b>||</b> proline) <b>&&</b> (MG1655 <b>||</b> W3110)</p>
+		    <p class="pl_help_command">(actin <b>OR</b> proline) (MG1655 <b>OR</b> W3110)</p>
+		    <br />
+		    
+		    <p>
+		      These queries will return the following matches:
+		    </p>
+
+
+		    <a name="figure4"></a>
+		    <a href="images/pl_tut_qry_res_3.png" target="_blank">
+		      <img class="pl_center_img" src="images/pl_tut_qry_res_3.png" 
+			width="400px"
+			alt="(actin OR proline) AND (MG1655 OR W3110)" /> 
+		    </a>
+		    <br /><br />
+
+
+
+		    <a name="wildcards"></a>
+		    <h2>Using wildcards in your queries</h2>
+
+		    <p>
+		      First a note of caution. Wildcard processing can make your search much slower, 
+		      especially if there is a leading wildcard. This is because every term must be 
+		      iterated over to see if it matches the wild card pattern, and every matched word 
+		      is added to an internal query which could grow very large. That being said, let's 
+		      get started.
+		    </p>
+
+		    <p>
+		      The asterisk matches any number of characters (perhaps none). For example, in order
+		      to find all proteins in any genomes whose annotations include the words synthase, 
+		      synthetase, synthesis and any other word starting with <b>synth</b>, you can simply 
+		      use the query:
+		    </p>
+		    
+		    <p class="pl_help_command">synth<b>*</b></p>
+
+
+		    <p>
+		      Obviously this query will return lots of matches:
+		    </p>
+
+
+		    <a name="figure5"></a>
+		    <a href="images/pl_tut_qry_res_4.png" target="_blank">
+		      <img class="pl_center_img" src="images/pl_tut_qry_res_4.png" 
+			width="400px"
+			alt="query: synth*" /> 
+		    </a>
+		    <br /><br />
+
+
+		    <p>
+		      We can also use <b>?</b> to force a match of any character in a specific position. For example,
+		      in order to find all proteins in  <i>Escherichia coli</i> K12 substr <b>MG1655</b> whose gene name 
+		      starts with <b>leu</b> (assuming all gene names are 4 characters long), we can write the query:
+		    </p>
+
+		    <p class="pl_help_command">leu<b>?</b> MG1655</p>
+
+
+		    <p> This query will return: </p>
+
+
+		    <a name="figure6"></a>
+		    <a href="images/pl_tut_qry_res_5.png" target="_blank">
+		      <img class="pl_center_img" src="images/pl_tut_qry_res_5.png" 
+			width="400px"
+			alt="query: leu? MG1655" /> 
+		    </a>
+		    <br /><br />
+
+		    
+		    <a name="field_qualifier"></a>
+		    <h2>Using field qualifiers in your query</h2>
+
+		    <p>
+		      All protein information that can be queried is
+		      organized in the following fields (or field
+		      qualifiers):
+		    </p>
+
+		    <ul>
+		      
+		      <li>
+			<b>label:</b> Here the index searches gene
+			names or whatever label the ORF was identified
+			with when the genome was released.  
+			<br /><br />
+		      </li>
+
+		      <li>
+			<b>description:</b> Here the index searches
+			for all terms related to the name of the
+			proteins if available.  <br /><br />
+		      </li>
+
+		      <li>
+			<b>keyword:</b> Here the index searches for
+			words used to define the function of the
+			protein.  <br /><br />
+		      </li>
+
+		      <li>
+			<b>xref:</b> Here the index searches for
+			protein identifiers in other public databases
+			(e.g. GI, RefSeq, SwissProt, PDB, etc). 
+			<a class="pl_general"
+			  onclick="YAHOO.mbi.modal.help( 'Protein Identifiers', 'pl_help_pid' ); return false"
+			  href="">Click here</a> for a list of the
+			external identifiers we currently support.
+			<br /><br />
+		      </li>
+		      
+		      <li>
+			<b>taxid:</b> Here the index searches for the
+			identifier of the genome in the 
+			<a class="pl_general"
+			  href="http://www.ncbi.nlm.nih.gov/Taxonomy/"
+			  target="_blank">NCBI Taxonomy database</a> 
+			<br /><br />
+		      </li>
+
+		      <li>
+			<b>taxon:</b> Here the index searches for
+			words related to the full name of the genome.
+			<br /><br />
+		      </li>
+		    </ul>
+
+		    <p>
+		      It's possible to limit the search to a specific
+		      field if you already know what you are looking
+		      for, which in turn can speed up the search.
+		    </p>
+
+		    <p>
+		      For example, the query that we constructed above:
+		    </p>
+
+		    <p class="pl_help_command">leu<b>?</b> MG1655</p>
+		    
+		    <p>
+		      can also be written as:
+		    </p>
+
+		    <p class="pl_help_command"><b>label:</b>leu<b>?</b> <b>taxon:</b>MG1655</p>
+
+		    <p>
+		      or if we use the Taxonomy ID of <i>E. coli</i> K12 substrain MG155:
+		    </p>
+
+		    <p class="pl_help_command"><b>label:</b>leu<b>?</b> <b>taxid:</b>511145</p>
+
+		    <p>
+		      We can also match multiple words in the same field by using parenthesis.
+		      For example, in order ot find all genes in <i>E. coli</i> K12 substrain MG155
+		      whose name start with <b>leu</b> or <b>his</b>, we can use the 
+		      following expression:
+		    </p>
+
+
+		    <p class="pl_help_command">
+		      <b>label:</b>(leu<b>?</b> <b>OR</b> his<b>?</b>) <b>taxon:</b>MG1655
+		    </p>
+		      
+		    <p>
+		      which will return the following matches:
+		    </p>
+
+		    <a name="figure7"></a>
+		    <a href="images/pl_tut_qry_res_6.png" target="_blank">
+		      <img class="pl_center_img" src="images/pl_tut_qry_res_6.png" 
+			   width="400px"
+			   alt="query: label:(leu? OR his?) taxon:MG1655" /> 
+		    </a>
+		    <br /><br />
+
+
+
+		    <a name="phrases"></a>
+		    <h2>Including phrases in your query</h2>
+
+		    <p>
+		      If you know a series of consecutive keywords that should appear together
+		      in the annotation of your protein of interest, it's possible 
+		      to tell ProLinks to search for them in that particular order by 
+		      surounding the keywords with double quotes. This is what we call a phrase.
+		    </p>
+
+		    <p>
+		      For example, in order to search for all DNA-binding response regulators
+		      in <i>E. coli</i> K12 substrain MG155, we can submit any of the queries:
+		    </p>
+
+		    <p class="pl_help_command">
+		      <b>"</b>DNA-binding response regulator<b>"</b> <b>taxon:</b>MG1655
+		    </p>
+
+		    <p class="pl_help_command">
+		      <b>"</b>DNA-binding response regulator<b>"</b> <b>taxon:"</b>substr MG1655<b>"</b>
+		    </p>
+
+		    <p class="pl_help_command">
+		      <b>"</b>DNA-binding response regulator<b>"</b> escherichia MG1655
+		    </p>
+
+		    <p>
+		      When submitted, these queries return the following matches:
+		    </p>
+
+
+		    <a name="figure8"></a>
+		    <a href="images/pl_tut_qry_res_7.png" target="_blank">
+		      <img class="pl_center_img" src="images/pl_tut_qry_res_7.png" 
+			   width="400px"
+			   alt="query: 'DNA-binding response regulator' taxon:MG1655" /> 
+		    </a>
+		    <br /><br />
+		    
+		    
+
+		  </td>
+		</tr>
+	      </table>
+
+	    </td>
+	  </tr>
+
+
+
+	  <!-- The Footer bar -->
+	  <tr>
+	    <td class="pl_tutorial_header_row pl_arrow_cell">
+	      <a href="page?id=pl_tut_mainpage">
+		<img class="pl_tut_arrow"  src="images/pl_tut_left_arrow.png" 
+		     width="60px"
+		     alt="Previous tutorial" />
+	      </a>
+	    </td>
+
+	    <td class="pl_tutorial_header_row"> 
+	      <b>Tutorial Navigation bar</b>
+	      <br />
+	      (<a class="pl_general" href="page?id=pl_tutorial">
+		Go to main Tutorials page</a>)
+
+	    </td>
+
+	    <td class="pl_tutorial_header_row pl_arrow_cell"> 
+	      <a href="page?id=pl_tut_keyword">
+		<img class="pl_tut_arrow"  src="images/pl_tut_right_arrow.png" 
+		     width="60px"
+		     alt="Next tutorial" /> 
+	      </a>
+	    </td>
+	  </tr>
+	</table>
+      </div>
+
+      <!-- To avoid content be blocked by the footer -->
+      <br /><br /><br /><br /><br /><br /><br />

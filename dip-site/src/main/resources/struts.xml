@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+  <constant name="struts.objectFactory" value="spring" />
+  <constant name="struts.devMode" value="true" />
+  <constant name="struts.multipart.maxSize" value="5000000" />
+  <constant name="struts.action.excludePattern" 
+            value="/ws.*,/imex/.*,/map/.*"/>
+
+  <!-- site mamagement -->
+
+    <include file="struts/sitemgr.xml"/>  
+
+  <!-- record action -->
+
+    <include file="struts/record.xml"/>
+
+  <!-- static page action -->
+
+    <include file="struts/static-prl.xml"/>
+    <include file="struts/static.xml"/>
+
+  <!-- user related action(s) -->
+
+    <include file="struts/user.xml"/>
+
+  <!-- download related action(s) -->
+
+    <include file="struts/download.xml"/>
+
+</struts>

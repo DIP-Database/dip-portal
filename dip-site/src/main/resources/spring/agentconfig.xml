@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+ 
+    <bean id="agentConf"
+        class="edu.ucla.mbi.dip.agent.DipAgentConfig">
+
+      <property name="config">
+
+       <map>
+        <entry key="N">    <!-- record type: NODE -->
+         <list>                                        <!--  list of services-->
+          <map>                               <!--    service for elem/ns/ac -->
+           <entry key="component-type" value="xref"/>    <!-- self/xref/part -->           
+           <entry key="component-ns" value="uniprot"/> 
+           <entry key="component-ac" value="*"/>      <!-- filter if present --> 
+           <entry key="server">
+             <ref bean="ebiDbService"/>
+           </entry>
+           <entry key="service" value="getDxfNode"/>
+           <entry key="service-tag" value="base"/>
+           <entry key="result-tag" value="base"/>
+          </map>
+
+          <map>                               <!--    service for elem/ns/ac -->
+           <entry key="component-type" value="xref"/>
+           <entry key="component-ns" value="refseq"/>           
+           <entry key="component-ac" value="*"/>      <!-- filter if present -->
+           <entry key="server">
+             <ref bean="ncbiDbService"/>
+           </entry>           
+           <entry key="service" value="getDxfNode"/>
+           <entry key="service-tag" value="base"/>
+           <entry key="result-tag" value="base"/>
+          </map>
+
+          <map>                               <!--    service for elem/ns/ac -->
+           <entry key="component-type" value="self"/>
+           <entry key="component-ns" value="dip"/>           
+           <entry key="component-ac" value="*"/>      <!-- filter if present -->
+           <entry key="server">
+             <ref bean="dipDbService"/>
+           </entry>
+           <entry key="service" value="getDxfRefList"/>
+           <entry key="service-tag" value="N"/>
+           <entry key="result-tag" value="N"/> 
+          </map>
+
+          <map>                               <!--    service for elem/ns/ac -->
+           <entry key="component-type" value="self"/>
+           <entry key="component-ns" value="dip"/>
+           <entry key="component-ac" value="*"/>      <!-- filter if present -->
+           <entry key="server">
+             <ref bean="dipDbService"/>
+           </entry>
+           <entry key="service" value="getDxfRefList"/>
+           <entry key="service-tag" value="E"/>
+           <entry key="result-tag" value="E"/>
+          </map>
+          
+          <map>                               <!--    service for elem/ns/ac -->
+           <entry key="component-type" value="self"/>
+           <entry key="component-ns" value="dip"/>
+           <entry key="component-ac" value="*"/>      <!-- filter if present -->
+           <entry key="server">
+             <ref bean="dipDbService"/>
+           </entry>
+           <entry key="service" value="getDxfRefList"/>
+           <entry key="service-tag" value="X"/>
+           <entry key="result-tag" value="X"/>
+          </map>
+        
+          <map>                               <!--    service for elem/ns/ac -->
+           <entry key="component-type" value="self"/>
+           <entry key="component-ns" value="dip"/>
+           <entry key="component-ac" value="*"/>      <!-- filter if present -->
+           <entry key="server">
+             <ref bean="dipDbService"/>
+           </entry>
+           <entry key="service" value="getDxfRefList"/>
+           <entry key="service-tag" value="S"/>
+           <entry key="result-tag" value="S"/>
+          </map>
+         </list>
+        </entry>
+
+        <entry key="E">    <!-- record type: EDGE -->
+         <list>                               <!--  list of services-->
+          <map>                               <!--    service for elem/ns/ac -->
+           <entry key="component-type" value="part"/>
+           <entry key="component-ns" value="dip"/>
+           <entry key="component-ac" value="*"/>      <!-- filter if present -->
+           <entry key="server">
+             <ref bean="dipDbService"/>
+           </entry>
+           <entry key="service" value="getDxfNode"/>
+           <entry key="service-tag" value="base"/>
+           <entry key="result-tag" value="base"/>
+          </map>
+
+          <map>                               <!--    service for elem/ns/ac -->
+           <entry key="component-type" value="self"/>
+           <entry key="component-ns" value="dip"/>
+           <entry key="component-ac" value="*"/>      <!-- filter if present -->
+           <entry key="server">
+             <ref bean="dipDbService"/>
+           </entry>
+           <entry key="service" value="getDxfRefList"/>
+           <entry key="service-tag" value="X"/>
+           <entry key="result-tag" value="X"/>
+          </map>
+
+          <map>                               <!--    service for elem/ns/ac -->
+           <entry key="component-type" value="self"/>
+           <entry key="component-ns" value="dip"/>
+           <entry key="component-ac" value="*"/>      <!-- filter if present -->
+           <entry key="server">
+             <ref bean="dipDbService"/>
+           </entry>
+           <entry key="service" value="getDxfRefList"/>
+           <entry key="service-tag" value="S"/>
+           <entry key="result-tag" value="S"/>
+          </map>
+         </list>
+        </entry>
+
+        <entry key="X">    <!-- record type: EVIDENCE -->
+         <list>                               <!--  list of services-->
+          <map>                               <!--    service for elem/ns/ac -->
+           <entry key="component-type" value="part"/>
+           <entry key="component-ns" value="dip"/>
+           <entry key="component-ac" value="*"/>      <!-- filter if present -->
+           <entry key="server">
+             <ref bean="dipDbService"/>
+           </entry>
+           <entry key="service" value="getDxfNode"/>
+           <entry key="service-tag" value="base"/>
+           <entry key="result-tag" value="base"/>
+          </map>
+
+          <map>                               <!--    service for elem/ns/ac -->
+           <entry key="component-type" value="self"/>
+           <entry key="component-ns" value="dip"/>
+           <entry key="component-ac" value="*"/>      <!-- filter if present -->
+           <entry key="server">
+             <ref bean="dipDbService"/>
+           </entry>
+           <entry key="service" value="getDxfRefList"/>
+           <entry key="service-tag" value="N"/>
+           <entry key="result-tag" value="N"/>
+          </map>
+
+          <map>                               <!--    service for elem/ns/ac -->
+           <entry key="component-type" value="self"/>
+           <entry key="component-ns" value="dip"/>
+           <entry key="component-ac" value="*"/>      <!-- filter if present -->
+           <entry key="server">
+             <ref bean="dipDbService"/>
+           </entry>
+           <entry key="service" value="getDxfRefList"/>
+           <entry key="service-tag" value="E"/>
+           <entry key="result-tag" value="E"/>
+          </map>
+
+          <map>                               <!--    service for elem/ns/ac -->
+           <entry key="component-type" value="self"/>
+           <entry key="component-ns" value="dip"/>
+           <entry key="component-ac" value="*"/>      <!-- filter if present -->
+           <entry key="server">
+             <ref bean="dipDbService"/>
+           </entry>
+           <entry key="service" value="getDxfRefList"/>
+           <entry key="service-tag" value="S"/>
+           <entry key="result-tag" value="S"/>
+          </map>
+         </list>
+        </entry>
+
+       </map>
+      </property>
+    </bean>
+
+</beans>
+

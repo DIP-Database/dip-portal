@@ -1,0 +1,196 @@
+<div style='margin: 0 0 5em 0'>
+To install MiSink plugin on your computer follow the steps below:
+<br/>
+<table border="0"  cellpadding="5">
+  <tr>
+   <td valign="top"><b>1.</b></td>
+   <td> 
+     <p><b>Install the most recent version of</b> <a target="cytoscape" href="http://www.cytoscape.org">Cytoscape</a>.
+     <p>MiSink is an add-on module for Cytoscape and therefore proper 
+     installation of Cytoscape is compulsory. Please, try to remember the 
+     directory Cytoscape will be installed as this information will be 
+     needed later on.</p> 
+   </td>
+  </tr>
+
+  <tr>
+   <td valign="top"><b>2.A.</b></td>
+   <td>
+    <b>Cytoscape version 3.x:</b>
+   </td>
+  </tr>
+  <tr>
+   <td valign="top" align="right" colspan="2">
+    <table border="0" width="98%" cellspacing="5" align="right">
+     <tr>
+      <td valign="top" align="left" width="1%"><b>a.</b></td>
+      <td align="left">
+       Download matching version of MiSink App:<br/>
+       <ul>
+         <li><a href="http://dip.doe-mbi.ucla.edu/misink/MiSink3.0.1.jar">MiSink3.0.1.jar</a> for Cytoscape 3.0.x series.</li>
+         <li><a href="http://dip.doe-mbi.ucla.edu/misink/MiSink3.1.1.jar">MiSink3.1.1.jar</a> for Cytoscape 3.1.x series.</li>
+       </ul>
+      </td>
+     </tr>
+     <tr>
+      <td valign="top"><b>b.</b></td>
+      <td align="left">
+        Open Apps->AppsManager within Cytoscape and select 'Install Apps' tab<br/>
+      </td>
+     </tr>
+     <tr>
+      <td valign="top"><b>c.</b></td>
+      <td align="left">
+       Click on 'Install from File...' button, select the MiSink file you have just downloaded and
+       open it. 'misink3' App should be now listed under 'Currently Installed' tab.
+       <br/>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+
+  <tr>
+   <td valign="top"><b>2.B.</b></td>
+   <td><b>Cytoscape version 2.5 and newer:</b>
+  </td>
+  </tr>
+  <tr>
+   <td valign="top" align="right" colspan="2">
+      <table border="0" width="98%" cellspacing="5" align="right">
+       <tr>
+
+        <td valign="top" align="left" width="1%"><b>a.</b></td>
+        <td align="left">
+         Open Plugins->Manage Plugins menu within Cytoscape and select 
+         'Change Download Site'.</br>
+        </td>
+       </tr>
+       <tr>
+        <td valign="top"><b>b.</b></td>
+
+        <td align="left">
+         Click on 'Add Site', chose 'plugins' (instead of 'networks') 
+         within the top pulldown and click on 'Add'.</br>
+        </td>
+       </tr>
+       <tr>
+        <td valign="top"><b>c.</b></td>
+        <td align="left">
+         Enter a name (arbitrary - DIP, MiSink, whatever...) and URL:
+
+         <br/><br/>
+
+         <table bgcolor="#cccccc" cellpadding="5">
+          <tr>
+           <td valign="middle">
+             <tt>http://dip.doe-mbi.ucla.edu/misink/cplug.xml</tt>
+           </td>
+          </tr>
+         </table>
+
+
+         <p>then click on 'Add' followed by 'Ok' within Network manager 
+         dialog.</br>
+        </td>
+       </tr>
+       <tr>
+        <td valign="top"><b>d.</b></td>
+        <td align="left">
+         Select the name you used in the 'Plugin Downloads Sites' dialog 
+         and click 'Ok'.  There should be now one plugin listed as available 
+         for download - unfold the folder tree to get to MiSink plugin, 
+         select it and click on 'Install'.
+        </td>
+
+       </tr>
+      </table>
+   </td>
+  </tr>
+  <tr>
+
+
+ <tr>
+   <td valign="top"><b>2.C.</b></td>
+   <td><b>Cytoscape versions 2.3.x and 2.4.x:</b>
+    </br/>
+    <br/>
+    (<i>NOTE: These are seriously outdated. Please, consider updating to modern version of <a target="cytoscape" href="http://www.cytoscape.org">Cytoscape</a></i>)
+  </td>
+
+  </tr>
+  <tr>
+   <td valign="top" align="right" colspan="2">
+    <table border="0" width="98%" align="right">
+     <tr>
+      <td valign="top" width="1%"><b>a.</b></td>
+      <td align="left"> 
+        <b>Download and save the most recent MiSink distribution file:</b>
+
+       <a href="http://dip.doe-mbi.ucla.edu/misink/MiSink1.01.jar">
+        MiSink1.01.jar
+       </a>
+      </td>
+     </tr>
+     <tr>
+     <td valign="top" width="1%"><b>b.</b></td>
+     <td align="left"> 
+      <b>Run MiSink Installer.</b>
+
+      <p> On a Windows system it should be possible by 
+      simply double-clicking on the just downloaded file.  On a Linux system
+      the installer can be started by executing the .jar file (eg.):
+      <br/><br/>
+       <table bgcolor="#cccccc" cellpadding="5">
+        <tr>
+         <td valign="middle">
+           <tt>java -jar MiSink1.00.jar</tt>
+         </td>
+        </tr>
+
+       </table>
+      <p>When prompted, set the installation directory to the one Cytoscape is
+      currently installed in. The installer will create there <i>misink</i> 
+      subdirectory containing MiSink auxilary files. It will also copy the 
+      plugin executable into Cytoscape's <i>plugin</i> subdirectory. Please,
+      ignore the message about overwriting files in the Cytoscape directory -
+      the installer does not affect any standard Cytoscape files.
+      <p><b>NOTE:</b> Optionally, you can choose to install the plugin's source
+      files. They will be installed in <i>misink/src</i> subdirectory. 
+     </td>
+
+    </tr>
+    </table>
+   </td>
+  </tr>
+  <tr>
+   <td valign="top"><b>3.</b></td>
+     <td align="left">
+     <b>Restart Cytoscape</b> and confirm the installation was succesful by
+     looking for MiSink entry in the Plugins menu. 
+   </td>
+
+  </tr>
+
+<!--
+  <tr>
+   <td valign="top"><b>4.</b></td>
+   <td><b>[<i>OPTIONAL</i>] Install MiTap browser extension.</b> 
+    <p>MiTap extension to Firefox can be optionally installed to enable alternative methods
+    of passing information about interactions from a MiSink-enabled Web page to Cytoscape
+    (<i>see <A href="javascript:goTab(document.softMIS,2)">documentation</a></i>).
+    <p>In order to install Mitap, please, follow this link: 
+    <a href="http://dip.doe-mbi.ucla.edu/misink/MiTap.xpi"
+       onclick="return install(event,'MiTap', '/misink/mitap.png');"   
+    >MiTap.xpi</a>
+    <p><b>NOTE:</b> Depending on the security settings of your browser you might
+    have to allow installation of Firefox extensions from dip.doe-mbi.ucla.edu   
+     
+
+   </td>
+  </tr>
+-->
+  </td>
+ </tr>
+</table>
+</div>

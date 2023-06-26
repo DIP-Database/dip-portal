@@ -1,0 +1,41 @@
+<div style="padding:0 0 10em 1em; width: 80em;">
+ <div id="mitap-tabs"></div>
+
+ <script type="text/javascript">
+ (function() {
+    var tabView = new YAHOO.widget.TabView();
+    
+    tabView.addTab( new YAHOO.widget.Tab({
+        label: 'Overview',
+        dataSrc: 'page?id=mitap-overview\&big=false',
+        cacheData: true,
+        active: true
+    }));
+
+    tabView.addTab( new YAHOO.widget.Tab({
+        label: 'Install',
+        dataSrc: 'page?id=mitap-install\&big=false',
+        cacheData: true
+    }));
+
+    tabView.addTab( new YAHOO.widget.Tab({
+        label: 'Guide',
+        dataSrc: 'page?id=mitap-guide\&big=false',
+        cacheData: true
+    }));
+
+    tabView.addTab( new YAHOO.widget.Tab({
+        label: 'Documentation',
+        dataSrc: 'page?id=mitap-documentation\&big=false',
+        cacheData: true
+    }));
+
+    tabView.addTab( new YAHOO.widget.Tab({
+        label: 'FAQ',
+        dataSrc: 'page?id=mitap-faq\&big=false',
+        cacheData: true
+    }));
+
+    tabView.appendTo('mitap-tabs');
+ })();
+</script>

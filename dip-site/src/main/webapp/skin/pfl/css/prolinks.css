@@ -1,0 +1,1132 @@
+
+/**************************************************************************
+
+  The styles in this sheet are organized in N categories:
+
+  1) General
+  2) Input forms
+  3) Help pages
+  4) tutorials
+ 
+  To jump to Each category search for the keywords:
+
+
+  1) '## general purpose ##'
+  2) '## input forms ##'
+  3) '## help pages ##'
+  4) '## tutorials ##'
+
+  #The colors used in this version:
+  Background:      #FFEBCD
+  Borders:         #8B4513
+
+  This colors correspond to the brownish skin in ProLinks:
+  top menu:        #8B4513
+  mit menu:        #CC9966
+  bottom menu:     #FFEBCD
+
+  Search prolinks: #FFF8DC
+
+
+
+**************************************************************************/
+
+
+/*-------------------------------------------------------------------------
+
+                           ## general purpose ##
+
+-------------------------------------------------------------------------*/
+
+/*
+
+   If it becomes necessary to work with tables 
+
+*/
+
+
+
+table.pl_grl_tbl_center {
+  margin-left:auto; 
+  margin-right:auto;
+}
+
+
+
+
+/*
+
+   The configuration indicating how hyperlinks will behave in ProLinks
+   web pages containing text (e.g. tutorials and help pages).
+
+*/
+
+
+
+/* 
+   Transparent looking frames for images,
+   a brown frams shows up when the mouse
+   is hovering
+*/
+
+img.no_frame_pic     { 
+    border: 2px solid #FFFFFF;
+} 
+
+img.no_frame_pic:visited    {
+    border: 2px solid #FFFFFF;
+} 
+
+img.no_frame_pic:hover     { 
+    border: 2px solid #8B4513;
+} 
+
+
+
+
+/* Transparent looking frames for arrows in the tutorials */
+
+img.pl_tut_arrow {
+    border: 2px solid transparent;
+} 
+
+img.pl_tut_arrow:visited { 
+    border: 2px solid transparent;
+} 
+
+img.pl_tut_arrow:hover { 
+    border: 2px solid #8B4513;
+} 
+
+
+
+/* Transparent looking frames for figures in the tutorials */
+
+img.pl_tut_image   { 
+    border: 2px solid transparent;
+} 
+
+img.pl_tut_image:visited { 
+    border: 2px solid transparent;
+} 
+
+img.pl_tut_image:hover   { 
+    border: 2px solid #8B4513;
+} 
+
+
+
+/* center images */
+
+img.pl_center_img {
+    display:          block;
+    margin-left:      auto;
+    margin-right:     auto; 
+    border: 2px solid transparent;
+}
+
+img.pl_center_img:visited { 
+    border: 2px solid transparent;
+} 
+
+img.pl_center_img:hover { 
+    border: 2px solid #8B4513;
+} 
+
+
+
+
+
+
+/* for images in rows with background in result pages */
+
+img.pl_bkg_data_row_image { 
+
+    border: 1px solid transparent;
+} 
+
+img.pl_bkg_data_row_image:visited { 
+    border: 1px solid transparent;
+} 
+
+img.pl_bkg_data_row_image:hover { 
+    border: 1px solid #8B4513;
+} 
+
+
+
+
+
+
+
+/* How text links will behave */
+
+
+a.pl_general:link    { 
+    color: blue; 
+    text-decoration: none;
+}
+
+a.pl_general:visited { 
+    color: purple; 
+    text-decoration: none;
+}
+
+a.pl_general:hover   { 
+    color:            #8B4513; 
+    background-color: #FFEBCD;
+    text-decoration:  underline;
+}
+
+
+
+/*
+
+   This configuration for hyperlinks is used mainly when
+   ProLinks reports results in html tables.
+
+*/
+
+
+
+a.pl_results:link { 
+    color:           blue; 
+    text-decoration: none;
+}
+a.pl_results:visited { 
+    color: purple; 
+    text-decoration: none;
+}
+a.pl_results:hover   { 
+    background-color: #FFEBCD;
+    text-decoration:  underline;
+}
+
+
+
+
+
+
+
+/* Write italic text in color */
+
+i.pl_color_text {  
+    color:            #8B4513;
+}
+
+
+
+
+/*-------------------------------------------------------------------------
+
+                           ## input forms ##
+
+-------------------------------------------------------------------------*/
+
+
+/*
+    Styles to generate the main frame to create the form
+*/
+
+/* Identify the form and center it*/
+#pl_form {
+    margin:          auto;
+    position:        relative;
+}
+
+
+
+
+/* Table containing the form */
+#pl_form .pl_main_frame {
+    width:           800px;
+    margin:          auto;
+    border:          1px solid #8B4513; 
+    border-collapse: collapse;
+    border-spacing:  0px;
+}
+
+
+/* The header */
+#pl_form .pl_main_header {
+    font-family:     Arial, sans-serif;
+    font-weight:     bold;
+    font-size:       120%;
+    background:      #FFEBCD;
+    vertical-align:  middle;
+    border:          1px solid #8B4513;
+    text-align:      center;
+    padding:         5px;
+}
+
+
+/* The main table cell that will hold the area containing the form */
+#pl_form .pl_form_area {
+    font-weight:     normal;
+    color:           black;
+    vertical-align:  middle; 
+    text-align:      center;
+    border:          1px solid #8B4513;
+    padding:         5px;
+}
+
+
+
+/*
+   These styles are for table cells containing
+   input objects in forms. Or for tables,
+   and table cells without borders.
+*/
+
+
+#pl_form .pl_trans_box {
+    margin:          auto;
+    border:          0px; /*1px solid #8B4513;*/
+    border-spacing:  0px;
+}
+
+.pl_trans_box .pl_infield {
+    padding:         5px;
+}
+
+
+.pl_trans_box .pl_aln_right {
+    text-align:     right;
+}
+
+
+.pl_trans_box .pl_aln_left {
+    text-align:     left;
+}
+
+
+.pl_trans_box .pl_aln_center {
+    text-align:     center;
+}
+
+
+
+.pl_trans_box .pl_submit {
+    width:           100%;
+    vertical-align:  middle;  
+}
+
+
+
+
+
+
+
+
+/* 
+   No border, this subclass will be used in cell that
+   will contain Form objects like buttons, text boxes,
+   etc.
+*/
+.pl_trans_box .pl_noborder {
+    border:  0px;    /*1px solid #8B4513; */
+}
+
+
+
+
+/*
+   To create nice form sections, controling
+   styles and how border from table cells are
+   drown
+*/
+
+.pl_trans_box .pl_left_border {
+    border-top:      0px;
+    border-left:     1px #8B4513 solid;
+    border-right:    0px;
+    border-bottom:   0px;
+}
+
+
+.pl_trans_box .pl_right_border {
+    border-top:      0px;
+    border-left:     0px;
+    border-right:    1px #8B4513 solid;
+    border-bottom:   0px;
+}
+
+.pl_trans_box .pl_bottom_border {
+    border-top:    0px;
+    border-left:   0px;
+    border-right:  0px;
+    border-bottom: 1px #8B4513 solid;
+}
+
+.pl_trans_box .pl_top_border {
+    border-top:    1px #8B4513 solid;
+    border-left:   0px;
+    border-right:  0px;
+    border-bottom: 0px;
+}
+
+.pl_trans_box .pl_lw_left_corner_border {
+    border-top:    0px;
+    border-left:   1px #8B4513 solid;
+    border-right:  0px;
+    border-bottom: 1px #8B4513 solid;
+}
+
+
+.pl_trans_box .pl_lw_right_corner_border {
+    border-top:    0px;
+    border-left:   0px;
+    border-right:  1px #8B4513 solid;
+    border-bottom: 1px #8B4513 solid;
+}
+
+
+.pl_trans_box .pl_up_right_corner_border {
+    border-top:    1px #8B4513 solid;
+    border-left:   0px;
+    border-right:  1px #8B4513 solid;
+    border-bottom: 0px;
+}
+
+
+/* Section division for within a form */
+
+.pl_trans_box .pl_section_div {
+    font-family:     Arial, sans-serif;
+    font-size:       110%;
+    background:      #FFEBCD;
+    vertical-align:  middle;
+    text-align:      center;
+    padding:         1px;
+}
+
+
+/* Section division for within a form */
+.pl_trans_box .pl_radio_button_td {
+    width:           50px;
+}
+
+
+
+
+/* Section tab in input parameters */
+
+.pl_trans_box .pl_section_tag {
+    font-family:   Arial, sans-serif, "Times New Roman";
+    border-top:    2px #8B4513 solid;
+    border-left:   2px #8B4513 solid;
+    border-right:  2px #8B4513 solid;
+    border-bottom: 1px #8B4513 dashed;
+    padding:       5px;
+}
+
+
+
+
+
+
+
+
+
+/*
+   Center elements or text in a table Cell
+*/
+
+
+.pl_trans_box .pl_aln_right {
+    text-align:     right;
+}
+
+
+.pl_trans_box .pl_aln_left {
+    text-align:     left;
+}
+
+
+.pl_trans_box .pl_aln_center {
+    text-align:     center;
+}
+
+
+
+/*
+
+  The contact line at the bottom of the page
+
+*/
+
+#pl_form .pl_contact { 
+    position:   absolute;
+    bottom:     0px;
+    right:      2.5%;
+    text-align: right;
+    font-size:  12px;
+}
+
+#pl_form .pl_contact_services { 
+    position:   absolute;
+    bottom:     0px;
+    left:       0px;
+    text-align: left;
+    font-size:  12px;
+}
+
+
+
+/**************************************************************************
+
+                        ## help pages ##
+
+**************************************************************************/
+
+
+#pl_help_page {
+    position:        relative;
+}
+
+
+
+/* Contact information */
+#pl_help_page .pl_contact { 
+    position:   absolute;
+    bottom:     0px;
+    right:      2.5%;
+    text-align: right;
+    font-size:  12px;
+}
+
+
+
+/* Outer frame for the whole page */
+
+#pl_help_page .pl_outer_frame {
+    width:           95%;
+    border:          0px; /*1px solid #8B4513;*/
+    border-spacing:  0px;
+    vertical-align:  middle;  
+    margin:          auto;
+
+}
+
+
+.pl_outer_frame .pl_help_title_row {
+    font-family:     Arial, sans-serif;
+    font-weight:     bold;
+    font-size:       1.5em;
+    background:      #FFEBCD;
+    vertical-align:  middle;
+    border:          0px;
+    text-align:      center;
+    padding:         10px;
+}
+
+
+.pl_help_body_row {
+    padding:         10px;
+}
+
+
+/* Inner frame containing all the data */
+
+.pl_help_inner_frame {
+    width:           100%;
+    margin:          auto;
+    border:          1px solid #8B4513;
+    border-spacing:  0px;
+    vertical-align:  middle;  
+}
+
+.pl_help_info_data {
+    padding:         10px;
+    text-align:      left;
+}
+
+
+/* 
+  paragraph containing an instruction 
+  indicating how to type a command
+*/
+
+p.pl_help_command { 
+   text-align:      center;
+   color:           #8B4513;   
+}
+
+
+
+/**************************************************************************
+
+                        ## Tutorials ##
+
+**************************************************************************/
+
+#pl_tutorial_page {
+    position:        relative;
+}
+
+
+
+/* Contact information */
+#pl_tutorial_page .pl_contact { 
+    position:   absolute;
+    bottom:     0px;
+    right:      2.5%;
+    text-align: right;
+    font-size:  12px;
+}
+
+
+/* Outer frame for the whole page */
+
+#pl_tutorial_page .pl_outer_frame {
+    width:           95%;
+    border:          0px; /*1px solid #8B4513;*/
+    border-spacing:  0px;
+    vertical-align:  middle;  
+    margin:          auto;
+
+}
+
+
+.pl_outer_frame .pl_tutorial_header_row {
+    font-family:     Arial, sans-serif;
+    font-weight:     normal;
+    font-size:       1.5em;
+    background:      #FFEBCD;
+    vertical-align:  middle;
+    border:          0px;
+    text-align:      center;
+    padding:         10px;
+}
+
+.pl_tutorial_header_row .pl_arrow_cell {
+
+    width:           10%;
+}
+
+
+.pl_tutorial_body_row {
+    padding:         10px;
+}
+
+.pl_tutorial_inner_frame {
+    width:           100%;
+    margin:          auto;
+    border:          1px solid #8B4513;
+    border-spacing:  0px;
+    vertical-align:  middle;  
+}
+
+.pl_tutorial_info_data {
+    padding:         10px;
+    text-align:      left;
+}
+
+
+
+
+/*-------------------------------------------------------------------------
+
+              ## HTML tables presenting query results ##
+
+-------------------------------------------------------------------------*/
+
+
+/* Identify the form and center it*/
+#pl_results {
+    margin:          auto;
+    position:        relative;
+}
+
+
+#pl_results .pl_contact { 
+    position:   absolute;
+    bottom:     0px;
+    right:      2.5%;
+    text-align: right;
+    font-size:  12px;
+}
+
+
+
+
+/* Table containing the form */
+#pl_results .pl_main_table_frame {
+    width:           95%;
+    margin:          auto;
+    border:          2px solid #8B4513; 
+    border-collapse: collapse;
+    border-spacing:  0px;
+}
+
+
+/* The header or section start*/
+.pl_main_table_frame .pl_main_tbl_header_raw {
+    vertical-align:  middle;
+}
+
+/* The row naming each column in the results table*/
+.pl_main_table_frame .pl_column_names {
+    border:          1px solid #8B4513; 
+    vertical-align:  middle;
+    font-family:     Arial, sans-serif;
+    font-weight:     bold;
+    text-align:      center;
+}
+
+
+
+/* This is a row destined to define new rows */
+.pl_main_table_frame .pl_define_path_row {
+    background:      #FFEBCD;
+    border:          0px;
+    font-family:     Arial, sans-serif;
+    font-weight:     bold;
+    text-align:      left;
+    font-size:       100%;
+    padding:         5px;
+}
+
+
+
+
+/* In output tables: row without background*/
+.pl_main_table_frame .pl_data_row {
+    border:          1px solid #8B4513; 
+    text-align:      center;
+    font-size:       100%;
+    padding:         2px;
+}
+
+/* In output tables: row with background */
+.pl_main_table_frame .pl_data_row_with_bkg {
+    border:          1px solid #8B4513; 
+    background:      #FFF8DC;
+    text-align:      center;
+    font-size:       100%;
+    padding:         2px;
+}
+
+
+/* 
+ In query output tables, the row where the
+ submit button and pagination arrows are
+ located
+*/  
+.pl_main_table_frame .pl_page_navigation_row {
+    border:          1px solid #FFEBCD; 
+    background:      #FFEBCD;
+    text-align:      center;
+    font-size:       100%;
+    padding:         6px;
+}
+
+
+
+/* the table that actually will contain the header */
+.pl_header_table {
+    width:           100%;
+    border:          0px; 
+    padding:         0px;
+    border-spacing:  0px;
+    background:      #FFEBCD;
+    padding:         5px;
+    text-align:      center;
+}
+
+/*
+   in the header, this is the cell identifying
+   the query genes and their genome.
+*/
+
+.pl_header_table .pl_title_text {
+    font-family:     Arial, sans-serif;
+    font-size:       120%;
+    font-weight:     bold;
+    width:           95%;
+}
+
+
+/* 
+The cell containing the picture to
+send results to cytoscape
+*/
+
+.pl_header_table .pl_cytoscape_cell {
+    width:           5%;
+}
+
+
+
+
+/* In the table that is presented to the user 
+   in order to select a protein when a given 
+   attribute returns multiple proteins.  
+*/
+
+#pl_options_header {
+    background:      #FFEBCD;
+    border:          2px solid #8B4513; 
+    font-family:     Arial, sans-serif;
+    font-weight:     bold;
+    text-align:      center;
+    font-size:       120%;
+    padding:         5px;
+}
+
+
+/* This is a row destined to have the submit option
+   when the user is prompted to select 1 protein from
+   several that matched a given input attribute*/
+#pl_submit_option {
+    border:          2px solid #8B4513; 
+    text-align:      center;
+    font-size:       100%;
+    padding:         5px;
+}
+
+
+
+
+
+/*
+
+In the help tables without a blue header.
+For example: pl_query.html
+
+*/
+
+.pl_help_blank_header {
+
+    text-align:      left;
+    font-weight:     bold;
+    font-size:       140%;
+
+}
+
+
+
+
+.pl_help_inner_table {
+    margin:          auto;
+    border:          0px; /*1px solid #8B4513;*/
+    border-spacing:  0px;
+    padding:         5;
+}
+
+
+
+.pl_help_left_column {
+    width:           30%;
+    vertical-align:  top;
+    text-align:      left;
+    
+}
+
+
+.pl_help_right_column {
+    width:           70%;
+    vertical-align:  top;
+    text-align:      left;
+}
+
+
+/*
+
+  Styles for the tutorials
+
+*/
+
+
+
+
+
+
+/*-------------------------------------------------------------------------
+
+                       ## HTML error messages ##
+
+-------------------------------------------------------------------------*/
+
+
+#pl_error {
+    position:        relative;
+}
+
+/* Table containing the error message */
+#pl_error .pl_error_table {
+    width:           70%;
+    margin:          auto;
+    border:          1px solid #8B4513; 
+    padding:         0px;
+    border-spacing:  0px;
+}
+
+
+#pl_error .pl_error_cell {
+    background:      #FFEBCD;
+    font-family:     Arial, sans-serif;
+    font-size:       130%;
+    text-align:      center;
+    vertical-align:  middle;
+}
+
+
+#pl_error .pl_contact { 
+    position:   absolute;
+    bottom:     0px;
+    right:      2.5%;
+    text-align: right;
+    font-size:  12px;
+}
+
+
+
+/* 
+---------------------------------------------------------------------------
+
+                      New forms based on DIVs
+
+---------------------------------------------------------------------------
+
+*/
+
+
+/* The box containing the entire form */
+#pl_form_frame {
+  position:       relative;
+  width:          650px;
+  margin:         auto;
+  border:         2px solid;
+  padding:        1.1em;  
+  border-color:   #8B4513;
+  -moz-box-shadow:    7px 7px 7px #8B4513;
+  -webkit-box-shadow: 7px 7px 7px #8B4513;
+  box-shadow:         7px 7px 7px #8B4513;
+
+}
+
+
+/*
+  ------------------------------------------------------------------------- 
+  The tile of the forms 
+
+*/
+
+.pl_form_title { 
+  margin-bottom: 12px;
+  text-align:    center; 
+}
+
+.pl_form_title b { 
+  font-size:   1.3em;
+  color:       #8B4513; 
+}
+
+
+
+
+/* 
+  -------------------------------------------------------------------------
+  The box cotaining the input field 
+
+*/
+
+#pl_text_field_1 {
+  background:     #FFF8DC;
+  position:       relative;
+  left:           0;
+  padding-top:    10px;  
+  padding-right:  10px;
+  padding-left:   10px;
+  padding-bottom: 10px;
+  border:         1px solid #808080;
+  margin-bottom:  12px;
+}
+
+
+
+/* the length of the text box to capture prolinks query or e-mails*/
+.pl_query_width {
+  width:  65%;
+}
+
+
+
+
+/* The to input proteins in the connections form */
+#pl_right_pid {
+  float:         right;
+  padding-top:   0;
+  padding-right: 30px;
+  line-height:   1.5em;
+}
+
+#pl_left_pid {
+  padding-top:  0;
+  padding-left: 30px;
+  line-height:  1.5em;
+}
+
+
+
+
+/*
+  ------------------------------------------------------------------------- 
+  For buttons in the search parameters tab 
+
+*/
+
+.pl_tabview_button_area p {
+   padding: 5px 0px 5px 40px;
+   line-height: 1.5em;
+}
+
+
+/* In this area all form controls must have the same width */
+.pl_tabview_control { 
+    width:  20%;
+}
+
+
+
+
+
+/* 
+  -------------------------------------------------------------------------
+  For text areas 
+
+*/
+.pl_tabview_textarea_form p {
+   padding: 5px 15px 5px 15px;
+   line-height: 1.6em;
+}
+
+
+
+/*
+  The width of the text areas for the multiple
+  and common input forms
+*/
+
+#pl_text_area { 
+  width:  100%;
+  height: 100px;
+}
+
+
+
+
+
+/* 
+   -------------------------------------------------------------------------
+   The container for the reset and search buttons.
+   It will also contain the two input proteins of 
+   the connections form
+*/
+
+#pl_reset_search_containiner { 
+
+  background:     #FFF8DC;
+  position:       relative;
+  padding-top:    5px;  
+  padding-right:  25px;
+  padding-left:   25px;
+  padding-bottom: 5px;
+  border:         1px solid #808080;
+  margin-top:     12px;
+
+}
+
+#pl_reset_button {
+  
+}
+
+
+#pl_search_button {
+  float:          right;
+}
+
+
+
+
+/*-------------------------------------------------------------------------
+
+     # override the YUI viewtab paramters for input forms #
+
+-------------------------------------------------------------------------*/
+
+
+  /* .yui-navset defaults to .yui-navset-top */ 
+.yui-skin-sam .yui-navset .yui-nav, 
+.yui-skin-sam .yui-navset .yui-navset-top .yui-nav { /* protect nested tabviews from other orientations */ 
+  border:solid #8B4513; /* color between tab list and content */ 
+  border-width:0 0 5px; 
+  Xposition:relative; 
+  zoom:1; 
+} 
+     
+.yui-skin-sam .yui-navset .yui-nav li, 
+.yui-skin-sam .yui-navset .yui-navset-top .yui-nav li { 
+  margin:0 0.16em 0 0; /* space between tabs */ 
+  padding:1px 0 0; /* gecko: make room for overflow */ 
+  zoom:1; 
+} 
+     
+.yui-skin-sam .yui-navset .yui-nav .selected, 
+.yui-skin-sam .yui-navset .yui-navset-top .yui-nav .selected {  
+  margin:0 0.16em -1px 0; /* for overlap */ 
+} 
+     
+.yui-skin-sam .yui-navset .yui-nav a, 
+.yui-skin-sam .yui-navset .yui-navset-top .yui-nav a { 
+  background:#FFEBCD; /* tab background */ 
+  border:solid #a3a3a3; 
+  border-width:0 1px; 
+  color:#000; 
+  text-decoration:none; 
+} 
+     
+.yui-skin-sam .yui-navset .yui-nav a em, 
+.yui-skin-sam .yui-navset .yui-navset-top .yui-nav a em { 
+  border:solid #a3a3a3; 
+  border-width:1px 0 0; 
+  cursor:hand; 
+  padding:0.25em .75em; 
+  left:0; right: 0; bottom: 0; /* protect from other orientations */ 
+  top:-1px; /* for 1px rounded corners */ 
+  position:relative; 
+} 
+     
+.yui-skin-sam .yui-navset .yui-nav .selected a, 
+.yui-skin-sam .yui-navset .yui-nav .selected a:focus, /* no focus effect for selected */ 
+.yui-skin-sam .yui-navset .yui-nav .selected a:hover { /* no hover effect for selected */ 
+  background:#8B4513; /* selected tab background */ 
+  color:#fff; 
+} 
+     
+.yui-skin-sam .yui-navset .yui-nav a:hover, 
+.yui-skin-sam .yui-navset .yui-nav a:focus { 
+  background:#CC9966; /* selected tab background */ 
+  outline:0; 
+} 
+    
+.yui-skin-sam .yui-navset .yui-nav .selected a em { 
+  padding:0.35em 0.75em; /* raise selected tab */ 
+} 
+     
+.yui-skin-sam .yui-navset .yui-nav .selected a, 
+.yui-skin-sam .yui-navset .yui-nav .selected a em { 
+  border-color:#243356; /* selected tab border color */ 
+} 
+    
+.yui-skin-sam .yui-navset .yui-content { 
+  background:#FFF8DC; /* content background color */ 
+} 
+     
+.yui-skin-sam .yui-navset .yui-content, 
+.yui-skin-sam .yui-navset .yui-navset-top .yui-content { 
+  border:1px solid #808080; /* content border */ 
+  border-top-color:#243356; /* different border color */ 
+  padding:0.25em 0.5em; /* content padding */ 
+}

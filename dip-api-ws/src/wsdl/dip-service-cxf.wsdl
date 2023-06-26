@@ -1,0 +1,24 @@
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://dip.proxy.mbi.ucla.edu/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns3="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://mbi.ucla.edu/proxy/dip" name="DipCachingImplService" targetNamespace="http://dip.proxy.mbi.ucla.edu/">
+  <wsdl:import location="http://10.1.1.112:8080/dip-proxy/ws/soap/dip-service?wsdl=DipProxyPortType.wsdl" namespace="http://mbi.ucla.edu/proxy/dip">
+    </wsdl:import>
+  <wsdl:binding name="DipCachingImplServiceSoapBinding" type="ns1:DipProxyPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="getDipRecord">
+      <soap:operation soapAction="http://dip.doe-mbi.ucla.edu/services/dxf14/getDip" style="document"></soap:operation>
+      <wsdl:input name="getDipRecord">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getDipRecordResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="ProxyFault">
+        <soap:fault name="ProxyFault" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DipCachingImplService">
+    <wsdl:port binding="tns:DipCachingImplServiceSoapBinding" name="DipCachingImplPort">
+      <soap:address location="http://10.1.1.112:8080/dip-proxy/ws/soap/dip-service"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

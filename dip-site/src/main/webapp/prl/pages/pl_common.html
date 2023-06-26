@@ -1,0 +1,128 @@
+
+<link rel="stylesheet" type="text/css" href="skin/pfl/css/prolinks.css"/>
+<script>var myTabs = new YAHOO.widget.TabView("query_pl");</script>
+
+
+<br />
+
+
+<div id="pl_form_frame">
+
+
+  <!-- <form enctype="multipart/form-data" action="http://10.1.216.102/prolinks_dev/php/query.php" method="post"> -->
+  <form enctype="multipart/form-data" action="php_query" method="post">
+
+  <div class="pl_form_title">
+    <b>Find common linkages between multiple proteins</b>
+  </div>
+
+
+  <div id="pl_text_field_1">
+    Enter your e-mail:
+    <input class="pl_query_width" type="text" name="email" value="" />
+  </div>
+
+  <div class="yui-skin-sam">
+    <div id="query_pl" class="yui-navset">
+  
+  
+      <ul class="yui-nav">
+        <li class="selected"><a href="#tab1"><em>Protein indetifiers</em></a></li>
+        <li><a href="#tab2"><em>Search Parameters</em></a></li>
+      </ul>
+  
+  
+      <!-- the div for the content of the only one tab -->
+      <div class="yui-content">
+
+
+  	    <div class="pl_tabview_textarea_form"> 
+        
+          <p>
+  	        Type or copy/paste multiple protein identifiers 
+            (<a class="pl_general" 
+                onclick="YAHOO.mbi.modal.help( 'Format for multiple protein IDs', 'pl_help_mult_prot_fmt' ); return false" 
+                href="">see valid formats</a>):<br />
+        
+            <textarea id="pl_text_area" name="id_list"></textarea>
+          </p>
+          
+        
+          <p>
+  	        ... or upload a file with the identifiers 
+            (<a class="pl_general" 
+                onclick="YAHOO.mbi.modal.help( 'Format for multiple protein IDs', 'pl_help_mult_prot_fmt' ); return false" 
+                href="">using the same format</a>):<br />
+        
+  	        <input type="file" name="file_name" value="">
+  	        <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+  	      </p>
+        </div>
+        
+        
+        <div class="pl_tabview_button_area">
+        
+          <p>
+            Confidence value
+            (<a class="pl_general" 
+                onclick="YAHOO.mbi.modal.help( 'Confidence Value', 'pl_help_cvalue' ); return false" 
+               href="">?</a>):<br />
+            <input class="pl_tabview_control" type="text" name="c_value" value="0.6">
+          </p>          
+        
+        
+          <p>
+            Network distance
+            (<a class="pl_general" 
+                onclick="YAHOO.mbi.modal.help( 'Network Distance', 'pl_help_network_distance_prm' ); return false" 
+                href="">?</a>):<br />
+            <select class="pl_tabview_control" name="depth">
+              <option value="1" selected> 1  </option>
+              <option value="2">          2  </option>
+              <option value="3">          3  </option>
+              <option value="4">          4  </option>
+            </select>
+          </p>
+        
+          
+          <p>
+            Identify links with
+            (<a class="pl_general" 
+                onclick="YAHOO.mbi.modal.help( 'Identify Links with', 'pl_help_links_tag' ); return false" 
+                href="">?</a>):<br />
+            <select class="pl_tabview_control" name="out_type">
+              <option value="name" selected> Gene name </option>
+              <option value="refseq">  NCBI refseq     </option>
+              <option value="lt">      Locus Tag       </option>
+              <option value="gi">      NCBI gi         </option>
+              <option value="sp">      SwissProt ID    </option>
+            </select>
+          </p>
+        </div>
+        
+  
+      </div> <!-- div for class yui-content -->
+    </div> <!-- div for class yui-navset -->
+  </div> <!-- div for class yui-skin-sam -->
+
+    
+
+  <!-- The reset and search buttons -->
+  <div id="pl_reset_search_containiner">
+
+    <div id="pl_search_button">
+      <input type="submit" id="search" name="search" value="Search ProLinks"/>
+    </div>
+
+    <div id="pl_reset_button">
+      <input type="reset" value="Reset defaults">
+    </div>
+    <input type="hidden" name="form" value="common_links">
+  </div>
+
+  </form>
+</div> <!-- div for the form frame -->
+
+
+<!-- To avoid content be blocked by the footer -->
+<br /><br /><br /><br /><br /><br /><br />

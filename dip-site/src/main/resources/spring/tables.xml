@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+<!--
+ <bean id="springManagedTable2Action" scope="prototype"
+       class="edu.ucla.mbi.dip.struts.actions.GetConfigTable2Record">
+  <property name="dipDbService"   ref="dipDbService"/>
+  <property name="tableContext"   ref="jsonTableContext"/>
+ </bean>
+ 
+ <bean id="recordTableDataAction" scope="prototype"
+       class="edu.ucla.mbi.dip.struts.actions.GetDipRecordTableData">
+  <property name="recordServices" ref="recordServices"/>
+  <property name="tableContext"   ref="jsonTableContext"/>
+ </bean>
+
+ <bean id="tableTest" scope="prototype" 
+       class="edu.ucla.mbi.dip.struts.actions.TableTest">
+ </bean>
+-->
+
+ <bean id="jsonTableContext" scope="prototype" init-method="initialize"
+       class="edu.ucla.mbi.struts.table.JsonTableContext">
+                                                                           
+  <!-- TABLE DEFINITIONS -->
+                                                                           
+  <property name="tables">
+   <map>                                           <!-- table definition: -->
+    <entry key="NodeList">                         <!--     table name    -->
+     <map>
+      <entry key="idfield" value="id"/>    <!-- default: first field name -->   
+      <entry key="labelfield" value="id"/> <!-- default: first field name -->
+
+      <entry key="fields">                            <!-- list of fields -->
+       <list>              
+        <map>
+         <entry key="field">                        <!-- field identifier -->
+          <value>id</value>                   <!-- default: list position -->
+         </entry>          
+         <entry key="value">                             <!-- field value -->
+          <value>ac</value>                         <!-- OGML expression  -->
+         </entry>
+         <entry key="type">                               <!-- field type -->
+          <value>text</value>                          <!-- default: text -->
+         </entry>
+         <entry key="show">                        <!-- displayable field -->
+          <value>false</value>                          <!-- default:true -->
+         </entry>
+        </map>
+
+        <map>
+         <entry key="field">                        <!-- field identifier -->
+          <value>1</value>                    <!-- default: list position -->
+         </entry>          
+         <entry key="name" value="ID"/>            <!-- field column name -->
+         <entry key="value">                             <!-- field value -->
+          <value>ac</value>                         <!-- OGML expression  -->
+         </entry>
+         <entry key="type">                               <!-- field type -->
+          <value>url</value>                           <!-- default: text -->
+         </entry>
+         <entry key="show">                        <!-- displayable field -->
+          <value>true</value>                           <!-- default:true -->
+         </entry>
+         <entry key="width" value="100px"/>             <!-- column width -->
+         <entry key="hide">                            <!-- hidden column -->
+          <value>false</value>                        <!-- default: false -->
+         </entry>
+         <entry key="sort">                          <!-- sortable column -->
+          <value>true</value>                          <!-- default: true -->
+         </entry>
+         <entry key="select">                     <!-- select tab present -->
+          <value>false</value>                        <!-- default: false -->
+         </entry>
+         <entry key="url">                        <!-- target url pattern --> 
+          <value>record.action?ac=%VAL%&amp;detail=full&amp;tp=1&amp;bigOn=true</value>
+         </entry>
+        </map>
+
+        <map>
+         <entry key="name"   value="Name"/>          
+         <entry key="value"  value="label"/>         
+         <entry key="width"  value="100px"/>
+         <entry key="select" value="true"/>        
+        </map>
+
+        <map>
+         <entry key="name"   value="Description"/>
+         <entry key="value"  value="name"/>
+         <entry key="width"  value="300px"/>
+        </map>
+
+        <map>
+         <entry key="name" value="Organism"/>
+         <entry key="value">
+          <value>xrefList.xref.{?#this.typeAc=='dxf:0007'}[0].node.label</value>                     
+         </entry>
+         <entry key="width"  value="150px"/>       
+         <entry key="select" value="true"/>       
+        </map>
+
+        <map>
+         <entry key="name" value="Uniprot ID"/>
+         <entry key="value">
+          <value>xrefList.xref.{?#this.ns=='uniprot'}[0].ac</value>                    
+         </entry>
+         <entry key="width" value="100px"/>
+         <entry key="type">
+          <value>url</value>          <!-- defaults to url if url present -->
+         </entry>
+         <entry key="url">
+          <value>elink.action?ns=uniprot&amp;ac=%VAL%</value> 
+         </entry>
+        </map>
+
+        <map>
+         <entry key="name" value="RefSeq ID"/>
+         <entry key="value">
+          <value>xrefList.xref.{?#this.ns=='refseq'}[0].ac</value>                    
+         </entry>
+         <entry key="width" value="100px"/>
+         <entry key="url">
+          <value>elink.action?ns=refseq&amp;ac=%VAL%</value> 
+         </entry>
+        </map>
+
+        <map>
+         <entry key="name" value="Gene ID"/>
+         <entry key="value">
+          <value>xrefList.xref.{?#this.ns=='entrezgene'}[0].ac</value>                    
+         </entry>
+         <entry key="width" value="100px"/>
+         <entry key="url">
+          <value>elink.action?ns=entrezgene&amp;ac=%VAL%</value> 
+         </entry>
+        </map>
+       </list>
+
+      </entry>
+     </map>     
+    </entry>
+   </map>
+  </property>
+ </bean>
+</beans>

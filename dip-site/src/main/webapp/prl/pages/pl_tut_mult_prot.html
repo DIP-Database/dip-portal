@@ -1,0 +1,315 @@
+
+    <link rel="stylesheet" type="text/css" href="skin/pfl/css/prolinks.css" />
+      
+      <div id="pl_tutorial_page">
+
+	<br />
+
+	<table class="pl_outer_frame">
+
+
+	  <!-- The header -->
+	  <tr>
+	    <td class="pl_tutorial_header_row pl_arrow_cell">
+	      <a href="page?id=pl_tut_keyword">
+		<img class="pl_tut_arrow" 
+                     src="images/pl_tut_left_arrow.png" 
+		     width="60px"
+		     alt="Previous tutorial" />
+	      </a>
+	    </td>
+
+	    <td class="pl_tutorial_header_row"> 
+	      <b>Submit multiple protein identifiers</b>
+	    </td>
+
+	    <td class="pl_tutorial_header_row pl_arrow_cell"> 
+	      <a href="page?id=pl_tut_common_prot">
+		<img class="pl_tut_arrow"  
+                     src="images/pl_tut_right_arrow.png" 
+		     width="60px"
+		     alt="Next tutorial" />
+	      </a>
+	    </td>
+	  </tr>
+
+
+
+	  <!-- The body of the tutorial from here -->
+	  <tr>
+	    <td class="pl_tutorial_body_row" colspan="3">
+	      <table class="pl_tutorial_inner_frame">
+		<tr>
+		  <td class="pl_tutorial_info_data">
+
+
+		    <!-- Tutorial organization -->
+		    <br />
+		    This tutorial is divided in 3 sections:
+		    <ul>
+
+		      <li>
+			<a class="pl_general" 
+			  href="#form">The input form:</a>
+			General description of the input form.
+			<br /><br />
+		      </li>
+
+		      <li>
+			<a class="pl_general" href="#list_of_ids">
+			  Submit a list of identifiers:</a>
+			Query ProLinks by entering a list of protein IDs.
+		        <br /><br />
+		      </li>
+
+		      <li>
+			<a class="pl_general" href="#input_file">
+			  Submit a file with the identifiers:</a> 
+			Query ProLinks by uploading a file file with the protein IDs.
+			<br /><br />
+		      </li>
+		    </ul>
+
+		    <!-- Description of the input form -->
+		    <a name="form"></a>
+		    <h2>The input form</h2>
+		    
+		    <p>
+		      The input form to submit multiple proteins to ProLinks
+		      is presented in
+		      <a class="pl_general" href="#figure1">Figure 1a</a>. 
+		      The user must enter an e-mail (resuts are returned 
+                      by e-mail only). The user can either
+		      copy/paste a list of protein identifiers or upload
+		      a local file with the IDs. <a class="pl_general" 
+			onclick="YAHOO.mbi.modal.help( 'Protein Identifiers', 'pl_help_pid' ); return false" 
+			href="">Click here</a> to see the current list of 
+		      supported identifiers. The Search Parameters tab
+		      (see <a class="pl_general" href="#figure1">Figure 1b</a>)
+		      accepts input values for 
+		      <a class="pl_general" 
+			 onclick="YAHOO.mbi.modal.help( 'Confidence Value', 'pl_help_cvalue' ); return false" 
+                         href="">Confidence value</a>,
+                      <a class="pl_general" 
+			 onclick="YAHOO.mbi.modal.help( 'Network Distance', 'pl_help_network_distance_prm' ); return false" 
+			 href="">Network Distance</a>, and
+		      <a class="pl_general" 
+			 onclick="YAHOO.mbi.modal.help( 'Identify Links with', 'pl_help_links_tag' ); return false" 
+			 href="">Indentify genes with</a>.
+		    </p>
+
+		    <p>
+		      <b>IMPORTANT:</b> if both a list of IDs and a file with 
+		      IDs are provided, the entered list of IDs takes
+		      precedence and the file is ignored.
+		    </p>
+
+                    <br />
+
+
+
+
+		    <a name="figure1"></a>
+    	            <table border="0px" cellpadding="5" cellspacing="0" align="center">                
+		      <tr>
+			<td align="center" width="50%">
+			  <a href="images/pl_common_links_form.png" target="_blank">
+			    <img class="pl_tut_image" 
+                                 src="images/pl_common_links_form.png" 
+			         width="50%"
+			         alt="Input form to submit multiple proteins" /> 
+			  </a>
+			</td>
+
+			<td align="center" width="50%">
+			  <a href="images/pl_mult_prot_params.png" target="_blank">
+			    <img class="pl_tut_image"
+                                 src="images/pl_mult_prot_params.png" 
+			         width="60%"
+			         alt="Search parameters" /> 
+			  </a>
+			</td>
+                      </tr>
+		      
+		      <tr>
+			<td style="text-align:left; padding: 15px;" valign="top">
+			  <b>Figure 1a.</b>
+			  <u><i>Input form</i></u>. The user must provide a
+			  valid e-mail address, and either enter the list of 
+			  IDs or upload a file with the IDs. There are 
+			  a number of valid identifier which you can see
+			  <a class="pl_general" 
+			    onclick="YAHOO.mbi.modal.help( 'Protein Identifiers', 'pl_help_pid' ); return false" 
+			    href="">here</a>. By clicking on any question  mark, 
+			  a popup window will open with an explanation of 
+			  the corresponding topic. 
+			</td>
+
+			<td style="text-align:left; padding: 15px;" valign="top">
+			  <b>Figure 1b.</b> The search Parameters are explained
+			  in the 
+			  <a class="pl_general" href="page?id=pl_tut_keyword">
+			    previous tutorial</a>.
+			</td>
+		      </tr>
+		    </table>
+
+
+		    <br /><br />
+
+		    
+		    <a name="list_of_ids"></a>
+		    <h2>Submit a list of identifiers</h2>
+
+		    <p>
+		      If you click on the link: <b>(<i>see valid format</i>)</b>
+		      a window will open with an explanation of the accepted
+		      formats for the list you submit. The window shows
+		      6 <i>Locus tags</i> in three different formats as an
+		      example. Copy/paste any ot the three lists of IDs into
+		      the correspondig text box and type in your e-mail.
+		      (see <a class="pl_general" href="#figure2">Figure 2</a>). 
+		    </p>
+
+
+                    <a name="figure2"></a>
+    	            <table width="70%" border="0px" cellpadding="5" cellspacing="0" align="center">                
+		      <tr>
+			<td align="CENTER">
+			  <a href="images/pl_mult_prot_filled_form.png" target="_blank">
+			    <img class="pl_tut_image" 
+                                 src="images/pl_mult_prot_filled_form.png" 
+			         width="50%"
+			         alt="filled input form" /> 
+			  </a>
+			</td>
+                      </tr>
+		      
+		      <tr>
+			<td align="left" valign="top">
+			  <b>Figure 2.</b>
+			  <u><i>Submit a list of protein IDs</i></u>. 
+			  The figure illustrates how the input form looks
+			  when it is filled with data.
+			</td>
+		      </tr>
+		    </table>
+
+		    <br /><br />
+
+		    <p>
+		      Let's run this example using default parameters. When
+		      you click on the <i>Search ProLinks</i> button,
+		      ProLinks will display a page indicating that your
+		      query has been submitted to the cluster. Depending on
+		      the number of IDs you submit it will take longer for
+		      ProLinks to process your query. When it is done, you
+		      will get an e-mail with the a link where you can see
+                      and download the file with your inferences.
+		      This file includes a header with an
+		      description of each column.
+		      <a class="pl_general" href="#figure3">Figure 3A</a>
+		      presents the results when we select the option
+		      <b>Gene name</b> from the output format menu
+		      <i>Identify links with</i>, and 
+		      <a class="pl_general" href="#figure3">Figure 3B</a>
+		      presents the results when we select the option
+		      <b>NCBI RefSeq</b>.
+		    </p>
+
+
+		    <a name="figure3"></a>
+    	            <table border="0px" cellpadding="5" cellspacing="0" align="center">                
+		      <tr>
+			<td align="CENTER" width="50%"><b>A</b><br />
+			  <a href="images/pl_mult_prot_name_res.png" target="_blank">
+			    <img class="pl_tut_image"
+                                 src="images/pl_mult_prot_name_res.png" 
+			         width="60%"
+			         alt="mutiple proteins results 1" /> 
+			  </a>
+			</td>
+
+			<td align="CENTER" width="50%"><b>B</b><br />
+			  <a href="images/pl_mult_prot_lt_res.png" target="_blank">
+			    <img class="pl_tut_image"
+                                 src="images/pl_mult_prot_lt_res.png" 
+			         width="60%"
+			         alt="mutiple proteins results 2" /> 
+			  </a>
+			</td>
+                      </tr>
+		      
+		      <tr>
+			<td align="left" valign="top" colspan="2">
+			  <b>Figure 3.</b>
+			  <u><i>E-mail with inferred links for multiple 
+			      proteins</i></u>. Results file includes a header with
+			  a description of each column. <B>A.</b> Functional links
+			  are identified with the <b><i>gene name</i></b> (columns
+			  2 and 3). <b>B.</b> Functional links are displayed using
+			  the <b>NCBI RefSeq</b> identifier.
+
+			</td>
+		      </tr>
+		    </table>
+
+		    <br /><br />
+
+		    <a name="input_file"></a>
+		    <h2>Submit a file with the identifiers</h2>
+
+		    <p>
+		      Instead of entering a list or copy/pase a list of identifiers, 
+		      you can submit the identifiers in a text file. Then click on the 
+		      <b><i>Browse</i></b> button of the input field 
+		      <i>File</i> of <a class="pl_general" 
+			href="#figure1">Figure 1</a> and select the file
+		      you created. Once you select your 
+		      file click on the <i>Search ProLinks</i> button, 
+		      the results will be identical to those shown in
+		      <a class="pl_general" href="#figure3">Figure 3</a>.
+		    </p>
+
+		  </td>
+		</tr>
+	      </table>
+	    </td>
+	  </tr>
+
+	  
+
+	  <!-- The footer  -->
+	  <tr>
+	    <td class="pl_tutorial_header_row pl_arrow_cell">
+	      <a href="page?id=pl_tut_keyword">
+		<img class="pl_tut_arrow" 
+                     src="images/pl_tut_left_arrow.png" 
+		     width="60px"
+		     alt="Previous tutorial" />
+	      </a>
+	    </td>
+
+	    <td class="pl_tutorial_header_row"> 
+	      <b>Tutorial Navigation bar</b>
+	      <br />
+	      (<a class="pl_general" href="page?id=pl_tut_adv_search">
+		Advanced search Tutorials</a>)
+	    </td>
+
+	    <td class="pl_tutorial_header_row pl_arrow_cell"> 
+	      <a href="page?id=pl_tut_common_prot">
+		<img class="pl_tut_arrow"  
+                     src="images/pl_tut_right_arrow.png" 
+		     width="60px"
+		     alt="Next tutorial" />
+	      </a>
+	    </td>
+	  </tr>
+	</table>
+      </div>
+
+
+      <!-- To avoid content be blocked by the footer -->
+      <br /><br /><br /><br /><br /><br /><br />
+

@@ -1,0 +1,539 @@
+package edu.ucla.mbi.dip.struts.action;
+
+/* =============================================================================
+ *                                                                             $
+ * UserAction action                                                           $
+ *                                                                             $
+ ============================================================================ */
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory; 
+
+import org.apache.struts2.ServletActionContext;
+
+import edu.ucla.mbi.util.data.*;
+import edu.ucla.mbi.util.data.dao.*;
+import edu.ucla.mbi.util.struts.action.*;
+import edu.ucla.mbi.util.struts.interceptor.*;
+
+import edu.ucla.mbi.util.struts.captcha.*;
+
+import edu.ucla.mbi.dip.*;
+import edu.ucla.mbi.dip.orm.*;
+
+import org.vps.crypt.Crypt;
+
+import java.util.*;
+
+public class UserAction extends UserSupport {
+
+    //---------------------------------------------------------------------
+    // Captcha
+    //--------
+        
+    Captcha captcha = null;
+
+    public void setCaptcha( Captcha captcha ){
+        this.captcha = captcha; 
+    }
+    
+    public Captcha getCaptcha(){
+        return this.captcha; 
+    }
+    
+    String capresponse ="";
+    
+    public void setCaptchaResponse( String response ){
+        this.capresponse = response;
+    }
+
+    public String getCaptchaResponse(){
+        return this.capresponse;
+    }
+    
+    //---------------------------------------------------------------------
+    // new user registration
+    //---------------------
+
+    private String notifyFrom;
+
+    public void setNotifyFrom( String from ) {
+        this.notifyFrom = from;
+    }
+    
+    private String notifyServer;
+
+    public void setNotifyServer( String server ) {
+        this.notifyServer = server;
+    }
+
+    public String register( User user ) {
+
+        Log log = LogFactory.getLog( UserAction.class );
+        log.info( " register:" + user );
+        
+        DipUserDAO dao = (DipUserDAO) getUserContext().getUserDao();
+        
+        DipUser dipUser = new DipUser( user );
+        
+        // set password
+        //-------------
+
+        dipUser.encryptPassword( pass0 );
+        
+        // generate activation key
+        //------------------------
+        
+        dipUser.setActivationKey();
+        log.info( " activationKey: " + dipUser.getActivationKey() );
+
+        dipUser.setActivated( false );
+        dipUser.setEnabled( true );
+        
+        // sent notification
+        //------------------
+
+        dipUser.notifyByMail( notifyFrom, notifyServer );
+        
+        // create new account 
+        //-------------------
+        
+        dao.saveUser( dipUser );
+        
+        log.info( " Account created: " + user.getLogin() +
+              " (" + user.getId() + ")" );
+        
+        return ACTIVATE;
+    }
+
+
+    //---------------------------------------------------------------------
+    // user activation
+    //----------------
+
+    public String activate( User user ) {
+
+        Log log = LogFactory.getLog( this.getClass() );
+        log.info( " activate:" + user );
+
+        if ( user != null ){
+
+            log.info( " login:" + user.getLogin() );
+
+            DipUserDAO dao = (DipUserDAO) getUserContext().getUserDao();
+            DipUser dipUser = (DipUser) dao.getUser( getUser().getLogin() );
+	    
+            if ( dipUser != null &&
+                 dipUser.testPassword( getPass0() ) ) {
+
+            if ( !dipUser.testActivationKey( getUser().getActivationKey() ) 
+                 ) {
+                addFieldError( "user.activationKey", 
+                       "Activation key does not match." );
+                return ACTIVATE;
+            } 
+            
+            dipUser.setActivated( true );
+            dao.updateUser( dipUser );
+            
+                    // valid user
+                    //-----------
+		
+                getSession().put( "USER_ID", dipUser.getId() );
+                getSession().put( "LOGIN", dipUser.getLogin() );
+
+                Map<String,Integer> roles = new HashMap();
+                Map<String,Integer> groups = new HashMap();
+                
+            if ( dipUser.getRoles()  != null ) {
+                    for ( Iterator ii = dipUser.getRoles().iterator();
+                          ii.hasNext(); ) {
+                        DipRole r = (DipRole) ii.next();
+                        log.info( "  role=" + r.toString() );
+                        roles.put( r.getName(), r.getId() );
+                    }
+                    
+                }
+
+                if ( dipUser.getGroups() != null ) {
+                    for ( Iterator ig = dipUser.getGroups().iterator();
+                          ig.hasNext(); ) {
+                        Group g = (Group) ig.next();
+                        log.info( "  group=" + g.toString() );
+                        groups.put( g.getLabel(), g.getId() );
+                        
+                        if ( g.getRoles()  != null ) {
+                            for ( Iterator ir = g.getRoles().iterator();
+                                  ir.hasNext(); ) {
+                                DipRole r = (DipRole) ir.next();
+                                log.info( "  role=" + r.toString() );
+                                roles.put( r.getName(), r.getId() );
+                            }
+                        }
+                    }
+                }
+                
+                getSession().put( "USER_ROLE", roles );
+                getSession().put( "USER_GROUP", groups );
+            log.info( " login: session set" );
+
+                    return HOME;
+            }
+        }
+        
+        return INPUT;
+    }
+
+
+    //---------------------------------------------------------------------
+    // user edit
+    //----------
+
+    private String uedit;
+    
+    public void setUedit( String uedit ) {
+        this.uedit = uedit;
+    }
+
+    public String edit() {
+        
+        Log log = LogFactory.getLog( UserAction.class );
+            log.info( " edit: uid=" + getSession().get( "USER_ID") );
+
+        int uid = (Integer) getSession().get( "USER_ID");
+
+        
+        if( uid <= 0) return HOME;
+
+        DipUserDAO dao = (DipUserDAO) getUserContext().getUserDao();
+        DipUser dipUser = (DipUser) 
+            dao.getUser( (String) getSession().get( "LOGIN") );
+
+        if ( dipUser != null ) {		
+        
+            // get preferences
+            //----------------
+            
+            if( getOp()!= null && getOp().equalsIgnoreCase( "getprefs" ) ){
+                setUser( new User() );
+                getUser().setPrefs( dipUser.getPrefs() );
+                return JSON;
+            }
+        
+            // set preferences
+            //----------------
+            
+            if( getOp()!= null && getOp().equalsIgnoreCase( "setprefs" ) ){
+                log.info( " edit: setprefs" );
+                log.info( " edit:" + this.prefs );
+                
+                dipUser.setPrefs( this.prefs );
+                
+                // store new settings
+                //-------------------
+
+                dao.updateUser( dipUser );
+                
+                setUser( new User() );
+                getUser().setPrefs( dipUser.getPrefs() );
+                return JSON;
+            }
+            
+            if ( uedit != null && uedit.equalsIgnoreCase( "save" ) ) {
+                
+                log.info( " edit: updating uid=" + uid );
+                
+                // incorporate form changes
+                //-------------------------
+                
+                dipUser.setFirstName( getUser().getFirstName() );
+                dipUser.setLastName( getUser().getLastName() );
+                dipUser.setAffiliation( getUser().getAffiliation() );
+                dipUser.setEmail( getUser().getEmail() );
+                
+                if ( pass0 != null && dipUser.testPassword( pass0 ) ) {
+                    dipUser.encryptPassword( pass1 );			
+                }
+                
+                // store new settings
+                //-------------------
+		
+                dao.updateUser( dipUser );				    		    
+            }
+            
+            if ( uedit != null && uedit.equalsIgnoreCase( "reset" ) ) {
+                
+                log.info( " edit: resetting uid=" + uid );
+            }
+            
+            if (getUser() == null ){
+                setUser( new User() );
+            }
+            
+            getUser().setFirstName( dipUser.getFirstName() );
+            getUser().setLastName( dipUser.getLastName() );
+            getUser().setAffiliation( dipUser.getAffiliation() );
+            getUser().setEmail( dipUser.getEmail() );
+            
+        }
+	    
+        setPass0("");
+        setPass1("");
+        setPass2("");
+        
+        return UEDIT;
+    }
+
+
+    //---------------------------------------------------------------------
+    // user login
+    //------------
+
+    public String login( User user ) {
+
+        Log log = LogFactory.getLog( UserAction.class );
+        
+        if ( user != null ){
+
+            log.info( " login:" + user.getLogin() );
+        
+                DipUserDAO dao = (DipUserDAO) getUserContext().getUserDao();
+                DipUser dipUser = (DipUser) dao.getUser( getUser().getLogin() );
+            
+            if ( dipUser !=null && 
+             dipUser.testPassword( getPass0() ) ) {
+
+            // valid user
+            //-----------
+            
+                    if ( ! dipUser.isActivated() ) return ACTIVATE;
+
+                    getSession().put( "USER_ID", dipUser.getId() );
+                    getSession().put( "LOGIN", dipUser.getLogin() );
+                    log.info( " login: session set" );
+
+                    Map<String,Integer> roles = new HashMap();
+                    Map<String,Integer> groups = new HashMap();
+                    
+                    if ( dipUser.getRoles()  != null ) {
+                        
+                        for ( Iterator ii = dipUser.getRoles().iterator(); 
+                              ii.hasNext(); ) {
+                            DipRole r = (DipRole) ii.next();
+                            log.info( "  role=" + r.toString() );
+                            roles.put( r.getName(),r.getId());
+                        }	    
+                    }
+                    
+                    if ( dipUser.getGroups() != null ) {
+                        for ( Iterator ig = dipUser.getGroups().iterator();
+                              ig.hasNext(); ) {
+                            Group g = (Group) ig.next();
+                            log.info( "  group=" + g.toString() );
+                            groups.put( g.getLabel(), g.getId() );
+                            
+                            if ( g.getRoles()  != null ) {
+                                for ( Iterator ir = g.getRoles().iterator();
+                                      ir.hasNext(); ) {
+                                    DipRole r = (DipRole) ir.next();
+                                    log.info( "  role=" + r.toString() );
+                                    roles.put( r.getName(), r.getId() );
+                                }
+                            }
+                        }
+                    }
+                    
+                    getSession().put( "USER_ROLE", roles );
+                    getSession().put( "USER_GROUP", groups );
+                    log.info( " referer:" + getReferer() );
+                    rurl = getReferer();
+                    log.info( " rurl:" + rurl );
+                    
+                    if( rurl != null ) return REDIRECT;
+                    return HOME;
+                }
+                
+            if( dipUser != null ){
+            log.info( " login: id=" + dipUser.getId() );
+            log.info( " login: oldpass=" + dipUser.getPassword() );
+            }
+            log.info( " login: newpass" + getPass1() );
+                if ( getPass1() != null ) { 
+                    log.info( " login: " + Crypt.crypt( "ab", getPass1() ) );
+                }
+        }
+        log.info( " login: unknown user" );
+        addActionError( "User/Password not recognized." );
+
+            if( rurl != null ) return REDIRECT;
+        return INPUT;
+    }
+    
+    //---------------------------------------------------------------------
+    // user logout
+    //------------
+
+    public String logout() {
+
+        Log log = LogFactory.getLog( this.getClass() );
+        log.info( " logout: " + getSession().get( "LOGIN" ) );
+
+        getSession().put( "USER_ID", -1 );
+        getSession().put( "USER_ROLE", null );
+        getSession().put( "LOGIN", "" );
+        
+        return HOME;
+    }
+
+    
+    //---------------------------------------------------------------------
+    //---------------------------------------------------------------------
+    // terms agree
+    //------------
+    
+    private boolean agree;
+
+    public void setAgree( boolean agree ) {
+
+        this.agree = agree;
+    }
+
+    public boolean getAgree() {
+        return this.agree;
+    }
+    
+    //---------------------------------------------------------------------
+    // new password
+    //--------------
+
+    private String pass0;
+
+    public void setPass0( String pass ) {
+        this.pass0 = pass;
+    }
+
+    public String getPass0() {
+        return this.pass0;
+    }
+
+    private String pass1;
+
+    public void setPass1( String pass ) {
+        this.pass1 = pass;
+    }
+
+    public String getPass1() {
+        return this.pass1;
+    }
+
+    private String pass2;
+
+    public void setPass2( String pass ) {
+        this.pass2 = pass;
+    }
+
+    public String getPass2() {
+	return this.pass2;
+    }
+    
+    private String referer;
+
+    public void setReferer( String ref ) {
+        this.referer = ref;
+    }
+
+    public String getReferer() {
+        return this.referer;
+    }
+    
+    
+    //---------------------------------------------------------------------
+
+    public void validate() {
+
+        Log log = LogFactory.getLog( this.getClass() );
+        
+        // registration options
+        //---------------------
+        
+        if( getOp() != null && getOp().equalsIgnoreCase( "reg" ) ) { 
+            
+            // test login
+            //-----------
+            
+            if( getUser() != null ){
+                log.info( " validate:" + getUser().getLogin() );
+                
+                DipUserDAO dao = 
+                    (DipUserDAO) getUserContext().getUserDao();
+                DipUser oldUser = 
+                    (DipUser) dao.getUser( getUser().getLogin() );
+                if( oldUser != null ){
+                    addFieldError( "user.login","User name already taken. " +
+                                   "Please, select another one.");
+                    log.info( " old login... id=" + oldUser.toString() );
+                } 
+            }
+            
+            // test recaptcha
+            //---------------
+
+            boolean rvalid = true;
+
+            if( captcha == null ){
+                rvalid = true; 
+            } else {
+                rvalid = captcha.validate( capresponse );
+            }
+            
+            if ( ! rvalid ) {  
+                addActionError("Not a good CAPTCHA");
+                log.info( "recaptcha: error" );                    
+            } else {
+                log.info( "recaptcha: OK" );
+            }                            
+            
+            // test password typos
+            //--------------------
+            
+            if( pass0 != null && pass1 != null && !pass0.equals( pass1 ) ) {
+                addFieldError( "pass1", "Passwords do not match." );
+            }
+            return;
+        }
+
+
+        // edit options
+        //-------------
+
+        if( getOp() != null && getOp().equalsIgnoreCase( "edit" ) ) {  
+
+            // test password typos
+            //---------------------
+
+            if( pass0 != null && pass0.length() > 0 ){
+
+                DipUserDAO dao = 
+                    (DipUserDAO) getUserContext().getUserDao();
+                DipUser oldUser = 
+                    (DipUser) dao.getUser( getUser().getLogin() );
+
+        if ( !oldUser.testPassword( pass0 ) ) {
+            addFieldError( "pass0", "Wrong password." );
+        } else {
+            if ( pass1 == null || !pass1.equals( pass0) ) {
+            addFieldError( "pass1", "Passwords do not match." );
+            }
+        }	
+        }	    
+        return;
+        }
+
+        // activate options
+        //-----------------
+
+        if( getOp() != null && getOp().equalsIgnoreCase( "activate" ) ) { 
+                return;
+        }
+    }
+}

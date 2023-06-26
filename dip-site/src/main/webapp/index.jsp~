@@ -1,0 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<s:action name="${portal.site}-welcome" executeResult="true">
+ <s:param name="id">dummy</s:param>
+</s:action>

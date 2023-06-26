@@ -1,0 +1,37 @@
+{namespace:{
+  refseq:{
+    url:"http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?id=%AC%",
+     ac:"%AC%"
+  },	      
+  imex:{
+    url:"http://imex.mbi.ucla.edu:50005/xml/ApplyXSLT?URL=http://dip.doe-mbi.ucla.edu/dip/imex/getSrc.cgi?XK=%AC%&xslURL=/xml/MIF25_view1.5cvs_09.xsl ",
+    ac: "%AC%" 
+  },
+  dip:{
+    url:"http://dip.mbi.ucla.edu/dipbeta/record?ac=%AC%",
+    ac: "%AC%" 
+  },
+  pubmed:{
+    url:"http://www.ncbi.nlm.nih.gov/pubmed/%AC%?dopt=Abstract",
+    ac: "%AC%" 
+  },
+  taxid:{
+   url:"http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=%AC%",
+   ac:"%AC%"
+  },
+  uniprot:{
+   url:"http://expasy.org/uniprot/%AC%",
+   ac:"%AC%"
+  },
+  psimi:{
+   url:"http://www.ebi.ac.uk/ontology-lookup/?termId=%AC%",
+   ac:"%AC%"
+  },
+  entrezgene:{
+   url:"http://www.ncbi.nlm.nih.gov/sites/entrez?Db=gene&Cmd=ShowDetailView&TermToSearch=%AC%",
+   ac:"%AC%"
+  }
+ } 
+}
+
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://prolinks.proxy.mbi.ucla.edu/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns3="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://mbi.ucla.edu/proxy/prolinks" name="ProlinksCachingImplService" targetNamespace="http://prolinks.proxy.mbi.ucla.edu/">
+  <wsdl:import location="http://10.1.1.112:8080/dip-proxy/ws/soap/prolinks-service?wsdl=ProlinksProxyPortType.wsdl" namespace="http://mbi.ucla.edu/proxy/prolinks">
+    </wsdl:import>
+  <wsdl:binding name="ProlinksCachingImplServiceSoapBinding" type="ns1:ProlinksProxyPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="getProlinks">
+      <soap:operation soapAction="http://dip.doe-mbi.ucla.edu/services/dxf14/getProlinks" style="document"></soap:operation>
+      <wsdl:input name="getProlinks">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getProlinksResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="ProxyFault">
+        <soap:fault name="ProxyFault" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProlinksCachingImplService">
+    <wsdl:port binding="tns:ProlinksCachingImplServiceSoapBinding" name="ProlinksCachingImplPort">
+      <soap:address location="http://10.1.1.112:8080/dip-proxy/ws/soap/prolinks-service"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

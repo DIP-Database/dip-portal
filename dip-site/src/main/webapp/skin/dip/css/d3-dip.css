@@ -1,0 +1,169 @@
+html, body {
+     width: 100%;
+     margin: 0;
+     padding: 0;
+     margin-bottom:74px;
+}
+
+rect {
+     fill: #f4f4ff;
+}
+
+.node-pin {
+     fill: #8F8;
+}
+
+.node-free {
+     fill: #000;
+}
+
+.cursor {
+     fill: none;
+     stroke: brown;
+     pointer-events: none;
+}
+
+.link {
+    stroke: #44aa00;
+    stroke-width: 3px;
+}
+
+#view {
+     width: 0px;
+     height: 0px;
+     border: 0px solid #fff;
+     margin: 0px;
+
+}
+
+#d3-test-form{
+  margin: 10px;
+}
+
+.dip-icon-on {
+   border:1px solid #DEDEDE;
+   display: block;
+}
+
+.dip-icon-off {
+   border:1px solid #DEDEDE;
+   display: none;
+}
+
+
+.d3-info-on{
+   display: block;
+}
+
+.d3-info-off{
+   display: none;
+}
+
+.d3-select-on{
+   stroke: #ff6600;
+   fill: #ff6600;
+}
+
+.d3-select-off{
+   
+}
+
+.d3-info-node{
+  border:1px solid #000000;
+  position: absolute;
+  bottom:8px;
+  left:7px;
+  width: 98%;
+  color: #404060;
+}
+
+.d3-info-edge{
+  border:1px solid #000000;
+  position: absolute;
+  bottom: 8px;
+  left:7px;
+  width: 98%;
+  color: #404060;
+}
+
+.d3-info-cell{
+  background: #d0e0ff;
+  padding: 2px;
+}
+
+.d3-info-idcell{
+  background: #fff200;
+  padding: 2px;
+}
+
+.d3-info-sidcell{
+  background: #ffff99;
+  padding: 2px;
+}
+
+.d3-info-itp-phy{
+  background: #99ff99;
+  padding: 2px;
+}
+
+.d3-info-cnf-core{
+  background: #44cc44;
+  padding: 2px;
+}
+
+
+
+#modal-panel-d3{
+  position: relative;
+  background: #f4f4ff;
+}
+
+#panel-d3{
+  background: #f4f4ff;
+}
+
+
+.modal-panel-d3{
+  position: relative;
+  background: #f4f4ff;
+  
+}
+
+
+
+#modal-body-d3{
+  background: #f4f4ff;
+}
+
+.node-reduced-on{
+     stroke: #A0A0A0;
+     stroke-width: 5px; 
+}
+
+.node-reduced-off{
+     stroke: #000000;
+     stroke-width: 5px; 
+}
+
+
+.node{
+     stroke: #ffe000;
+     fill: #ffe000;
+     stroke-width: 5px; 
+}
+
+
+.node-d0{
+  stroke: #ff0000;
+  fill: #ff0000;
+}
+
+.node-d1{
+  stroke: #ff8800;
+  fill: #ff8800;
+}
+.node-d2{
+  stroke: #ffcc00;
+  fill: #ffcc00;
+}
+

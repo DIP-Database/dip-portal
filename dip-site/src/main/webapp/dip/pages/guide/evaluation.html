@@ -1,0 +1,35 @@
+<h1>Evaluating Interactions</h1>
+<p>The interactions recorded in DIP may or may not reflect actual interactions between proteins.
+   This uncertainty stems from the accuracy (or inaccuracy) of published interactions.  For example,
+   large-scale, genome-wide experiments tend to yield many false positive results, where an interaction
+   is recorded that is not actually real.</p>
+<center><img class="interact" src="$DIP_IMG/real_interactions_200ht.png" alt="Real vs. measured interactions"></center>
+<br />
+<p>To separate the interactions that are likely to be real from those that may not be, DIP
+   evaluates its interaction data.  The most reliable subset of interactions, or CORE set, is
+   selected using the following criteria.</p>
+   <img class="core" src="$DIP_IMG/dip_core_240ht.png" alt="DIP CORE interactions">
+   An interaction is considered reliable if:
+   <ul class="list">
+    <li class="list">it was identified in at least one non genome-wide
+     experiment. In these cases the number of independent, 
+     small scale (SMSC) experiments is reported.</li>
+    <li class="list">it was identified independently more than once. In
+     these cases the number of all independent experiments (MLTI) is reported.<br /></li>
+    <li class="list">the paralogs of each of the interacting proteins also
+     interact.  In these cases the number of paralogous 
+     interactions (PVMS) is reported. (See 
+     <a href="http://www.mcponline.org/cgi/content/abstract/M100037-MCP200v1">Deane et al.</a>
+     for details.)</li>
+   </ul>
+<p>The status of each interaction, as well as the criteria that contributed to its 
+   classification as a member of the CORE subset, are reported on the corresponding 
+   <a href="Guide.cgi?SM=0:3">interaction information page</a>.
+   In addition, the set of reliable interactions (DIP_CORE) can be 
+   <a href="http://dip.doe-mbi.ucla.edu/dip/Download.cgi">downloaded</a>
+   as a list of protein pairs.</p>
+<p>This CORE subset can be used as a starting point for the analysis of the interaction network as well
+   as a reference set in the development/evaluation of protein-protein interaction prediction methods.</p>
+<p><i>***Include links to pages describing specifics of evaluation methods and to evaluation tools pages</i></p>
+
+<br /><br /><br /><br />

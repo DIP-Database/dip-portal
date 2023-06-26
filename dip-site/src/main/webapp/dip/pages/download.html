@@ -1,0 +1,117 @@
+<div style="padding:0 0 10em 1em; width: 80em;">
+<table width="100%">
+<tr>
+  <td align="left" colspan="2">
+   Files with DIP interaction data are available in a variety of
+   <a href="page?id=guide-data-format">data formats</a>:
+   PSI-MI (versions
+   <a href="http://psidev.sourceforge.net/mi/xml/doc/user/">1.0</a> and
+   <a href="http://www.psidev.info/index.php?q=node/60">2.5</a>),
+   <a href="http://code.google.com/p/psimi/wiki/PsimiTabFormat">MITAB2.5</a>
+   and our legacy <A HREF="http://dip.doe-mbi.ucla.edu/dip/Guide.cgi?SM=0:3">XIN</A> format.
+   The sequences of the proteins participating in DIP interactions 
+   are provided in <a href='http://en.wikipedia.org/wiki/FASTA_format'>FASTA</a> format.
+
+          <div style="border: 1px solid darkGray; margin: 2em; padding: 1em; background: #b8d0ff;">
+            <p>Please note that, in general, the interaction data we offer should be customized before 
+            they are used to address any particular problem. This includes, but is not limited to, making 
+            informed choices about:
+            <ul>
+             <li><b>Acceptable interaction types.</b> DIP, in line with other interaction databases,
+             relies on experiments that might provide only partial information about
+             protein-protein interactions.  In particular, some of the experiments might
+             only demonstrate that a pair of proteins is a part of a larger complex but
+             without actually making a direct contact.  Depending on the addressed problem,
+             such interactions might have to be excluded from further analysis. Please,
+             use the information about
+              <a href="http://dip.doe-mbi.ucla.edu/dip/Guide.cgi?SM=0:10" >the interaction type</a>
+             demonstrated by each experiment and  make an informed choice.<br/><br/>
+
+             <li><b>Acceptable level of protein ambiguity.</b> DIP, in line with other interaction databases,
+             relies on experiments that might provide only partial information about
+             the identities of the proteins reported in the protein-protein interaction experiments.
+             In particular, some of the experiments might not distinguish between various protein
+             isoforms that might have arisen as a rerult of alternative splicing events.  In case such
+             ambiguity is relevant to the problem on hand our
+              <a href="http://dip.doe-mbi.ucla.edu/dip/Download.cgi?SM=10">original IMEx curation records</a>
+             should be consulted in order to identify experiments with unambigiously identified
+             proteins.
+            </ul>
+            <p>The above issues are not specific to the datasets provided by DIP but reflect the very nature 
+            of the experimental data that the knowledge of protein-protein interactions is based upon.
+            Therefore they should be taken into consideration when utilizing any other protein-protein 
+            interaction datasets made available by any other interaction data provider.
+           </div>
+  </td>
+ </tr>
+ <tr>
+  <th align="right" class="mp"><a href="download?mst=1:2:1&tbs=0:0">Current</a></th>
+  <td align="left" class="mp">The most recent set of files describing proteins and experiments 
+    demonstating protein-protein interactions.
+    
+    <div style="border: 1px solid darkGray; margin: 2em; padding: 1em; background: #b8d0ff;">
+     The standard data sets provide the basic information on all interactions 
+     within DIP including these inferred through the spoke expanson of the 
+     multi-protein associations identified in affinity-based experiements but 
+     no details on the interacting molecules.    
+    </div>
+
+  </td>
+ </tr>
+ <tr>
+  <th align="right" class="mp"><a href="download?mst=1:2:3&tbs=0:0">Sequences</a></th>
+  <td align="left" class="mp"><a href='http://en.wikipedia.org/wiki/FASTA_format'>FASTA</a> files with
+    sequences of proteins recognized within DIP.</td>
+ </tr>
+ <tr>
+  <th align="right" class="mp"><a href="download?mst=1:2:4&tbs=0:0">DIP-IMEx</a></th>
+  <td align="left" class="mp">Collections of the original <a="http://imex.sourceforge.net/">IMEx</a>
+   records incorporated into DIP.
+  
+   <div style="border: 1px solid darkGray; margin: 2em; padding: 1em; background: #b8d0ff;">
+    DIP-IMEx data sets contain records curated according to the 
+    <a href="http://www.imexconsortium.org/curation">IMEx Curation Rules</a>.  They provide 
+    information on the experimentally determined details of the interactions.  These might 
+    include interacting regions of the proteins, mutations affecting interaction and relevant 
+    posttranslational modifications.    
+   </div>
+
+  </td>
+ </tr>
+ <tr>
+  <th align="right" class="mp"><a href="download?mst=1:2:5&tbs=0:0">Archives</a></th>
+  <td align="left" class="mp">Past releases of the DIP interaction datasets.</td>
+ </tr>
+
+ <tr>
+  <td align="left" colspan="2">
+   <br/><br/>
+   Legacy download site:
+    <ul>
+     <li><a HREF="http://dip.doe-mbi.ucla.edu/dip/Download.cgi?SM=2">HiTHR</a> - high-throughput (genome scale) datasets
+         <a HREF="http://dip.doe-mbi.ucla.edu/dip/Guide.cgi?SM=0:3"><img align="top" border="1" src="http://dip.doe-mbi.ucla.edu/images/xin75x150.png" alt="XIN logo"></a>
+         <a HREF="http://psidev.sourceforge.net/mi/xml/doc/user/"><img align="top" border="1" src="http://dip.doe-mbi.ucla.edu/images/mif75x150.png" alt="MIF logo"></a>
+         <br/><br/></li>
+     <li><a HREF="http://dip.doe-mbi.ucla.edu/dip/Download.cgi?SM=3">FULL</a> - complete DIP data set
+         <a HREF="http://dip.doe-mbi.ucla.edu/dip/Guide.cgi?SM=0:3"><img align="top" border="1" src="http://dip.doe-mbi.ucla.edu/images/xin75x150.png" alt="XIN logo"></a>
+         <a HREF="http://psidev.sourceforge.net/mi/xml/doc/user/"><img align="top" border="1" src="http://dip.doe-mbi.ucla.edu/images/mif75x150.png" alt="MIF logo"></a>
+         <a HREF="http://www.psidev.info/index.php?q=node/60"><img align="top" border="1" src="http://dip.doe-mbi.ucla.edu/images/mif2.5_53x16.png" alt="MIF25 logo"></a>
+         <A HREF="http://code.google.com/p/psimi/wiki/PsimiTabFormat"><img align="top" border="1" src="http://dip.doe-mbi.ucla.edu/images/mitab_53x16.png" alt="MITAB logo"></a>
+         <br/><br/></li>
+     <li><a HREF="http://dip.doe-mbi.ucla.edu/dip/Download.cgi?SM=7">SPECIES</a> - species-specific sets
+         <a HREF="http://dip.doe-mbi.ucla.edu/dip/Guide.cgi?SM=0:3"><img align="top" border="1" src="http://dip.doe-mbi.ucla.edu/images/xin75x150.png" alt="XIN logo"></a>
+         <a HREF="http://psidev.sourceforge.net/mi/xml/doc/user/"><img align="top" border="1" src="http://dip.doe-mbi.ucla.edu/images/mif75x150.png" alt="MIF logo"></a>
+         <a HREF="http://www.psidev.info/index.php?q=node/60"><img align="top" border="1" src="http://dip.doe-mbi.ucla.edu/images/mif2.5_53x16.png" alt="MIF25 logo"></a>
+         <a HREF="http://code.google.com/p/psimi/wiki/PsimiTabFormat"><img align="top" border="1" src="http://dip.doe-mbi.ucla.edu/images/mitab_53x16.png" alt="MITAB logo"></a>
+         <br/><br/></li>
+     <li><A HREF="http://dip.doe-mbi.ucla.edu/dip/Download.cgi?SM=4">FASTA</a> - DIP sequences
+         <br/><br/></li>
+     <li><a HREF="http://dip.doe-mbi.ucla.edu/dip/Download.cgi?SM=10">DIP-IMEx</a> - IMEx Records provided under conditions specified by
+         <a HREF="http://imex.sourceforge.net/">IMEx Consortium</A>
+         <a HREF="http://dip.doe-mbi.ucla.edu/dip/Guide.cgi?SM=0:3"><img align="top" border="1" src="http://dip.doe-mbi.ucla.edu/images/mif2.5_53x16.png" alt="MIF25 logo"></a>
+     </li>
+    </ul>
+  </td>
+ </tr>
+</table>
+</div>

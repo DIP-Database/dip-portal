@@ -1,0 +1,246 @@
+{news:{
+
+   "2014":[
+      {"date":"2014-01-10",
+       "time":"17:15:22",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"Data update",
+       "body":"External references to PDB and SwissProt were updated. Confidence values were recalculated after updating Rosetta Stone inferences."
+      }],
+
+
+
+   "2013":[
+      {"date":"2013-09-11",
+       "time":"12:37:08",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"ProLinks update.",
+       "body":"The website was updated to include inferences for 2291 genomes, including 30 Fungi genomes."
+      }],
+
+
+   "2012":[
+      {"date":"2012-07-15",
+       "time":"12:27:57",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"New forms and tutorials.",
+       "body":"All input forms for adavanced queries have been redesigned and the corresponding help/tutorials updated."
+      },
+
+
+      {"date":"2012-06-20",
+       "time":"16:14:26",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"New global confidence value.",
+       "body":"Substituted individual method scores by a global probability that a functional linkage is a true positive given the scores of all methods inferring the same linkage."
+      },
+
+
+      {"date":"2012-05-05",
+       "time":"18:27:57",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"Install Cytoscape warning.",
+       "body":"When the user tries to display the network graph with the inferred linkages, but Cytoscape is not running, a window will open requesting the user to install <a href='http://www.cytoscape.org' target='_blank'>Cytoscape</a> and the <a href='http://dip.doe-mbi.ucla.edu/misink' target='_blank'>MiSink</a> plugin."
+      },
+
+
+      {"date":"2012-03-20",
+       "time":"14:50:18",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"Searching functional linkages with Solr",
+       "body":"Retrieval of functional linkages is now carried out through the Solr server. Queries requiring search depths of 1 and 2 are not sent to the cluster anymore."
+      }],
+
+
+   "2011":[
+
+      {"date":"2011-10-27",
+       "time":"18:25:01",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"Tutorials updated.",
+       "body":"All tutorials have been updated to take into account the latest changes in the interface and the new types of queries that are offered to the user."
+      },
+
+
+      {"date":"2011-07-07",
+       "time":"15-58-56",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"Solr queries now supported.",
+       "body":"ProLinks now uses a <a href='http://lucene.apache.org/solr/' target='_blank'>Solr engine</a> to support complex queries. The respective input forms to submit a single ID, gene/protein name, funcion, and genome were both substituted by a single form supporting all these searches. This update also replaces the news from May 24th, 2011."
+      },
+
+
+      {"date":"2011-05-24",
+       "time":"19-08-12",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"Added functionality to homepage.",
+       "body":"The main ProLinks homepage now supports the following additional queries:<br /><ul><li>Submit a gene name</li><li>Submit a protein database identifier</li><li>Submit a protein name</li><li>Submit a protein function</li><li>Submit a protein sequence</li></ul>"
+      },
+
+
+
+      {"date":"2011-05-01",
+       "time":"15-57-08",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"Sumit a protein sequence.",
+       "body":"We have added the possibility to query ProLinks by submitting a protein sequence. First, the user's sequence is blasted against all procaryotic proteins in ProLinks; second, the most significant hits are then returned to the user sorted by their statistical significance; and third, the user must select any of the returned hits and submit it to ProLinks to search for functional linkages."
+      },
+
+
+      {"date":"2011-04-11",
+       "time":"15-22-17",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"Path Score and sorting.",
+       "body":"A Path Score was added to assess the quality of inferred paths of functional linkages connecting two query proteins. Also, inferred paths can be sorted by this score. Each link in a pathway can now be directly resumbitted to ProLinks."
+      },
+
+
+
+      {"date":"2011-03-23",
+       "time":"09-14-41",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"Beta version goes online.",
+       "body":"The beta version of ProLinks is now availabe for testing and suggestions/comments by the community."
+      },
+
+
+      {"date":"2011-03-22",
+       "time":"23-13-02",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"Submit an inferred linkage to ProLinks.",
+       "body":"Tables of inferred linkages now include an arrow(<img style='vertical-align:middle;' src='images/pl_sub_prot_to_prl.jpg' width='19px' alt='Submit Protein to ProLinks' />) that allows the user to submit any given linkage to ProLinks."
+      },
+
+
+      {"date":"2011-03-19",
+       "time":"18-24-33",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"Sorting tables of inferred linkages.",
+       "body":"Tables of inferred linkages can now be sorted by method score or ProLinks confidence value."
+      },
+
+
+      {"date":"2011-02-27",
+       "time":"19-04-18",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"Download ProLinks option.",
+       "body":"Now it is possible to download ProLinks as tab-delimited text files."
+      },
+
+      {"date":"2011-02-25",
+       "time":"22-18-02",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"All tutorials updated.",
+       "body":"7 Tutorials covering basic navigation and advanced queries were added."
+      },
+
+
+      {"date":"2011-01-20",
+       "time":"07-32-51",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"New ProLinks Skin.",
+       "body":"New colors have been added to the ProLinks interface with better organization of menus and pop-up help windows."
+      },
+
+
+      {"date":"2011-01-12",
+       "time":"07-32-51",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"Migration to Cluster.",
+       "body":"All queries to ProLinks are now submitted to the cluster for faster response times."
+      },
+
+      {"date":"2011-01-06",
+       "time":"19-09-03",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"Pagination of inferences.",
+       "body":"Inferred linkages are now presented in tables of customizible number of rows."
+      }],
+
+   "2010":[
+      {"date":"2010-12-13",
+       "time":"10-14-45",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"Interaction ProLinks/Cytoscape via MiSink.",
+       "body":"We added the option to display an interactive network of the network of inferred functional linkages. The icon<br /> <div align='center'><img src='images/main_software_40.png' alt='Icon to communicate ProLinks with Cytoscape'></img></div>is located on the top right corner of the table used to report ProLinks inferences. When you click on it, the results will be submitted to <a class='pl_general' href='http://www.cytoscape.org' target='_blank'>Cytoscape</a> to generate an interactive display.<br /><br /><b>IMPORTANT NOTE:</b> In order to be able to see the network you must first install <a class='pl_general' href='http://www.cytoscape.org' target='_blank'>Cytoscape</a> and the plugin <a class='pl_general' href='http://dip.doe-mbi.ucla.edu/dip/Software.cgi' TARGET='_blank'>MiSink</A> in your computer. If they are not installed and running by the time you click on the icon, your browser will display an error similar to:<br /><div align='center'><i style='color:red'>Firefox can't establish a connection to the server at 127.0.0.1:30403</i></div><br />We are working on displaying a more informative message when this happens."
+      },
+
+      {"date":"2010-09-07",
+       "time":"9-38-50",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"Paths of linkages connecting two proteins.",
+       "body":"The user is now able to search for the set of functional linkages that connects two proteins. For example, given two query proteins <b>A</b> and <b>E</b>, ProLinks could find that they are connected by proteins B, C, and D, that is:<br /><div align='center'><b>A</b> -- B -- C -- D -- <b>E</b></div>"
+      },
+
+
+      {"date":"2010-07-17",
+       "time":"14-45-30",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"Linkages shared among proteins.",
+       "body":"The user is now able to search for the set of functional linkages that is common to several proteins."
+      },
+
+
+      {"date":"2010-04-22",
+       "time":"20-28-05",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"ProLinks advanced searches.",
+       "body":"We added more control to your queries. Now it is possible to customize different thresholds, the depth of the search, the tags that will be used to present proteins on the screen, the format of the output, among other features."
+      },
+
+      {"date":"2010-01-05",
+       "time":"11-19-33",
+       "auid":"40",
+       "amail":"amedrano@mbi.ucla.edu",
+       "aini":"LAMS",
+       "header":"ProLinks confidence value.",
+       "body":"We added the ProLinks score (or confidence value) for each inference. This value is the probability of a functional linkage to be a true positive given its infernece method score and a control set of known functional linkages."
+      }]
+ }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<!-- =======================================================================
+ ! $HeadURL:: https://imex.mbi.ucla.edu/svn/dip-ws/dip-portal/trunk/dip-si#$
+ ! $Id:: hibernate.cfg.xml 2629 2012-08-12 20:18:33Z lukasz                $
+ ! Version: $Rev:: 2629                                                    $
+ !==========================================================================
+ !
+ ! Hibernate ORM configuration
+ !
+ !====================================================================== -->
+
+<hibernate-configuration>
+ <session-factory>
+	   
+ <property name="hibernate.current_session_context_class">
+    thread
+  </property>
+
+ <!-- postgresql connection -->
+
+  <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+  <property name="connection.driver_class">org.postgresql.Driver</property>
+  <property name="connection.url">${dipuser.dburl}</property>
+  <property name="connection.username">${dipuser.user}</property>
+  <property name="connection.password">${dipuser.pass}</property>
+
+  <property name="c3p0.min_size">5</property>
+  <property name="c3p0.min_size">20</property>
+  <property name="c3p0.timeout">1000</property>
+  <property name="c3p0.max_statements">50</property>
+
+  <!-- Disable second-level cache. -->
+  <property name="cache.provider_class">
+   org.hibernate.cache.NoCacheProvider
+  </property>
+  <property name="cache.use_query_cache">false</property>
+  <property name="cache.use_minimal_puts">false</property>
+  <property name="max_fetch_depth">3</property>
+
+  <property name="hibernate.query.factory_class">
+   org.hibernate.hql.classic.ClassicQueryTranslatorFactory
+  </property>
+
+  <!-- Echo (or not) all executed SQL to stdout -->
+  <property name="show_sql">false</property>
+
+  <mapping resource="hibernate/UserRole.hbm.xml"/>
+
+ </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,181 @@
+<xsl:stylesheet version="1.0"
+   xmlns="http://dip.doe-mbi.ucla.edu/services/dxf14"
+   xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
+
+<!-- ======================================================================= -->
+<!-- XSLT transformation  NCBI blast format to DXF                           -->
+<!--   parameters:                                                           -->
+<!--                                                                         -->
+<!--  2013/05/22:  initial version                                           -->
+<!--                                                                         -->                          
+<!-- ======================================================================= -->
+<!--                                                                         -->
+<!--                                                                         -->  
+<!-- ======================================================================= -->
+
+ <xsl:output method="xml" indent="yes" encoding="UTF-8" />
+<!--  <xsl:param name="debug">false</xsl:param> -->
+
+ <xsl:param name="query-sequence"></xsl:param>
+
+ <xsl:template match="/result">
+  <xsl:element name="dataset">
+   <node id="0">
+    <type ac="0026" name="search-report" ns="dxf"/>
+    <label>Motif Search Report</label>
+    <attrList>
+     <attr name="motif-query-string">
+       <value><xsl:value-of select='./query-motif/text()'/></value>
+     </attr>
+    </attrList>
+    <xsl:apply-templates mode="hit-list" select="hit-list"/>
+   </node>
+  </xsl:element>
+ </xsl:template>
+
+ <xsl:template match="*" mode="hit-list">
+  <xsl:element name="partList">
+   <xsl:apply-templates mode="hit" select="hit"/>
+  </xsl:element>
+ </xsl:template>
+
+ <xsl:template match="*" mode="hit">
+   
+  <xsl:element name="part">
+   <type name="search-result" ac="0027" ns="dxf"/>
+   <xsl:apply-templates mode="hit-node" select="."/> 
+
+<!--
+   <xsl:element name="attrList">
+
+    <xsl:apply-templates select ="./Hsp_evalue" mode="hit-attr">
+     <xsl:with-param name="attr-name">search-score</xsl:with-param>
+     <xsl:with-param name="attr-value" select='Hsp_evalue/text()'/>
+    </xsl:apply-templates> 
+
+    <xsl:apply-templates select ="./Hsp_score" mode="hit-attr">
+     <xsl:with-param name="attr-name">blast-raw-score</xsl:with-param>
+     <xsl:with-param name="attr-value" select='Hsp_score/text()'/>
+    </xsl:apply-templates> 
+
+    <xsl:apply-templates select ="./Hsp_bit-score" mode="hit-attr">
+     <xsl:with-param name="attr-name">blast-bit-score</xsl:with-param>
+     <xsl:with-param name="attr-value" select='Hsp_bit-score/text()'/>
+    </xsl:apply-templates> 
+
+    <xsl:apply-templates select ="./Hsp_evalue" mode="hit-attr">
+     <xsl:with-param name="attr-name">blast-evalue-score</xsl:with-param>
+     <xsl:with-param name="attr-value" select='Hsp_evalue/text()'/>
+    </xsl:apply-templates> 
+
+    <xsl:apply-templates select="./Hsp_query-from" mode="hit-attr">
+     <xsl:with-param name="attr-name">query-from</xsl:with-param>
+     <xsl:with-param name="attr-value" select='Hsp_query-from/text()'/>
+    </xsl:apply-templates> 
+
+                                         
+    <xsl:apply-templates select="../../../../../../BlastOutput_query-len" mode="hit-attr">
+     <xsl:with-param name="attr-name">query-length</xsl:with-param>
+     <xsl:with-param name="attr-value" select='../../../../../../BlastOutput_query-len/text()'/>
+    </xsl:apply-templates> 
+
+    <xsl:apply-templates select="./Hsp_query-to" mode="hit-attr">
+     <xsl:with-param name="attr-name">query-to</xsl:with-param>
+     <xsl:with-param name="attr-value" select='Hsp_query-to/text()'/>
+    </xsl:apply-templates> 
+
+    <xsl:apply-templates select="../../Hit_len" mode="hit-attr">
+     <xsl:with-param name="attr-name">hit-length</xsl:with-param>
+     <xsl:with-param name="attr-value" select='../../Hit_len/text()'/>
+    </xsl:apply-templates> 
+
+    <xsl:apply-templates select ="./Hsp_hit-from" mode="hit-attr">
+     <xsl:with-param name="attr-name">hit-from</xsl:with-param>
+     <xsl:with-param name="attr-value" select='Hsp_hit-from/text()'/>
+    </xsl:apply-templates> 
+
+    <xsl:apply-templates select ="./Hsp_hit-to" mode="hit-attr">
+     <xsl:with-param name="attr-name">hit-to</xsl:with-param>
+     <xsl:with-param name="attr-value" select='Hsp_hit-to/text()'/>
+    </xsl:apply-templates> 
+
+    <xsl:apply-templates select ="./Hsp_qseq" mode="hit-attr">
+     <xsl:with-param name="attr-name">align-query</xsl:with-param>
+     <xsl:with-param name="attr-value" select='Hsp_qseq/text()'/>
+    </xsl:apply-templates> 
+
+    <xsl:apply-templates select ="./Hsp_midline" mode="hit-attr">
+     <xsl:with-param name="attr-name">align-mid</xsl:with-param>
+     <xsl:with-param name="attr-value" select='Hsp_midline/text()'/>
+    </xsl:apply-templates>
+ 
+    <xsl:apply-templates select ="./Hsp_hseq" mode="hit-attr">
+     <xsl:with-param name="attr-name">align-hit</xsl:with-param>
+     <xsl:with-param name="attr-value" select='Hsp_hseq/text()'/>
+    </xsl:apply-templates> 
+
+   </xsl:element>
+-->
+  </xsl:element>
+ </xsl:template>
+
+ <xsl:template match="*" mode="hit-attr">
+  <xsl:param name="attr-name"></xsl:param>  
+  <xsl:param name="attr-value"></xsl:param>  
+  <xsl:element name="attr">
+   <xsl:attribute name="name"><xsl:value-of select="$attr-name"/></xsl:attribute>
+   <xsl:element name="value">
+    <xsl:value-of select="$attr-value"/>
+   </xsl:element>
+  </xsl:element>
+ </xsl:template>
+
+ <xsl:template match="*" mode="hit-node"> 
+  <xsl:element name="node">
+   <xsl:attribute name="id">0</xsl:attribute>
+   <xsl:attribute name="ns">
+    <xsl:call-template name="node-id">
+       <xsl:with-param name="idp">ns</xsl:with-param>
+       <xsl:with-param name="idf" select="@ns"/>
+      </xsl:call-template>
+   </xsl:attribute>
+   <xsl:attribute name="ac">
+      <xsl:call-template name="node-id">
+       <xsl:with-param name="idp">ac</xsl:with-param>
+       <xsl:with-param name="idf" select="@ac"/>
+      </xsl:call-template>
+   </xsl:attribute>
+   <type name="protein" ac="0003" ns="dxf"/>
+   <xsl:element name="label"><xsl:value-of select="@ac"/></xsl:element>
+   <xsl:element name="name">
+    <xsl:value-of select='@ac'/>
+   </xsl:element>
+   <xrefList>
+    <xsl:element name="xref">
+     <xsl:attribute name="type">identical-to</xsl:attribute>
+     <xsl:attribute name="typeAc">0009</xsl:attribute>
+     <xsl:attribute name="typeNs">dxf</xsl:attribute> 
+     <xsl:attribute name="ns">
+      <xsl:call-template name="node-id">
+       <xsl:with-param name="idp">ns</xsl:with-param>
+       <xsl:with-param name="idf" select="@ns"/>
+      </xsl:call-template>
+     </xsl:attribute>
+     <xsl:attribute name="ac">
+      <xsl:call-template name="node-id">
+       <xsl:with-param name="idp">ac</xsl:with-param>
+       <xsl:with-param name="idf" select="@ac"/>
+      </xsl:call-template>
+     </xsl:attribute>   
+    </xsl:element>
+   </xrefList>
+  </xsl:element>
+ </xsl:template>
+
+<xsl:template name="node-id">
+ <xsl:param name="idp"/> 
+ <xsl:param name="idf"/> 
+ <xsl:value-of select='$idf'/>        
+</xsl:template>
+  
+</xsl:stylesheet>

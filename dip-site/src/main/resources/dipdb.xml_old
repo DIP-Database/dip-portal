@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- #================================================================
+     # $Id:: dipdb.xml 142 2008-11-20 23:22:24Z lukasz               $
+     # Version: $Rev:: 142                                           $
+     #================================================================
+     #
+     # struts2: dipdb package configuration  
+     #
+     #================================================================ -->
+
+
+<struts>
+
+  <package name="dipdb" extends="json-default" namespace="">
+
+<!-- =========================================================== Results -->
+
+    <result-types>
+      <result-type name="tiles" 
+                   class="org.apache.struts2.views.tiles.TilesResult"/>
+    </result-types>
+
+<!-- =========================================================== Interceptors -->
+        
+    <interceptors>
+     <interceptor name="jsonTable" 
+         class="edu.ucla.mbi.struts2.table.JsonTableInterceptor"/>
+    </interceptors>
+
+<!-- =========================================================== Actions -->
+
+  <!-- TABLE TEST -->
+
+   <action name="table" 
+           class="springManagedTableAction" >
+     <result name="success" type="tiles">showtable</result> 
+   </action>
+
+  <!-- TABLE TEST END -->
+
+  <!-- TABLE2 TEST -->
+
+   <action name="table2" 
+           class="springManagedTable2Action" >
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+
+     <result name="success" type="tiles">showtable2</result>
+   </action>
+                                                                           
+   <action name="tabledata" class="recordTableDataAction">
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+     <interceptor-ref name="jsonTable"/>
+     <result name="success" type="json">
+       <param name="excludeProperties">DIPID,JSESSIONID,cookiesMap,session,ac,agc,detail,first,max,tableContext,tableData</param>
+       <param name="noCache">true</param>
+     </result>
+   </action>
+
+
+   <action name="tabletest" class="tableTest">
+     <result name="success" type="tiles">tabletest</result>     
+   </action>
+
+
+  <!-- TABLE2 TEST END -->
+
+  <!-- DIP record browsing -->   
+
+   <action name="record" 
+           class="springManagedRecord2Action" >
+     <result name="success" type="tiles">showrecord</result>
+   </action>
+
+
+   <action name="recordcount" 
+           class="recordCountAction">
+     <result name="success"  type="json">
+       <param name="excludeProperties">
+          DIPID,JSESSIONID,cookiesMap,session
+       </param>
+     </result>
+   </action>
+
+   <action name="panemodel" 
+           class="paneModelAction">
+     <result name="success"  type="json">
+       <param name="excludeProperties">
+          DIPID,JSESSIONID,cookiesMap,session
+       </param>
+     </result>
+   </action>
+
+   <action name="panetable" 
+           class="recordTableAction">
+     <result name="success"  type="json">
+       <param name="excludeProperties">
+          DIPID,JSESSIONID,cookiesMap,session
+       </param>
+     </result>
+   </action>
+
+
+
+  <!-- DIP query -->   
+
+   <action name="query" 
+           class="springManagedQueryAction" >
+     <result name="success" type="tiles">showquery</result>
+   </action>
+
+<!--
+   <action name="querycount" 
+           class="queryCountAction">
+     <result name="success"  type="json">
+       <param name="excludeProperties">
+          DIPID,JSESSIONID,cookiesMap,session
+       </param>
+     </result>
+   </action>
+
+-->
+  <!-- external links -->   
+
+   <action name="elink" class="springManagedElinkAction">
+<!--
+    <interceptor-ref name="cookie">
+      <param name="cookiesName">*</param>
+      <param name="cookiesValue">*</param>
+    </interceptor-ref>
+-->
+    <result name="success" type="redirect">${url}</result>
+   </action>
+
+
+  <!-- depreciated/tests  -->
+
+   <action name="QueryCollect" 
+           class="edu.ucla.mbi.dip.web.struts2.actions.QueryCollect" >
+     <result name="success"       type="tiles">queryResult</result>
+     <result name="success.small" type="tiles">queryResult.small</result>
+   </action>
+
+<!--
+   <action name="GetRecord" 
+           class="edu.ucla.mbi.dip.web.struts2.actions.GetRecord" >
+     <result name="success"       type="tiles">showrecord</result>
+     <result name="success.small" type="tiles">showrecord.small</result>
+   </action>
+-->
+
+   <action name="GetRecord" 
+           class="springManagedGetRecordAction" >
+     <result name="success"       type="tiles">showrecord</result>
+     <result name="success.small" type="tiles">showrecord.small</result>
+   </action>
+
+
+   <action name="record2" 
+           class="springManagedRecord2Action" >
+     <result name="success"    type="tiles">showrecord2</result>
+   </action>
+
+   <!-- fallback -->
+
+    <action name="*" >
+      <result>/{1}.jsp</result>
+     </action>
+
+  </package>
+
+</struts>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+ <html>
+  <head>
+   <title>Force-Directed Layout (Dynamic)</title>
+
+<!--
+   <script type="text/javascript" src="http://mbostock.github.com/d3/d3.min.js"></script>
+   <script type="text/javascript" src="http://mbostock.github.com/d3/d3.geom.min.js"></script>
+   <script type="text/javascript" src="http://mbostock.github.com/d3/d3.layout.min.js"></script>
+-->
+
+   <script type="text/javascript" src="d3/d3.20120105.js"></script>
+   <script type="text/javascript" src="d3/d3.geom.20120105.js"></script>
+   <script type="text/javascript" src="d3/d3.layout.20120105.js"></script>
+
+
+   <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
+
+
+   <script src="http://yui.yahooapis.com/2.9.0/build/container/container-min.js"></script>
+   <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/menu/menu-min.js"></script>
+
+   <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/element/element-min.js"></script> 
+   <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/animation/animation-min.js"></script>
+   <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/connection/connection-min.js"></script> 
+
+   <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/datasource/datasource-min.js"></script> 
+   <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/dragdrop/dragdrop-min.js"></script> 
+
+   <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/container/container-min.js"></script>
+   <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/imageloader/imageloader-min.js"></script>
+   <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/json/json-min.js"></script> 
+
+   <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/element/element-min.js"></script>
+   <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/resize/resize.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/container/assets/skins/sam/container.css">
+ 
+
+   <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/fonts/fonts-min.css">
+   <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/menu/assets/skins/sam/menu.css">
+
+   <link rel="stylesheet" href="css/d3.css" type="text/css" title="d3">
+
+   <!--<script type="text/javascript" src="d3-force.js"></script>-->
+
+   <script type="text/javascript" src="d3-modal-yui.js"></script>
+
+   <script type="text/javascript" src="d3-gui.js"></script>
+   <script type="text/javascript" src="d3.js"></script>
+ </head>
+
+ <body class="yui-skin-sam" >
+  <div id="d3-test-form">
+    <form action="d3-test.html">
+       Node: <input type="text" 
+                    id="d3-init-ac" value="DIP-3256N"/> 
+             <button type="submit" 
+                           onclick="YAHOO.mbi.d3.modal.init( 
+                                       { ns:'dip', 
+                                         ac: YAHOO.util.Dom.get('d3-init-ac').value }); 
+                                    return false;">Submit</button> 
+    </form>
+  </div>
+ <hr>
+  <div id="view" />
+  <div id="d3-menu" />
+  </body>
+</html>

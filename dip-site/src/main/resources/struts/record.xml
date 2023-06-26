@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- ===========================================================================
+ # $Id:: jqrecord.xml 570 2009-09-29 18:13:45Z lukasz                          $
+ # Version: $Rev:: 570                                                         $
+ #==============================================================================
+ #                                                                             $
+ # struts2: jqdip package configuration                                        $
+ #                                                                             $
+ #========================================================================== -->
+                                                                           
+<struts>
+
+  <package name="jqdip" extends="json-default" namespace="">
+
+<!-- =============================================================== Results -->
+
+    <result-types>
+      <result-type name="tiles" 
+                   class="org.apache.struts2.views.tiles.TilesResult"/>
+    </result-types>
+
+<!-- ========================================================== Interceptors -->
+        
+    <interceptors>
+     <interceptor name="menu" 
+      class="edu.ucla.mbi.util.struts.interceptor.MenuInterceptor"/>
+     <interceptor name="accession" 
+      class="edu.ucla.mbi.util.struts.interceptor.AccessionInterceptor"/>
+     <interceptor name="jsonTable" 
+      class="edu.ucla.mbi.util.struts.interceptor.YuiTableViewInterceptor"/>
+     <interceptor name="cyExport" 
+      class="edu.ucla.mbi.dip.struts.interceptor.CyExportInterceptor"/>
+     <interceptor name="netExport" class="netExportInterceptor"/>
+    </interceptors>
+
+<!-- =============================================================== Actions -->
+
+   <action name="">
+      <result>/index.jsp</result>
+   </action>
+
+  <!-- record browsing: top-level action -->   
+
+   <action name="record" class="recordAction" >
+
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+     <interceptor-ref name="menu"/>
+     <interceptor-ref name="accession"/>
+     <interceptor-ref name="jsonTable"/>
+ 
+     <result name="success" type="tiles">record</result>     
+
+     <result name="json"  type="json">
+       <param name="ignoreHierarchy">false</param>
+       <param name="noCache">true</param>     
+       <param name="includeProperties">
+         menu.*,model.*, summary.*
+       </param>
+       <param name="excludeProperties">
+         model,menuContext.*
+       </param>
+     </result>
+   </action>
+
+
+<!-- graph representation  -->
+
+   <action name="gview" class="graphAction" >
+
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+     <interceptor-ref name="menu"/>
+
+     <result name="success" type="tiles">graph</result>
+
+     <result name="json"  type="json">
+       <param name="ignoreHierarchy">false</param>
+       <param name="noCache">true</param>
+       <param name="includeProperties">
+         svg
+       </param>
+       <param name="excludeProperties">
+         model,menuContext.*
+       </param>
+     </result>
+
+     <result name="file" type="stream">
+      <param name="inputName">fileStream</param>
+      <param name="bufferSize">1024</param>
+     </result>
+
+   </action>
+
+   <action name="prl-record" class="prlRecordAction" >
+
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+     <interceptor-ref name="menu"/>
+     <interceptor-ref name="accession"/>
+     <interceptor-ref name="jsonTable"/>
+ 
+     <result name="success" type="tiles">record</result>     
+
+     <result name="json"  type="json">
+       <param name="ignoreHierarchy">false</param>
+       <param name="noCache">true</param>     
+       <param name="includeProperties">
+         menu.*,model.*
+       </param>
+       <param name="excludeProperties">
+         model,menuContext.*
+       </param>
+     </result>
+   </action>
+
+   <action name="rex" class="recordAction" >
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+     <interceptor-ref name="menu"/>
+     <interceptor-ref name="accession"/>
+<!--     <interceptor-ref name="cyExport"/> -->
+     <interceptor-ref name="netExport"/>
+
+     <result name="success" type="stream">
+      <param name="inputName">exportStream</param>
+      <param name="bufferSize">1024</param>
+     </result>
+   </action>
+
+  <!-- record querying: alias for record -->   
+
+   <action name="query" class="queryAction" >
+
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+     <interceptor-ref name="menu"/>
+     <interceptor-ref name="accession"/>
+     <interceptor-ref name="jsonTable"/>
+ 
+     <result name="success" type="tiles">query</result>     
+
+     <result name="json"  type="json">
+       <param name="ignoreHierarchy">false</param>
+       <param name="noCache">true</param>
+       <param name="includeProperties">
+        menu.*,model.*,model,menuContext.*,facetData.*,paneStr,resultStr
+       </param>
+       <param name="excludeProperties">
+         model,menuContext.*
+       </param>
+       <param name="noCache">true</param>
+     </result>
+
+   </action>
+
+  <!-- psicquic-based queries -->   
+
+   <action name="psicquicquery" class="xpsqAction" >
+
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+     <interceptor-ref name="menu"/>
+     <interceptor-ref name="accession"/>
+     <interceptor-ref name="jsonTable"/>
+ 
+     <result name="success" type="tiles">query</result>     
+
+     <result name="json"  type="json">
+       <param name="ignoreHierarchy">false</param>
+       <param name="noCache">true</param>
+       <param name="includeProperties">
+        menu.*,model.*,model,menuContext.*,facetData.*,paneStr,resultStr
+       </param>
+       <param name="excludeProperties">
+         model,menuContext.*
+       </param>
+       <param name="noCache">true</param>
+     </result>
+
+   </action>
+
+   <!-- sequence-based queries -->
+
+   <action name="sequenceQuery" class="sequenceQueryAction" >
+
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+     <interceptor-ref name="menu"/>
+     <interceptor-ref name="accession"/>
+     <interceptor-ref name="jsonTable"/>
+ 
+     <result name="success" type="tiles">query</result>     
+
+     <result name="json"  type="json">
+       <param name="ignoreHierarchy">false</param>
+       <param name="noCache">true</param>
+       <param name="includeProperties">
+        menu.*,model.*,model,menuContext.*,facetData.*
+       </param>
+       <param name="excludeProperties">
+         model,menuContext.*
+       </param>
+       <param name="noCache">true</param>
+     </result>
+
+   </action>
+
+   <action name="elink" class="elinkAction">
+    <!--
+    <interceptor-ref name="cookie">
+      <param name="cookiesName">*</param>
+      <param name="cookiesValue">*</param>
+    </interceptor-ref>
+   -->
+     <result name="success" type="redirect">${getUrl()}</result>
+     <result name="url" type="json">
+      <param name="ignoreHierarchy">false</param>
+      <param name="noCache">true</param>
+      <param name="includeProperties">url</param>  
+     </result>
+   </action>
+
+   <action name="stat" class="statAction">
+    <result name="success" type="json">
+     <param name="noCache">true</param>
+       <param name="includeProperties">
+         ns,ac,details,meta.*
+       </param> 
+    </result>
+   </action>
+
+   <action name="contents" class="statAction">
+    <interceptor-ref name="defaultStack"/>
+    <interceptor-ref name="timer"/>
+    <interceptor-ref name="menu"/>
+    <result name="success" type="tiles">contents</result>
+   </action>
+
+ <!-- graph representation  -->
+
+   <action name="graph" class="graphAction" >
+
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+     <interceptor-ref name="menu"/>
+
+     <result name="success" type="tiles">graph</result>
+
+     <result name="json"  type="json">
+       <param name="ignoreHierarchy">false</param>
+       <param name="noCache">true</param>
+       <param name="includeProperties">
+         svg
+       </param>
+       <param name="excludeProperties">
+         model,menuContext.*
+       </param>
+     </result>
+
+     <result name="file" type="stream">
+      <param name="inputName">fileStream</param>
+      <param name="bufferSize">1024</param>
+     </result>
+
+   </action>
+
+   <!-- proxy access -->
+
+   <action name="proxy" class="proxyAction" >
+
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+ 
+   <!--  <result name="success" type="tiles">record</result>  -->
+
+     <result name="success"  type="json">
+       <param name="ignoreHierarchy">false</param>
+       <param name="noCache">true</param>     
+       <param name="includeProperties">
+         summary.*
+       </param>
+       <param name="excludeProperties">
+         model,menuContext.*
+       </param>
+     </result>
+
+     <result name="json"  type="json">
+       <param name="ignoreHierarchy">false</param>
+       <param name="noCache">true</param>     
+       <param name="includeProperties">
+         summary.*
+       </param>
+       <param name="excludeProperties">
+         model,menuContext.*
+       </param>
+     </result>
+
+   </action>
+
+   <!-- table manager/editor -->
+
+   <action name="tablemgr" class="tableMgrAction" >
+
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+     <interceptor-ref name="menu"/>
+     <interceptor-ref name="accession"/>
+     <interceptor-ref name="jsonTable"/>
+
+     <result name="success" type="tiles">tablemgr</result>
+
+
+     <result name="json"  type="json">
+       <param name="ignoreHierarchy">false</param>
+       <param name="noCache">true</param>
+       <param name="includeProperties">
+        tables.*
+       </param>
+       <param name="excludeProperties">
+         model,menuContext.*
+       </param>
+       <param name="noCache">true</param>
+     </result>
+
+   </action>
+
+<!--
+   <action name="tblmgr" class="tableMgrAction" >
+
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+     <interceptor-ref name="menu"/>
+     <interceptor-ref name="accession"/>
+     <interceptor-ref name="jsonTable"/>
+
+     <result name="success" type="tiles">tblmgr</result>
+
+
+     <result name="json"  type="json">
+       <param name="ignoreHierarchy">false</param>
+       <param name="noCache">true</param>
+       <param name="includeProperties">
+        tables.*
+       </param>
+       <param name="excludeProperties">
+         model,menuContext.*
+       </param>
+       <param name="noCache">true</param>
+     </result>
+
+   </action>
+
+-->
+
+
+  <!-- table manager/editor -->
+
+   <action name="tablemgr" class="tableMgrAction" >
+
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+     <interceptor-ref name="menu"/>
+     <interceptor-ref name="accession"/>
+     <interceptor-ref name="jsonTable"/>
+
+     <result name="success" type="tiles">tablemgr</result>
+
+
+     <result name="json"  type="json">
+       <param name="ignoreHierarchy">false</param>
+       <param name="noCache">true</param>
+       <param name="includeProperties">
+        tables.*
+       </param>
+       <param name="excludeProperties">
+         model,menuContext.*
+       </param>
+       <param name="noCache">true</param>
+     </result>
+   </action>
+
+   <action name="tabledetails" class="tableMgrAction" >
+     <result>/skin/tiles/tabledetails.jsp</result>
+   </action>
+   <action name="tablecolumn" class="tableMgrAction" >
+     <result>/skin/tiles/tablecolumn.jsp</result>
+   </action>
+
+ </package>
+</struts>

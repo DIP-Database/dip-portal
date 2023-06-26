@@ -1,0 +1,70 @@
+{"format":{
+    "dxf":[{
+       content-type:"text/xml; charset=ISO-8859-1"
+    }],
+    "cydxf":[{
+       prefix:"ADD DXF",
+       content-type:"text/plain; charset=ISO-8859-1"       
+    }],
+    "dot":[{
+      file:{
+        xslt:"/xsl/dxf2dot.xsl"
+      },
+      size:"6, 6",
+      ratio:"1",
+      content-type:"text/plain; charset=ISO-8859-1"
+    }],
+    "grv":[
+     { pretrans:"dot",
+       pretrver:0,
+       layout:"fdp",
+       format:"svg",       
+       binary:false,       
+       content-type:"image/svg+xml; charset=ISO-8859-1"       
+     },
+     { pretrans:"dot",
+       pretrver:0,
+       layout:"sfdp",
+       format:"svg",
+       binary:false,       
+       content-type:"image/svg+xml; charset=ISO-8859-1"       
+     },
+     { pretrans:"dot",
+       pretrver:0,
+       layout:"neato",
+       format:"svg",       
+       binary:false,
+       content-type:"image/svg+xml; charset=ISO-8859-1"       
+     },
+     { pretrans:"dot",
+       pretrver:0,
+       layout:"circo",
+       format:"svg",       
+       binary:false,
+       content-type:"image/svg+xml; charset=ISO-8859-1"       
+     },
+     { pretrans:"dot",
+       pretrver:0,
+       layout:"twopi",
+       format:"svg",       
+       binary:false,
+       content-type:"image/svg+xml; charset=ISO-8859-1"       
+     }],
+     "d3j":[{
+      file:{
+        xslt:"/xsl/dxf2d3j.xsl"
+      },
+      size:"6, 6",
+      ratio:"1",
+      content-type:"text/plain; charset=ISO-8859-1"
+     }],
+     "mif":[{
+       xslt:"dxf2mif254.xsl",
+       content-type:"text/xml; charset=ISO-8859-1"
+     }],
+     mitab:[{
+       xslt:"dxf2mitab28.xsl",
+       content-type:"text/plain; charset=ISO-8859-1"
+     }]
+  }
+}

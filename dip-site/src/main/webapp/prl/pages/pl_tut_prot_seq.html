@@ -1,0 +1,319 @@
+
+    <link rel="stylesheet" type="text/css" href="skin/pfl/css/prolinks.css" />
+      
+      <div id="pl_tutorial_page">
+
+	<br />
+
+	<table class="pl_outer_frame">
+
+
+	  <!-- The header -->
+	  <tr>
+	    <td class="pl_tutorial_header_row pl_arrow_cell">
+	      <a href="page?id=pl_tut_connect_path">
+		<img class="pl_tut_arrow" 
+		     src="images/pl_tut_left_arrow.png" 
+		     width="60px"
+		     alt="Previous tutorial" />
+	      </a>
+	    </td>
+
+	    <td class="pl_tutorial_header_row"> 
+	      <b>Submit a protein sequence</b>
+	    </td>
+
+	    <td class="pl_tutorial_header_row pl_arrow_cell"> 
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    </td>
+	  </tr>
+
+
+
+	  <!-- The body of the tutorial from here -->
+	  <tr>
+	    <td class="pl_tutorial_body_row" colspan="3">
+	      <table class="pl_tutorial_inner_frame">
+		<tr>
+		  <td class="pl_tutorial_info_data">
+
+
+		    <!-- Tutorial organization -->
+		    <br />
+		    This tutorial is divided in 4 sections:
+		    <ul>
+
+		      <li>
+			<a class="pl_general" href="#form">
+			  The input form:</a>
+			General description of the input form.
+			<br /><br />
+		      </li>
+
+		      <li>
+			<a class="pl_general" href="#output_fmt">
+			  Search parameters:</a>
+			Description of the available parameters to control
+			the Blast search.
+		        <br /><br />
+		      </li>
+
+		      <li>
+			<a class="pl_general" href="#results">
+			  Blast results:</a> 
+			Description of how the blast output is presented to
+			the user.
+			<br /><br />
+		      </li>
+		    </ul>
+
+		    <!-- Description of the input form -->
+		    <a name="form"></a>
+		    <h2>The input form</h2>
+		    
+		    <p>
+		      If the protein you are working with belongs to a genome that is not
+		      fully sequenced yet, or your genome is not included in the set of genomes
+		      for which ProLinks has inferences, you can still submit the amino acid 
+		      sequence of your protein of interest. Your sequence will be blasted against 
+		      all proteins represented in ProLinks and the list of best hits will be
+		      reported back to you. If one of the matches belongs to a protein you consider
+		      to be significantly related to your protein, you'll have the opportunity
+		      to submit that protein to search for functional linkages.
+		    </p>
+
+		    <p>		      
+		      The input form for sequence submition is presnted in 
+		      <a class="pl_general" href="#figure1">Figure 1</a>. You can
+		      either copy/paste your sequence in the form, or upload
+		      a file with your sequence in 
+		      <a class="pl_general" 
+		      onclick="YAHOO.mbi.modal.help( 'Fasta format', 'pl_help_fasta_fmt' ); return false" 
+		      href="">fasta format</a>.
+		    </p>
+
+                    <br />
+                    <a name="figure1"></a>
+    	            <table width="70%" border="0px" cellpadding="5" cellspacing="0" align="center">                
+		      <tr>
+			<td align="center">
+			  <a href="images/pl_prot_seq_form.png" target="_blank">
+			    <img class="pl_tut_image" 
+			         src="images/pl_prot_seq_form.png" 
+			         width="50%"
+			         alt="Form to submit a protein sequence" /> 
+			  </a>
+			</td>
+                      </tr>
+		      
+		      <tr>
+			<td align="left" valign="top">
+			  <b>Figure 1.</b>
+			  <u><i>Input form</i></u>. Two options are avaialble to
+			  to submit a protein sequence: a) copy/paste the
+			  sequence, and b)upload a file with the sequence.
+			  The question marks next to each text field and 
+			  search parameter open a window with the respective
+			  help for that field.
+			</td>
+		      </tr>
+		    </table>
+		    <br /><br />
+
+		    <p>
+		      If you click on the link (<i><b>in fasta format</b></i>)
+		      on top of the input text fields. A window will open explaining
+		      the fasta format and an example sequence will be shown. Copy
+		      that sequence and paste it on the input box.
+		    </p>
+		    <br />
+		    
+		    <a name="output_fmt"></a>
+		    <h2>Blast search parameters</h2>
+
+		    <p>
+		      The parameters to control de blast search are shown in
+		      <a class="pl_general" href="#figure2">Figure 2</a>. 
+		      The option <b><i>Matches per page</i></b> indicates how many
+		      significant blast matches will be presented to the user
+		      once Blast finishes comparing the input sequence against
+		      all proteins in ProLinks. The parameter 
+		      <b><i>E-value</i></b> indicates the maximum E-value
+		      above which blast hits are not considered significant.
+		      <b><i>% of identities in Query</i></b> reflects the minimum 
+		      percentage of residues in the query protein 
+		      that must be identical to the residues in the 
+		      target protein. Normally this value should be close to
+		      one, indicating that most residues in the query were
+		      related to the target protein, thus increasing the 
+		      probability that both proteins carry out the same 
+		      function. <b><i>% of identities in Target</i></b>
+		      indicates the minimum percentage of residues in the 
+		      target protein that should be identical to the
+		      query protein. This value can be lower than 50% 
+		      to account for the possibility that the target is much
+		      bigger than the query, and that the target could actually
+		      be a fused protein. But depending on the query protein you
+		      may be intrested in proteins that are more or less the
+		      same size as the query.
+		    </p>
+
+                    <a name="figure2"></a>
+    	            <table width="70%" border="0px" cellpadding="5" cellspacing="0" align="center">                
+		      <tr>
+			<td align="center">
+			  <a href="images/pl_tut_blast_params.png" target="_blank">
+			    <img class="pl_tut_image" 
+			         src="images/pl_tut_blast_params.png" 
+			         width="50%"
+			         alt="Blast search parameters" /> 
+			  </a>
+			</td>
+                      </tr>
+		      
+		      <tr>
+			<td align="left" valign="top">
+			  <b>Figure 2.</b>
+			  <u><i>Search Parameters tab</i></u>. Available options
+			  are described above. Also, if you click on the
+			  question marks next to each field's description
+			  a pop-up window will open with the corresponding 
+			  explanation.
+			</td>
+		      </tr>
+		    </table>
+		    <br /><br />
+
+
+
+		    <br /><br />
+
+		    <a name="results"></a>
+		    <h2>Blast matches</h2>
+
+
+		    <p>
+		      Once you click on the <b>Blast Sequence</b> button.
+		      The sequence is submitted to our cluster to be 
+		      blasted against all proteins in ProLinks.
+		      <a class="pl_general" href="#figure3">Figure 3</a>, 
+		      illustrates how ProLinks presents the top blast
+		      matches for the query.
+		    </p>
+		    
+		    <a name="figure3"></a>
+    	            <table width="800px" border="0px" cellpadding="5" cellspacing="0" align="center">                
+		      <tr>
+			<td align="center" width="50%">
+			  <a href="images/pl_blast_results.png" target="_blank">
+			    <img class="pl_tut_image" 
+			         src="images/pl_blast_results.png" 
+			         width="60%"
+			         alt="Blast matches" /> 
+			  </a>
+			</td>
+                      </tr>
+		      
+		      <tr>
+			<td align="left" valign="top">
+			  <b>Figure 3.</b>
+			  <u><i>Top blast matches for query sequence</i></u>. 
+			  Blast results are presented in a table with the
+			  main columns: <b><i>E-value</i></b>, 
+			  <b><i>Query identities</i></b>, 
+			  <b><i>Target identities</i></b>, and
+			  <b><i>Alignment identities</i></b>. If you click on
+			  the header of any column a window will open
+			  with an explanation of the the values in that
+			  column. The whole table can be sorted by the values
+			  in any of the columns (click on the figure to see 
+			  the full size image).
+			</td>
+		    </table>
+		    <br />
+		    
+		    <p>
+		      Once you select the best match for your query you can submit
+		      the matched protein to ProLinks. In this
+		      case the first match produced 100% identities in the
+		      aligniment, query, and matched proteins, which indicates
+		      that the query Protein is actually contained in ProLinks and
+		      it only identified itself by running blast. 
+		    </p>
+
+		    <p>
+		      To submit the protein directly to ProLinks using default parameters
+		      click on the 
+		      <img style="vertical-align:middle;"
+			src="images/Dir_submission.png" 
+			width="37px"
+			alt="Direct sumission to ProLinks" /> icon. Alternatively, if you
+		      want to control the parameters of the submission, click on the
+		      <img style="vertical-align:middle;"
+			src="images/Adv_submission.png" 
+			width="37px"
+			alt="Advanced search" /> icon.
+		    </p>
+
+		    <br />
+		    
+		    <a name="page_navigation"></a>
+		    <h3>
+		      &nbsp;&nbsp;&nbsp;Page navigation
+		    </h3>
+		    
+		    <p>
+		      If your query returned more than one page of blast matches, 
+		      you will be able to browse through pages 
+		      of blast matches just like if you were navigating through 
+		      <a class="pl_general" href="page?id=pl_tut_keyword#navigation" 
+			target="_blank">pages of inferred linkages</a>. 
+		      Therefore, you can browse through 
+		      the matches by clicking in the arrows in the 
+		      footer of the  results table. Where <b>></b> takes you 
+		      to the <i>next page</i>, <b><</b> retrieves the 
+		      <i>previous page</i>, <b>>></b> sends you to the 
+		      <i>last page</i>, <b><<</b> takes you back to the 
+		      <i>first page</i>, and <b>all</b> presents all paths 
+		      found in one single page.
+		    </p>
+
+		    <br />
+
+
+		  </td>
+		</tr>
+	      </table>
+	    </td>
+	  </tr>
+
+	  
+
+	  <!-- The footer  -->
+	  <tr>
+	    <td class="pl_tutorial_header_row pl_arrow_cell">
+	      <a href="page?id=pl_tut_connect_path">
+		<img class="pl_tut_arrow" 
+		     src="images/pl_tut_left_arrow.png" 
+		     width="60px"
+		     alt="Previous tutorial" />
+	      </a>
+	    </td>
+
+	    <td class="pl_tutorial_header_row"> 
+	      <b>Tutorial Navigation bar</b>
+	      <br />
+	      (<a class="pl_general" href="page?id=pl_tut_adv_search">
+		Advanced search Tutorials</a>)
+	    </td>
+
+	    <td class="pl_tutorial_header_row pl_arrow_cell"> 
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    </td>
+	  </tr>
+	</table>
+      </div>
+
+
+      <!-- To avoid content be blocked by the footer -->
+      <br /><br /><br /><br /><br /><br /><br />

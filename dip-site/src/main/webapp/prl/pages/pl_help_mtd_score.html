@@ -1,0 +1,60 @@
+
+<link rel="stylesheet" type="text/css" href="skin/pfl/css/prolinks.css" />
+
+<p>
+  The values entered in these fields indicate the
+  worst acceptable thresholds for each inference method
+  implemented in ProLinks. Since the scores were
+  calculated using different methods, they have
+  different interpretations (see below). If you want to
+  prevent this score from being used, for example, and
+  rely only on the
+  <a class="pl_general" 
+      onclick="YAHOO.mbi.modal.help( 'Confidence value threshold', 'pl_help_cvalue' ); return false" 
+      href="">ProLinks score</a>,
+  enter any number greater than one to turn it off. 
+  For more details on how these scores were calculated, 
+  see the following descriptions and our main publication
+  (<a class="pl_general"
+	href="http://www.ncbi.nlm.nih.gov/pubmed/15128449"
+	target="_blank">2004, Genome
+      Biol. <b>5</b>(5):R35</a>):  
+</p>
+<ul>
+  <li>
+    <b>Phylogenetic Profiles (PP):</b> In short, this score
+    is a log ratio between two p-values.  The more
+    negative the value the more significant. For
+    specific details in the calculation of this score,
+    please see the report by Cokus et al
+    (<a class="pl_general"
+	href="http://www.ncbi.nlm.nih.gov/pubmed/17570150"
+	target="_blank">2007, BMC Bioinformatics <b>8</b>
+      (Suppl 4):S7</a>). ProLinks accepts values <i>&le;-10</i>. 
+    <br /><br />
+  </li>
+
+  <li>
+    <b>Gene Neighbor (GN):</b> This score is a p-value
+    estimated by combining multiple probabilities, which
+    results in very small values. ProLinks accepts values
+    <i>&le;1e-15</i>. 
+    <br /><br />
+  </li>
+
+  <li>
+    <b>Gene Cluster (GC):</b> This score is a p-value. The most
+    significant inferences are observed when the p-value is
+    <i>&le;0.01</i>. ProLinks accepts values <i>&le;0.02</i>. 
+    <br /><br />
+  </li>
+
+  <li>
+    <b>Rosetta Stone (RS):</b> This score is a
+    p-value. Similarly to the Gene Cluster method, the
+    most significant inferences are observed when the
+    p-value is <i>&le;0.01</i>. ProLins accepts any
+    value <i>&le;0.1</i>.
+    <br /><br />
+  </li>
+</ul>

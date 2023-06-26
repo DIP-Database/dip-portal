@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- ===========================================================================
+ # $Id:: jqrecord.xml 144 2009-06-21 22:36:41Z lukasz                          $
+ # Version: $Rev:: 144                                                         $
+ #==============================================================================
+ #                                                                             $
+ # struts2: jqdip package configuration                                        $
+ #                                                                             $
+ #========================================================================== -->
+                                                                           
+<struts>
+
+  <package name="jqdownload" extends="json-default" namespace="">
+
+<!-- =============================================================== Results -->
+
+    <result-types>
+      <result-type name="tiles" 
+                   class="org.apache.struts2.views.tiles.TilesResult"/>
+    
+      <result-type name="redirectAction"
+         class="org.apache.struts2.dispatcher.ServletActionRedirectResult"/>
+
+    </result-types>
+
+<!-- ========================================================== Interceptors -->
+        
+    <interceptors>
+     <interceptor name="menu" 
+         class="edu.ucla.mbi.util.struts.interceptor.MenuInterceptor"/>
+     <interceptor name="accession" 
+         class="edu.ucla.mbi.util.struts.interceptor.AccessionInterceptor"/>
+
+     <interceptor name="jsonTable" 
+         class="edu.ucla.mbi.util.struts.interceptor.YuiTableViewInterceptor"/>
+
+    </interceptors>
+
+<!-- =============================================================== Actions -->
+
+   <action name="">
+      <result>/index.jsp</result>
+   </action>
+
+  <!-- file download:  browse files -->   
+
+   <action name="download" class="downloadAction" >
+
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+     <interceptor-ref name="menu"/>
+     <interceptor-ref name="accession"/>
+     <interceptor-ref name="jsonTable"/>
+ 
+<!--     <result name="success" >download.jsp</result>     -->
+
+     <result name="success" type="tiles">download</result>
+     <result name="json"  type="json">
+       <param name="includeProperties">
+        jq.*,menu.*,tabData.*
+       </param>
+       <param name="noCache">true</param>
+     </result>
+
+   </action>
+
+ <!-- file download:  download a file -->
+
+  <action name="file" class="fileAction" >
+
+   <interceptor-ref name="defaultStack"/>
+   <interceptor-ref name="timer"/>
+   
+   <result name="success" type="stream">
+     <param name="inputName">fileStream</param>
+     <param name="bufferSize">1024</param>
+   </result>
+
+   <result name="noaccess" type="redirectAction">
+     <param name="actionName">page</param>
+     <param name="id">download</param>
+     <param name="mdf">0:0:1</param>
+     <param name="mst">1:2:0</param>
+     <param name="tbs">0:0</param>
+   </result>
+
+   <result name="nofile" type="redirectAction">
+     <param name="actionName">page</param>
+     <param name="id">download</param>
+     <param name="mdf">0:0:1</param>
+     <param name="mst">1:2:0</param>
+     <param name="tbs">0:0</param>
+   </result>
+   
+  </action>
+
+ </package>
+</struts>

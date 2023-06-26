@@ -1,0 +1,36 @@
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ebi.proxy.mbi.ucla.edu/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns3="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://mbi.ucla.edu/proxy/ebi" name="EbiCachingImplService" targetNamespace="http://ebi.proxy.mbi.ucla.edu/">
+  <wsdl:import location="http://10.1.1.112:8080/dip-proxy/ws/soap/ebi-service?wsdl=EbiProxyPortType.wsdl" namespace="http://mbi.ucla.edu/proxy/ebi">
+    </wsdl:import>
+  <wsdl:binding name="EbiCachingImplServiceSoapBinding" type="ns1:EbiProxyPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="getPicrList">
+      <soap:operation soapAction="http://dip.doe-mbi.ucla.edu/services/dxf14/getPicrList" style="document"></soap:operation>
+      <wsdl:input name="getPicrList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getPicrListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="ProxyFault">
+        <soap:fault name="ProxyFault" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getUniprot">
+      <soap:operation soapAction="http://dip.doe-mbi.ucla.edu/services/dxf14/getUniprot" style="document"></soap:operation>
+      <wsdl:input name="getUniprot">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getUniprotResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="ProxyFault">
+        <soap:fault name="ProxyFault" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EbiCachingImplService">
+    <wsdl:port binding="tns:EbiCachingImplServiceSoapBinding" name="EbiCachingImplPort">
+      <soap:address location="http://10.1.1.112:8080/dip-proxy/ws/soap/ebi-service"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

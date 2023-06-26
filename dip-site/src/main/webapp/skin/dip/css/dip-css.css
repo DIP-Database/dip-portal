@@ -1,0 +1,145 @@
+.search_option {
+  width:80em;
+  margin: 1em 0em 2em 1em;
+  border: 1px solid #5375A8;
+}
+
+.search_header { 
+  background-color: #FFFF99;
+  border-bottom: 1px solid #5375A8;
+  font-size: 1.2em;
+  font-weight: normal;
+  text-align: left;
+  margin: 0;
+  padding: 0.5em;  
+}
+.search_header_button {
+display: inline-block;
+font-size: 0.8em;
+
+padding: 0 7px 0 0;
+}
+
+.search_pattern_button {
+  display: inline-block;
+  font-size: 0.8em;
+  padding: 3px 7px 3px 0;
+}
+
+.search_body {
+  background-color: #E3EDFF;
+  font-size: 1em;
+  font-weight: normal;
+  padding: 8px;
+  text-align: left;
+  white-space: normal;
+}
+
+.search_separator {
+  background-color: #F3F7FF;
+  font-size: 0.9em;
+  font-style:italic;
+  padding: 8px;
+  text-align: center;
+  white-space: normal;
+}
+
+.search_legend {
+  background-color: #F3F7FF;
+  font-size: 0.9em;
+  padding: 4px;
+  text-align: left;
+  white-space: normal;
+}
+
+.search_query {
+  width: 60em;
+  font-size: 1em;
+  font-family: monospace;
+}
+
+.search_acc {
+  width: 10em;
+  font-size: 1em;
+  font-family: monospace;
+}
+/*****************
+ * Added by Zack
+ * 05/31/2013
+ *****************/
+.show{
+    display: block;
+}
+.hide{
+    display: none;
+}
+.toggleClosed
+{
+    background: url(/dip-site/yui/2.9.0/build/datatable/assets/skins/sam/arrow_closed.png) 0 6px no-repeat;
+    height: 20px
+}
+.toggleOpen
+{
+    background: url(/dip-site/yui/2.9.0/build/datatable/assets/skins/sam/arrow_open.png) 0 6px no-repeat;
+    height: 20px
+}
+
+	/* Hide only visually, but have it available for screenreaders www.webaim.org/techniques/css/invisiblecontent/ */
+.hidden 
+{
+    position:absolute !important;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */ 
+    clip: rect(1px, 1px, 1px, 1px); 
+}
+    
+.hidetext
+{ 
+    display:block;
+    text-indent:-999em;
+    overflow:hidden; 
+    background-repeat: no-repeat 
+}
+	/* Clear floats */
+.group:after 
+{ 
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden; 
+}
+.group 	 
+{ 
+    display: inline-block; 
+}
+.group
+{ 
+    display: block; 
+}
+	/* Apply .center to parent of element that needs centering */
+.center  
+{
+    text-align:center 
+} 
+	/* .img_noborder is a useless class. It is currently used on CI Home page and should be removed then fixed */		
+.img_noborder  { border: 0 }
+	/* Float elements */
+.align-left 
+{
+    float: left; 
+    margin: 0 10px 1em 0; 
+}
+.align-right 
+{ 
+    float: right; 
+    margin: 0 0 1em 10px;
+}
+.shim{clear: both;} 	
+
+.dip-page-main{
+    font-size: 1em;
+    width:80em;
+}
+
+
+

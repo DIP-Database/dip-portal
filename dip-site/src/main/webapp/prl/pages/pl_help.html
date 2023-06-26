@@ -1,0 +1,321 @@
+
+    <link rel="stylesheet" type="text/css" href="skin/pfl/css/prolinks.css" />
+      
+      <div id="pl_help_page">
+
+	<table class="pl_outer_frame">
+
+	  <!-- The header -->
+	  <tr>
+	    <th class="pl_help_title_row">
+	      ProLinks Help
+	    </th>
+	  </tr>
+
+	  <!-- The body of the page -->
+	  <tr>
+	    <td class="pl_help_body_row">
+	      <table class="pl_help_inner_frame">
+		<tr>
+		  <td class="pl_help_info_data">
+
+		    <br />
+		    <h2> How to make a query</h2>
+
+		    <p>
+		      There are <b>five</b> types of queries you can submit to 
+		      ProLinks:
+		    </p>
+
+		    <ul>
+		      <li>
+			<a class="pl_general" href="page?id=pl_db_id"
+			  target="_blank">Submit keywords associated with a protein</a>:
+			Keywords can be protein identifiers 
+			(<a class="pl_general" 
+			  onclick="YAHOO.mbi.modal.help( 'Protein Identifiers', 'pl_help_pid' ); return false" 
+			  href="">click here</a> for a list of supported IDs), gene names,
+			protein names, genome names, words or phrases describing function, 
+			etc. If your query identify only one protein, it is directly used to 
+			search for functional linkages. If your query returns multiple 
+			proteins, you will be presented with a list of matches and you will 
+                         have to manually select one protein to search for functional 
+			linkages.
+			<br /><br />
+
+			For queries submitted directly from the 
+			<a class="pl_general" href="prolinks.jsp"
+			   targe="_blank">main page</a>, only default settings 
+			are used. However, there are forms for
+			<a class="pl_general" href="page?id=pl_query"
+			  targe="_blank">advanced searches</a> where parameters 
+			can be fine tuned as you see fit.
+			<br /><br />
+
+			Inferred linkages are presented in a table that also 
+			includes a link to visualize the network of functional 
+			interactions using <a class="pl_general" 
+			  href="http://www.cytoscape.org" 
+			  target="_blank">Cytoscape</a> (see the
+			<a class="pl_general" href="page?id=pl_tut_db_id#cytoscape"
+			  target="_blank">tutorial</a> for further
+			details). Each link can also be directly submitted to ProLinks, 
+			and each of the columns in the table can be sorted in ascending
+			or descending order.<br /> <br />
+			
+
+			Queries can be typed in the <a class="pl_general" 
+			  href="http://prolinks.mbi.ucla.edu" 
+			  target="_blank">main page</a>, or in the text box located
+			in the top right corner of  almost any page (e.g. this page or any 
+			<a class="pl_general" 
+			    href="page?id=pl_db_id" 
+			  target="_blank">advanced form</a>) linked in the main page  
+			(see figure below and the 
+			<a class="pl_general" href="page?id=pl_tut_mainpage"
+			  target="_blank">homepage tutorial</a>).
+			<br /> <br />
+			
+		    <div style="width: 80%; margin: auto;">
+		      <a name="figure8"></a>
+		      <table border="0px" cellpadding="5" cellspacing="0">                
+			<tr>
+			  <td align="center" width="60%">
+			    <a href="images/pl_simple_search_1.png" target="_blank">
+			      <img class="pl_tut_image" 
+                                     src="images/pl_simple_search_1.png" 
+				   width="60%"
+				     alt="About ProLinks" /> 
+			    </a>
+			  </td>
+			  
+			  <td align="center" valign="center" width="40%">
+			    <a href="images/pl_simple_search_2.png" 
+			      target="_blank">
+			      <img class="pl_tut_image" 
+                                     src="images/pl_simple_search_2.png" 
+				   width="70%"
+				     alt="Infernece method description" /> 
+			    </a>
+			  </td>
+			</tr>
+
+			<tr>
+			  <td align="left" valign="center" colspan="2">
+			    <b> Submit queries to ProLinks.</b> Search boxes where 
+			    you can write queries. <b>Left.</b> The search box in the 
+			    <a class="pl_general" href="prolinks.jsp">homepage</a>.
+			    <b>Right.</b> The search box at the top right corner
+			    in all other ProLinks related pages. Click on the boxes 
+			    to see a full resolution version of the images.
+
+			  </td>
+			</tr>
+		      </table>
+		    </div>
+
+		    <br />
+
+		    Find below a few examples you can use to query ProLinks. Click on
+		   <b><i>Submit query!</i></b> link to see the results.
+
+
+		    <br /><br />
+
+		    <div style="width: 80%; margin: auto;">
+		      <table cellpadding="5px" cellspacing="0px">
+		      
+			<tr>
+			  <td style="background: #FFEBCD; text-align: center;" width="40%"><b>Description</b></td>
+			  <td style="background: #FFEBCD; text-align: center;" width="40%"><b>Query</b></td>
+			  <td style="background: #FFEBCD; text-align: center;" width="20%"></td>
+			</tr>
+
+
+			<tr>
+			  <td align="center">
+			    Submit a protein ID (Refseq). ID is unique therefore it is 
+			    directly searched for functional linkages
+			  </td>
+			  <td align="center">NP_414777</td>
+			  <td align="center">&nbsp;&nbsp;
+			    <a class="pl_general" 
+			      href="php_query?form=main&input=NP_414777" 
+			      target="_blank">Submit query!</a>
+			  </td>
+			</tr>
+
+			<tr>
+			  <td style="background: #FFF8DC;" align="center">
+			    Submit a gene name and its genome. Since there are several
+			    Escherichia genomes, there are several matches.
+			  </td>
+			  <td style="background: #FFF8DC;" align="center">
+			    <i>proB <b> </b> Escherichia</i>
+			    <br /><br />
+			    AND logic is used by defatult, but this 
+			    alternative syntax can also be used:
+			    <br /><br />
+			    <i>
+                             prob <b>AND</b> Escherichia<br />
+			     +proB +Escherichia
+			    </i>
+			  </td>
+			  <td style="background: #FFF8DC;" align="center">
+			    <a class="pl_general" 
+			      href="php_query?form=main&input=proB+AND+Escherichia" 
+			      target="_blank">Submit query!</a>
+			  </td>
+			</tr>
+
+
+			<tr>
+			  <td align="center">
+			    Submit a protein name. If no genome is specified, 
+			    the results will include all proteins in all 
+			    genomes annotated with the same name. 
+			  </td>
+			  <td align="center">glutamylphosphate</td>
+			  <td align="center">
+			    <a class="pl_general" 
+			      href="php_query?form=main&input=glutamylphosphate" 
+			      target="_blank">Submit query!</a>
+			  </td>
+			</tr>
+
+			<tr>
+			  <td style="background: #FFF8DC;" align="center">
+			    Submit a protein function. Identify all proteins in 
+			    <i>E. coli</i> K12  MG1655 annotated as participating in
+			    proline biosynthesis. The genome can be uniquely identified 
+			    by typing the substrain (+MG1655) since there are currently
+			    3 <i>E. coli</i> K12 strains in ProLinks.
+			  </td>
+
+			  <td style="background: #FFF8DC;" align="center">proline biosynthesis MG1655</td>
+			  <td style="background: #FFF8DC;" align="center">
+			    <a class="pl_general" 
+			      href="php_query?form=main&input=proline biosynthesis MG1655" 
+			      target="_blank">
+			      Submit query!
+			    </a>
+			  </td>
+			</tr>
+		    </table>  
+		    </div>
+		    <br />
+
+		  </li>
+		    
+		    <li><a class="pl_general" 
+			href="page?id=pl_mult_prot" target="_blank">
+			Get links for multiple proteins</a>
+		      you can run queries for multiple proteins by
+		      entering a list of public database protein
+		      identifiers, or by uploading a file with the
+		      identifiers (<a class="pl_general" 
+			onclick="YAHOO.mbi.modal.help( 'Format for multiple protein IDs', 'pl_help_mult_prot_fmt' ); return false" 
+			href="">see valid formats</a>). Results are returned 
+		      by e-mail
+		      (<a class="pl_general" href="page?id=pl_tut_mult_prot" 
+			target="_blank">click here to see the tutorial</a>).
+		      <br /><br />
+		    </li>
+
+		    <li><a class="pl_general" 
+			href="page?id=pl_common" target="_blank">
+			Find links shared between proteins:</a>
+		      Submit several protein database identifiers to find out if
+		      they share any functional linkages. The list of
+		      identifiers can be directly entered or uploaded in a
+		      file (<a class="pl_general" 
+			onclick="YAHOO.mbi.modal.help( 'Format for multiple protein IDs', 'pl_help_mult_prot_fmt' ); return false" 
+			href="">see valid formats</a>). For more details
+		      <a class="pl_general" href="page?id=pl_tut_common_prot" 
+			target="_blank">visit the tutorial</a>.
+		      <br /><br />
+		    </li>
+
+		    <li><a class="pl_general" 
+			href="page?id=pl_connections" target="_blank">
+			Find links connecting two proteins:</a>
+		      Submit two protein database identifiers to identify
+		      if there are other proteins functionally linking
+		      them (a path in a network of functional linkages
+		      connecting the two proteins).  <a class="pl_general" 
+			href="page?id=pl_tut_connect_path" target="_blank">Click 
+			here</a> to see the tutorial.
+		      <br /><br />
+		    </li>
+
+
+		    <li><a class="pl_general" 
+			href="page?id=pl_prot_seq" target="_blank">
+			Submit a protein sequence:</a>
+		      If you only have the amino acid sequence of your protein
+		      of interest (in  <a class="pl_general" 
+			onclick="YAHOO.mbi.modal.help( 'Fasta format', 'pl_help_fasta_fmt' ); return false" 
+			href="">fasta format</a>), you can submit it to ProLinks.
+		      A list of candidate homologous proteins will be returned, 
+		      and you can select the protein that best represents your
+		      sequence to search for functional linkages
+		      (<a class="pl_general" 
+			  href="page?id=pl_tut_prot_seq" target="_blank">click 
+			  here</a> to see the tutorial).
+		      <br /><br />
+		    </li>
+		  </ul>
+
+
+		    <b>How to download ProLinks</b><br />
+		    <a class="pl_general" href="page?id=pl_download">Find here</a> 
+		    the instructions and formats in which all
+		    ProLinks inferences can be downloaded. 
+		    <br /><br /><br />
+		    
+
+		    <b>Finding help</b><br />
+		    In this section you will find:
+
+		    <ul>
+		      <li><a class="pl_general" href="page?id=pl_tutorial">Tutorials</a>
+			with step-by-step examples illustrating the different queries that can be
+			submitted to ProLinks.
+			<br /><br />
+		      </li>
+
+		      <li>
+			This <a class="pl_general" href="page?id=pl_help">help page</a>.
+			<br /><br />
+		      </li>
+
+		      <li>
+			An <a class="pl_general" href="page?id=pl_about">About page</a> 
+			with a short paragraph describing the whole ProLinks system.
+			<br /><br />
+		      </li>
+
+		      <li>
+			A page discribing 
+			<a class="pl_general" href="page?id=pl_statistics">ProLinks statistics</a>:
+			website accesses and database contents.
+			<br /><br />
+		      </li>
+
+		      <li>
+			An <a class="pl_general" href="page?id=pl_acknowledgments">
+			  Acknowledgments page</a> 
+			with a list of all the contributors to ProLinks.
+			<br /><br />
+		      </li>
+		    </ul>
+		  </td>
+		</tr>
+	      </table>
+	    </td>
+	  </tr>
+	</table>
+      </div>
+
+
+      <br /><br /><br /><br /><br /><br /><br /><br /><br />

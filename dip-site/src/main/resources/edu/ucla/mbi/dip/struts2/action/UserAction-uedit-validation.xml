@@ -1,0 +1,44 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+       "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+
+
+ <field name="user.firstName">
+  <field-validator type="requiredstring">
+   <message>First name cannot be empty.</message>
+  </field-validator>
+  <field-validator type="stringlength">
+   <param name="min">2</param>
+   <param name="max">64</param>
+   <message>The first name must be between 2 and 64 characters long.</message>
+  </field-validator>
+ </field>
+
+ <field name="user.lastName">
+  <field-validator type="requiredstring">
+   <message>Last name cannot be empty.</message>
+  </field-validator>
+  <field-validator type="stringlength">
+   <param name="min">2</param>
+   <param name="max">64</param>
+   <message>The last name must be between 2 and 64 characters long.</message>
+  </field-validator>
+ </field>
+
+ <field name="user.affiliation">
+  <field-validator type="requiredstring">
+   <message>Last name cannot be empty.</message>
+  </field-validator>
+ </field>
+
+ <field name="user.email">
+  <field-validator type="requiredstring">
+   <message>You must provide a valid email address.</message>
+  </field-validator>
+  <field-validator type="email">
+   <message>You must provide a valid email address.</message>
+  </field-validator>
+ </field>
+
+
+</validators>

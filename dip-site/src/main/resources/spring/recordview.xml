@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+ <bean id="jqRecordView" scope="prototype" init-method="initialize"
+       class="edu.ucla.mbi.util.struts.interceptor.TableViewContext">
+                                                                           
+  <!-- TABLE DEFINITIONS -->
+                                                                           
+  <property name="tables">
+   <map>                                           <!-- table definition: -->
+    <entry key="node-list">                         <!--     table name    -->
+     <map>
+      <entry key="idfield" value="id"/>    <!-- default: first field name -->   
+      <entry key="labelfield" value="id"/> <!-- default: first field name -->
+
+      <entry key="fields">                            <!-- list of fields -->
+       <list>              
+        <map>
+         <entry key="field">                        <!-- field identifier -->
+          <value>id</value>                   <!-- default: list position -->
+         </entry>          
+         <entry key="name" value="ID"/>            <!-- field column name -->
+         <entry key="value">                             <!-- field value -->
+          <value>ac</value>                         <!-- OGML expression  -->
+         </entry>
+         <entry key="type">                               <!-- field type -->
+          <value>text</value>                          <!-- default: text -->
+         </entry>
+         <entry key="show">                        <!-- displayable field -->
+           <value>true</value>                          <!-- default:true -->
+         </entry>
+         <entry key="width"  value="120px"/>
+         <entry key="select" value="true"/>
+         <entry key="hidden" value="true"/>
+
+        </map>
+
+        <map>
+         <entry key="field">                        <!-- field identifier -->
+          <value>1</value>                    <!-- default: list position -->
+         </entry>          
+         <entry key="name" value="Node"/>            <!-- field column name -->
+         <entry key="value">                             <!-- field value -->
+          <value>ac</value>                         <!-- OGML expression  -->
+         </entry>
+         <entry key="type">                               <!-- field type -->
+          <value>url</value>                           <!-- default: text -->
+         </entry>
+         <entry key="show">                        <!-- displayable field -->
+          <value>true</value>                           <!-- default:true -->
+         </entry>
+         <entry key="width" value="90px"/>              <!-- column width -->
+         <entry key="hidden">                          <!-- hidden column -->
+          <value>false</value>                        <!-- default: false -->
+         </entry>
+         <entry key="resize" value="true"/>         <!-- resizable column -->
+         <entry key="sort" value="false"/>            <!-- sortable column -->    
+         <entry key="formatter">                    <!-- column formatter -->
+          <value>center</value>                        <!-- default: none -->
+         </entry>
+         <entry key="select">                     <!-- select tab present -->
+          <value>false</value>                        <!-- default: false -->
+         </entry>
+         <entry key="url">                        <!-- target url pattern --> 
+          <value>record?ac=%VAL%&amp;dl=full&amp;mdf=0:0:0&amp;mst=1:1:1</value>
+         </entry>
+         <entry key="urlvalue">
+         <value>label</value> 
+         </entry>
+        </map>
+
+        <map>
+         <entry key="name"   value="Description"/>
+         <entry key="value"  value="name"/>
+         <entry key="width"  value="300px"/>
+         <entry key="resize" value="true"/>         <!-- resizable column -->
+         <entry key="sort" value="false"/>            <!-- sortable column -->
+        </map>
+
+        <map>
+         <entry key="name" value="Organism"/>
+         <entry key="value">
+          <value>xrefList.xref.{?#this.typeAc=='dxf:0007'}[0].ac</value>                     
+         </entry>
+         <entry key="width"  value="150px"/>       
+         <entry key="select" value="true"/>
+         <entry key="url">
+          <value>elink?ns=taxid&amp;ac=%VAL%</value>
+         </entry>
+         <entry key="urlvalue">
+          <value>xrefList.xref.{?#this.typeAc=='dxf:0007'}[0].node.label</value>                     
+         </entry>
+         <entry key="filter" value="true"/>
+         <entry key="filter-type" value="select"/>
+         <entry key="filter-value">
+          <value>xrefList.xref.{?#this.typeAc=='dxf:0007'}[0].ac</value>
+         </entry>
+         <entry key="filter-label">
+          <value>xrefList.xref.{?#this.typeAc=='dxf:0007'}[0].node.label</value>
+         </entry>
+         <entry key="select" value="true"/>
+         <entry key="resize" value="true"/>         <!-- resizable column -->
+         <entry key="sort" value="false"/>            <!-- sortable column --> 
+        </map>
+
+        <map>
+         <entry key="name" value="Uniprot ID"/>
+         <entry key="value">
+          <value>xrefList.xref.{?#this.ns=='uniprot'}[0].ac</value>                    
+         </entry>
+         <entry key="width" value="100px"/>
+         <entry key="type">
+          <value>url</value>          <!-- defaults to url if url present -->
+         </entry>
+         <entry key="url">
+          <value>elink?ns=uniprot&amp;ac=%VAL%</value> 
+         </entry>
+         <entry key="select" value="true"/>
+        </map>
+
+        <map>
+         <entry key="name" value="RefSeq ID"/>
+         <entry key="value">
+          <value>xrefList.xref.{?#this.ns=='refseq'}[0].ac</value>                    
+         </entry>
+         <entry key="width" value="100px"/>
+         <entry key="url">
+          <value>elink?ns=refseq&amp;ac=%VAL%</value> 
+         </entry>
+         <entry key="select" value="true"/>
+        </map>
+
+        <map>
+         <entry key="name" value="Gene ID"/>
+         <entry key="value">
+          <value>xrefList.xref.{?#this.ns=='entrezgene'}[0].ac</value>                    
+         </entry>
+         <entry key="width" value="100px"/>
+         <entry key="url">
+          <value>elink?ns=entrezgene&amp;ac=%VAL%</value> 
+         </entry>
+         <entry key="select" value="true"/>
+        </map>
+       </list>
+
+      </entry>
+     </map>     
+    </entry>
+
+    <entry key="edge-list">                          <!--     table name    -->
+     <map>
+      <entry key="idfield" value="id"/>    <!-- default: first field name -->
+      <entry key="labelfield" value="id"/> <!-- default: first field name -->
+
+      <entry key="fields">                            <!-- list of fields -->
+       <list>
+        <map>
+         <entry key="field" value="id"/>            <!-- field identifier -->
+         <entry key="value" value="ac"/>                 <!-- field value -->
+         <entry key="show" value="false"/>         <!-- displayable field -->
+        </map>
+
+        <map>
+         <entry key="name" value="DIP ID"/>        <!-- field column name -->
+         <entry key="value" value="ac"/>                 <!-- field value -->
+         <entry key="width" value="120px"/>              <!-- column width -->
+         <entry key="resize" value="true"/>         <!-- resizable column -->         
+         <entry key="url">                        <!-- target url pattern -->
+          <value>record?ac=%VAL%&amp;dl=full&amp;mdf=0:0:0&amp;mst=1:1:1</value>
+         </entry>
+        </map>
+
+        <map>
+         <entry key="name" value="Type"/>
+         <entry key="value">
+          <value>attrList.attr.{?#this.ac=='dip:0001'}[0].value.value</value>
+         </entry>
+         <entry key="width" value="120px"/>
+         <entry key="select" value="true"/>
+         <entry key="resize" value="true"/>         <!-- resizable column -->
+
+         <entry key="filter" value="true"/>
+         <entry key="filter-type" value="select"/>
+         <entry key="filter-value">
+          <value>attrList.attr.{?#this.ac=='dip:0001'}[0].value.ac</value>
+         </entry>
+         <entry key="filter-label">
+          <value>attrList.attr.{?#this.ac=='dip:0001'}[0].value.value</value>
+         </entry>
+
+        </map>
+
+        <map>
+         <entry key="name" value="Partner Count"/>
+         <entry key="value">
+         <value>(partList.part.size)</value>
+         </entry>
+         <entry key="width" value="80px"/>
+         <entry key="resize" value="true"/>
+        </map>
+
+        <map>
+         <entry key="name" value="Partner List"/>
+         <entry key="width" value="100px"/>
+         <entry key="type" value="list"/>
+         <entry key="list">
+          <value>partList.part</value>
+         </entry>
+         <entry key="value">
+          <value>node.ac</value> 
+         </entry>
+
+         <entry key="url">                  
+          <value>record?ac=%VAL%&amp;dl=full&amp;mdf=0:0:0&amp;mst=1:1:1</value>
+         </entry>
+         <entry key="urlvalue">
+         <value>node.label</value> 
+         </entry>
+         <entry key="resize" value="true"/>
+        </map>
+
+        <map>
+         <entry key="name" value="Quality Status"/>
+         <entry key="value">
+          <value>attrList.attr.{?#this.ac=='dip:0304'}[0].value.value</value>
+         </entry>
+         <entry key="width" value="80px"/>
+         <entry key="select" value="true"/>
+         <entry key="resize" value="true"/>         <!-- resizable column -->
+       
+         <entry key="filter" value="true"/>
+         <entry key="filter-type" value="select"/>
+         <entry key="filter-value">
+          <value>attrList.attr.{?#this.ac=='dip:0304'}[0].value.ac</value>
+         </entry>
+         <entry key="filter-label">
+          <value>attrList.attr.{?#this.ac=='dip:0304'}[0].value.value</value>
+         </entry>
+         
+        </map>
+
+        <map>                     
+         <entry key="name" value="Evidence Count"/>
+         <entry key="value">
+         <value>(xrefList.xref.{?#this.typeAc=='dxf:0008'}.size+xrefList.xref.{?#this.typeAc=='dxf:0021'}.size)</value>
+         </entry>
+         <entry key="width" value="100px"/>
+         <entry key="resize" value="true"/>
+        </map>
+<!--
+        <map>
+         <entry key="name" value="Partner A"/>
+         <entry key="value">
+          <value>partList.part.{?#this.id==3}[0].node.ac</value> 
+         </entry>
+         <entry key="width" value="100px"/>
+         <entry key="url">
+          <value>record?ac=%VAL%&amp;dl=full&amp;mdf=0:0:0&amp;mst=1:1:1)</value>
+         </entry>
+         <entry key="urlvalue">
+         <value>partList.part.{?#this.id==3}[0].node.label </value> 
+         </entry>
+        </map>
+        
+        <map>
+         <entry key="name" value="Partner B"/>
+         <entry key="value">
+         <value>partList.part.{?#this.id==5}[0].node.ac </value> 
+         </entry>
+         <entry key="width" value="100px"/>
+         <entry key="url">
+          <value>record?ac=%VAL%&amp;dl=full&amp;mdf=0:0:0&amp;mst=1:1:1</value>
+         </entry>
+         <entry key="urlvalue">
+         <value>partList.part.{?#this.id==5}[0].node.label</value> 
+         </entry>
+        </map>
+-->
+
+       </list>
+      </entry>
+     </map>
+    </entry>
+
+    <entry key="evidence-list">                     <!--     table name    -->
+     <map>
+      <entry key="idfield" value="id"/>    <!-- default: first field name -->
+      <entry key="labelfield" value="id"/> <!-- default: first field name -->
+
+      <entry key="fields">                            <!-- list of fields -->
+       <list>
+        <map>
+         <entry key="field" value="id"/>            <!-- field identifier -->
+         <entry key="value" value="ac"/>                 <!-- field value -->
+         <entry key="show" value="false"/>         <!-- displayable field -->
+        </map>
+
+        <map>
+         <entry key="name" value="DIP ID"/>        <!-- field column name -->
+         <entry key="value" value="ac"/>                 <!-- field value -->
+         <entry key="width" value="120px"/>              <!-- column width -->
+         <entry key="url">                        <!-- target url pattern -->
+          <value>record?ac=%VAL%&amp;dl=full&amp;mdf=0:0:0&amp;mst=1:1:1</value>
+         </entry>
+        </map>
+
+        <map>
+         <entry key="name" value="Method"/>
+         <entry key="value">
+          <value>attrList.attr.{?#this.ac=='MI:0001'}[0].value.value</value>
+         </entry>
+         <entry key="width" value="200px"/>
+         <entry key="select" value="true"/>
+         <entry key="filter" value="true"/>
+         <entry key="filter-type" value="select"/>
+         <entry key="filter-value">
+          <value>attrList.attr.{?#this.ac=='MI:0001'}[0].value.ac</value>
+         </entry>
+         <entry key="filter-label">
+          <value>attrList.attr.{?#this.ac=='MI:0001'}[0].value.value</value>
+         </entry>
+         <entry key="resize" value="true"/>         
+        </map>
+
+        <map>
+         <entry key="name" value="Scale"/>
+         <entry key="value">
+          <value>attrList.attr.{?#this.ac=='dip:0003'}[0].value.value</value>
+         </entry>
+         <entry key="width" value="100px"/>
+         <entry key="select" value="true"/>
+         <entry key="filter" value="true"/>
+         <entry key="filter-type" value="select"/>
+          <entry key="filter-value">
+          <value>attrList.attr.{?#this.ac=='dip:0003'}[0].value.ac</value>
+         </entry>
+          <entry key="filter-label">
+          <value>attrList.attr.{?#this.ac=='dip:0003'}[0].value.value</value>
+         </entry>
+        </map>
+
+        <map>
+         <entry key="name" value="Interaction Type"/>
+         <entry key="value">
+          <value>attrList.attr.{?#this.ac=='dip:0001'}[0].value.value</value>
+         </entry>
+         <entry key="width" value="150px"/>
+         <entry key="select" value="true"/>
+         <entry key="filter" value="true"/>
+         <entry key="filter-type" value="select"/>
+         <entry key="filter-value">
+          <value>attrList.attr.{?#this.ac=='dip:0001'}[0].value.ac</value>
+         </entry>
+         <entry key="filter-label">
+          <value>attrList.attr.{?#this.ac=='dip:0001'}[0].value.value</value>
+         </entry>
+        </map>
+
+        <map>
+         <entry key="name" value="Imex ID"/>
+         <entry key="value">
+          <value>xrefList.xref.{?#this.typeAc=='dxf:0009'}[0].ac</value>
+         </entry>
+         <entry key="width" value="90px"/>
+         <entry key="url">
+          <value>???</value>
+         </entry>
+        </map>
+
+       <map>
+         <entry key="name" value="Article"/>
+         <entry key="value">
+          <value>xrefList.xref.{?#this.typeAc=='dxf:0014'}.{?#this.ns=='dip'}[0].ac</value>
+         </entry>
+         <entry key="width" value="100px"/>
+         <entry key="url">
+          <value>record?ac=%VAL%&amp;dl=full&amp;mdf=0:0:0&amp;mst=1:1:1</value>
+         </entry>
+        </map>
+
+        <map>
+         <entry key="name" value="PubMed"/>
+         <entry key="value">
+          <value>xrefList.xref.{?#this.typeAc=='dxf:0014'}.{?#this.ns=='PubMed'}[0].ac</value>
+         </entry>
+         <entry key="width" value="100px"/>
+         <entry key="url">
+          <value>elink?ns=pubmed&amp;ac=%VAL%</value>
+         </entry>
+        </map>
+
+       </list>
+      </entry>
+     </map>
+    </entry>
+
+    <entry key="source-list">                     <!--     table name    -->
+     <map>
+      <entry key="idfield" value="id"/>    <!-- default: first field name -->
+      <entry key="labelfield" value="id"/> <!-- default: first field name -->
+
+      <entry key="fields">                            <!-- list of fields -->
+       <list>
+        <map>
+         <entry key="field" value="id"/>            <!-- field identifier -->
+         <entry key="value" value="ac"/>                 <!-- field value -->
+         <entry key="show" value="false"/>         <!-- displayable field -->
+        </map>
+
+<!-- 
+        <map>
+         <entry key="name" value="DIP ID"/>      
+         <entry key="value" value="ac"/>            
+         <entry key="width" value="120px"/>           
+         <entry key="url">                    
+          <value>record?ac=%VAL%&amp;dl=full&amp;mdf=0:0:0&amp;mst=1:1:1</value>
+         </entry>
+        </map>
+ -->
+ 
+        <map>
+         <entry key="name" value="Publication"/>
+         
+         <entry key="value" value="ac"/>
+         <entry key="width" value="80px"/>
+         <entry key="url">                        <!-- target url pattern -->
+          <value>record?ac=%VAL%&amp;dl=full&amp;mdf=0:0:0&amp;mst=1:1:1</value>
+         </entry>
+         <entry key="urlvalue">                        <!-- target url pattern -->
+          <value>name</value>
+         </entry>
+         <entry key="resize" value="true"/>         <!-- resizable column -->
+         <entry key="sort" value="true"/>            <!-- sortable column -->
+        </map>
+
+        <map>
+         <entry key="name" value="Title"/>
+         <entry key="value">
+          <value>attrList.attr.{?#this.ac=='dip:0004'}[0].value.value</value>
+         </entry>
+         <entry key="width" value="250px"/>
+         <entry key="resize" value="true"/>         <!-- resizable column -->
+         <entry key="sort" value="true"/>            <!-- sortable column -->
+        </map>
+
+        <map>
+         <entry key="name" value="Authors"/>
+         <entry key="value">
+          <value>attrList.attr.{?#this.ac=='dip:0010'}[0].value.value</value>
+         </entry>
+         <entry key="width" value="250px"/>
+         <entry key="resize" value="true"/>         <!-- resizable column -->
+         <entry key="sort" value="true"/>            <!-- sortable column -->
+        </map>
+
+        <map>
+         <entry key="name" value="Journal"/>
+         <entry key="value">
+          <value>attrList.attr.{?#this.ac=='dip:0009'}[0].value.value</value>
+         </entry>
+         <entry key="width" value="80px"/>
+
+
+         <entry key="resize" value="true"/>         <!-- resizable column -->
+       
+         <entry key="filter" value="true"/>
+         <entry key="filter-type" value="select"/>
+         <entry key="filter-value">
+          <value>attrList.attr.{?#this.ac=='dip:0009'}[0].value.value</value>
+         </entry>
+         <entry key="filter-label">
+          <value>attrList.attr.{?#this.ac=='dip:0009'}[0].value.value</value>
+         </entry>
+
+
+        </map>
+
+        <map>
+         <entry key="name" value="Year"/>
+         <entry key="value">
+          <value>attrList.attr.{?#this.ac=='dip:0013'}[0].value.value</value>
+         </entry>
+         <entry key="width" value="40px"/>
+         <entry key="sort" value="true"/>            <!-- sortable column -->
+
+         <entry key="resize" value="true"/>         <!-- resizable column -->
+       
+         <entry key="filter" value="true"/>
+         <entry key="filter-type" value="select"/>
+         <entry key="filter-value">
+          <value>attrList.attr.{?#this.ac=='dip:0013'}[0].value.value</value>
+         </entry>
+         <entry key="filter-label">
+          <value>attrList.attr.{?#this.ac=='dip:0013'}[0].value.value</value>
+         </entry>
+
+        </map>
+
+        <map>
+         <entry key="name" value="Pubmed ID"/>
+         <entry key="value">
+          <value>xrefList.xref.{?#this.typeAc=='dxf:0009'}[0].ac</value>
+         </entry>
+         <entry key="width" value="90px"/>
+         <entry key="url">
+          <value>elink?ns=pubmed&amp;ac=%VAL%</value>
+         </entry>
+        </map>
+
+       </list>
+      </entry>
+     </map>
+    </entry>
+
+   </map>
+  </property>
+ </bean>
+</beans>

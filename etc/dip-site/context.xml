@@ -1,0 +1,13 @@
+<Context>
+
+ <Valve className="org.apache.catalina.valves.AccessLogValve"
+                   fileDateFormat="yyyy-MM-dd"
+                   prefix="dip-site-access." suffix=".log"/>
+
+ <Resource name="jdbc/dipuser" type="javax.sql.DataSource"
+                     auth="Container"
+                     driverClassName="org.postgresql.Driver"
+                     username="dip" password="444dip444"
+                     url="jdbc:postgresql://10.1.1.12:5432/dip_auth"
+                     maxIdle="2" maxWait="5000" maxActive="4"/>
+</Context>

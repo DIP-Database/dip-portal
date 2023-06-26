@@ -1,0 +1,700 @@
+{
+  pageConfig:{
+    "pathregex":"^/prl/pages/[a-zA-Z0-9_\\-\\./]+$",
+    "idregex":"^[a-zA-Z0-9_\\-]+$",
+    "imgpath":"/prl/images",
+    "pages":{
+     "template":{
+        "active":"true",
+        "title":"",
+        "showtitle":"false",
+        "showcomment":"false",
+        "skin":"",
+        "menusel":"0:0:0",
+        "viewtype":"file-html",
+        "viewpath":"/prl/pages/template.html",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+      },
+
+      "newpage":{
+        "active":"true",
+        "title":"New Page",
+        "showtitle":"true",
+        "showcomment":"false",
+        "skin":"prl",
+        "menusel":"0:0:0",
+        "viewtype":"file-html",
+        "viewpath":"/skin/pages/newpage.html",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+      },
+
+      "pl_data":{
+        "menusel":"1:0:0",
+        "title":"ProLinks Data",
+        "viewpath":"/prl/pages/pl_data.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+      "pl_query":{
+        "menusel":"1:1:0",
+        "title":"Advanced Searches",
+        "viewpath":"/prl/pages/pl_query.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+      "pl_db_id":{
+        "menusel":"1:1:1",
+        "title":"Submit protein-related keywords",
+        "viewpath":"/prl/pages/pl_db_id.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "main":{
+        "menusel":"1:1:1",
+        "title":"Submit protein-related keywords",
+        "viewpath":"/prl/pages/pl_db_id.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_mult_prot":{
+        "menusel":"1:1:2",
+        "title":"Submit multiple proteins to ProLinks",
+        "viewpath":"/prl/pages/pl_mult_prot.html",
+        "menudef":"0:3:0:2",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+      "pl_common":{
+        "menusel":"1:1:3",
+        "title":"Find common links between proteins",
+        "viewpath":"/prl/pages/pl_common.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+      "pl_connections":{
+        "menusel":"1:1:4",
+        "title":"Find linkages connecting proteins",
+        "viewpath":"/prl/pages/pl_connections.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+       "pl_prot_seq":{
+        "menusel":"1:1:5",
+        "title":"Submit a protein sequence",
+        "viewpath":"/prl/pages/pl_prot_seq.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_software":{
+        "menusel":"1:2:0",
+        "title":"Software",
+        "viewpath":"/prl/pages/pl_software.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+      "pl_download":{
+        "menusel":"1:3:0",
+        "title":"Download ProLinks",
+        "viewpath":"/prl/pages/pl_download.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+      "pl_about":{
+        "menusel":"3:0:0",
+        "title":"About ProLinks",
+        "viewpath":"/prl/pages/pl_about.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+      "pl_help":{
+        "menusel":"3:1:0",
+        "title":"ProLinks help",
+        "viewpath":"/prl/pages/pl_help.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+      "pl_statistics":{
+        "menusel":"3:3:0",
+        "title":"ProLinks Statistics",
+        "viewpath":"/prl/pages/pl_statistics.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+      "pl_acknowledgments":{
+        "menusel":"3:4:0",
+        "title":"Acknowledgments",
+        "viewpath":"/prl/pages/pl_acknowledgments.html",
+        "showtitle":"false",
+        "showcomment":"false",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+      "pl_tutorial":{
+         "menusel":"4:0:0",
+         "title":"ProLinks Tutorial",
+         "viewpath":"/prl/pages/pl_tutorial.html",
+         "viewtype":"file-html",
+         "skin":"",
+         "showindex":"false",
+         "urlindex":"",
+         "images":[]
+       },
+
+
+      "pl_tut_mainpage":{
+         "menusel":"4:1:0",
+         "title":"ProLinks Tutorial",
+         "viewpath":"/prl/pages/pl_tut_mainpage.html",
+         "viewtype":"file-html",
+         "skin":"",
+         "showindex":"false",
+         "urlindex":"",
+         "images":[]
+       },
+
+
+      "pl_tut_write_query":{
+         "menusel":"4:2:0",
+         "title":"ProLinks Tutorial",
+         "viewpath":"/prl/pages/pl_tut_write_query.html",
+         "viewtype":"file-html",
+         "skin":"",
+         "showindex":"false",
+         "urlindex":"",
+         "images":[]
+       },
+
+
+      "pl_tut_adv_search":{
+         "menusel":"4:3:0",
+         "title":"ProLinks Tutorial",
+         "viewpath":"/prl/pages/pl_tut_adv_search.html",
+         "viewtype":"file-html",
+         "skin":"",
+         "showindex":"false",
+         "urlindex":"",
+         "images":[]
+       },
+
+
+      "pl_tut_keyword":{
+         "menusel":"4:3:1",
+         "title":"ProLinks Tutorial",
+         "viewpath":"/prl/pages/pl_tut_keyword.html",
+         "viewtype":"file-html",
+	 "skin":"",
+         "showindex":"false",
+         "urlindex":"",
+         "images":[]
+       },
+
+
+      "pl_tut_mult_prot":{
+        "menusel":"4:3:2",
+        "title":"ProLinks Tutorial",
+        "viewpath":"/prl/pages/pl_tut_mult_prot.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+      "pl_tut_common_prot":{
+        "menusel":"4:3:3",
+        "title":"ProLinks Tutorial",
+        "viewpath":"/prl/pages/pl_tut_common_prot.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+      "pl_tut_connect_path":{
+        "menusel":"4:3:4",
+        "title":"ProLinks Tutorial",
+        "viewpath":"/prl/pages/pl_tut_connect_path.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_tut_prot_seq":{
+        "menusel":"4:3:5",
+        "title":"ProLinks Tutorial",
+        "viewpath":"/prl/pages/pl_tut_prot_seq.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+       "pl_help_inf_mtd":{
+        "menusel":"3:1:0",
+        "title":"Protein Indentifiers",
+        "viewpath":"/prl/pages/pl_help_inf_mtd.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+
+      "pl_help_pid":{
+        "menusel":"3:1:0",
+        "title":"Protein Indentifiers",
+        "viewpath":"/prl/pages/pl_help_pid.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_network_distance_prm":{
+        "menusel":"3:1:0",
+        "title":"Network Distance",
+        "viewpath":"/prl/pages/pl_help_network_distance_prm.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_network_distance_col":{
+        "menusel":"3:1:0",
+        "title":"Network Distance",
+        "viewpath":"/prl/pages/pl_help_network_distance_col.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_cvalue":{
+        "menusel":"3:1:0",
+        "title":"ProLinks Confidence Value Threshold",
+        "viewpath":"/prl/pages/pl_help_cvalue.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_res_cvalue_score":{
+        "menusel":"3:1:0",
+        "title":"ProLinks Confidence Value Threshold",
+        "viewpath":"/prl/pages/pl_help_res_cvalue_score.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+
+
+      "pl_help_cvalue_path":{
+        "menusel":"3:1:0",
+        "title":"ProLinks Confidence Value Threshold",
+        "viewpath":"/prl/pages/pl_help_cvalue_path.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_path_score":{
+        "menusel":"3:1:0",
+        "title":"Path score",
+        "viewpath":"/prl/pages/pl_help_path_score.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_sort_links":{
+        "menusel":"3:1:0",
+        "title":"ProLinks Confidence Value Threshold",
+        "viewpath":"/prl/pages/pl_help_sort_links.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+      "pl_help_links_tag":{
+        "menusel":"3:1:0",
+        "title":"Identify Links with",
+        "viewpath":"/prl/pages/pl_help_links_tag.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_link_number":{
+        "menusel":"3:1:0",
+        "title":"Link number",
+        "viewpath":"/prl/pages/pl_help_link_number.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },	
+
+
+      "pl_help_links_per_page":{
+        "menusel":"3:1:0",
+        "title":"Number of linkages per page",
+        "viewpath":"/prl/pages/pl_help_links_per_page.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_mult_prot_fmt":{
+        "menusel":"3:1:0",
+        "title":"Format for submitting multipl proteins to ProLinks",
+        "viewpath":"/prl/pages/pl_help_mult_prot_fmt.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_connect_paths":{
+        "menusel":"3:1:0",
+        "title":"Paths of linkages connecting two proteins",
+        "viewpath":"/prl/pages/pl_help_connect_paths.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_path_step":{
+        "menusel":"3:1:0",
+        "title":"Step in a path of linkages",
+        "viewpath":"/prl/pages/pl_help_path_step.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_paths_per_page":{
+        "menusel":"3:1:0",
+        "title":"Number of paths per page",
+        "viewpath":"/prl/pages/pl_help_paths_per_page.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_submit_prot_seq":{
+        "menusel":"3:1:0",
+        "title":"Submit a protein Sequence",
+        "viewpath":"/prl/pages/pl_help_submit_prot_seq.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_fasta_fmt":{
+        "menusel":"3:1:0",
+        "title":"The FASTA format",
+        "viewpath":"/prl/pages/pl_help_fasta_fmt.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_matches_per_page":{
+        "menusel":"3:1:0",
+        "title":"Blast matches per page",
+        "viewpath":"/prl/pages/pl_help_matches_per_page.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+      "pl_help_evalue_match":{
+        "menusel":"3:1:0",
+        "title":"Expected value",
+        "viewpath":"/prl/pages/pl_help_evalue_match.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_query_identitities":{
+        "menusel":"3:1:0",
+        "title":"Global identities in query",
+        "viewpath":"/prl/pages/pl_help_query_identitities.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_target_identitities":{
+        "menusel":"3:1:0",
+        "title":"Global identities in target",
+        "viewpath":"/prl/pages/pl_help_target_identitities.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_blast_match_idx":{
+        "menusel":"3:1:0",
+        "title":"Blast match index",
+        "viewpath":"/prl/pages/pl_help_blast_match_idx.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_rs_match":{
+        "menusel":"3:1:0",
+        "title":"RefSeq of target protein",
+        "viewpath":"/prl/pages/pl_help_rs_match.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+      "pl_help_aln_identity":{
+        "menusel":"3:1:0",
+        "title":"Identities in the alignment",
+        "viewpath":"/prl/pages/pl_help_aln_identity.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_query_tag":{
+        "menusel":"3:1:0",
+        "title":"Query protein name or identifier",
+        "viewpath":"/prl/pages/pl_help_query_tag.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_linkage_tag":{
+        "menusel":"3:1:0",
+        "title":"Linked protein name or identifier",
+        "viewpath":"/prl/pages/pl_help_linkage_tag.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+      "pl_help_link_name":{
+        "menusel":"3:1:0",
+        "title":"Name of functionally linked protein",
+        "viewpath":"/prl/pages/pl_help_link_name.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "cytoscape_graph":{
+        "menusel":"3:1:0",
+        "title":"Cytoscape Error",
+        "viewpath":"/prl/pages/cytoscape_graph.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+
+      "cytoscape_install":{
+        "menusel":"3:1:0",
+        "title":"Cytoscape Error",
+        "viewpath":"/prl/pages/cytoscape_install.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_link_function":{
+        "menusel":"3:1:0",
+        "title":"Function of the linked protein",
+        "viewpath":"/prl/pages/pl_help_link_function.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_help_solr_search":{
+        "menusel":"3:1:0",
+        "title":"Query syntax",
+        "viewpath":"/prl/pages/pl_help_solr_search.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       },
+
+
+      "pl_under_maintenance":{
+        "menusel":"3:1:0",
+        "title":"Query syntax",
+        "viewpath":"/prl/pages/pl_under_maintenance.html",
+        "viewtype":"file-html",
+        "skin":"",
+        "showindex":"false",
+        "urlindex":"",
+        "images":[]
+       }
+    }
+  }
+}
+
+

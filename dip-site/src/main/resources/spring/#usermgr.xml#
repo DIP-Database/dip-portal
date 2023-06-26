@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-2.5.xsd" >
+
+  <!-- usr context -->
+<!--
+  <bean id="userContext" init-method="initialize"
+          class="edu.ucla.mbi.util.context.UserContext">
+    -->
+  <bean id="userContext" init-method="initialize"
+          class="edu.ucla.mbi.dip.DipUserContext">
+    
+     <property name="config">
+      <map>
+        <entry key="json-config" value="/etc/userconfig.json"/>
+        <entry key="json-source">
+          <bean class="edu.ucla.mbi.util.context.SpringFileResource">
+            <property name="file" value="etc/userconfig.json"/>
+          </bean>
+         </entry>
+      </map>
+    </property>
+
+    <property name="groupDao" ref="groupDao"/>
+    <property name="userDao" ref="userDao"/>
+    <property name="roleDao" ref="roleDao"/>
+    <property name="eorelDao" ref="eorelDao"/>
+
+  </bean>
+
+  <!-- user data access -->
+
+  <bean id="userDao" class="edu.ucla.mbi.dip.orm.DipUserDAO"/>
+  <bean id="groupDao" class="edu.ucla.mbi.dip.orm.DipGroupDAO"/>
+  <bean id="roleDao" class="edu.ucla.mbi.dip.orm.DipRoleDAO"/>
+  <bean id="eorelDao" class="edu.ucla.mbi.dip.orm.EorelDAO"/>
+
+  <!-- access control list/interceptor -->
+
+  <bean id="aclContext" class="edu.ucla.mbi.util.context.JsonContext">
+    <property name="config">
+      <map>
+        <entry key="json-config" value="/etc/acl.json"/>
+        <entry key="json-source">
+          <bean class="edu.ucla.mbi.util.context.SpringFileResource">
+            <property name="file" value="etc/acl.json"/>
+          </bean>
+        </entry>
+      </map>
+    </property>
+  </bean>
+
+  <bean id="aclInterceptor"
+        class="edu.ucla.mbi.util.struts.interceptor.AclInterceptor">
+    <property name="aclContext" ref="aclContext"/>
+  </bean>
+
+
+  <!-- user action -->
+
+  <bean id="userAction" scope="prototype"
+      class="edu.ucla.mbi.dip.struts.action.UserAction">
+
+    <property name="portalContext"       ref="portalContext"/>   
+    <property name="userContext" ref="userContext"/>   
+
+    <!-- <property name="mst" value="1:1"/> -->
+
+    <property name="notifyFrom" value="dip@mbi.ucla.edu" />
+    <property name="notifyServer" value="imex.mbi.ucla.edu" />
+   
+    <property name="Captcha" ref="captcha"/>
+
+    <property name="sknDef" value="dip"/>   
+    <property name="siteDef" value="dip"/>
+  </bean>
+
+  <!-- feedback action -->
+
+  <bean id="captcha" scope="prototype"
+        class="edu.ucla.mbi.util.struts.captcha.Recaptcha2">
+    
+    <property name="active" value="true"/>
+    <property name="config">
+      <map>
+        <entry key="url" value="${dipsite.recaptcha.verifyURL}" />
+        <entry key="secureSSL" value="false" value-type="java.lang.Boolean"/>
+        <entry key="secret" value="${dipsite.recaptcha.privateKey}" />        
+      </map>
+    </property>
+  </bean>
+
+  <bean id="feedbackAction" scope="prototype"
+      class="edu.ucla.mbi.dip.struts.action.FeedbackAction">
+
+    <property name="portalContext"       ref="portalContext"/> 
+
+    <property name="adminMail" value="${portal.amail}" />
+    <property name="mailServer" value="imex.mbi.ucla.edu" />
+
+    <property name="Captcha" ref="captcha"/>
+
+    <property name="sknDef" value="${portal.skin}"/>
+    <property name="siteDef" value="${portal.site}"/>
+  </bean>
+
+<!--  
+  <bean id="reCaptcha" class="net.tanesha.recaptcha.ReCaptchaImpl">
+    <property name="privateKey" value="${recaptcha.privateKey}"/>
+    <property name="publicKey" value="${recaptcha.publicKey}"/>
+    <property name="recaptchaServer" value="${recaptcha.recaptchaServer}"/>
+    <property name="includeNoscript" value="false"/>
+  </bean>
+-->
+
+  <!-- user management actions -->
+
+  <bean id="userMgrAction" scope="prototype"
+      class="edu.ucla.mbi.dip.struts.action.UserMgrAction">
+
+    <property name="portalContext"       ref="portalContext"/>
+    <property name="userContext" ref="userContext"/>   
+
+    <property name="mst" value="6:1:1"/>
+
+    <property name="firstRecord" value="1"/>
+    <property name="blockSize" value="20"/>
+
+    <property name="sknDef" value="dip"/>
+    <property name="siteDef" value="dip"/>
+  </bean> 
+
+  <bean id="groupMgrAction" scope="prototype"
+      class="edu.ucla.mbi.dip.struts.action.GroupMgrAction">
+
+    <property name="portalContext"       ref="portalContext"/>
+    <property name="userContext" ref="userContext"/>   
+
+    <property name="mst" value="6:1:2"/>
+    <property name="sknDef" value="dip"/>
+    <property name="siteDef" value="dip"/>
+  </bean> 
+
+  <bean id="roleMgrAction" scope="prototype"
+      class="edu.ucla.mbi.dip.struts.action.RoleMgrAction">
+
+    <property name="portalContext"       ref="portalContext"/>
+    <property name="userContext" ref="userContext"/>   
+
+    <property name="mst" value="6:1:3"/>
+    <property name="sknDef" value="dip"/>
+    <property name="siteDef" value="dip"/>
+  </bean> 
+
+
+<!-- ========================================================= WATCH MANAGER -->
+
+ <bean id="watchManager" init-method="initialize" destroy-method="cleanup"
+       class="edu.ucla.mbi.util.WatchManager">
+
+   <property name="userContext" ref="userContext"/>
+
+ </bean>
+
+
+<!-- ====================================================== USERPREF MANAGER -->
+
+  <bean id="uprefManager" init-method="initialize" destroy-method="cleanup"
+       class="edu.ucla.mbi.util.UserPrefManager">
+
+   <property name="userContext" ref="userContext"/>
+   <property name="defUserPrefs">
+    <value>
+{
+  "legend":"User Preferences",
+  "options":["message-mail"],
+  "option-def":{
+     "message-mail": {
+        "legend":"Mail Options",
+        "label": "Send out mail notifications",
+        "type": "boolean",  
+        "value": "false",
+        "opp": "mm",
+        "options": ["mail-news","network","app"],
+        "option-def":{
+           "mail-news": {
+              "label": "News announcements",
+              "type": "boolean",  
+              "value": "false",
+              "opp": "mmna",
+              "opcode": "newsMail"
+           },
+           "network": {
+              "label": "network-application-id",
+              "type": "string",      
+              "length":12,         
+              "value": "abcd",
+              "opp":"network_application_id",
+              "opcode": "nai" 
+            },
+            "app": {
+              "label": "application-id",
+              "type": "menu", 
+              "value-list":[  { "text": "Menu Item One", "value":"value-1"},
+                              { "text": "Menu Item Two", "value":"value-2"}
+              ],
+              "value": "value-1",
+              "opp":"net_app",
+              "opcode": "nai"
+            } 
+        }
+    }
+  },
+  "opcode": "update"
+}
+    </value>
+   </property>
+ </bean>
+
+
+  <bean id="uprefMgrAction" scope="prototype"
+       class="edu.ucla.mbi.dip.struts.action.DipUserPrefMgrAction">
+<!--
+    NOTE: edu.ucla.mbi.dip.struts.action.DipUserPrefMgrAction is to be
+          a subclass of 
+            edu.ucla.mbi.util.struts.action.UserPrefMgrAction
+          which, in turn, should be a copy of imex central's
+            edu.ucla.mbi.imex.central.struts.action.UserPrefMgrAction
+
+    see https://imex.mbi.ucla.edu/trac/dip/ticket/97 for more details
+-->
+          
+    <property name="userPrefManager" ref="uprefManager"/>
+
+   <property name="menuContext" ref="dipMenuContext"/>
+   <property name="userContext" ref="userContext"/>
+   <property name="watchManager" ref="watchManager"/>
+   <property name="mst" value="5:1:0"/>
+
+   <property name="sknDef" value="dip"/>
+   <property name="siteDef" value="dip"/>
+
+ </bean>
+</beans>

@@ -1,0 +1,156 @@
+package edu.ucla.mbi.dip;
+
+/* =========================================================================
+ # $HeadURL:: https://imex.mbi.ucla.edu/svn/dip-ws/dip-portal/trunk/dip-si#$
+ # $Id:: DipUser.java 2877 2012-12-18 20:42:36Z lukasz                     $
+ # Version: $Rev:: 2877                                                    $
+ #==========================================================================
+ #
+ # User
+ #
+ #
+ #======================================================================= */
+
+import edu.ucla.mbi.util.data.User;
+import java.util.*;
+
+import javax.mail.*;
+import javax.mail.internet.*;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+public class DipUser extends User{
+
+    public DipUser() {}
+    
+    public DipUser( User user ) {
+	
+	setFirstName( user.getFirstName() );
+	setLastName( user.getLastName() );
+	setAffiliation( user.getAffiliation() );
+	setTitle( user.getTitle() ); 
+	setEmail( user.getEmail() );
+	setLogin( user.getLogin() ); 
+	setActivated( false );
+	setEnabled( false );
+
+        setActivationKey( user.getActivationKey() );
+        setPassword( user.getPassword() );
+
+        if ( user.getRoles() != null ) {
+            getRoles().addAll( user.getRoles() );
+        }
+
+        if ( user.getGroups() != null ) {
+            getGroups().addAll( user.getGroups() );
+        }
+    }
+
+    public String toString() {
+	
+	StringBuffer sb = new StringBuffer();
+	
+	sb.append( " DipUser(id=" + getId() );
+	sb.append( " login=" + getLogin() );
+	sb.append( " email=" + getEmail() );
+	sb.append( ")" );
+
+	return sb.toString();
+    }
+
+    public void notifyByMail( String from, String server ) {
+
+	Properties props = new Properties();
+	props.put("mail.from", from);
+	props.put("mail.smtp.host", server);
+	
+	Session session = Session.getInstance(props, null);
+
+	//-----------------------------------------------------------------
+
+	String message = 
+	    "Dear " + getFirstName() + " " + getLastName() + ",\n" +
+	    " thank you for registering as a user of the DIP database.\n" +
+	    "In order to activate your DIP account (user name: " + 
+	    getLogin() + "), please, use the key:\n\n" +
+	    "    " + getActivationKey() +"\n\n" +
+	    "when loging in for the first time.  Without activation\n" +
+	    "the account might be terminated shortly.\n\n\n"+
+	    "Regards,\nThe DIP Account Deamon\n\n";
+	
+	//-----------------------------------------------------------------
+
+	try {
+	    MimeMessage msg = new MimeMessage( session );
+	    msg.setFrom();
+	    msg.setRecipients( Message.RecipientType.TO,
+			       getEmail() );
+	    msg.setSubject( "DIP Account Activation" );
+	    msg.setSentDate( new Date() );
+	    msg.setText( message );
+	    Transport.send( msg );
+	} catch ( MessagingException mex ) {
+	    System.out.println("send failed, exception: " + mex);
+	}
+    }
+
+    public void sendComment( String to, String server, 
+			     String about, String comment ) {
+	
+	Log log = LogFactory.getLog( this.getClass() );
+
+	Properties props = new Properties();
+        props.put("mail.from", getEmail() );
+        props.put("mail.smtp.host", server);
+	
+        Session session = Session.getInstance(props, null);
+
+	try {
+            MimeMessage msg = new MimeMessage( session );
+            msg.setFrom();
+            msg.setRecipients( Message.RecipientType.TO,
+                               to );
+            msg.setSubject( "DIP/ProLinks Feedback:" + about);
+            msg.setSentDate( new Date() );
+            msg.setText( comment );
+            Transport.send( msg );
+
+	    log.info( "send ok: " + to );
+
+        } catch ( MessagingException mex ) {
+	    
+	    log.info( "send to: " + to );
+	    log.info( "send failed, exception: " + mex );
+        }
+    }
+
+
+    public static void sendComment( String from, String to, String server, 
+                                    String about, String comment ) {
+	
+        Log log = LogFactory.getLog( DipUser.class );
+        
+        Properties props = new Properties();
+        props.put("mail.from", from );
+        props.put("mail.smtp.host", server);
+	
+        Session session = Session.getInstance(props, null);
+
+        try {
+            MimeMessage msg = new MimeMessage( session );
+            msg.setFrom();
+            msg.setRecipients( Message.RecipientType.TO,
+                               to );
+            msg.setSubject( "DIP Feedback:" + about );
+            msg.setSentDate( new Date() );
+            msg.setText( comment );
+            Transport.send( msg );
+	    log.info( "send ok: " + to );
+
+        } catch ( MessagingException mex ) {
+	    log.info( "send to: " + to );
+	    log.info( "send failed, exception: " + mex );
+        }
+    }
+}

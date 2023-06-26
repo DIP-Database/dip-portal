@@ -1,0 +1,84 @@
+<div class="dip-page-main">
+<h2>Database Contents</h2>
+
+<p>The DIP Database keeps track of <b><i>experiments demonstrating protein-protein 
+interactions</i></b> that have been published in peer-reviewed, primary research articles.
+ This unstructured, free-text information is manually converted by the DIP curators into 
+structured database records that are amenable to computational processing and analysis. The resulting 
+records are entered into our database system, cross-referenced to other biological resources 
+and organized into a human-searchable on-line resource.  At the same time various sets of the
+database records are provided for downloading and further computational analysis. 
+<br/>
+<br/>
+<h2>Identifying interacting molecules</h2>
+  The molecules within DIP - proteins and peptides - are most often identified by providing 
+cross-references to at least one of the well-established protein sequence database - 
+typically <a href="http://uniprotkb.org">UniprotKB</a> or 
+<a href="http://www.ncbi.nlm.nih.gov/refseq/">RefSeq</a>. In case of proteins not yet 
+annotated by UniprotKB or RefSeq a reference to a gene or protein within one of the organism-specific
+genome databases might be used.  Shorter peptides with sequences common to multiple proteins  
+are often characterized by simply providing their sequence.
+  Each molecule record within DIP might correspond to a collection of... 
+
+<br/>
+<br/>
+<h2>Classifying interactions</h2>
+Depending on the strength of the available experimental evidence, interactions between proteins may 
+be classified according to the detected level of contact between the interacting proteins. Thus, 
+interactions may be reported as:
+   <ul>
+    <li><b>direct interactions</b>, if the interacting proteins are known touch each other directly;</li>
+    <li><b>physical associations</b>, if the proteins physically associate, with the possibility 
+     that another molecule mediates the association; or</li>
+    <li><b>associations</b>, if the proteins were simply copurified but with the experimental evidence 
+     not strong enough to demonstrate that every two proteins within the group physically associate.  
+     Most often, molecules forming association are co-purified by a pull-down or coimmunoprecipitation and 
+     share the same bait molecule.
+    </li>
+   </ul>
+
+<p>In addition, pairs of proteins or genes may be reported as participating in:
+   <ul>
+    <li><b>functional linkages</b>, if the proteins (or genes) are linked by a related function, 
+     regardless of whether they physically associate; or</li>
+    <li><b>genetic interactions</b> that are observed between genes when two genetic perturbations (e.g. 
+     gene mutations) have a combined phenotypic effect not caused by either perturbation alone.</li>
+    </ul>
+
+<p>The DIP Database currently records <i>direct</i> and <i>physical</i> interactions as well as protein
+<i>associations</i>.  For functional interactions, try our <a href="prolinks.jsp">ProLinks</a> site.
+
+<p><b>NOTE:</b> It is of utmost importance to understand the differences between various interactions 
+types reported by the DIP and ProLinks databases.  Improper interpretation of the interaction data can 
+result in numerous misunderstandings and errors.  Please, check our 
+<a href="page?id=guide-itype">tnteraction types</a. page to find more detailed description of the
+terms we use to characterize protein-protein interaction reported in DIP.  In case of doubt, when 
+trying to use the data we provide, please, <a href="feedback">contact us</a>. 
+<br/>
+<br/>
+<h2>Interaction Networks</h2>
+<p>Conventionally, interactions between proteins are often represented by <i>nodes</i> (circles) and 
+<i>edges</i> (lines), both combined into a mathematical object called a 
+<a href="http://en.wikipedia.org/wiki/Graph_%28mathematics%29"><i>graph</i></a>:<br/>
+<center>
+ <table width="75%" border="0">
+  <tr>
+   <td width="40%" align="right" valign="top"><img src="images/guide/kinetochore.png" 
+     alt="(kinetochore network graph)"/>
+   </td>
+   <td width="60%" valign="bottom">
+    <font size="-2">
+      The <i>graph</i> on the left shows a part of the protein-protein interaction network 
+      of the kinetochore, the protein complex responsible for separating chromosomes during
+      eukaryotic cell division. Notice that some of the edges, the curved ones, indicate a self 
+      interaction: an interaction between a protein and another copy of itself.
+    </font>
+   </td>
+  </tr>
+ </table>
+</center>
+<br/>
+<br/>
+<br/>
+<br/>
+</div>

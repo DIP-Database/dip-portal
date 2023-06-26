@@ -1,0 +1,241 @@
+
+    <link rel="stylesheet" type="text/css" href="skin/pfl/css/prolinks.css" />
+      
+      <div id="pl_tutorial_page">
+
+	<br />
+
+	<table class="pl_outer_frame">
+
+
+	  <!-- The header -->
+	  <tr>
+	    <td class="pl_tutorial_header_row pl_arrow_cell">
+	      <a href="page?id=pl_tut_mult_prot">
+		<img class="pl_tut_arrow" 
+                     src="images/pl_tut_left_arrow.png" 
+		     width="60px"
+		     alt="Previous tutorial" />
+	      </a>
+	    </td>
+
+	    <td class="pl_tutorial_header_row"> 
+	      <b>Find functional linkages shared by multiple 
+		  proteins</b>
+	    </td>
+
+	    <td class="pl_tutorial_header_row pl_arrow_cell"> 
+	      <a href="page?id=pl_tut_connect_path">
+		<img class="pl_tut_arrow"  
+                     src="images/pl_tut_right_arrow.png" 
+		     width="60px"
+		     alt="Next tutorial" />
+	      </a>
+	    </td>
+	  </tr>
+
+
+
+	  <!-- The body of the tutorial from here -->
+	  <tr>
+	    <td class="pl_tutorial_body_row" colspan="3">
+	      <table class="pl_tutorial_inner_frame">
+		<tr>
+		  <td class="pl_tutorial_info_data">
+
+
+		    <!-- Tutorial organization -->
+		    <br />
+		    This tutorial is divided in 2 sections:
+		    <ul>
+
+		      <li>
+			<a class="pl_general" 
+			  href="#form">The input form:</a>
+			General description of the input form.
+			<br /><br />
+		      </li>
+
+		      <li>
+			<a class="pl_general" href="#submit_query">
+			  Submit your query:</a>
+			Query ProLinks by entering a list of protein IDs or
+			uploading a file with the IDs
+		        <br /><br />
+		      </li>
+		    </ul>
+
+		    <!-- Description of the input form -->
+		    <a name="form"></a>
+		    <h2>The input form</h2>
+		    
+		    <p>
+		      The input form to search for linkages shared between
+		      several proteins is shown in 
+		      <a class="pl_general" href="#figure1">Figure 1a</a>. 
+		      As you can see, the structure of the form is 
+		      identical to that shown in the tutoral to find
+		      linkages for 
+		      <a class="pl_general"
+			 href="page?id=pl_tut_mult_prot#figure1" 
+			  target="_blank">multiple proteins</a>. Similarly, 
+		      the user must enter a valid e-mail address (results are 
+		      returned by  e-mail only), and either copy/paste a list 
+		      of protein  
+		      <a class="pl_general" 
+			onclick="YAHOO.mbi.modal.help( 'Protein Identifiers', 'pl_help_pid' ); return false" 
+			href="">identifiers</a> 
+		      or upload a text file with the identifiers. The search parameters 
+		      tab offers exactly the same parameters as the input form to
+		      submit 
+                      <a class="pl_general" href="page?id=pl_mult_prot" 
+			  target="_blank">multiple proteins</a>.
+		    </p>
+
+		    
+		    <p>
+		      <b>IMPORTANT:</b> if both a list of IDs and a file with 
+		      IDs are provided, the entered list of IDs takes
+		      precedence and the file is ignored.
+		    </p>
+
+                    <br />
+
+
+
+                    <a name="figure1"></a>
+    	            <table width="800px" border="0px" cellpadding="5" cellspacing="0" align="center">                
+		      <tr>
+			<td align="center">
+			  <a href="images/pl_common_links_form.png" target="_blank">
+			    <img class="pl_tut_image" 
+                                 src="images/pl_common_links_form.png" 
+			         width="50%"
+			         alt="Input form to find search links" /> 
+			  </a>
+			</td>
+                      </tr>
+		      
+		      <tr>
+			<td align="left" valign="top">
+			  <b>Figure 1.</b>
+			  <u><i>Input form</i></u>. The user must provide a
+			  valid e-mail address, and either enter the list of 
+			  IDs or upload a file with the IDs. By clicking 
+			  on any question  mark, a window will open with an 
+			  explanation of the corresponding parameter. 
+			  (click on the figure to see the full size image).
+			</td>
+		      </tr>
+		    </table>
+
+		    <br /><br />
+
+		    
+		    <a name="submit_query"></a>
+		    <h2>Submit your query</h2>
+
+		    <p>
+		      If you click on the link: <b>(<i>see valid formats</i>)</b>
+		      a window will open with an explanation of the accepted
+		      formats for the list you submit. The window shows
+		      6 <i>Locus tags</i> in three different formats as an
+		      example. Enter the <a class="pl_general" 
+			href="page?id=pl_tut_mult_prot#list_of_ids" 
+			target="_blank">same list</a> or select the 
+		      <a class="pl_general" 
+			href="page?id=pl_tut_mult_prot#input_file" 
+			target="_blank">same file </a> that you used in the 
+		      <a class="pl_general" 
+			href="page?id=pl_tut_mult_prot" target="_blank">previous
+		      tutorial</a>.
+		    </p>
+
+		    <p>
+		      When you click on the <i>Search ProLinks</i> button,
+		      ProLinks will display a page indicating that your
+		      query has been submitted to the cluster. Depending on
+		      the number of IDs you submit it will take longer for
+		      ProLinks to process your query. When it is done, you
+		      will get an e-mail with a link indicating where you
+		      can see or download the text file with your results. 
+		      This file includes a header with an
+		      explication of each column.
+		      <a class="pl_general" href="#figure2">Figure 2</a>
+		      shows the results file if you submitted the same 
+		      IDs as those used in the
+		      <a class="pl_general" 
+			href="page?id=pl_tut_mult_prot#list_of_ids" 
+			target="_blank">previous tutorial</a>.
+		    </p>
+
+
+		    <a name="figure2"></a>
+    	            <table width="800px" border="0px" cellpadding="5" cellspacing="0" align="center">                
+		      <tr>
+			<td align="CENTER" width="50%">
+			  <a href="images/pl_common_links_res.png" target="_blank">
+			    <img class="pl_tut_image"
+			         src="images/pl_common_links_res.png" 
+			         width="50%"
+			         alt="mutiple proteins results 1" /> 
+			  </a>
+			</td>
+                      </tr>
+		      
+		      <tr>
+			<td align="left" valign="top">
+			  <b>Figure 2.</b>
+			  <u><i>Results file with shared links among multiple 
+			      proteins</i></u>. The file includes a header 
+			  with a description of each column. Only one common 
+			  link was found at  <a class="pl_general" 
+			onclick="YAHOO.mbi.modal.help( 'Protein Identifiers', 'pl_help_network_distance_prm' ); return false" 
+			href="">Depth of search </a> <b>1</b>. 
+			  Increase the depth to <b>2</b> or <b>3</b> 
+			  if you want to find more shared links.
+			</td>
+		      </tr>
+		    </table>
+
+		  </td>
+		</tr>
+	      </table>
+	    </td>
+	  </tr>
+
+	  
+
+	  <!-- The footer  -->
+	  <tr>
+	    <td class="pl_tutorial_header_row pl_arrow_cell">
+	      <a href="page?id=pl_tut_mult_prot">
+		<img class="pl_tut_arrow" 
+                     src="images/pl_tut_left_arrow.png" 
+		     width="60px"
+		     alt="Previous tutorial" />
+	      </a>
+	    </td>
+
+	    <td class="pl_tutorial_header_row"> 
+	      <b>Tutorial Navigation bar</b>
+	      <br />
+	      (<a class="pl_general" href="page?id=pl_tut_adv_search">
+		Advanced search Tutorials</a>)
+	    </td>
+
+	    <td class="pl_tutorial_header_row pl_arrow_cell"> 
+	      <a href="page?id=pl_tut_connect_path">
+		<img class="pl_tut_arrow"  
+		     src="images/pl_tut_right_arrow.png" 
+		     width="60px"
+		     alt="Next tutorial" />
+	      </a>
+	    </td>
+	  </tr>
+	</table>
+      </div>
+
+
+      <!-- To avoid content be blocked by the footer -->
+      <br /><br /><br /><br /><br /><br /><br />

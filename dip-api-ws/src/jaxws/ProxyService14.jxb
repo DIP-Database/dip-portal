@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+ !==============================================================================
+ ! $HeadURL: https://imex.mbi.ucla.edu/svn/dip-ws/dip-portal/trunk/dip-api-ws/src/jaxws/ProxyService14.jxb $
+ ! $Id: ProxyService14.jxb 2188 2012-04-19 22:42:52Z wyu $
+ ! Version: $Rev: 2188 $
+ !==============================================================================
+ !
+ ! Dip Web Services:  Proxy services
+ !
+ !========================================================================== -->
+
+<bindings wsdlLocation="../wsdl/ProxyService14.wsdl"
+    xmlns="http://java.sun.com/xml/ns/jaxws"
+    xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" >
+
+ <package name="edu.ucla.mbi.proxy"/>
+
+ <bindings node="wsdl:definitions/wsdl:service[@name='ProxyService']">
+  <class name="ProxyService"/>
+ </bindings>
+
+ <bindings node="wsdl:definitions/wsdl:portType[@name='ProxyPortType']">
+  <class name="ProxyPort"/>
+ </bindings>
+
+ <bindings node="wsdl:definitions/wsdl:portType[@name='ProxyPortType']/wsdl:operation[@name='getRecord']/wsdl:fault">
+  <class name="ProxyFault">
+   <javadoc>Proxy exception</javadoc>
+  </class>
+ </bindings>
+
+</bindings>
+
+

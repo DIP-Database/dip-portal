@@ -1,0 +1,135 @@
+
+  <table width="97%">
+  <tr>
+    <td colspan="4"><h2>Support</h2></td>
+  </tr>
+  <tr>
+   <td class="ackicon" align="center">
+    <a href="http://www.nih.gov" > 
+     <img src="./images/nih50.png" border="0">
+    </a>
+   </td>
+   <td class="acktxt" colspan="1" width="40%">
+     Development of the <a href="http://dip.mbi.ucla.edu">DIP</a> 
+     database software and curation of the protein interaction 
+     data is supported by <a href="http://www.nih.gov">NIH</a> 
+     grant 5R01GM071909     
+   </td>
+   <td class="ackicon" align="center"> 
+    <a href="http://cordis.europa.eu/fetch?CALLER=FP7_PROJ_EN&ACTION=D&amp;DOC=1&amp;CAT=PROJ&amp;QUERY=0124d5152fc6:5cf8:0378c17e&amp;RCN=91088">
+      <img src="./images/europe45.png">
+    </a>
+   </td>
+   <td class="acktxt" colspan="1" width="40%">
+     Participation of the <a href="http://dip.mbi.ucla.edu">DIP</a> database in 
+     <a href="imex.sourceforge.net">IMEx Consortium</a> was funded by European 
+     Comission under PSIMEx, contract number FP7-HEALTH-2007-223411
+   </td>
+  </tr>
+  <tr>
+   <td colspan="4"><br/><br/><h2>Developed with</h2></td>
+  </tr>
+  <tr>
+   <td class="ackicon" align="center">
+    <a href="http://www.postgresql.org">
+     <img border="0" src="./images/postgresql45.png">
+    </a>
+   </td>
+   <td class="acktxt" >
+     <a href="http://www.postgresql.org">PostgreSQL (Postgres)</a>
+     - open source, object-relational database management system
+   </td>
+   <td class="ackicon" align="center">
+    <a href="http://www.springsource.org">
+     <img border="0" src="./images/spring45.png">
+    </a>
+   </td>
+    <td class="acktxt">
+     <a href="http://www.springsource.org">Spring (2.5)</a>
+     - open source application framework for the Java platform
+    </td>
+   </tr>
+   <tr>
+    <td class="ackicon" align="center">
+     <a href="http://www.hibernate.org">
+      <img border="0" src="./images/hibernate45.png">
+     </a>
+    </td>
+    <td class="acktxt" >
+     <a href="http://www.hibernate.org">Hibernate</a>
+     - open source object-relational mapping (ORM) library
+    </td>
+    <td class="ackicon" align="center">
+     <a href="http://struts.apache.org">
+      <img border="0" src="./images/struts35.png">
+     </a>
+    </td>
+    <td class="acktxt" >
+     <a href="http://struts.apache.org">Apache Struts (2.x)</a>
+     - web application framework for developing Java EE web applications
+    </td>
+   </tr>
+   <tr class="acktxt" >
+    <td class="ackicon" align="center">
+     <a href="http://lucene.apache.org">
+      <img border="0" src="./images/lucene45.png">
+     </a
+    </td>
+    <td class="acktxt" >
+     <a href="http://lucene.apache.org">Apache Lucene<a> 
+       - information retrieval library
+    </td>
+    <td class="ackicon" align="center">
+     <a href="http://developer.yahoo.com/yui/2">
+      <img border="0" src="./images/yuilib40.png">
+     </a
+    </td>
+    <td class="acktxt">
+     <a href="http://developer.yahoo.com/yui/2">YUI 2 Library<a> 
+       - JavaScript and CSS web browser user interface library
+   </td>
+  </tr>
+  <tr>
+   <td class="ackicon" align="center">
+    <a href="http://www.compass-project.org">
+     <img border="0" src="./images/compass45.png">
+    </a>
+   </td>
+   <td class="acktxt" >
+    <a href="http://www.compass-project.org">Compass</a> 
+     - open source Java search engine framework built on top of 
+     <a href="http://lucene.apache.org">Apache Lucene</a> 
+   </td>
+   <td class="ackicon" align="center">
+    <a href="http://subversion.tigris.org"> 
+     <img  border="0" src="./images/subversion35.png">
+    </a>
+   </td>
+   <td class="acktxt">
+     <a href="http://subversion.tigris.org">Subversion</a>
+     - open source <a href="http://en.wikipedia.org/wiki/Revision_control">version control</a> 
+     system
+   </td>
+  </tr>
+  <tr>
+   <td class="ackicon" align="center">
+    <a href="http://overlayweaver.sourceforge.net">
+     <img border="0" src="./images/oweaver45.png">
+    </a>
+   </td>
+   <td class="acktxt" >
+    <a href="http://overlayweaver.sourceforge.net">Overlay Weaver</a> 
+     - open source <a href="http://en.wikipedia.org/wiki/Overlay_network">overlay network</a>
+     construction toolkit
+   </td>
+   <td class="ackicon" align="center">
+    <a href="http://maven.apache.org">
+     <img border="0" src="./images/maven30.png">
+    </a>
+   </td>
+   <td class="acktxt">
+    <a href="http://maven.apache.org">Apache Maven</a> 
+    - build manager for Java projects
+   </td>
+  </tr>
+ </table>    

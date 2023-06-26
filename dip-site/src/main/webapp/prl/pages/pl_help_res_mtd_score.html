@@ -1,0 +1,71 @@
+
+<link rel="stylesheet" type="text/css" href="skin/pfl/css/prolinks.css" />
+
+<p>
+  If a given link was inferred by several methods, the value displayed 
+  in this column is the score of the method that showed the most significant
+  <a class="pl_general" 
+      onclick="YAHOO.mbi.modal.help( 'ProLinks Score', 'pl_help_cvalue' ); return false" 
+      href="">ProLinks score</a>.
+  For more datails on how method scores are calculated check our main publication
+  (<a class="pl_general"
+	href="http://www.ncbi.nlm.nih.gov/pubmed/15128449"
+	target="_blank">2004, Genome
+      Biol. <b>5</b>(5):R35</a>).  
+</p>
+
+
+<p>
+   The table below presents a few guidelines (suggested cutoffs below 
+   which inferences can be considered significant) to help you 
+   understand the relevance of an inference depending on both the 
+   reported score and the method(s) responsible for producing the 
+   inference: 
+</p>
+
+<br />
+
+<div id="pl_results">
+  <table class="pl_main_table_frame" border="3px" cellpadding="3px" cellspacing="1px">
+    <tr style="background: #CC9966">
+      <th>Inference method</th>
+      <th>Suggested maximum score</th>
+    </tr>
+
+    <tr>
+      <td align="center">Phylogenetic Profiles</td>
+      <td align="center">-10</td>
+    </tr>
+
+    <tr>
+      <td align="center">Gene Neighbor</td>
+      <td align="center">1e-20</td>
+    </tr>
+
+    <tr>
+      <td align="center">Gene Cluster</td>
+      <td align="center">0.01</td>
+    </tr>
+
+    <tr>
+      <td align="center">Rosetta Stone</td>
+      <td align="center">0.01</td>
+    </tr>
+  </table>
+<div>
+<br />
+
+<p>
+  <b>Note</b>: Inferences with scores greater than the suggested thresholds 
+  can be useful depending on your particular biological question, but 
+  they normally correspond to low 
+  <a class="pl_general" 
+      onclick="YAHOO.mbi.modal.help( 'ProLinks Score', 'pl_help_cvalue' ); return false" 
+      href="">ProLinks scores</a> (e.g. <0.4).
+</p>
+
+<br />
+<br />
+<br />
+<br />
+<br />      

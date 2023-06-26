@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<!-- ===========================================================================
+ ! $Id:: tiles.xml 1877 2011-09-28 17:46:49Z lukasz                            $
+ ! Version: $Rev:: 1877                                                        $
+ ! =============================================================================
+ !                                                                             $
+ ! struts2: main tiles configuration                                           $
+ !                                                                             $
+ !========================================================================== -->
+
+
+#### run
+#### sed 's/\*\*\*\*//' src/main/resources/tiles.xml.annotated | grep -v "####" > ! src/main/resources/tiles.xml
+#### to generate tiles.xml
+#### 
+
+<tiles-definitions>
+
+ <!-- skin definitions -->
+
+**** <definition name="yui-css" template="/skin/tiles/yui-css.jsp" />
+**** <definition name="yui-js" template="/skin/tiles/yui-js.jsp" />
+
+**** <definition name="dip-yui-css" template="/skin/tiles/dip/dip-yui-css.jsp" />
+**** <definition name="tmgr-yui-css" template="/skin/tiles/tmgr-yui-css.jsp" />
+
+**** <definition name="htmlhead" template="/skin/tiles/htmlhead.jsp">
+  <put-attribute name="yui-css" type="definition" value="yui-css"/>
+  <put-attribute name="yui-js" type="definition" value="yui-js"/>
+  <put-attribute name="dip-yui-css" type="definition" value="dip-yui-css"/>
+  <put-attribute name="tmgr-yui-css" type="definition" value="tmgr-yui-css"/>
+ </definition>
+
+#### <definition name="header" template="/skin/tiles/dip/header.jsp" />
+**** <definition name="mainheader" template="/skin/tiles/dip/mainheader.jsp" />
+
+**** <definition name="body" template="/skin/tiles/body.jsp"/>
+
+ <definition name="footer.small" template="/skin/tiles/dip/footer_small.jsp"/>
+ 
+**** <definition name="footer" template="/skin/tiles/dip/footer.jsp"/>
+
+ <definition name="footer-edit" template="/skin/tiles/footer.jsp">
+  <put-attribute name="edit" value="/skin/tiles/pageedit-yui.jsp"/>
+ </definition>
+
+**** <definition name="footer-news-edit" template="/skin/tiles/footer.jsp">
+  <put-attribute name="edit" value="/skin/tiles/news-edit.jsp"/>
+ </definition>
+
+ <definition name="newsbox" template="/skin/tiles/newsbox.jsp" />
+**** <definition name="newscontent" template="/skin/tiles/newscontent.jsp"/>
+
+**** <definition name="page" template="/skin/tiles/page.jsp">
+  <put-attribute name="title" value="Page" />
+ </definition>
+**** <definition name="pagecomments" template="/skin/tiles/pagecomments.jsp"/>
+
+ <definition name="pageedit" template="/skin/tiles/pageedit-yui.jsp"/> 
+
+**** <definition name="layout" template="/skin/tiles/layout.jsp">
+   <put-attribute name="footer" value="/skin/tiles/footer.jsp"/> 
+ </definition>
+
+**** <definition name="news" extends="layout">
+  <put-attribute name="title" value="DIP Anouncements" />
+  <put-attribute name="body" value="/skin/tiles/news.jsp"/>
+  <put-attribute name="footer" value="footer-news-edit"/>  
+ </definition>
+
+**** <definition name="ipreview" template="/skin/tiles/ipreview.jsp" />
+
+**** <definition name="tablemgr" extends="layout">
+  <put-attribute name="title" value="Table Manager" />
+  <put-attribute name="body" value="/tiles/dip/tablemgr.jsp"/>
+  <put-attribute name="body-class" value="layout-body"/>
+ </definition>
+
+ <definition name="tblmgr" extends="layout">
+  <put-attribute name="title" value="Table Manager" />
+  <put-attribute name="body" value="/skin/tiles/tablemgr-yui.jsp"/>
+  <put-attribute name="body-class" value="layout-body"/>
+ </definition>
+
+ <!-- DIP -->
+
+**** <definition name="main" template="/dip/tiles/main2.jsp" />
+ <definition name="countbox" template="/dip/tiles/countbox.jsp" />
+
+<!-- ProLinks -->
+
+**** <definition name="prlmain" template="/prl/tiles/prolinks2.jsp"/>
+ <definition name="prlnewsbox" template="/prl/tiles/newsbox.jsp" />
+ <definition name="prlnewscontent" template="/prl/tiles/newscontent.jsp"/>
+ <definition name="prlcountbox" template="/prl/tiles/countbox.jsp" />
+
+<!--
+ <definition name="prlmainheader" template="/tiles/prl/prlmainheader.jsp"/>
+ <definition name="prlheader" template="/tiles/prl/prlheader.jsp"/>
+ <definition name="prlfooter" template="/tiles/prl/prlfooter.jsp"/>
+
+ <definition name="prlfooter-edit" template="/tiles/prl/prlfooter.jsp">
+  <put-attribute name="edit" value="/tiles/dip/pageedit-yui.jsp"/>
+ </definition>
+-->
+
+**** <definition name="rolemgr" extends="layout">
+  <put-attribute name="title" value="Role Manager" />
+  <put-attribute name="body" value="/tiles/dip/rolemgr.jsp"/>
+  <put-attribute name="body-class" value="layout-body"/>
+ </definition>
+
+ <definition name="roleedit" template="/tiles/dip/roleedit.jsp"/>
+
+**** <definition name="groupmgr" extends="layout">
+  <put-attribute name="title" value="Group Manager" />
+  <put-attribute name="body" value="/tiles/dip/groupmgr.jsp"/>
+  <put-attribute name="body-class" value="layout-body"/>
+ </definition>
+
+ <definition name="groupedit" template="/tiles/dip/groupedit.jsp"/>
+
+**** <definition name="usermgr" extends="layout">
+  <put-attribute name="title" value="User Manager" />
+  <put-attribute name="body" value="/tiles/dip/usermgr.jsp"/>
+  <put-attribute name="body-class" value="layout-body"/>
+ </definition>
+ <definition name="useredit" template="/tiles/dip/useredit.jsp"/>
+
+**** <definition name="aclerror" extends="layout">
+  <put-attribute name="title" value="ACL Violation" />
+  <put-attribute name="body" value="/skin/tiles/aclerror.jsp"/>
+  <put-attribute name="body-class" value="layout-body"/>
+ </definition>
+
+**** <definition name="login" extends="layout">
+  <put-attribute name="title" value="DIP Login" />
+  <put-attribute name="body-class" value="layout-body"/>
+  <put-attribute name="body" value="/tiles/dip/login.jsp"/>
+ </definition>
+
+**** <definition name="register" extends="layout">
+  <put-attribute name="title" value="DIP Register" />
+  <put-attribute name="body-class" value="layout-body"/>
+  <put-attribute name="body" value="/tiles/dip/register.jsp"/>
+ </definition>
+
+**** <definition name="activate" extends="layout">
+  <put-attribute name="title" value="DIP Account Activate" />
+  <put-attribute name="body-class" value="layout-body"/>
+  <put-attribute name="body" value="/tiles/dip/activate.jsp"/>
+ </definition>
+
+**** <definition name="uedit" extends="layout">
+  <put-attribute name="title" value="DIP Account" />
+  <put-attribute name="body" value="/tiles/dip/uedit.jsp"/>
+ </definition>
+
+**** <definition name="feedback" extends="layout">
+  <put-attribute name="title" value="Feedback" />
+  <put-attribute name="body-class" value="layout-body"/>
+  <put-attribute name="body" value="/skin/tiles/feedback.jsp"/>
+ </definition>
+
+**** <definition name="feedback-modal" template="/tiles/dip/layout-modal.jsp">
+  <put-attribute name="title" value="DIP Feedback" />
+  <put-attribute name="body-class" value="layout-body"/>
+  <put-attribute name="body" value="/tiles/dip/feedback-modal.jsp"/>
+ </definition>
+
+**** <definition name="feedback-ack" extends="layout">
+  <put-attribute name="title" value="DIP Feedback" />
+  <put-attribute name="body-class" value="layout-body"/>
+  <put-attribute name="body" value="/skin/tiles/feedbackack.jsp"/>
+ </definition>
+
+**** <definition name="contents" extends="layout">
+  <put-attribute name="title" value="DIP Contents" />
+  <put-attribute name="body" value="/tiles/dip/contents.jsp"/> 
+ </definition>
+
+**** <definition name="debug" template="/dip/tiles/debug.jsp" />
+
+<!-- DIP Record page -->
+
+**** <definition name="record" extends="layout">
+  <put-attribute name="title" value="DIP Record" />
+  <put-attribute name="body" value="/dip/tiles/recordview.jsp"/> 
+ </definition>
+**** <definition name="recordheader" template="/dip/tiles/recordheader.jsp"/>
+**** <definition name="recordheaderlayout" template="/dip/tiles/headerlayout.jsp" />
+**** <definition name="recordviewbody" template="/dip/tiles/recordviewbody-yui.jsp" />
+**** <definition name="recordbase" template="/dip/tiles/recordbase.jsp"/>
+**** <definition name="record-protein" template="/dip/tiles/record-protein.jsp" />
+**** <definition name="record-interaction" template="/dip/tiles/record-interaction.jsp" />
+**** <definition name="record-evidence" template="/dip/tiles/record-evidence.jsp" />
+**** <definition name="record-article" template="/dip/tiles/record-article.jsp" />
+
+<!-- DIP Query page -->
+
+**** <definition name="query" extends="layout">
+  <put-attribute name="title" value="DIP Query"/>
+  <put-attribute name="body" value="/dip/tiles/queryview.jsp"/>
+ </definition>
+**** <definition name="queryheader" template="/dip/tiles/queryheader.jsp"/>
+**** <definition name="queryheaderlayout" template="/dip/tiles/headerlayout.jsp"/>
+**** <definition name="querybase" template="/dip/tiles/querybase.jsp" />
+**** <definition name="queryviewbody" template="/dip/tiles/queryviewbody-yui.jsp" />
+
+**** <definition name="graph" extends="layout">
+  <put-attribute name="title" value="DIP Graph"/>
+  <put-attribute name="body" value="/dip/tiles/graphview.jsp"/>
+</definition>
+
+<!-- menu/page editor -->
+
+ <definition name="editmenu" template="/tiles/dip/editmenu.jsp" />
+ <definition name="editpage" template="/tiles/dip/editpage.jsp"/> 
+
+<!-- file download pages -->
+
+**** <definition name="download" extends="layout">
+  <put-attribute name="title" value="DIP Download" />
+  <put-attribute name="body-class" value="pagebody"/>
+
+  <put-attribute name="body" value="/dip/tiles/download.jsp"/>
+ </definition>
+
+**** <definition name="miftable" template="/dip/tiles/miftable.jsp" />
+**** <definition name="seqtable" template="/dip/tiles/seqtable.jsp" />
+**** <definition name="imextable" template="/dip/tiles/imextable.jsp" />
+
+ <!-- ============================================================== -->
+
+####<definition name="queryResult" template="/tiles/queryresult.jsp">
+####  <put-attribute name="title" value="Query Result" />
+####  <put-attribute name="body"  value="/tiles/querybody.jsp" />
+####  <put-attribute name="debug"  value="/tiles/querydebug.jsp" />
+####  <put-attribute name="footer_small" value="/tiles/dip/footer_small.jsp" />
+####</definition>
+####
+####<definition name="queryResult.small" template="/tiles/queryresult_small.jsp">
+####  <put-attribute name="title" value="Query Result" />
+####  <put-attribute name="query" value="/tiles/query.jsp" />
+####  <put-attribute name="body"  value="/tiles/querybody.jsp" />
+####  <put-attribute name="debug" value="/tiles/querydebug.jsp" />
+####  <put-attribute name="footer_small" value="/tiles/dip/footer_small.jsp" />
+####  <put-attribute name="header" value="/tiles/dip/header.jsp" />
+####</definition>
+####
+####<definition name="header" template="/tiles/dip/header.jsp"/>
+
+<!-- TEST2 TABLE -->
+
+ <definition name="showtable2" template="/tiles/showtable2.jsp">
+  <put-attribute name="title" value="Table2 Test" />
+  <put-attribute name="debug" value="/tiles/tabledebug.jsp" />
+ </definition>
+
+<!-- TEST TABLE END -->
+
+ <!--  record pages -->
+
+ <definition name="recordbody" template="/tiles/recordbody.jsp">
+ </definition>
+
+ <definition name="recorddetail" template="/tiles/recorddetail.jsp">
+  <put-attribute name="recordtype"  value="node" />
+ </definition>
+
+ <definition name="panebody" template="/tiles/panebody.jsp">
+ </definition>
+
+ <definition name="nodelist" template="/tiles/nodelist.jsp">
+ </definition>
+
+ <definition name="edgelist" template="/tiles/edgelist.jsp">
+ </definition>
+
+ <definition name="evidencelist" template="/tiles/evidencelist.jsp">
+ </definition>
+
+ <definition name="sourcelist" template="/tiles/sourcelist.jsp">
+ </definition>
+
+ <definition name="externallink" template="/tiles/externallink.jsp">
+ </definition>
+
+
+ <!--  query pages -->
+
+ <definition name="querybody" template="/tiles/querybody.jsp">
+ </definition>
+
+<!--
+ <definition name="queryheader" template="/tiles/queryheader.jsp">
+  <put-attribute name="recordtype"  value="node" />
+ </definition>
+
+ <definition name="querybase" template="/tiles/querybase.jsp">
+  <put-attribute name="recordtype"  value="node" />
+ </definition>
+-->
+<!--
+ <definition name="recorddetail" template="/tiles/recorddetail.jsp">
+  <put-attribute name="recordtype"  value="node" />
+ </definition>
+
+ <definition name="panebody" template="/tiles/panebody.jsp">
+ </definition>
+
+ <definition name="externallink" template="/tiles/externallink.jsp">
+ </definition>
+-->
+
+ <!--  test record pages -->
+
+ <definition name="showrecord2" template="/tiles/showrecord2.jsp">
+  <put-attribute name="title" value="Dip Record" />
+  <put-attribute name="query" value="/tiles/query2.jsp" />
+  <put-attribute name="debug" value="/tiles/querydebug2.jsp" />
+ </definition>
+
+ <definition name="recordbody2" template="/tiles/recordbody2.jsp">
+ </definition>
+
+ <definition name="recordheader2" template="/tiles/recordheader2.jsp">
+  <put-attribute name="recordtype"  value="node" />
+ </definition>
+
+ <definition name="recordbase2" template="/tiles/recordbase2.jsp">
+  <put-attribute name="recordtype"  value="node" />
+ </definition>
+
+ <definition name="recorddetail2" template="/tiles/recorddetail2.jsp">
+  <put-attribute name="recordtype"  value="node" />
+ </definition>
+
+ <definition name="panebody2" template="/tiles/panebody2.jsp">
+ </definition>
+
+</tiles-definitions>

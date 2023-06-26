@@ -1,0 +1,66 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+       "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+ <field name="user.firstName">
+  <field-validator type="requiredstring">
+   <message>First name cannot be empty.</message>
+  </field-validator>
+  <field-validator type="stringlength">
+   <param name="max">32</param>
+   <message>The first name must be shorter than 32 characters.</message>
+  </field-validator>
+ </field>
+ <field name="user.lastName">
+  <field-validator type="stringlength">
+   <param name="min">2</param>
+   <param name="max">64</param>
+   <message>The last name must be between 2 and 64 characters long.</message>
+  </field-validator>
+ </field>
+ <field name="user.email">
+  <field-validator type="requiredstring">
+   <message>You must provide a valid email address.</message>
+  </field-validator>
+  <field-validator type="email">
+   <message>You must provide a valid email address.</message>
+  </field-validator>
+ </field>
+ <field name="user.login">
+  <field-validator type="requiredstring">
+   <param name="min">4</param>
+   <param name="max">16</param>
+   <message>The login must be between 2 and 16 characters long.</message>
+  </field-validator>
+ </field>
+ <field name="user.password">
+  <field-validator type="requiredstring">
+   <param name="min">6</param>
+   <param name="max">16</param>
+   <message>The password must be between 6 and 16 characters long.</message>
+  </field-validator>
+  <field-validator type="regex">
+   <param name="expression">[0-9]</param>
+   <message>The password must contain at least one digit.</message>
+  </field-validator>
+  <field-validator type="regex">
+   <param name="expression">[a-zA-Z]</param>
+   <message>The password must contain at least one letter.</message>
+  </field-validator>
+ </field>
+ <validator type="expression">
+  <param name="expression">
+   user.password != user.login && 
+   user.password != user.firstName &&
+   user.password != user.lastName
+  </param>
+  <message>User name and password cannot be identical.</message>
+ </validator>
+
+ <validator type="expression">
+  <param name="expression">
+   newPassword1 == newPassword2 
+  </param>
+  <message>New password and verify password differ.</message>
+ </validator>
+
+</validators>

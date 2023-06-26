@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- ===========================================================================
+ # $Id:: static.xml 1355 2010-11-26 23:13:43Z lukasz                           $
+ # Version: $Rev:: 1355                                                        $
+ #==============================================================================
+ #                                                                             $
+ # struts2: dipdb package configuration                                        $
+ #                                                                             $
+ #========================================================================== -->
+                                                                           
+<struts>
+
+  <package name="dipstatic-prl" extends="json-default" namespace="prl">
+
+<!-- =========================================================== Results -->
+
+    <result-types>
+      <result-type name="tiles" 
+        class="org.apache.struts2.views.tiles.TilesResult"/>
+      <result-type name="redirect-action"
+        class="org.apache.struts2.result.ServletActionRedirectResult" />
+    </result-types>
+
+<!-- ====================================================== Interceptors -->
+
+    <interceptors>
+     <interceptor name="menu" 
+         class="edu.ucla.mbi.util.struts.interceptor.MenuInterceptor"/>
+
+     <interceptor name="acl" class="aclInterceptor"/>     
+
+     <interceptor-stack name="mgrStack">
+       <interceptor-ref name="exception"/>
+       <interceptor-ref name="alias"/>
+       <interceptor-ref name="servletConfig"/>
+       <interceptor-ref name="prepare"/>
+       <interceptor-ref name="i18n"/>
+       <interceptor-ref name="chain"/>
+       <interceptor-ref name="debugging"/>
+       <interceptor-ref name="profiling"/>
+       <interceptor-ref name="scopedModelDriven"/>
+       <interceptor-ref name="modelDriven"/>
+       <interceptor-ref name="fileUpload">
+         <param name="maximumSize">5000000</param>
+         <param name="allowedTypes"> image/jpeg,image/gif,image/png</param>
+       </interceptor-ref>
+       <interceptor-ref name="checkbox"/>
+       <interceptor-ref name="staticParams"/>
+       <interceptor-ref name="params">
+        <param name="excludeParams">dojo\..*</param>
+       </interceptor-ref>
+       <interceptor-ref name="conversionError"/>
+       
+       <interceptor-ref name="menu"/>
+       <interceptor-ref name="acl"/>
+       
+       <interceptor-ref name="validation">
+         <param name="excludeMethods">input,back,cancel,browse</param>
+       </interceptor-ref>
+       <interceptor-ref name="workflow">
+         <param name="excludeMethods">input,back,cancel,browse</param>
+       </interceptor-ref>
+     </interceptor-stack>
+
+  </interceptors>
+
+
+<!-- =========================================================== Actions -->
+
+  <!-- DIP static pages -->   
+
+  <action name="page" class="pageAction" >
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+     <interceptor-ref name="menu"/>
+ 
+     <result name="success" type="tiles">page</result>
+     <result name="input" type="tiles">page</result>
+     <result name="body" type="tiles">body</result>
+          
+     <result name="json"  type="json">
+      <param name="includeProperties">
+        menu.*
+      </param>
+     </result>
+
+  </action>
+
+  <action name="edit" class="editAction" >
+    <interceptor-ref name="defaultStack"/>
+    <interceptor-ref name="timer"/>
+    <interceptor-ref name="menu"/>
+ 
+    <result name="page" type="redirect-action">
+     <param name="actionName">page</param>
+     <param name="namespace"></param>
+     <param name="parse">true</param>
+     <param name="id">${pageid}</param>
+    </result> 
+
+    <result name="menu">/skin/tiles/menuedit.jsp</result>
+
+    <result name="error" type="redirect-action">
+     <param name="actionName">page</param>
+     <param name="namespace"></param>
+     <param name="parse">true</param>
+     <param name="id">${pageid}</param>
+    </result>
+  </action>
+
+
+  <action name="news" class="newsAction">
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+     <interceptor-ref name="menu"/>
+      
+     <result name="success" type="tiles">news</result>
+     <result name="input" type="tiles">news</result>
+     <result name="list" type="tiles">newscontent</result>
+
+     <result name="ylist"  type="json">
+      <param name="includeProperties">
+       years.*
+      </param>
+     </result>
+     <result name="nbox"  type="json">
+      <param name="includeProperties">
+       years.*, nbox.*
+      </param>
+     </result>
+  </action>
+
+  <action name="dipnews" class="dipNewsAction">
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+     <interceptor-ref name="menu"/>
+      
+     <result name="success" type="tiles">news</result>
+     <result name="input" type="tiles">news</result>
+     <result name="list" type="tiles">newscontent</result>
+
+     <result name="ylist"  type="json">
+      <param name="includeProperties">
+       years.*
+      </param>
+     </result>
+     <result name="nbox"  type="json">
+      <param name="includeProperties">
+       years.*, nbox.*
+      </param>
+     </result>
+  </action>
+
+  <action name="prlnews" class="prlNewsAction">
+     <interceptor-ref name="defaultStack"/>
+     <interceptor-ref name="timer"/>
+     <interceptor-ref name="menu"/>
+      
+     <result name="success" type="tiles">news</result>
+     <result name="input" type="tiles">news</result>
+     <result name="list" type="tiles">newscontent</result>
+
+     <result name="ylist"  type="json">
+      <param name="includeProperties">
+       years.*
+      </param>
+     </result>
+     <result name="nbox"  type="json">
+      <param name="includeProperties">
+       years.*, nbox.*
+      </param>
+     </result>
+  </action>
+
+   <action name="feedback" class="feedbackAction" >
+
+    <interceptor-ref name="defaultStack"/>
+    <interceptor-ref name="timer"/>
+    <interceptor-ref name="menu"/>
+<!--    <interceptor-ref name="accession"/>      -->
+    
+    <result name="success" type="tiles">feedback</result>
+    <result name="input" type="tiles">feedback</result>
+    <result name="accepted" type="tiles">feedback-ack</result>
+
+    <result name="modal" type="tiles">feedback-modal</result>
+     
+  </action>
+
+  <action name="image" class="imageAction">
+     <interceptor-ref name="mgrStack"/>
+     <interceptor-ref name="timer"/>
+     <interceptor-ref name="menu"/>
+     
+     <result name="imap"  type="json">
+       <param name="ignoreHierarchy">false</param>
+       <param name="noCache">true</param>
+       
+       <param name="includeProperties">
+        imageMap.*
+      </param>
+     </result>
+     
+     <result name="preview" type="tiles">ipreview</result>
+     
+     <result name="page" type="redirect-action">
+       <param name="actionName">page</param>
+       <param name="namespace"></param>
+       <param name="parse">true</param>
+       <param name="id">${pageid}</param>
+       <param name="site">${site}</param>
+       <param name="skn">${skn}</param>
+     </result>
+
+  </action>
+
+   <action name="">
+    <result>/prolinks.jsp</result>
+   </action>
+
+   <action name="/">
+    <result>/prolinks.jsp</result>
+   </action>
+
+   <action name="*" >
+     <result>/{1}.jsp</result>
+   </action>
+
+  </package>
+
+</struts>

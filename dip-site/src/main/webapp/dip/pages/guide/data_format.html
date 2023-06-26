@@ -1,0 +1,77 @@
+<p>The DIP database provides access to the interaction and sequence data in 
+a variety of formats:
+<center>
+ <table width="97%">
+  <tr>
+   <th width="3%" valign="top">PSI-MI (MIF)</th>
+   <td width="1%" valign="top">-</td>
+   <td>
+    <a href="http://www.psidev.info/index.php?q=node/60"><i>Molecular Interaction XML Format</i></a> 
+    co-developed by us and other interaction data providers participating in the 
+    <a href="http://www.psidev.info/">HUPO Proteomics Standards Initiative (HUPO-PSI)</a> 
+    is a rich, XML-based format that can be used to describe interactions between a wide 
+    range of molecular types, for example nucleic acids, chemical entities, and molecular 
+    complexes. It can capture extensive details about each supported molecular interaction, 
+    including the biological and experimental role of each molecule within that interaction
+    and detailed description of interacting domains.  
+    <p>We provide access to the sets of
+    <a href="http://dip.doe-mbi.ucla.edu/dip/Download.cgi?SM=10">original curation records</a> 
+    created by DIP curators according to the IMEx curation rules.  These, together with the records
+    imported from other active members of the IMEx consortium, constitute the primary,
+    most complete set of the DIP experimental data.  In addition, we generate number of files 
+    that organize experimental information about protein-protein interactions known to DIP
+    into species-specific datasets of varying confidence.        
+    <br/>
+    <br/>
+   </td>
+  </tr>
+  <tr>
+   <th width="3%" valign="top">MITAB2.5</th>
+   <td width="1%" valign="top">-</td>
+   <td><a href="http://code.google.com/p/psimi/wiki/PsimiTabFormat">MITAB</a> is a simpler, 
+    tab-delimited format developed within the
+    <a href="http://www.psidev.info/">HUPO Proteomics Standards Initiative (HUPO-PSI)</a> 
+    for the benefit of users who require only minimal information in an easy to access 
+    configuration. 
+    <br/>
+    <br/> 
+   </td>
+  </tr>
+  <tr>
+   <th width="3%" valign="top">FASTA</th>
+   <td width="1%" valign="top">-</td>
+   <td>Sequences of the proteins participating in interactions reported by DIP are
+    provided in the form of <a href="http://en.wikipedia.org/wiki/FASTA_format">FASTA</a> 
+    files. The sequence of each protein, together with its DIP, RefSeq and Uniprot accessions
+    is presented as a modified FASTA entry:
+    <br/><br/>
+    <center> 
+    <table><tr><td class="file">
+    <pre>
+      >dip:DIP-310N|refseq:NP_116614|uniprot:P60010
+      MDSEVAALVIDNGSGMCKAGFAGDDAPRAVFPSIVGRPRHQGIMVGMGQKDSYVGDEAQSKRGILTLRYPIEHGI    
+      VTNWDDMEKIWHHTFYNELRVAPEEHPVLLTEAPMNPKSNREKMTQIMFETFNVPAFYVSIQAVLSLYSSGRTTG    
+      IVLDSGDGVTHVVPIYAGFSLPHAILRIDLAGRDLTDYLMKILSERGYSFSTTAEREIVRDIKEKLCYVALDFEQ    
+      EMQTAAQSSSIEKSYELPDGQVITIGNERFRAPEALFHPSVLGLESAGIDQTTYNSIMKCDVDVRKELYGNIVMS    
+      GGTTMFPGIAERMQKEITALAPSSMKVKIIAPPERKYSVWIGGSILASLTTFQQMWISKQEYDESGPSIVHHKCF</pre>
+    </td></tr></table>
+    </center> 
+    <br/>
+    <br/>
+   </td>
+  </tr>
+  <th width="3%" valign="top">XIN (<font color="#FF0000"><i>legacy</i></font>)</th>
+   <td width="1%" valign="top">-</td>
+   <td>This is a legacy XML format that was used before introduction of <b>PSI-MI (MIF)</b>. 
+    All information that was available in the original XIN files is now provided within the
+    newest PSI-MI and MITAB files. A rudimentary description of the <b>XIN</b> format can
+    be found <a href="http://dip.doe-mbi.ucla.edu/dip/Guide.cgi?SM=0:3">here</a>.    
+    <br/>
+    <br/>
+   </td>
+  </tr>
+
+  </table>
+
+</center>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>

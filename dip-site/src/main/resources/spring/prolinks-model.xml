@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+ <!-- ProLinks: record -->
+
+ <bean id="prlRecordModel" scope="prototype"
+       class="edu.ucla.mbi.service.RecordModel">
+
+  <property name="dxfService">
+    <ref bean="prlDbService"/>      
+  </property>
+  
+  <property name="modelConfig">
+   <map>
+    <!-- node record views: key="N" -->
+    <entry key="N" >           
+     <list>
+      <map>                                            <!-- N#0 details view -->
+       <entry key="name" value="details"/>                    <!-- view name -->
+       <entry key="active" value="true"/>                   <!-- active flag -->
+       <entry key="label" value="Details"/>                       <!-- label -->
+       <entry key="panel" value="on"/>           <!-- side panel: none:on:off-->
+       <entry key="export" value="single"/>    <!-- export: none:single:multi-->
+       <entry key="view-type" value="detail"/>                 <!-- view type-->
+       <entry key="view-def" value="node-list"/>                   <!-- view -->
+       <entry key="service">                                <!-- data source -->             
+        <ref bean="prlDbService"/>                         
+       </entry>
+       <entry key="service-type">                           <!-- source type -->
+        <value>nodelist</value>
+       </entry>
+       <entry key="service-tag" value="deep"/>                <!-- souce tag -->
+      </map>
+
+      <map>                                           <!-- N#1: partners tab -->
+       <entry key="name" value="partners"/>                   <!-- view name --> 
+       <entry key="active" value="true"/>                   <!-- active flag --> 
+       <entry key="label" value="Functional Partners" />
+       <entry key="panel" value="on"/>           <!-- side panel: none:on:off-->
+       <entry key="export" value="multi"/>     <!-- export: none:single:multi-->
+       <entry key="view-type" value="table"/>                  <!-- view type-->
+       <entry key="view-def" value="node-list"/>                   <!-- view -->
+       <entry key="service">                                <!-- data source -->             
+        <ref bean="prlDbService"/>                         
+       </entry>
+       <entry key="service-type">                           <!-- source type -->
+        <value>reflist</value>
+       </entry>
+       <entry key="service-tag" value="N"/>                  <!-- source tag -->
+      </map>
+
+      <map>                                      <!-- N#2: interactions view -->
+       <entry key="name" value="edges" />                     <!-- view name -->
+       <entry key="active" value="true"/>                   <!-- active flag -->
+       <entry key="label" value="Functional Links"/>              <!-- label -->
+       <entry key="panel" value="on"/>           <!-- side panel: none:on:off-->
+       <entry key="export" value="multi"/>     <!-- export: none:single:multi-->
+       <entry key="view-type" value="table"/>                  <!-- view type-->
+       <entry key="view-def" value="edge-list"/>                   <!-- view -->
+       <entry key="service">                                <!-- data source -->             
+        <ref bean="prlDbService"/>                         
+       </entry>
+       <entry key="service-type" >                          <!-- source type -->
+             <value>reflist</value>
+       </entry>
+       <entry key="service-tag" value="E"/>                  <!-- source tag -->
+      </map>
+
+     </list>
+    </entry>
+
+    <!-- link record views: key="L" -->
+    <entry key="L" >                                  <!-- edge/link records -->
+     <list>
+      <map>                                           <!-- E#0: details view -->
+       <entry key="name" value="details"/>                    <!-- view name -->
+       <entry key="active" value="true"/>                   <!-- active flag -->
+       <entry key="label" value="Details"/>                       <!-- label -->
+       <entry key="panel" value="on"/>           <!-- side panel: none:on:off-->
+       <entry key="export" value="single"/>    <!-- export: none:single:multi-->
+       <entry key="view-type" value="detail"/>                 <!-- view type-->
+       <entry key="view-def" value="node-list"/>                   <!-- view -->
+       <entry key="service">                                <!-- data source -->             
+        <ref bean="prlDbService"/>                         
+       </entry>
+       <entry key="service-type">                           <!-- source type -->
+        <value>nodelist</value>
+       </entry>
+       <entry key="service-tag" value="deep"/>               <!-- source tag -->
+      </map>
+      
+      <map>                                          <!-- L#1: evidence view -->
+       <entry key="name" value="evidence"/>                   <!-- view name -->
+       <entry key="active" value="true"/>                   <!-- active flag -->
+       <entry key="label" value="Evidence"/>                      <!-- label -->
+       <entry key="panel" value="on"/>           <!-- side panel: none:on:off-->
+       <entry key="export" value="none"/>      <!-- export: none:single:multi-->
+       <entry key="view-type" value="table"/>                  <!-- view type-->
+       <entry key="view-def" value="evidence-list"/>               <!-- view -->       
+       <entry key="service">                                <!-- data source -->             
+        <ref bean="prlDbService"/>                         
+       </entry>
+       <entry key="service-type">                           <!-- source type -->
+        <value>reflist</value>
+       </entry>
+       <entry key="service-tag" value="X"/>                  <!-- source tag -->
+      </map>
+      
+     </list>
+    </entry>
+        
+    <!-- evidence record views: key="V" -->
+        
+    <entry key="V"> 
+     <list>  
+      <map>                                          <!-- V#0:  details view -->
+           <entry key="name" value="details" />               <!-- view name -->
+           <entry key="active" value="true"/>               <!-- active flag -->
+           <entry key="label" value="Details"/>                   <!-- label -->
+       <entry key="panel" value="on"/>           <!-- side panel: none:on:off-->
+       <entry key="export" value="none"/>      <!-- export: none:single:multi-->
+           <entry key="view-type" value="detail"/>             <!-- view type-->
+           <entry key="view-def" value="node-list"/>               <!-- view -->
+       <entry key="service">                                <!-- data source -->             
+        <ref bean="prlDbService"/>                         
+       </entry>
+            <entry key="service-type" >                      <!-- source type -->
+             <value>node</value>
+           </entry>
+           <entry key="service-tag" value="full"/>           <!-- source tag -->
+      </map>
+
+      <map>                                 <!-- V#1: interactor details tab -->
+       <entry key="name" value="nodes" />                     <!-- view name -->
+           <entry key="active" value="true"/>               <!-- active flag -->
+           <entry key="label" value="Partner Details" />          <!-- label -->
+       <entry key="panel" value="on"/>           <!-- side panel: none:on:off-->
+       <entry key="export" value="multi"/>     <!-- export: none:single:multi-->
+           <entry key="view-type" value="table"/>              <!-- view type-->
+           <entry key="view-def" value="node-list"/>               <!-- view -->
+       <entry key="service">                                <!-- data source -->             
+        <ref bean="prlDbService"/>                         
+       </entry>
+
+           <entry key="service-type" >                      <!-- source type -->
+             <value>reflist</value>
+           </entry>
+           <entry key="service-tag" value="N"/>              <!-- source tag -->
+      </map>
+
+     </list>
+    </entry>
+
+   </map>
+  </property>
+ </bean>
+
+</beans>
+

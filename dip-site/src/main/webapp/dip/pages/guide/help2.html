@@ -1,0 +1,170 @@
+
+    <p><font size=+1>T</font>he DIP<font size=-2><sup>TM</sup></font> 
+    (Database of Interacting Proteins) database lists protein pairs that are 
+    known to interact with each other.  By <em>interact</em> we mean that two 
+    amino acid chains were experimentally identified to bind to each other.  
+    The database lists such pairs to aid those studying a particular 
+    protein-protein interaction but also those investigating entire regulatory
+    and signaling pathways as well as those studying the organisation and 
+    complexity of the protein interaction network at the cellular level.
+
+    <p>The DIP database is composed of nodes and edges:
+
+    <p><strong>DIP Nodes</strong> (<i>proteins</i>)
+    <br><font size=+1>E</font>ach protein participating in a DIP interaction 
+    is idetified by a unique identifier of the form 
+    &lt;<b><i>DIP:</b>nnn<b>N</i></b>&gt; and cross-references to, at least, 
+    one of the major protein databases -
+    <b>PIR</b>,
+    <b> SWISSPROT</b><i> and/or</i>
+    <b>GENBANK</b>
+
+    In addition, some basic information about each protein, such as name, 
+    function, subcellular localization and cross-references to other biological
+    databased is stored locally (if available) in case the cross-referenced 
+    databases are not accessible.
+
+    <p><strong>DIP Edges</strong> (<i>interactions</i>)
+    <br><font size=+1>T</font>he information about each DIP interaction is 
+    identified by a unique identifier of the form 
+    &lt;<b><i>DIP:</b>nnn<b>E</i></b>&gt; that provides access to information 
+    such as the region involved in the interaction, the dissociation constant 
+    and the experimental methods used to identify and characterize the 
+    interaction.
+
+
+    <h3><a name="SEARCHES">Searching DIP</a></h3>
+    
+    The DIP database can be searched in a number of ways in order to identify the starting
+    point for exploration of the protein interaction network. Please, see
+
+    <ul>
+     <li>
+      <A HREF="%SS%?SM=0:1">Searching DIP</A>
+     </li>
+    </ul>  
+     for detailes.
+    <br>
+    <br>
+
+      
+    <h3><a name="PFIELDS">DIP Node Annotation</a></h3>
+    
+    <p><strong><a name="SP">DIP node ID</a></strong>
+    <br> <font size=+1>T</font>his is a unique identifier for each protein
+    described within the DIP database. It has a format 
+    &lt;<b><i>DIP:</b>nnn<b>N</i></b>&gt;.
+
+    <p><strong><a name="SP">Description/Name</a></strong>
+    <br> <font size=+1>T</font>he common name of the proten and/or
+     its short description.
+
+    <p><strong><a name="SP">Primary Database reference(s)</a></strong>
+    <br> <font size=+1>A</font>t least one reference to PIR, SWISSPROT and/or
+    GENBANK entry is provided.
+
+    <p><strong><a name="SP">Cross-references</a></strong>
+    <br> <font size=+1>R</font>references to other database entries related to
+    the protein of interest as retrieved from SwissProt and NR BLAST entries.
+    The list of cross-references is subdivided into (P)rotein, (D)omain and
+    (F)eature (eg motifs) categories. 
+
+
+
+
+    <p><strong><a name="superfamily">Superfamily</a></strong>
+    <br><font size=+1>T</font>he superfamily specified in the PIR entry.
+
+
+    <p><strong><a name="SP">Organism</a></strong>
+    <br> <font size=+1>T</font>he organism producing the protein. A 
+    cross-reference to the TaxonID database is provided for additional
+    information.
+
+    <p><strong><a name="SP">Function</a></strong>
+    <br> <font size=+1>A</font> short description of the protein's function
+     within the cell.
+
+    <p><strong><a name="SP">Localization</a></strong>
+    <br> <font size=+1>L</font>ocalization of the protein within the cell (if 
+    known)
+
+    <p><strong><a name="SP">Keywords</a></strong>
+    <br> <font size=+1>K</font>eywords associated with the protein. They might
+    describe its structure and/or sequence features, biological activity, 
+    function, cellular localization, <i>etc.</i>
+  
+
+
+
+    <h3><a name="IFIELDS">DIP Edge Annotation</a></h3>  
+
+    <p><strong><a name="SP">DIP interaction ID</a></strong>
+    <br> <font size=+1>T</font>his is a unique identifier for each interaction
+    described within the DIP database. It has a format 
+    &lt;<b><i>DIP:</b>nnn<b>E</i></b>&gt;. For example,
+    DIP:1234E referes to the interaction between actin and foofoo in 
+    <i>S. cerevisiae</i>. Please, use the DIP interaction ID when referring 
+    to an interaction described within the DIP database.   
+
+
+    <p><strong><a name="Range">Residue Ranges</a></strong><br>
+    <font size=+1>T</font>he range is meant to specify more accurately which 
+    parts of the proteins are directly involved in the interaction.  
+
+    <p><strong><a name="Domain">Protein Domain</a></strong><br> 
+    <font size=+1>T</font>he interacting domain name.  An incomplete list of 
+    <a href="javascript:openAWindow('domains.html','Domain')">domain names</a>
+    is available.
+
+    <p><strong><a name="Bind">Dissociation Constant</a></strong>
+    <br><font size=+1>T</font>he dissociation constant of the protein-protein 
+    complex in mols/liter (<u>M</u>).
+
+    <p><strong><a name="Methods">Experimental Method(s)</a></strong>
+    <br><font size=+1>T</font>he experimental method(s) used to identify and/or
+    characterize the interaction.
+
+    <p><strong><a name="Reference">Reference(s)</a></strong>
+    <br><font size=+1>A</font> literature reference to the experimental work
+    studying the interactions.
+
+    <p><strong><a name="Comments">Comments</a></strong>
+    <br><font size=5>A</font>dditional comments supplied by the person who
+    deposited the interaction.  Comments could include an explanation 
+    (evidence) why the proteins are thought to interact, and what the 
+    biological significance of the interaction is.
+
+<br><br><br>      
+
+<hr>
+     
+    <h3><a name="General">General comments</a></h3>
+
+<p>If you know of an interaction but do not want to look for the unique 
+    Id's, or don't want to submit it for some other reason, or if you know of 
+    a protein-protein interaction where the PIR/SWISSPROT/GENBANK file for one
+    or both of the proteins is not yet available please 
+    <a href="mailto:dip@mbi.ucla.edu">email us</a> with the names of the two 
+    proteins and any other information you would like to include. Thanks.
+    
+<p>
+    For help on finding the Id for a protein go to <a href="http://pir.georgetown.edu/"> for PIR accession code
+    </a> or to <a href="http://www.expasy.ch/cgi-bin/sprot-search-ful">for SWISSPROT code </a> and for
+     <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?CMD=search&DB=protein">
+    NCBI/EMBL gi</a>.
+        
+    One of these code (PIR/SWISSPROT) is nececessary to enter a new protein 
+    protein interaction.
+                         
+    <p>DIP<sup>TM</sup> is updated via the web by, both professional curators,
+    as well as by volunteers.  One doesn't have to be the discoverer of the
+    interaction to make a submission - it's enough to provide us with the pair
+    of interacting proteins and a reference to an experiment identifying the
+    interactions.
+    
+<font size=1>
+<br><br>
+
+Last modified: Mon Dec 31 14:43:42 PST 2001
+</font>

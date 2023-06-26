@@ -1,0 +1,581 @@
+<div style='margin: 0 0 5em 0'>
+<table width="100%" cellpadding="5">
+ <tr>
+  <td>
+<p><b>1. Overview</b>
+<p> MiSink Plugin is an add-on Cytoscape module that provide means for
+bidirectional communication between Cytoscape and remote sources of
+interaction data. <!-- It is composed of the plugin module itself 
+and an optionall Mozilla/Firefox extension (MiTap) which redirects data from 
+the browser into Cytoscape. --> In order to be recognized by MiSink, the incoming 
+data should be provided in the XML format and preceded by a single-line command
+header used to specify the name of the MiSink filter to use, as shown below:
+<p>
+<center>
+<IMG src="dip/images/misink/MiSink.png"/>
+</center>
+
+
+
+<p><b>2. Configuration</b>
+ <p><b>2.1 Client side</b> (MiSink Plugin)
+<p>At startup, the plugin reads the <i>misink.xml</i> file that should be 
+located in the Cytoscape home directory. This file contains information
+about the port to use to listen for the incoming data as well as description
+of the filters available for processing of the incoming data.
+<p>The filters rely on W3C XPath expression language to identify relevant 
+information within the incoming XML files and pass it to Cytoscape. A good 
+introduction to 
+<a href="javascript:cop('http://www.w3.org/TR/xpath')">XPath</a> language, as
+well as pointers to tutorials and examples can be found through 
+<a href="javascript:cop('http://en.wikipedia.org/wiki/XPath')">Wikipedia's 
+XPath Page</A>
+  
+
+<p><b>2.1.1 Configuration file syntax</b>
+
+<p>misink.xml file contains a single top-level &lt;filterSet&gt; element 
+that lists at least one filter described within &lt;filter&gt; element. The
+elements allowed within <i>misink.xml</i> file include:
+<p>
+<center>
+
+<table border="0" width="97%" cellpadding="1">
+ <tr>
+  <td align="left">
+   <b>&lt;filterSet&gt;</b> - root element 
+  </td>
+ </tr>
+ <tr>
+  <td align="left">
+   <table border="0" width="100%" cellpadding="3">
+    <tr>
+     <td>
+      <b>Children:</b>  &lt;filter&gt; (compulsory)
+     </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+<tr>
+  <td>
+   <table border="1" width="100%" cellpadding="3">
+     <tr>
+      <th width="%20">
+       attribute
+      </th>
+      <th width="10%">
+        default
+      </th>
+      <th>description
+      </th>
+      <th width="5%">
+       compulsory
+      </th>
+     </tr>
+     <tr>
+       <td>
+        port="<i>integer</i>"
+       </td>
+       <td align="center">
+         30403
+       </td>
+       <td>
+         Port number used to listen for the incoming data. If not present the
+         number will be set automatically to the default value.  The number 
+         currently used is always available in the <i>.misink</i> file located 
+         within Cytoscape home directory.
+       <td align="center">
+         no
+       </td>
+    </tr>
+     <tr>
+       <td>
+        debug="<i>true/false</i>"
+       </td>
+       <td align="center">
+        "<i>false</i>"
+       </td>
+       <td>
+         Debugging flag. If set, a small set of debugging features is made 
+         available. At the the moment it includes diagnostic log output and
+         the ability to reread the configuration file without the necessity 
+         to restart Cytoscape. 
+       <td align="center">
+         no
+       </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+ <tr><td><hr/></td></tr>
+
+ <tr>
+  <td align="left">
+   <b>&lt;filter&gt;</b> - filter definition
+  </td>
+ </tr>
+ <tr>
+  <td align="left">
+   <table border="0" width="100%" cellpadding="3">
+    <tr>
+     <td>
+      <b>Children:</b>  &lt;node&gt; (compulsory);  &lt;edge&gt; (optional)
+     </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <table border="1" width="100%" cellpadding="3">
+     <tr>
+      <th width="%20">
+       attribute
+      </th>
+      <th width="10%">
+        default
+      </th>
+      <th>description
+      </th>
+      <th width="5%">
+       compulsory
+      </th>
+     </tr>
+     <tr>
+       <td>
+        name="<i>string</i>"
+       </td>
+       <td align="center">
+         <i>none</i>
+       </td>
+       <td>
+         Name of the filter. The same name appears within the incoming
+         data stream to select the filter to use.
+       <td align="center">
+         yes
+       </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+ <tr><td><hr/></td></tr>
+
+
+ <tr>
+  <td align="left">
+   <b>&lt;node&gt;</b> - node definition
+  </td>
+ </tr>
+ <tr>
+  <td align="left">
+   <table border="0" width="100%" cellpadding="3">
+    <tr>
+     <td>
+      <b>Children:</b>  &lt;attribute&gt; (optional)
+     </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <table border="1" width="100%" cellpadding="3">
+     <tr>
+      <th width="%20">
+       attribute
+      </th>
+      <th width="10%">
+        default
+      </th>
+      <th>description
+      </th>
+      <th width="5%">
+       compulsory
+      </th>
+     </tr>
+     <tr>
+       <td>
+        xpath="<i>xpath_exp</i>"
+       </td>
+       <td align="center">
+         <i>none</i>
+       </td>
+       <td>
+         <a href="javascript:cop('http://www.w3.org/TR/xpath')">XPath</a> 
+         expression identifying location of the elements describing individual 
+         nodes within the incoming data. 
+       <td align="center">
+         yes
+       </td>
+    </tr>
+    <tr>
+      <td>
+        id="<i>xpath_exp</i>"
+       </td>
+       <td align="center">
+         <i>none</i>
+       </td>
+       <td>
+        <a href="javascript:cop('http://www.w3.org/TR/xpath')">XPath</a>
+        expression that specifies the identifier of the node. It is applied 
+        starting from the element found by the xpath expression above.
+       <td align="center">
+         yes
+       </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+ <tr><td><hr/></td></tr>
+
+ <tr>
+  <td align="left">
+   <b>&lt;edge&gt;</b> - edge definition
+  </td>
+ </tr>
+ <tr>
+  <td align="left">
+   <table border="0" width="100%" cellpadding="3">
+    <tr>
+     <td>
+      <b>Children:</b>  &lt;vertex&gt; (compulsory); &lt;attribute&gt; (optional)
+     </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <table border="1" width="100%" cellpadding="3">
+     <tr>
+      <th width="%20">
+       attribute
+      </th>
+      <th width="10%">
+        default
+      </th>
+      <th>description
+      </th>
+      <th width="5%">
+       compulsory
+      </th>
+     </tr>
+     <tr>
+       <td>
+        xpath="<i>xpath_exp</i>"
+       </td>
+       <td align="center">
+         <i>none</i>
+       </td>
+       <td>
+        <a href="javascript:cop('http://www.w3.org/TR/xpath')">XPath</a>
+        expression identifying location of the elements describing individual 
+        edgess within the incoming data. 
+       <td align="center">
+         yes
+       </td>
+    </tr>
+    <tr>
+      <td>
+        id="<i>xpath_exp</i>"
+       </td>
+       <td align="center">
+         <i>none</i>
+       </td>
+       <td>
+        <a href="javascript:cop('http://www.w3.org/TR/xpath')">XPath</a>
+        expression that specifies the identifier of a given edge. It is 
+        applied starting from the element found by the xpath expression above.
+       </td>
+       <td align="center">
+         yes
+       </td>
+    </tr>    
+    <tr>
+     <td>
+        tp="<i>string</i>"
+     </td>
+     <td align="center">
+         "<i>PP</i>"
+     </td>
+     <td>
+         default type of the resulting edge. 
+     <td align="center">
+         no
+     </td>
+    </tr>    
+    <tr>
+     <td>
+       tpXP="<i>xpath_exp</i>"
+     </td>
+     <td align="center">
+         <i>none</i>
+     </td>
+     <td>
+      <a href="javascript:cop('http://www.w3.org/TR/xpath')">XPath</a>
+      expression that specifies type of the edge. It is applied to 
+      the element found by the xpath expression above. In case of no match 
+      the value of the <i>tp</i> attribute will be used.
+     </td> 
+     <td align="center">
+         no
+     </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+ <tr><td><hr/></td></tr>
+
+ <tr>
+  <td align="left">
+   <b>&lt;vertex&gt;</b> - vertex definition
+  </td>
+ </tr>
+ <tr>
+  <td align="left">
+   <table border="0" width="100%" cellpadding="3">
+    <tr>
+     <td>
+      <b>Children:</b> <i>none</i>
+     </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <table border="1" width="100%" cellpadding="3">
+     <tr>
+      <th width="%20">
+       attribute
+      </th>
+      <th width="10%">
+        default
+      </th>
+      <th>description
+      </th>
+      <th width="5%">
+       compulsory
+      </th>
+     </tr>
+     <tr>
+       <td>
+        xpath="<i>xpath_exp</i>"
+       </td>
+       <td align="center">
+         <i>none</i>
+       </td>
+       <td>
+         <a href="javascript:cop('http://www.w3.org/TR/xpath')">XPath</a>
+         expression specyfying location of the elements identifying, within 
+         the incoming data, nodes connected by the enclosing 
+         &lt;<i>edge</i>&gt; element. 
+         The expression is applied to the element found by the 
+         xpath expression of the enclosing &lt;<i>edge</i>&gt; element.
+       <td align="center">
+         yes
+       </td>
+    </tr>
+    <tr>
+      <td>
+        id="<i>xpath_exp</i>"
+       </td>
+       <td align="center">
+         <i>none</i>
+       </td>
+       <td>
+        <a href="javascript:cop('http://www.w3.org/TR/xpath')">XPath</a>
+        expression that specifies identifier of the vertex. The expression 
+        is applied to the element found by the xpath expression above.
+       <td align="center">
+         yes
+       </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+ <tr><td><hr/></td></tr>
+
+ <tr>
+  <td align="left">
+   <b>&lt;attribute&gt;</b> - definition of node and edge attributes
+  </td>
+ </tr>
+ <tr>
+  <td align="left">
+   <table border="0" width="100%" cellpadding="3">
+    <tr>
+     <td>
+      <b>Children:</b> <i>none</i>
+     </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <table border="1" width="100%" cellpadding="3">
+     <tr>
+      <th width="%20">
+       attribute
+      </th>
+      <th width="10%">
+        default
+      </th>
+      <th>description
+      </th>
+      <th width="5%">
+       compulsory
+      </th>
+     </tr>
+     <tr>
+       <td>
+        name="<i>string</i>"
+       </td>
+       <td align="center">
+         <i>none</i>
+       </td>
+       <td>
+         name of the attribute
+       <td align="center">
+         yes
+       </td>
+    </tr>
+     <tr>
+       <td>
+        xpath="<i>xpath_exp</i>"
+       </td>
+       <td align="center">
+         <i>none</i>
+       </td>
+       <td>
+        <a href="javascript:cop('http://www.w3.org/TR/xpath')">XPath</a>
+        expression specifying value of the attribute within the incoming 
+        data file. It is applied to the element found by the xpath expression 
+        of the enclosing &lt;<i>node</i>&gt; or &lt;<i>edge</i>&gt; element.
+       <td align="center">
+         yes
+       </td>
+    </tr>
+    <tr>
+      <td>
+        refURL="<i>URL</i>"
+       </td>
+       <td align="center">
+         <i>none</i>
+       </td>
+       <td>
+        Network location of the Web resource relevant to the value of the attribute.
+        It is used, most commonly, to point to cross-referenced database with the 
+        attribute value corresponding to the remote database identifier. 
+        <p>When present, corresponding item will be added to the MiSink submenu 
+        available within the context sensitive Cytoscape pop-up menus. 
+       </td>
+       <td align="center">
+        no
+       </td>
+    </tr><tr>
+      <td>
+        refID="<i>string</i>"
+       </td>
+       <td align="center">
+         "<i>%ID%</i>"
+       </td>
+       <td>
+        Placeholder within the refURL string that is substituted with the attribute 
+        value when constructing the URL.
+       </td>
+       <td align="center">
+         no
+       </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+ <tr><td><hr/></td></tr>
+ </table>
+</center>
+
+
+<p><b>2.1.2 Configuration file examples</b>
+<p>
+<center>
+
+ <table border="0" width="97%" cellpadding="1">
+  <td align="left">
+   <table border="1" width="100%" cellpadding="3">
+    <tr>
+     <th width="%20">
+       File
+     </th>
+     <th width="%80">
+       Comments
+     </th>
+    </tr> 
+    <tr>
+     <td>
+       <a href="javascript:cop('/misink/misink.xml')">misink.xml</a>
+     </td>
+     <td>
+       The default file distributed with the plugin. It contains two filters:
+       <ul>
+         <li> DIP extracts the very basic information from MIF2.5 files. This is 
+              the filter used throughout the DIP Web site.
+              <p> 
+         <li> SIF can be used, in conjunction with tabTap script (see 
+              <a HREF="javascript:goTab(document.softMIS,3)">FAQ</a>) to process 
+              Cytoscape .sif files.
+              <p>
+       </ul>  
+     </td>
+    </tr> 
+   </table>
+  </td>
+ </tr> 
+</table>
+</center>
+<p><b>2.2 Server side</b> (data sources)
+<p>In order to be recognized by MiSink Plugin the interaction data served by 
+a remote site should be provided as a link to remote http server</b> provided 
+in a format:
+<pre>
+       http://127.0.0.1:30403/&lt;host&gt;[:port]/&lt;path&gt;
+</pre>
+
+For example, MiSink-recognizable link to data available at
+<pre>  
+       <a href="http://dip.doe-mbi.ucla.edu/dip/cdip/getMIF.cgi?CDIP=on&MD=all&ID=DIP:525N"><font color="#0000FF"><b>http://dip.doe-mbi.ucla.edu/dip/cdip/getMIF.cgi?CDIP=on&MD=all&ID=DIP:525N</b></font></a>
+</pre>
+
+should look like:
+<pre>
+       <a href="http://127.0.0.1:30403/dip.doe-mbi.ucla.edu/dip/cdip/getMIF.cgi?CDIP=on&MD=all&ID=DIP:525N"><font color="#0000FF"><b>http://</b></font>127.0.0.1:30403/<font color="#0000FF"><b>dip.doe-mbi.ucla.edu/dip/cdip/getMIF.cgi?CDIP=on&MD=all&ID=DIP:525N</b></font></a>
+</pre>
+
+       <p>[<i>Import Depth Control</i>] The URL provided by the server may be terminated with a string 
+       '%ED%' (ie '%25ED%25' after URL encryption). It will be removed or converted to ED=1.5 parameter 
+       when 'Edge Import Depth' is set, respectively, to '1' or '1.5'.
+       The modified URL will be passed back to the server which can then provide appropriate data.
+
+       <p>[<i>Interaction Data Format</i>] The server should return xml-formatted interaction data 
+       preceded by a command line specifying the filter to use, for example:
+<pre>
+       ADD MIF
+       &lt;entrySet&gt;
+        &lt;entry&gt;
+          ...
+        &lt;/entry&gt;
+       &lt;/entrySet&gt;
+</pre>
+       <p>Provided Cytoscape with MiSink plugin is running, such link, when 
+       clicked upon within a web browser, will be result in a request to the server 
+       issued by the currently running Cytoscape instance. The interaction data will 
+       be processed by the specified filter and added to the current Cytoscape network.
+       <p><i>NOTE</i>: If desired, the response from the Cytoscape can be hidden by redirecting 
+       it to a hidden &lt;<i>iframe</i>&gt; element.
+
+  </td>
+ </tr>
+</table>
+</div>

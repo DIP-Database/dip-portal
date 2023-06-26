@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>edu.ucla.mbi.dip</groupId>
+  <artifactId>dip-site</artifactId>
+  <packaging>war</packaging>
+ 
+  <name>dip-site</name>
+  <url>http://dip.mbi.ucla.edu</url>
+
+  <parent>
+    <groupId>edu.ucla.mbi.dip</groupId>
+    <artifactId>dip-portal</artifactId>
+    <version>3.0.0</version>
+  </parent>
+
+  <properties>
+    <portal.bld>${project.version}</portal.bld>
+    
+    <portal.rev>$Rev:: 3609  $</portal.rev>
+
+    <portal.prof></portal.prof>    
+    <dipportal.copyright>1999-2020</dipportal.copyright>
+
+    <portal.site>dip</portal.site>
+    <portal.welcome>dip-welcome</portal.welcome>
+    <portal.skin>dip</portal.skin>
+    <portal.amail>dip@mbi.ucla.edu</portal.amail>
+
+    <prolinks.skin>pfl</prolinks.skin>
+    <prolinks.copyright>2004-2020</prolinks.copyright>
+
+    <dipsite.recaptcha.publicKey>*****</dipsite.recaptcha.publicKey>
+    <dipsite.recaptcha.privateKey>*****</dipsite.recaptcha.privateKey>
+    <dipsite.recaptcha.apiURL>*****</dipsite.recaptcha.apiURL>
+    <dipsite.recaptcha.verifyURL>*****</dipsite.recaptcha.verifyURL>
+
+
+    
+    <!-- foo.org: global key -->
+    <!--
+   <recaptcha.publicKey>6LcdTggAAAAAADLxCaxWmh0s-H_aaviTRxaTzFSH</recaptcha.publicKey>
+   <recaptcha.privateKey>6LcdTggAAAAAANFs1X1x8xM8uV-Ho75A3-Wx320P</recaptcha.privateKey>
+   <recaptcha.recaptchaServer>https://api-secure.recaptcha.net</recaptcha.recaptchaServer>
+    -->
+
+
+    
+   <!--
+    <property name="privateKey" value="6LfVAwcAAAAAAAVpzD05-mBbK5_HRJ9StEvSPAIn"/>
+    <property name="publicKey" value="6LfVAwcAAAAAACFlY-X-icWpaoVMxHFyFVu3eIgc"/>
+    <property name="recaptchaServer" value="https://api-secure.recaptcha.net"/>
+    <property name="includeNoscript" value="false"/>
+   -->
+   <dipuser.jdbc>jdbc/dipuser</dipuser.jdbc>
+
+   <dipuser.dburl>jdbc:postgresql://10.1.3.1:5432/dip_auth</dipuser.dburl>
+<!--   <dipuser.dburl>jdbc:postgresql://10.1.1.15:5432/dip_auth_test</dipuser.dburl> -->
+   <dipuser.user>dip</dipuser.user>
+   <dipuser.pass>444dip444</dipuser.pass>
+
+<!--   <dipdb.endpoint>http://dip.doe-mbi.ucla.edu:50606/axis2/services/dipPublic</dipdb.endpoint> -->
+
+<!--  <dipdb.legacyEndpoint>https://dip.doe-mbi.ucla.edu/dip-legacy/dxf</dipdb.legacyEndpoint>  -->
+<!--  <dipdb.legacyEndpoint>http://10.1.4.114:8080/dip-legacy/dxf</dipdb.legacyEndpoint>       -->
+<!--      <dipdb.legacyEndpoint>http://10.1.3.113:8080/dip-legacy/dxf</dipdb.legacyEndpoint> -->
+      <dipdb.legacyEndpoint>http://10.1.2.2:8080/dip-legacy/dxf</dipdb.legacyEndpoint> 
+
+<!--   <dipdb.xpsq-endpoint>http://imex.mbi.ucla.edu/xpsq/service/rest/current</dipdb.xpsq-endpoint> -->
+
+   <dipdb.xpsq-dip-imex-endpoint>http://imex.mbi.ucla.edu/xpsq-dip-imex/service/rest/current/search</dipdb.xpsq-dip-imex-endpoint>
+   <dipdb.xpsq-dip-all-endpoint>http://imex.mbi.ucla.edu/xpsq-dip-all/service/rest/current/search</dipdb.xpsq-dip-all-endpoint>
+
+<!--   <ncbidb.endpoint>http://dip.doe-mbi.ucla.edu:80/dip-proxy/ncbi-service</ncbidb.endpoint> -->
+<!--   <ebidb.endpoint>http://dip.doe-mbi.ucla.edu:80/dip-proxy/ebi-service</ebidb.endpoint> -->
+<!--   <prldb.endpoint>http://dip.doe-mbi.ucla.edu:80/dip-proxy/prolinks-service</prldb.endpoint> -->
+
+
+   <ncbidb.endpoint>http://dip.mbi.ucla.edu/dip-proxy/ws/soap/ncbi-service</ncbidb.endpoint>
+   <ebidb.endpoint>http://dip.mbi.ucla.edu/dip-proxy/ws/soap/ebi-service</ebidb.endpoint>
+   <prldb.endpoint>http://dip.mbi.ucla.edu/dip-proxy/ws/soap/prolinks-service</prldb.endpoint>
+
+  </properties>
+
+  <profiles>
+
+   <profile>
+     <id>test</id>
+     <activation>
+       <property>
+         <name>build</name>
+         <value>test</value>
+      </property>
+     </activation>
+     <properties>
+       <portal.prof>dip-test:</portal.prof>
+       <!--<dipportal.rev>test:${dipportal.bld}</dipportal.rev> -->
+       <environment.srv>tomcat</environment.srv>
+       <dipuser.jdbc>java:/comp/env/jdbc/dipuser</dipuser.jdbc>
+
+       <dipdb.endpoint>http://dip.doe-mbi.ucla.edu:50606/axis2/services/dipPublic</dipdb.endpoint>       
+       
+     </properties>
+     <build>
+      <finalName>diptest</finalName>
+     </build>
+
+   </profile>
+
+   <profile>
+     <id>dip-portal-beta</id>
+     <activation>
+       <property>
+         <name>build</name>
+         <value>beta</value>
+      </property>
+     </activation>
+     <properties>
+       <portal.prof>dip-beta:</portal.prof>
+<!--       <dipportal.rev>beta:${dipportal.bld}</dipportal.rev> -->
+       <environment.srv>tomcat</environment.srv>
+       <dipuser.jdbc>java:/comp/env/jdbc/dipuser</dipuser.jdbc>
+
+       <dipdb.endpoint>http://dip.doe-mbi.ucla.edu:50606/axis2/services/dipPublic</dipdb.endpoint>      
+       
+     </properties>
+     <build>
+      <finalName>dipbeta</finalName>
+     </build>
+
+   </profile>
+
+   <profile>
+     <id>prolinks</id>
+     <activation>
+       <property>
+         <name>build</name>
+         <value>prolinks</value>
+      </property>
+     </activation>
+     <properties>
+
+       <portal.prof>prl-beta</portal.prof>
+
+       <portal.site>prl</portal.site>
+       <portal.welcome>prl-welcome</portal.welcome>
+       <portal.skin>pfl</portal.skin>
+
+       <portal.amail>prolinks@mbi.ucla.edu</portal.amail>
+
+       <dipportal.rev>beta:${dipportal.bld}</dipportal.rev>
+       <environment.srv>tomcat</environment.srv>
+
+       <dipuser.jdbc>jdbc/dipuser</dipuser.jdbc>
+       <dipdb.endpoint>http://dip.doe-mbi.ucla.edu:50606/axis2/services/dipPublic</dipdb.endpoint>
+       
+     </properties>
+
+     <build>
+      <finalName>prl-portal</finalName>
+     </build>
+
+   </profile>
+
+   <profile>
+     <id>prolinks-war</id>
+     <activation>
+       <property>
+         <name>build</name>
+         <value>prolinks-war</value>
+      </property>
+     </activation>
+     <properties>
+
+       <portal.prof>prl:</portal.prof>
+       <portal.site>prl</portal.site>
+       <portal.welcome>prl-welcome</portal.welcome>
+       <portal.skin>pfl</portal.skin>
+
+       <environment.srv>tomcat</environment.srv>
+       <dipuser.jdbc>java:/comp/env/jdbc/dipuser</dipuser.jdbc>
+       <dipdb.endpoint>http://dip.doe-mbi.ucla.edu:50606/axis2/services/dipPublic</dipdb.endpoint>       
+       
+       <portal.site>prl</portal.site> 
+
+     </properties>
+
+     <build>
+      <finalName>prl-portal</finalName>
+     </build>
+
+   </profile>
+
+   <profile>
+     <id>dip-portal-prod</id>
+     <activation>
+       <property>
+         <name>build</name>
+         <value>prod</value>
+       </property>
+     </activation>
+     <properties>
+       <portal.prof>dip:</portal.prof>
+<!--       <dipportal.rev>prod:${dipportal.bld}</dipportal.rev> -->
+      <environment.srv>tomcat</environment.srv>
+      <dipuser.jdbc>java:/comp/env/jdbc/dipuser</dipuser.jdbc>
+     </properties>
+     <build>
+      <finalName>dip</finalName>
+     </build>
+   </profile>
+
+  </profiles>
+ 
+  <dependencies>
+
+   <dependency>
+     <groupId>edu.ucla.mbi.dip</groupId>
+     <artifactId>dip-api-ws</artifactId>
+     <version>${dip-util.version}</version>
+   </dependency>
+
+   <dependency>
+     <groupId>edu.ucla.mbi.dip</groupId>
+     <artifactId>dip-orm</artifactId>
+     <version>${dip-util.version}</version>
+   </dependency>
+
+   <dependency>
+     <groupId>edu.ucla.mbi.dip</groupId>
+     <artifactId>dip-util-struts</artifactId>
+     <version>${dip-util.version}</version>
+     <exclusions>
+       <exclusion>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-context</artifactId>
+       </exclusion>
+     </exclusions>
+     
+   </dependency>
+
+   <dependency>
+     <groupId>edu.ucla.mbi.dip</groupId>
+     <artifactId>dip-util-graph</artifactId>
+     <version>${dip-util.version}</version>
+   </dependency>
+
+   <dependency>
+    <groupId>com.sun.xml.ws</groupId>
+    <artifactId>jaxws-rt</artifactId>
+    <version>${jaxws-rt.version}</version>
+   </dependency>
+
+  <dependency>
+    <groupId>com.sun.mail</groupId>
+    <artifactId>javax.mail</artifactId>
+    <version>1.6.2</version>
+   </dependency>
+
+   <dependency>
+     <groupId>javax.activation</groupId>
+     <artifactId>javax.activation-api</artifactId>
+     <version>1.2.0</version>
+   </dependency>
+   
+   <!--
+    <dependency>
+      <groupId>edu.ucla.mbi.dip</groupId>
+      <artifactId>wikipedia-parser</artifactId>
+      <version>0.1</version>
+    </dependency>
+
+   <dependency>
+    <groupId>commons-lang</groupId>
+    <artifactId>commons-lang</artifactId>
+    <version>2.4</version>
+   </dependency> 
+   -->
+
+   <dependency>
+     <groupId>commons-cli</groupId>
+     <artifactId>commons-cli</artifactId>
+     <version>1.4</version>
+   </dependency>
+
+   <dependency>
+      <groupId>net.tanesha.recaptcha4j</groupId>
+      <artifactId>recaptcha4j</artifactId>
+      <version>0.0.7</version>
+    </dependency>
+
+   <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-core</artifactId>
+    <version>${spring.version}</version>
+   </dependency>
+
+
+   <!--
+   <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>${spring.version}</version>
+   </dependency>
+   -->
+   
+   <dependency>
+     <groupId>org.springframework</groupId>
+     <artifactId>spring-context</artifactId>
+     <version>5.2.3.RELEASE</version>
+   </dependency>
+  
+
+   <dependency>
+     <groupId>org.springframework</groupId>
+     <artifactId>spring-web</artifactId>
+     <version>5.2.3.RELEASE</version>
+   </dependency>
+  
+
+   
+   <dependency>
+     <groupId>org.springframework</groupId>
+     <artifactId>spring-jdbc</artifactId>
+     <version>${spring.version}</version>
+   </dependency>
+
+   <dependency>
+     <groupId>org.springframework</groupId>
+     <artifactId>spring-orm</artifactId>
+     <version>${spring.version}</version>
+   </dependency>
+   
+   <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aop</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>cglib</groupId>
+      <artifactId>cglib</artifactId>
+      <version>2.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>${aspectj.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>${aspectj.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>spy</groupId>
+      <artifactId>spymemcached</artifactId>
+      <version>${spymemcached.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>${httpclient.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.xbean</groupId>
+      <artifactId>xbean-spring</artifactId>
+      <version>4.5</version>
+    </dependency>
+        
+  </dependencies>
+
+  
+  <build>
+    <finalName>dip-site</finalName>
+
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+    
+    <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.0.2</version>
+        <configuration>
+          <webResources>
+            
+            <resource>
+              <directory>${basedir}/../dip-api-ws/src/wsdl</directory>
+              <targetPath>WEB-INF/wsdl</targetPath>
+              <filtering>true</filtering>
+              <includes>
+                <include>DipLegacyService.wsdl</include>
+                <include>DipService14.wsdl</include>
+                <include>EbiService14.wsdl</include>
+                <include>NcbiService14.wsdl</include>
+                <include>ProlinksService14.wsdl</include>
+                <include>DXF1.4.xsd</include>                
+              </includes>
+            </resource>
+
+            <resource>
+              <directory>${basedir}/../dip-api-ws/src/wsdl</directory>
+              <targetPath>WEB-INF/classes/wsdl</targetPath>
+              <filtering>true</filtering>
+              <includes>
+                <include>DipLegacyService.wsdl</include>
+                <include>DipService14.wsdl</include>
+                <include>EbiService14.wsdl</include>
+                <include>NcbiService14.wsdl</include>
+                <include>ProlinksService14.wsdl</include>
+                <include>DXF1.4.xsd</include>
+              </includes>
+            </resource>
+            
+            <resource>
+              <directory>${basedir}/src/xsl</directory>
+              <targetPath>xsl</targetPath>
+              <filtering>true</filtering>
+              <includes>
+                <include>*/*.xsl</include>
+              </includes>
+            </resource>
+
+            <resource>
+              <directory>${basedir}/src/main/webapp/WEB-INF</directory>
+              <targetPath>WEB-INF</targetPath>
+              <filtering>true</filtering>
+              <includes>
+                <include>*.xml</include>
+              </includes>
+            </resource>
+
+            
+            <resource>
+              <directory>${basedir}/../etc/dip-site</directory>
+              <targetPath>WEB-INF</targetPath>
+              <filtering>true</filtering>
+              <includes>
+                <include>jetty-env.xml</include>
+              </includes>
+            </resource>
+
+            <resource>
+              <directory>${basedir}/../etc/dip-site</directory>
+              <targetPath>META-INF</targetPath>
+              <filtering>true</filtering>
+              <includes>
+                <include>context.xml</include>
+              </includes>
+            </resource>
+            
+            <resource>
+              <directory>${basedir}/src/main/webapp</directory>
+              <targetPath></targetPath>
+              <filtering>true</filtering>
+              <includes>
+                <include>index.jsp</include>
+              </includes>
+            </resource>
+
+            <resource>
+              <directory>${basedir}/src/main/webapp/skin/tiles</directory>
+              <targetPath>/skin/tiles</targetPath>
+              <filtering>true</filtering>
+              <includes>
+                <include>register.jsp</include>
+                <include>feedback.jsp</include>
+                <include>footer.jsp</include>
+              </includes>
+            </resource>
+
+            <resource>
+              <directory>${basedir}/src/main/webapp/skin/tiles/dip</directory>
+              <targetPath>/skin/tiles/dip</targetPath>
+              <filtering>true</filtering>
+              <includes>
+                <include>register.jsp</include>
+                <include>feedback.jsp</include>
+                <include>footer.jsp</include>
+              </includes>
+            </resource>
+
+            <resource>
+              <directory>${basedir}/src/main/webapp/skin/tiles/pfl</directory>
+              <targetPath>/skin/tiles/pfl</targetPath>
+              <filtering>true</filtering>
+              <includes>
+                <include>register.jsp</include>
+                <include>feedback.jsp</include>
+                <include>footer.jsp</include>
+              </includes>
+            </resource>
+
+            
+            <resource>
+              <directory>${basedir}/../etc/dip-site</directory>
+              <targetPath>WEB-INF/classes</targetPath>
+              <filtering>true</filtering>
+              <includes>
+                <include>log4j.properties</include>
+                <include>log4j2.xml</include>
+              </includes>
+            </resource>
+
+            <resource>
+              <directory>${basedir}/src/main/resources</directory>
+              <targetPath>WEB-INF</targetPath>
+              <filtering>true</filtering>
+              <includes>
+                <include>jetty-web.xml</include>
+                <include>tiles.xml</include>
+              </includes>
+            </resource>
+                        
+          </webResources>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>9.4.26.v20200117</version>
+        
+        <configuration>
+          <webApp>
+            <contextPath>/diptest</contextPath>
+          </webApp>
+
+          <webDefaultXml>src/main/resources/webdefault.xml</webDefaultXml>
+          
+          <systemProperties>
+            <systemProperty>
+              <name>com.sun.xml.ws.fault.SOAPFaultBuilder.disableCaptureStackTrace</name>
+              <value>false</value>
+            </systemProperty>
+            
+            <systemProperty>
+              <name>log4j.configuration</name>
+              <value>file:../etc/dip-site/jetty-log4j.properties</value>
+            </systemProperty>
+          </systemProperties>
+        </configuration>
+        
+      </plugin>
+    </plugins>
+  </build>
+  
+</project>

@@ -1,0 +1,64 @@
+<div style='margin: 0 0 5em 0'>
+<table width="100%" cellpadding="5">
+ <tr>
+  <td>
+<p>The additional operations that can be performed within Cytoscape 
+after MiSink is installed provide means for interactive traversal 
+of interaction network and incorporation of its interesting 
+fragments into Cytoscape graph. 
+<p>This process is composed of two, repeatedly applied steps:
+
+<ol type="I">
+  <li>
+   adding vertices (proteins) and edges (interactions) visible on a page that 
+   advertises it is MiSink ready by providing links hidden under 'MiSink icons' 
+     (<img src="dip/images/misink/cdipB.png" border="1"/>
+   and
+      <img src="dip/images/misink/cdipG.png" border="1"/> in case
+   of DIP Web site).
+   <br>For example, clicking on these icons appearing on 
+   <a href="javascript:wop('http://dip.doe-mbi.ucla.edu/dip/Browse.cgi?PK=1618&D=1')">this</A> 
+   DIP page that lists interactions of yeast's <i>Cdc34</i> will result in adding either
+   all (<img src="dip/images/misink/cdipB.png" border="1"/>
+   icon) or only core (<img src="dip/images/misink/cdipG.png" border="1"/>
+   icon) interactions to the current Cytoscape graph. In a similar manner, 
+   clicking on the icon visible on 
+   <a href="javascript:wop('http://dip.doe-mbi.ucla.edu/dip/DIPview.cgi?IK=40347')">this</A>
+   DIP page that displays information about interactions of <i>Cdc34</i> and <i>ubiquitin</i> 
+   will result in addition this interaction to the current Cytoscape graph.  
+   Finally, clicking on the MiSink icon visible on 
+   <a href="javascript:wop('http://dip.doe-mbi.ucla.edu/dip/DIPview.cgi?PK=1549')">this</A>
+   DIP page that describes <i>Cdc34</i> protein will result in addition of just this protein 
+   to the current network.  
+   <p>[<i><b>Note</b></i>] Some sites (including DIP) might provide control on
+    the depth of edges imported from pages listing interactions. By default,
+    clicking on the MiTap icons  will result in importing only interactions
+    listed on a given page.  However, choosing 'Edge Import Depth: 1.5' 
+    option within MiSink configuration panel (see Plugins->MiSink menu) 
+    will result in importing, in addition to all the relevant edges
+    visible on a given page, also edges connecting <i>any two nodes</i> 
+    present on the page.  Depending on circumstances, the user can toggle between
+    the two modes by choosing either '1' or '1.5' on MiSink configuration panel.
+   <p>
+  </li>
+  <li>
+   finding information about the neighbouring vertices that might be interesting
+   enough to be added to the current network. In its simplest form it can be done 
+   by either the interactions using capacities provided within a given Web site.
+   For example, clicking on any of 'Links' bullet visible on DIP pages listing
+   interactions will display all the interactions of the coresponding protein
+   known within DIP. As a time-saving alternative the same page will be loaded
+   into the browser after choosing the MiSink->DIP option from the pop-up menu 
+   that can be activated within Cytoscape by right-clicking on the vertex 
+   (protein) of interest.  
+
+  </li>
+</ol>
+   
+  </td>
+ </tr>
+</table>
+ </td>
+ </tr>
+</table>
+</div>

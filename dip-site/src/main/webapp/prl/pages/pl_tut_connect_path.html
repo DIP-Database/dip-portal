@@ -1,0 +1,268 @@
+
+    <link rel="stylesheet" type="text/css" href="skin/pfl/css/prolinks.css" />
+      
+      <div id="pl_tutorial_page">
+
+	<br />
+
+	<table class="pl_outer_frame">
+
+
+	  <!-- The header -->
+	  <tr>
+	    <td class="pl_tutorial_header_row pl_arrow_cell">
+	      <a href="page?id=pl_tut_common_prot">
+		<img class="pl_tut_arrow" 
+		     src="images/pl_tut_left_arrow.png" 
+		     width="60px"
+		     alt="Previous tutorial" />
+	      </a>
+	    </td>
+
+	    <td class="pl_tutorial_header_row"> 
+	      <b>Find functional linkages connecting two proteins</b>
+	    </td>
+
+	    <td class="pl_tutorial_header_row pl_arrow_cell"> 
+	      <a href="page?id=pl_tut_prot_seq">
+		<img class="pl_tut_arrow"  
+		     src="images/pl_tut_right_arrow.png" 
+		     width="60px"
+		     alt="Next tutorial" />
+	      </a>
+	    </td>
+	  </tr>
+
+
+
+	  <!-- The body of the tutorial from here -->
+	  <tr>
+	    <td class="pl_tutorial_body_row" colspan="3">
+	      <table class="pl_tutorial_inner_frame">
+		<tr>
+		  <td class="pl_tutorial_info_data">
+
+
+		    <!-- Tutorial organization -->
+		    <br />
+		    This tutorial is divided in 3 sections:
+		    <ul>
+
+		      <li>
+			<a class="pl_general" href="#form">The input form:</a>
+			General description of the input form.
+			<br /><br />
+		      </li>
+
+
+		      <li>
+			<a class="pl_general" href="#results">
+			  Inferences of connecting paths:</a> 
+			Descriptions of the output table with
+			the inferred paths.
+			<br /><br />
+
+			<ul>
+			  <li>
+			    <a class="pl_general" href="#page_navigation">
+			      Page navigation</a>
+			  </li>
+			</ul>
+			<br />
+		      </li>
+		    </ul>
+
+		    <!-- Description of the input form -->
+		    <a name="form"></a>
+		    <h2>The input form</h2>
+		    
+		    <p>
+		      The input form to search for paths of linakges
+		      connecting two protein 
+		      <a class="pl_general" 
+			  onclick="YAHOO.mbi.modal.help( 'Protein Identifiers', 'pl_help_pid' ); return false" 
+			  href="">identifiers</a> is presented in  
+		      <a class="pl_general" href="#figure1">Figure 1</a>. 
+		      The identifiers <b>must</b> be unique or ProLinks will throw
+		      an exception.
+		    </p>
+
+                    <br />
+
+                    <a name="figure1"></a>
+    	            <table width="70%" border="0px" cellpadding="5" cellspacing="0" align="center">                
+		      <tr>
+			<td align="center">
+			  <a href="images/pl_connect_links_form.png" target="_blank">
+			    <img class="pl_tut_image" 
+			         src="images/pl_connect_links_form.png" 
+			         width="50%"
+			         alt="Proteins to be connected with functional links" /> 
+			  </a>
+			</td>
+                      </tr>
+		      
+		      <tr>
+			<td align="left" valign="top">
+			  <b>Figure 1.</b>
+			  <u><i>Input form</i></u>. The user must provide the
+			  protein IDs that ProLinks will attempt to connect 
+			  with functional linkages. The figure shows the 
+			  example IDs that will be submitted. By clicking 
+			  on any question mark, a popup window will open with 
+			  an explanation of the corresponding topic. Parameters 
+			  <a class="pl_general" 
+			     onclick="YAHOO.mbi.modal.help( 'Confidence Value', 'pl_help_cvalue' ); return false" 
+			     href="">Confidence value</a>, 
+			  <a class="pl_general" 
+			     onclick="YAHOO.mbi.modal.help( 'Confidence Value', 'pl_help_network_distance_prm' ); return false" 
+			     href="">Network distance</a>, and
+			  <a class="pl_general" 
+			      onclick="YAHOO.mbi.modal.help( 'Identify Links with', 'pl_help_links_tag' ); return false" 
+			       href="">Identify links with</a>
+			  were explained in a 
+			  <a class="pl_general" 
+			     href="page?id=pl_tut_keyword#parameters"
+			     target="_blank">in another tutorial</a>. The format 
+			  options <b><i>Connecting paths</i></b> and 
+			  <b>Paths per page</b> are explained 
+			  <a class="pl_general" href="#output_fmt">below</a>
+			  (click on the figure to see the full size image).
+			</td>
+		      </tr>
+		    </table>
+
+		    <br /><br />
+
+		    
+		    <a name="output_fmt"></a>
+		    <p>
+		      Option <b><i>Connecting paths</i></b> determines the 
+		      paths that will be returned by ProLinks, which 
+		      can be the <b>shortest</b>, <b>longest</b> or 
+		      <b>all</b>. Finally, 
+		      <b><i>Paths per page</i></b> works similarly to the
+		      option <b><i>Linkages per page</i></b>, which has been
+		      <a class="pl_general" 
+			    href="page?id=pl_tut_keyword#parameters"
+			    target="_blank">already discussed</a>. The 
+		      difference is that here the unit of display is not a 
+		      single linkage, but the whole path of linkages that 
+		      connects both query proteins. Therefore a page displaying
+		      5 paths may contain up to 20 functional linkages if the 
+		      <b><i>Network Distance</i></b> parameter is set to <b>4</b>.
+		    </p>
+
+		    <br /><br />
+
+		    <a name="results"></a>
+		    <h2>Inferences of connecting paths</h2>
+
+
+		    <p>
+		      If we use the default search parameters and ouput 
+		      format options shown in 
+		      <a class="pl_general" href="#figure1">Figure 1</a>, 
+		      ProLinks will return the shown in
+		      <a class="pl_general" href="#figure2">Figure 2</a>. 
+		    </p>
+
+		    <p>
+		      <u>IMPORTANT NOTE:</u> ProLinks inferences will be 
+		      available in our server only for 7 days.
+		    </p>
+		    
+		    <a name="figure2"></a>
+    	            <table width="800px" border="0px" cellpadding="5" cellspacing="0" align="center">                
+		      <tr>
+			<td align="CENTER" width="50%">
+			  <a href="images/pl_connect_links_res.png" target="_blank">
+			    <img class="pl_tut_image" 
+			         src="images/pl_connect_links_res.png" 
+			         width="60%"
+			         alt="Inferred paths" /> 
+			  </a>
+			</td>
+                      </tr>
+		      
+		      <tr>
+			<td align="left" valign="top">
+			  <b>Figure 2.</b>
+			  <u><i>Inferred paths connecting two proteins</i></u>. 
+			  Paths are numbered and paginated. Each path
+			  is displayed in two steps. First the path is drawn
+			  as a series of consecutive steps, and then the 
+			  inference data related to each functional linkage 
+			  in the path is presented column-wise as in 
+			  <a class="pl_general" href="page?id=pl_tut_keyword#results" 
+			    target="_blank">previous tutorials</a>. (click on the 
+			  figure to see the full size image).
+			</td>
+		    </table>
+
+		    <br />
+		    
+		    <a name="page_navigation"></a>
+		    <h3>
+		      &nbsp;&nbsp;&nbsp;Page navigation
+		    </h3>
+		    
+		    <p>
+		      The procedure to browse through pages of paths is the 
+		      same as browsing through <a class="pl_general" 
+			href="page?id=pl_tut_keyword#navigation" 
+			target="_blank">pages of inferred linkages</a>. 
+		      Therefore, you can browse through 
+		      the inferred paths by clicking in the arrows in the 
+		      footer of the  results table. Where <b>></b> takes you 
+		      to the <i>next page</i>, <b><</b> retrieves the 
+		      <i>previous page</i>, <b>>></b> sends you to the 
+		      <i>last page</i>, <b><<</b> takes you back to the 
+		      <i>first page</i>, and <b>all</b> presents all paths 
+		      found in one single page.
+		    </p>
+
+		    <br />
+
+
+		  </td>
+		</tr>
+	      </table>
+	    </td>
+	  </tr>
+
+	  
+
+	  <!-- The footer  -->
+	  <tr>
+	    <td class="pl_tutorial_header_row pl_arrow_cell">
+	      <a href="page?id=pl_tut_common_prot">
+		<img class="pl_tut_arrow" 
+		     src="images/pl_tut_left_arrow.png" 
+		     width="60px"
+		     alt="Previous tutorial" />
+	      </a>
+	    </td>
+
+	    <td class="pl_tutorial_header_row"> 
+	      <b>Tutorial Navigation bar</b>
+	      <br />
+	      (<a class="pl_general" href="page?id=pl_tut_adv_search">
+		Advanced search Tutorials</a>)
+	    </td>
+
+	    <td class="pl_tutorial_header_row pl_arrow_cell"> 
+	      <a href="page?id=pl_tut_prot_seq">
+		<img class="pl_tut_arrow"  
+		     src="images/pl_tut_right_arrow.png" 
+		     width="60px"
+		     alt="Next tutorial" />
+	      </a>
+	    </td>
+	  </tr>
+	</table>
+      </div>
+
+
+      <!-- To avoid content be blocked by the footer -->
+      <br /><br /><br /><br /><br /><br /><br />

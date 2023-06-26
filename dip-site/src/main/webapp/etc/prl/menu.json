@@ -1,0 +1,156 @@
+{"upanel":"true",
+ "spanel":"true",
+ "menu":
+ [{"label":"TOP",
+   "link":"/",
+   "disabled":"false",
+   "menu":
+   [{"label":"ProLinks data",
+     "link":"page?id=pl_data",
+     "disabled":"false",
+     "menu":
+     [{"label":"Advanced searches",
+       "link":"page?id=pl_query",
+       "disabled":"false",
+       "menu":
+       [{"label":"Protein Keywords",
+	 "link":"page?id=pl_db_id",
+	 "disabled":"false",
+	 "menu":[]
+	},
+
+	{"label":"Multiple proteins",
+	 "link":"page?id=pl_mult_prot",
+	 "disabled":"false",
+	 "menu":[]
+	},
+
+	{"label":"Common links",
+	 "link":"page?id=pl_common",
+	 "disabled":"false",
+	 "menu":[]
+	},
+	
+	{"label":"Functional connections",
+	 "link":"page?id=pl_connections",
+	 "disabled":"false",
+	 "menu":[]
+	},
+
+        {"label":"Protein sequence",
+	 "link":"page?id=pl_prot_seq",
+	 "disabled":"false",
+	 "menu":[]
+	}]
+      },
+
+      {"label":"Software",
+       "link":"page?id=pl_software",
+       "disabled":"false",
+       "menu":[]
+      },
+
+      {"label":"Download",
+       "link":"page?id=pl_download",
+       "disabled":"false",
+       "menu":[]
+      }]
+    },
+
+    {"label":"News",
+     "link":"prlnews",
+     "disabled":"false",
+     "menu":[]
+    },
+
+
+    {"label":"About",
+     "link":"page?id=pl_about",
+     "disabled":"false",
+     "menu":
+     [
+      {"label":"Help",
+       "link":"page?id=pl_help",
+       "disabled":"false",
+       "menu":[]
+      },
+
+      {"label":"News",
+       "link":"prlnews",
+       "disabled":"false",
+       "menu": []
+      },
+
+      {"label":"Statistics",
+       "link":"page?id=pl_statistics",
+       "disabled":"false",
+       "menu":[]
+      },
+
+      {"label":"Acknowledgments",
+       "link":"page?id=pl_acknowledgments",
+       "disabled":"false",
+       "menu":[]
+      }]
+    },
+
+    {"label":"Tutorial",
+     "link":"page?id=pl_tutorial",
+     "disabled":"false",
+     "menu":
+     [{"label":"ProLinks homepage",
+       "link":"page?id=pl_tut_mainpage",
+       "disabled":"false",
+       "menu":[]
+      },
+
+      {"label":"Write queries",
+       "link":"page?id=pl_tut_write_query",
+       "disabled":"false",
+       "menu":[]
+      },
+
+
+      {"label":"Advanced searches",
+       "link":"page?id=pl_tut_adv_search",
+       "disabled":"false",
+       "menu":
+       [{"label":"Protein Keywords",
+	 "link":"page?id=pl_tut_keyword",
+	 "disabled":"false",
+	 "menu":[]
+	},
+
+	{"label":"Multiple proteins",
+	 "link":"page?id=pl_tut_mult_prot",
+	 "disabled":"false",
+	 "menu":[]
+	},
+
+	{"label":"Common links",
+	 "link":"page?id=pl_tut_common_prot",
+	 "disabled":"false",
+	 "menu":[]
+	},
+
+	{"label":"Functional connections",
+	 "link":"page?id=pl_tut_connect_path",
+	 "disabled":"false",
+	 "menu":[]
+	},
+
+	{"label":"Protein sequence",
+	 "link":"page?id=pl_tut_prot_seq",
+	 "disabled":"false",
+	 "menu":[]
+	}]
+      }]
+    },
+
+    {"label":"Download",
+     "link":"page?id=pl_download",
+     "disabled":"false",
+     "menu":[]
+    }]
+  }]
+}

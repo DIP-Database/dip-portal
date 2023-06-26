@@ -1,0 +1,598 @@
+{
+  pageConfig:{
+    pathregex:"^/pages/[a-zA-Z0-9_\\-\\.]+$",
+    idregex:"^[a-zA-Z0-9_\\-]+$",
+    pages:{
+      udev:{
+        active:true,
+        title:"Under Development",
+        showtitle:true,
+        showcomment:false,
+        menusel:"0",
+        viewtype:"file-html",
+        viewpath:"/pages/udev.html"
+      },
+      "dummy":{
+        active:true,
+        title:"Dummy",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:0",
+        viewtype:"file-html",
+        viewpath:"/pages/dummy.html"
+      },
+      about:{
+        active:true,
+        title:"About DIP",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:0",
+        viewtype:"file-html",
+        viewpath:"/pages/about.html"
+      },
+
+      terms:{
+        active:true,
+        title:"Terms of Use",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:0",
+        viewtype:"file-html",
+        viewpath:"/pages/terms.html"
+      },
+      acknowledgments:{
+        active:true,
+        title:"Acknowledgments",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:5",
+        viewtype:"file-html",
+        viewpath:"/pages/acknowledgments.html",
+        images:[]
+      },
+      data:{
+        active:true,
+        title:"DIP Data",
+        showtitle:true,
+        showcomment:false,
+        menusel:"1:0",
+        viewtype:"file-html",
+        viewpath:"/pages/data.html",
+        images:[
+          {name:"foo1",type:"jpg"},
+          {name:"foo2",type:"png"}
+        ]
+      },
+      news:{
+        active:true,
+        title:"DIP Data",
+        showtitle:true,
+        showcomment:false,
+        menusel:"1:1",
+        viewtype:"file-html",
+        viewpath:"/pages/news.html"
+      },
+
+      featured:{
+        active:true,
+        title:"Featured Interaction",
+        showtitle:true,
+        showcomment:false,
+        menusel:"1",
+        viewtype:"file-html",
+        viewpath:"/pages/udev.html"
+      },
+
+      help:{
+        active:true,
+        title:"DIP Overview",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4:1",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/overview.html"
+      },
+
+      guide:{
+        active:true,
+        title:"DIP User Guide",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/contents.html"
+      },
+
+      guide-overview:{
+        active:true,
+        title:"DIP Overview",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4:1",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/overview.html"
+      },
+
+      guide-search:{
+        active:true,
+        title:"DIP Search Guide",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4:2",
+        viewtype:"file-html",
+        viewpath:"/pages/udev.html"
+      },
+
+      guide-itype:{
+        active:true,
+        title:"DIP Interaction Types",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4:3",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/int_type.html"
+      },
+
+      guide-evtype:{
+        active:true,
+        title:"DIP Evidence Types",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/evidence_type.html"
+      },
+
+      guide-rectype:{
+        active:true,
+        title:"Record Types",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/record_type.html"
+      },
+
+      guide-qassess:{
+        active:true,
+        title:"Data Quality Assessment",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4:4",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/qassess.html"
+      },
+
+      guide-data-format:{
+        active:true,
+        title:"Data Formats",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/data_format.html"
+      },
+
+      guide-visual:{
+        active:true,
+        title:"DIP Cytoscape Interface",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4:0",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/cytoscape_export.html"
+      },
+
+      guide-cytoscape-install:{
+        active:true,
+        title:"DIP Cytoscape Interface",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4:0",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/cytoscape_install.html"
+      },
+
+      guide-molecule:{
+        active:true,
+        title:"Molecule",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4:0",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/molecule.html"
+      },
+
+      guide-molecule1:{
+        active:true,
+        title:"Molecule",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4:0",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/molecule1.html"
+      },
+
+      guide-molecule2:{
+        active:true,
+        title:"Molecule",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4:0",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/molecule2.html"
+      },
+
+      guide-molecule3:{
+        active:true,
+        title:"Molecule",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4:0",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/molecule3.html"
+      },
+
+      guide-molecule-ci:{
+        active:true,
+        title:"Molecule",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4:0",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/molecule_ci.html"
+      },
+
+      guide-molecule-fi:{
+        active:true,
+        title:"Molecule",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4:0",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/molecule_fi.html"
+      },
+
+
+      guide-interaction:{
+        active:true,
+        title:"Interaction",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4:0",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/interaction.html"
+      },
+
+      guide-evidence:{
+        active:true,
+        title:"Experiments",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4:0",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/experiment.html"
+      },
+
+      tools:{
+        active:true,
+        title:"DIP Tools",
+        showtitle:true,
+        showcomment:false,
+        menusel:"2:0",
+        viewtype:"file-html",
+        viewpath:"/pages/tools.html"
+      },
+      evltools:{
+        active:true,
+        title:"Data Evaluation Tools",
+        showtitle:true,
+        showcomment:false,
+        menusel:"2:2:0",
+        viewtype:"file-html",
+        viewpath:"/pages/evltools.html"
+      },
+
+      tutorial:{
+        active:true,
+        title:"DIP Tutorial",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:4:5",
+        viewtype:"file-html",
+        viewpath:"/pages/udev.html"
+      },
+
+      statistics:{
+        active:true,
+        title:"Database Statistics",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:2",
+        viewtype:"file-html",
+        viewpath:"/pages/statistics.html"
+      },
+
+      datastat:{
+        active:true,
+        title:"Data Statistics",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:2:1",
+        viewtype:"file-html",
+        viewpath:"/pages/udev.html"
+      },
+
+      miftools:{
+        active:true,
+        title:"MIF Tools",
+        showtitle:true,
+        showcomment:false,
+        menusel:"2:3",
+        viewtype:"file-html",
+        viewpath:"/pages/miftools.html"
+      },
+      links:{
+        active:true,
+        title:"Resources",
+        showtitle:true,
+        showcomment:false,
+        viewtype:"file-html",
+        menusel:"5:0",
+        viewpath:"/pages/links.html"
+      },
+      resources-dip:{
+        active:true,
+        title:"DIP Related Resources",
+        showtitle:true,
+        showcomment:false,
+        viewtype:"file-html",
+        menusel:"5:1",
+        viewpath:"/pages/udev.html"
+      },
+      resources-other:{
+        active:true,
+        title:"Other Resources",
+        showtitle:true,
+        showcomment:false,
+        viewtype:"file-html",
+        menusel:"5:2",
+        viewpath:"/pages/udev.html"
+      },
+      submit:{
+        active:true,
+        title:"Submit Interactions to DIP and IMEx",
+        showtitle:true,
+        showcomment:false,
+        menusel:"1:3:0",
+        viewtype:"file-html",
+        viewpath:"/pages/submit.html"
+      },
+      upload:{
+        active:true,
+        title:"Submit Interaction Data",
+        showtitle:true,
+        showcomment:false,
+        menusel:"1:3:0",
+        viewtype:"file-html",
+        viewpath:"/pages/udev.html"
+      },
+
+      software:{
+        active:true,
+        title:"DIP Software",
+        showtitle:true,
+        showcomment:false,
+        menusel:"2:1:0",
+        viewtype:"file-html",
+        viewpath:"/pages/software.html"
+      },
+      download:{
+        active:true,
+        title:"DIP Download",
+        showtitle:true,
+        showcomment:false,
+        menusel:"1:2:0",
+        viewtype:"file-html",
+        viewpath:"/pages/download.html"
+      },
+
+      search:{
+        active:true,
+        title:"DIP Search",
+        showtitle:true,
+        showcomment:false,
+        menusel:"1:1:0",
+        viewtype:"file-html",
+        viewpath:"/pages/search.html"
+      },
+
+      search-record:{
+        active:true,
+        title:"Record Search",
+        showtitle:false,
+        showcomment:false,
+        menusel:"1:1:1",
+        viewtype:"file-html",
+        viewpath:"/pages/search-record.html"
+      },
+
+      search-text:{
+        active:true,
+        title:"Text Search",
+        showtitle:false,
+        showcomment:false,
+        menusel:"1:1:2",
+        viewtype:"file-html",
+        viewpath:"/pages/search-text.html"
+      },
+
+      search-sequence:{
+        active:true,
+        title:"Sequence Search",
+        showtitle:true,
+        showcomment:false,
+        menusel:"1:1:3",
+        viewtype:"file-html",
+        viewpath:"/pages/udev.html"
+      },
+
+      search-article:{
+        active:true,
+        title:"Article Search",
+        showtitle:false,
+        showcomment:false,
+        menusel:"1:1:0",
+        viewtype:"file-html",
+        viewpath:"/pages/udev.html"
+      },
+
+      articles:{
+        active:true,
+        title:"DIP Publications",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:3:0",
+        viewtype:"file-html",
+        viewpath:"/pages/articles.html"
+      },
+
+      feedback:{
+        active:true,
+        title:"DIP Search",
+        showtitle:true,
+        showcomment:false,
+        menusel:"0:0:0",
+        viewtype:"file-html",
+        viewpath:"/pages/feedback.html"
+      },
+      webservices:{
+        active:true,
+        title:"DIP Web Services",
+        showtitle:true,
+        showcomment:false,
+        menusel:"2:4",
+        viewtype:"file-html",
+        viewpath:"/pages/webservices.html"
+      },
+      template:{
+        active:true,
+        title:"",
+        showtitle:false,
+        showcomment:false,
+        menusel:"0:0:0",
+        viewtype:"file-html",
+        viewpath:"/pages/template.html"
+      },
+      admin:{
+        active:true,
+        title:"DIP Site Administration",
+        showtitle:true,
+        showcomment:false,
+        menusel:"6",
+        viewtype:"file-html",
+        viewpath:"/pages/admin.html"
+      },
+      "network-load":{
+        active:true,
+        title:"DIP Network Load",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:2:3",
+        viewtype:"file-html",
+        viewpath:"/pages/network-load.html"
+      },
+      "cluster-load":{
+        active:true,
+        title:"DIP Cluster Load",
+        showtitle:true,
+        showcomment:false,
+        menusel:"3:2:4",
+        viewtype:"file-html",
+        viewpath:"/pages/cluster-load.html"
+      },
+      usermgr:{
+        active:true,
+        title:"User Manager",
+        showtitle:true,
+        showcomment:false,
+        menusel:"6:1",
+        viewtype:"file-html",
+        viewpath:"/pages/useradmin.html"
+      },
+      servermgr:{
+        active:true,
+        title:"Server Manager",
+        showtitle:true,
+        showcomment:false,
+        menusel:"6:2",
+        viewtype:"file-html",
+        viewpath:"/pages/serveradmin.html"
+      },
+      datamgr:{
+        active:true,
+        title:"Data Manager",
+        showtitle:true,
+        showcomment:false,
+        menusel:"6:3",
+        viewtype:"file-html",
+        viewpath:"/pages/udev.html"
+      },
+      viewmgr:{
+        active:true,
+        title:"View Manager",
+        showtitle:true,
+        showcomment:false,
+        menusel:"6:4",
+        viewtype:"file-html",
+        viewpath:"/pages/viewadmin.html"
+      },
+      cytoscape_install:{
+        active:true,
+        title:"Cytoscape Installation",
+        showtitle:true,
+        showcomment:false,
+        menusel:"1:1:0",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/cytoscape_install.html"
+      },
+      cytoscape_export:{
+        active:true,
+        title:"Cytoscape Export",
+        showtitle:true,
+        showcomment:false,
+        menusel:"1:1:0",
+        viewtype:"file-html",
+        viewpath:"/pages/guide/cytoscape_export.html"
+      },
+      
+      "prolinks":{"menusel":"4:0","title":"ProLinks","viewpath":"/pages/pl_prolinks.html","viewtype":"file-html"},
+      "pl_prot_attr":{"menusel":"4:1:2","title":"Submit a protein attribute","viewpath":"/pages/pl_prot_attr.html","viewtype":"file-html"},
+      "pl_tut_sprot_attr_1":{"menusel":"4:3:2","title":"Submitting a protein attribute to ProLinks","viewpath":"/pages/pl_tut_sprot_attr_1.html","viewtype":"file-html"},
+      "pl_acknowledgments":{"menusel":"4:5:2","title":"Acknowledgments","viewpath":"/pages/pl_acknowledgments.html","showtitle":"false","showcomment":"false","viewtype":"file-html"},
+      "pl_tut_mult_prot_2":{"menusel":"4:3:3","title":"Submitting multiple proteins to ProLinks","viewpath":"/pages/pl_tut_mult_prot_2.html","viewtype":"file-html"},
+      "pl_mult_proteins":{"menusel":"4:1:2","title":"Search functional linkages for multiple proteins","viewpath":"/pages/pl_mult_proteins.html","viewtype":"file-html"},
+      "pl_tut_mult_prot_1":{"menusel":"4:3:3","title":"Submitting multiple proteins to ProLinks","viewpath":"/pages/pl_tut_mult_prot_1.html","viewtype":"file-html"},
+      "pl_help":{"menusel":"4:4:0","title":"ProLinks help","viewpath":"/pages/pl_help.html","viewtype":"file-html"},
+      "pl_connections":{"menusel":"4:1:5","title":"Find linkages connecting proteins","viewpath":"/pages/pl_connections.html","viewtype":"file-html"},
+      "pl_tut_sprot_attr_3":{"menusel":"4:3:2","title":"Submitting a protein attribute to ProLinks","viewpath":"/pages/pl_tut_sprot_attr_3.html","viewtype":"file-html"},
+      "pl_tut_sprot_attr_2":{"menusel":"4:3:2","title":"Submitting a protein attribute to ProLinks","viewpath":"/pages/pl_tut_sprot_attr_2.html","viewtype":"file-html"},
+      "pl_statistics":{"menusel":"4:5:1","title":"Statistics","viewpath":"/pages/pl_statistics.html","viewtype":"file-html"},
+      "pl_about":{"menusel":"4:5:0","title":"ProLinks help","viewpath":"/pages/pl_about.html","viewtype":"file-html"},
+      "pl_query":{"menusel":"4:1:0","title":"Query ProLinks","viewpath":"/pages/pl_query.html","viewtype":"file-html"},
+      "pl_download":{"menusel":"4:2:0","title":"Download ProLinks","viewpath":"/pages/pl_download.html","viewtype":"file-html"},
+      "pl_common":{"menusel":"4:1:4","title":"Common links","viewpath":"/pages/pl_common.html","viewtype":"file-html"},
+      "pl_tutorial":{"menusel":"4:3:0","title":"ProLinks Tutorial","viewpath":"/pages/pl_tutorial.html","viewtype":"file-html"},
+      "pl_db_id":{"menusel":"4:1:1","title":"Find linkages by database ID","viewpath":"/pages/pl_db_id.html","viewtype":"file-html"},
+      "pl_mult_prot":{"menusel":"4:1:3","title":"Submit multiple proteins to ProLinks","viewpath":"/pages/pl_mult_prot.html","menudef":"0:3:0:2","viewtype":"file-html"},
+      "pl_tut_sdb_id_2":{"menusel":"4:3:1","title":"ProLinks Tutorial","viewpath":"/pages/pl_tut_sdb_id_2.html","viewtype":"file-html"},
+      "pl_tut_sdb_id_1":{"menusel":"4:3:1","title":"ProLinks Tutorial","viewpath":"/pages/pl_tut_sdb_id_1.html","viewtype":"file-html"},
+      "pl_acknowledgements":{"menusel":"4:5","title":"Acknowledgements","viewpath":"/pages/pl_acknowledgements.html","viewtype":"file-html"},
+      "pl_tut_sdb_id_3":{"menusel":"4:3:1","title":"ProLinks Tutorial","viewpath":"/pages/pl_tut_sdb_id_3.html","viewtype":"file-html"},
+      "pl_news":{"menusel":"4:6:0","title":"News and Updates","viewpath":"/pages/pl_news.html","viewtype":"file-html"},
+      "ProLinks2":{"menusel":"4:0","title":"ProLinks","viewpath":"/pages/prolinks2.html","viewtype":"file-html"} 
+    }
+  }
+}
+
+

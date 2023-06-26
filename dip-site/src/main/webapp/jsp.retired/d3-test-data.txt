@@ -1,0 +1,16 @@
+{
+  "node":[
+    { "key":"0", "ac":"DIP-123N", "tt":"DIP-123N", "url":"rex?ns=dip&amp;ac=DIP-123N&amp;md=N&amp;sl=2&amp;nbh=1+&amp;xf.d3j=0" },
+    { "key":"1", "ac":"DIP-121N", "tt":"DIP-121N", "url":"rex?ns=dip&amp;ac=DIP-1214N&amp;md=N&amp;sl=2&amp;nbh=1+&amp;xf.d3j=0" },
+    { "key":"2", "ac":"DIP-113N", "tt":"DIP-113N", "url":"rex?ns=dip&amp;ac=DIP-113N&amp;md=N&amp;sl=2&amp;nbh=1+&amp;xf.d3j=0" },
+    { "key":"3", "ac":"DIP-122N", "tt":"DIP-122N", "url":"rex?ns=dip&amp;ac=DIP-122N&amp;md=N&amp;sl=2&amp;nbh=1+&amp;xf.d3j=0" },
+    { "key":"4", "ac":"DIP-112N", "tt":"DIP-112N", "url":"rex?ns=dip&amp;ac=DIP-112N&amp;md=N&amp;sl=2&amp;nbh=1+&amp;xf.d3j=0" }
+   ],
+  "edge":[
+   { "key":"0", "source":0, "target":1 },
+   { "key":"1", "source":0, "target":2 },
+   { "key":"2", "source":0, "target":3 },
+   { "key":"3", "source":0, "target":4 },
+   { "key":"4", "source":3, "target":4 }
+  ]
+}

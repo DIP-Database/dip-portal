@@ -1,0 +1,361 @@
+{upanel:true,
+ spanel:true,
+ menu:[
+  {label:"TOP",
+   link:"/",
+   "disabled":"false",
+   menu:[
+      {label:"DIP Data",
+       link:"page?id=data",
+       "disabled":"false",
+       menu:[
+         {label:"DIP Search",
+          link:"page?id=search",
+          "disabled":"false",
+          menu:[
+            {label:"Record Search",
+             link:"page?id=search-record",
+             "disabled":"false",
+             menu:[]
+            },
+            {label:"pathBLAST",
+             link:"http://pathblast.org",
+             "disabled":"false",
+             menu:[]
+            }]
+         },
+
+         {label:"DIP Download",
+          link:"page?id=download",
+          "disabled":"false",
+          menu:[
+            {label:"Current",
+             link:"download?mst=1:2:1&tbs=0:0",
+             "disabled":"false",
+             menu:[]
+            },
+            {label:"Large-Scale",
+             link:"download?mst=1:2:2&tbs=0:0",
+             "disabled":"true",
+             menu:[]
+            },
+            {label:"Sequence",
+             link:"download?mst=1:2:3&tbs=0:0",
+             "disabled":"false",
+             menu:[]
+            },
+            {label:"IMEx",
+             link:"download?mst=1:2:4&tbs=0:0",
+             "disabled":"false",
+             menu:[]
+            },
+            {label:"Archives",
+             link:"download?mst=1:2:5&tbs=0:0",
+             "disabled":"false",
+             menu:[]
+            }
+          ]
+         },
+         {label:"Submit Interactions",
+          link:"page?id=submit",
+          "disabled":"false",
+          menu:[]
+         }]
+      },              
+      {label:"DIP Tools",
+       link:"page?id=tools",
+       "disabled":"false",
+       menu:[
+         {label:"Software",
+          link:"page?id=software",
+          "disabled":"false",
+          menu:[
+            {label:"MiSink",
+             link:"http://dip.doe-mbi.ucla.edu/misink",
+             "disabled":"false",
+             menu:[]
+            },         
+            {label:"MiTap",
+             link:"http://dip.doe-mbi.ucla.edu/mitap",
+             "disabled":"false",
+             menu:[]
+            },         
+            {label:"DIP Proxy",
+             link:"http://dip.doe-mbi.ucla.edu/dip-proxy",
+             "disabled":"false",
+             menu:[]
+            }]
+         },              
+         {label:"Evaluation Tools",
+          link:"page?id=evltools",
+          "disabled":"false",
+          menu:[
+            {label:"EPR Index",
+             link:"http://dip.doe-mbi.ucla.edu/dip/Services.cgi?SM=1",
+             "disabled":"false",
+             menu:[]
+            },
+            {label:"PVM Score",
+             link:"http://dip.doe-mbi.ucla.edu/dip/Services.cgi?SM=2",
+             "disabled":"false",
+             menu:[]
+            },
+            {label:"DPV Score",
+             link:"http://dip.doe-mbi.ucla.edu/dip/Services.cgi?SM=3",
+             "disabled":"false",
+             menu:[]
+            }]
+         },      
+         {label:"MIF Tools",
+          link:"page?id=miftools",
+          "disabled":"false",
+          menu:[]
+         },
+         {label:"Web Services",
+          link:"page?id=webservices",
+          "disabled":"true",
+          menu:[]
+         }]
+      },
+         
+      {label:"About DIP",
+       link:"page?id=about",
+       "disabled":"false",
+       menu:[
+         {label:"News",
+          link:"news?site=dip",
+          "disabled":"false",
+          menu:[
+           {label:"Announcements",
+            link:"news?site=dip",
+            "disabled":"false",
+            menu:[]
+           },
+           {label:"Developers' Wiki",
+            link:"https://imex.mbi.ucla.edu/trac/dip/wiki",
+            "disabled":"false",
+            menu:[]
+           },
+           {label:"Curators' Wiki",
+            link:"https://imex.mbi.ucla.edu/trac/curation/wiki",
+            "disabled":"false",
+            menu:[]
+           }
+          ]
+         },
+         {label:"Statistics",
+          link:"page?id=statistics",
+          "disabled":"false",
+          menu:[
+           {label:"Interaction Records",
+            link:"contents",
+            "disabled":"false",
+            menu:[]
+           },
+           {label:"DIP Usage",
+            link:"http://dip.doe-mbi.ucla.edu/awstats/awstats.pl",
+            "disabled":"false",
+            menu:[]
+           },
+           {label:"Network Traffic",
+            link:"page?id=network-load",
+            "disabled":"false",
+            menu:[]
+           },
+           {label:"Cluster Load",
+            link:"page?id=cluster-load",
+            "disabled":"false",
+            menu:[]
+           }
+          ]
+         },
+         {label:"Articles",
+          link:"page?id=articles",
+          "disabled":"false",
+          menu:[]
+         },
+         {label:"User Guide",
+          link:"page?id=guide",
+          "disabled":"false",
+          menu:[
+          {label:"Overview",
+           link:"page?id=guide-overview",
+           "disabled":"false",
+           menu:[]
+          },
+          {label:"Search Guide",
+           link:"page?id=guide-search",
+           "disabled":"false",
+           menu:[]
+          },
+          {label:"Interaction Types",
+           link:"page?id=guide-itype",
+           "disabled":"false",
+           menu:[]
+          },          
+          {label:"Quality Assessment",
+           link:"page?id=guide-qassess",
+           disabled:true,
+           menu:[]
+          },
+          {label:"Tutorial",
+           link:"page?id=guide-tutorial",
+           disabled:true,
+           menu:[]
+          }]
+         },
+         {label:"Acknowledgments",
+          link:"page?id=acknowledgments",
+          "disabled":"false",
+          menu:[]         
+         }]
+      },
+
+      {"label":"ProLinks",
+       "link":"prolinks.jsp",
+        "disabled":"false",
+        "menu":[{"label":"Search ProLinks",
+                 "link":"page?skn=prl&id=pl_query", 
+                 "disabled":"false",
+                 "menu":[{"link":"page?skn=prl&id=pl_db_id","menu":[],"disabled":"false","label":"Database ID"},
+                         {"link":"page?skn=prl&id=pl_prot_attr","menu":[],"disabled":"false","label":"Protein attribute"},
+                         {"link":"page?skn=prl&id=pl_mult_prot","menu":[],"disabled":"false","label":"Multiple proteins"},
+                         {"link":"page?skn=prl&id=pl_common","menu":[],"disabled":"false","label":"Common links"},
+                         {"link":"page?skn=prl&id=pl_connections","menu":[],"disabled":"false","label":"Functional connections"}]
+                },
+                {"link":"page?skn=prl&id=pl_download","menu":[],
+                  "disabled":"false",
+                  "label":"Download"},
+                {"link":"page?skn=prl&id=pl_tutorial",
+                 "menu":[{"link":"page?skn=prl&id=pl_tut_sdb_id_1","disabled":"false","label":"Database ID"},
+                         {"link":"page?skn=prl&id=pl_tut_sprot_attr_1","disabled":"false","label":"Protein attribute"},
+                         {"link":"page?skn=prl&id=pl_tut_mult_prot_1","disabled":"false","label":"Multiple proteins"}],
+                 "disabled":"false",
+                 "label":"Tutorial"},
+                {"link":"page?skn=prl&id=pl_help","menu":[],"disabled":"false","label":"Help"},
+                {"link":"page?skn=prl&id=pl_about",
+                  "menu":[{"link":"news?skn=prl&site=prl","disabled":"false","label":"News"},
+                          {"link":"page?skn=prl&id=pl_statistics","disabled":"false","label":"Statistics"},
+                          {"link":"page?skn=prl&id=pl_acknowledgments","label":"Acknowledgments","disabled":"false"}
+                         ],
+                  "disabled":"false",
+                  "label":"About"
+                },
+                {"link":"page?skn=prl&id=pl_news","disabled":"false","label":"News and updates"}]       
+      },
+
+      {label:"Resources",
+       link:"page?id=links",
+       "disabled":"false",
+       menu:[
+         {label:"Dip Related",
+          link:"page?id=resources-dip",
+          "disabled":"false",
+          menu:[]
+         },
+         {label:"Other Resources",
+          link:"page?id=resources-other",
+          "disabled":"false",
+          menu:[]
+         }]
+      },
+      {label:"Site Manager",
+       link:"usermgr",
+       "disabled":"false",
+       roles:["administrator"],
+       menu:[
+         {label:"User Manager",
+          link:"usermgr",
+          "disabled":"false",
+          roles:["administrator"],
+          menu:[
+           {label:"Users",
+            link:"usermgr",
+            "disabled":"false",
+            roles:["administrator"],
+            menu:[]
+           },
+           {label:"Groups",
+            link:"groupmgr",
+            "disabled":"false",
+            roles:["administrator"],
+            menu:[]
+           },
+           {label:"Roles",
+            link:"rolemgr",
+            "disabled":"false",
+            roles:["administrator"],
+            menu:[]
+           }]
+         },
+         {label:"Server Manager",
+          link:"page?id=servermgr",
+          "disabled":"false",
+          roles:["administrator"],
+          menu:[
+             {"label":"DIP Database Server",
+              "link":"page?id=udev&mst=6:2:1",
+              "disabled":"false",
+              "roles":["administrator"],
+              "menu":[]
+             },
+             {"label":"Proxy Servers",
+              "link":"page?id=udev&mst=6:2:2",
+              "disabled":"false",
+              "roles":["administrator"],
+              "menu":[]
+             }
+           ]
+         },
+         {label:"Data Manager",
+          link:"page?id=datamgr",
+          "disabled":"false",
+          roles:["administrator"],
+          menu:[]
+         },
+         {label:"View Manager",
+          link:"page?id=viewmgr",
+          "disabled":"false",
+          roles:["administrator"],
+          menu:[
+             {"label":"Table View Editor",
+              "link":"page?id=udev&mst=6:4:1",
+              "disabled":"false",
+              "roles":["administrator"],
+              "menu":[]
+             }
+           ]
+         }
+        ]
+      },
+      {label:"Preferences",
+       link:"userprefmgr",
+       "disabled":"false",
+       menu:[
+         {label:"Account Settings",
+          link:"userprefmgr",
+          "disabled":"false",
+          menu:[]
+         },
+         {label:"Database",
+          link:"user?op=reg",
+          "disabled":"true",
+          menu:[]
+         }]
+      }]
+  }]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

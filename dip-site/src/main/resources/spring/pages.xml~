@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-2.5.xsd" >
+
+  <bean id="pageAction" scope="prototype"
+        class="edu.ucla.mbi.dip.struts.action.PageAction">    
+    <property name="portalContext"         ref="portalContext"/>
+    <property name="sknDef" value="${portal.skin}"/>
+    <property name="siteDef" value="${portal.site}"/>
+  </bean>
+
+  <bean id="dipPageAction" scope="prototype"
+        class="edu.ucla.mbi.dip.struts.action.PageAction">    
+    <property name="portalContext"         ref="portalContext"/>
+    <property name="sknDef" value="dip"/>
+    <property name="siteDef" value="dip"/>
+     <property name="id" value="dummy" />
+  </bean>
+
+  <bean id="prlPageAction" scope="prototype"
+        class="edu.ucla.mbi.dip.struts.action.PageAction">    
+    <property name="portalContext"         ref="portalContext"/>
+    <property name="sknDef" value="prl"/>
+    <property name="siteDef" value="prl"/>
+     <property name="id" value="dummy" />
+  </bean>
+   
+  <bean id="editAction" scope="prototype"
+        class="edu.ucla.mbi.dip.struts.action.EditAction">
+    <property name="portalContext"       ref="portalContext"/> 
+    <property name="sknDef" value="${portal.skin}"/>
+    <property name="siteDef" value="${portal.site}"/>
+  </bean>
+
+  <bean id="newsAction" scope="prototype"
+        class="edu.ucla.mbi.dip.struts.action.NewsAction">
+    <property name="mst" value="3:1:1"/>         
+    <property name="newsManager"         ref="newsManager"/>
+    <property name="newsContext"         ref="dipNewsContext"/>
+    <property name="userContext"         ref="userContext"/>   
+    <property name="portalContext"       ref="portalContext"/>
+    <property name="sknDef"              value="dip"/>
+    <property name="siteDef"             value="dip"/>
+  </bean>
+
+  <bean id="dipNewsAction" scope="prototype"
+        class="edu.ucla.mbi.dip.struts.action.NewsAction">
+    <property name="mst" value="3:1:1"/>         
+    <property name="newsManager"         ref="newsManager"/>
+    <property name="newsContext"         ref="dipNewsContext"/> 
+    <property name="userContext"         ref="userContext"/>  
+    <property name="portalContext"       ref="portalContext"/>
+    <property name="site"                value="dip"/>
+    <property name="sknDef"              value="dip"/>
+    <property name="siteDef"             value="dip"/>
+  </bean>
+
+  <bean id="prlNewsAction" scope="prototype"
+        class="edu.ucla.mbi.dip.struts.action.NewsAction">
+    <property name="mst" value="2:1:1"/>         
+    <property name="newsManager"         ref="newsManager"/>
+    <property name="newsContext"         ref="prlNewsContext"/> 
+    <property name="userContext"         ref="userContext"/>  
+    <property name="portalContext"       ref="portalContext"/>
+    <property name="site"                value="prl"/>
+    <property name="sknDef"              value="prl"/>
+    <property name="siteDef"             value="prl"/>
+  </bean>
+  
+  <bean id="imageAction" scope="prototype"
+        class="edu.ucla.mbi.dip.struts.action.ImageMgrAction">    
+    <property name="portalContext"       ref="portalContext"/>
+    <property name="sknDef" value="dip"/>
+    <property name="siteDef" value="dip"/>
+  </bean>
+  
+</beans> 

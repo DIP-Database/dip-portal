@@ -1,0 +1,251 @@
+package edu.ucla.mbi.dip.orm;
+
+import org.hibernate.*;
+
+import edu.ucla.mbi.orm.*;
+import edu.ucla.mbi.dip.*;
+
+import edu.ucla.mbi.util.data.*;
+import edu.ucla.mbi.util.data.dao.*;
+
+import java.net.*;
+import java.util.*;
+
+public class DipRoleDAO extends AbstractDAO implements RoleDao{
+    
+    public Role getRole( int id ) { 
+        
+        Role grp = null;
+
+        try {
+            grp =  (Role) super.find( DipRole.class, id );
+        } catch ( DAOException dex ) {
+            // log exception ?
+        }
+        return grp; 
+    }
+    
+
+    //---------------------------------------------------------------------
+
+    public Role getRole( String name ) { 
+        
+        Role role = null;
+        try {
+            startOperation();
+            Query query =
+                session.createQuery( "from DipRole u where " +
+                                     " u.name = :name ");
+            query.setParameter("name", name );
+            query.setFirstResult( 0 );
+            role = (DipRole) query.uniqueResult();
+            tx.commit();
+            
+        } catch( DAOException dex ) {
+            // log error ?
+        }
+        return role; 
+    }
+    
+
+    //---------------------------------------------------------------------
+
+    public List<Role> getRoleList() {
+        
+        List<Role> rlst = null;
+        
+        try {
+            startOperation();
+            Query query =
+                session.createQuery( "from DipRole r order by id ");
+            
+            rlst = (List<Role>) query.list();
+            tx.commit();
+            
+        } catch ( DAOException dex ) {
+            // log exception ?
+        } 
+        return rlst;
+    }
+    
+    //---------------------------------------------------------------------
+
+    public List<Role> getRoleList( int firstRecord, int blockSize ){
+        
+        List<Role> rlst = null;
+        
+        try {
+            startOperation();
+            Query query =
+                session.createQuery( "from DipRole r order by id ");
+            query.setFirstResult( firstRecord );
+            query.setMaxResults( blockSize );
+            
+            rlst = (List<Role>) query.list();
+            tx.commit();
+            
+        } catch ( DAOException dex ) {
+            // log exception ?
+        } 
+        return rlst;
+    }
+    
+    //---------------------------------------------------------------------
+    
+    public long getRoleCount(){
+
+        long cnt = 0;
+        
+        try {
+            startOperation();
+            Query query =
+                session.createQuery( "select count(r) from DipRole r");
+            
+            query.setFirstResult( 0 );
+            cnt = (Long) query.uniqueResult();
+            tx.commit();
+
+        } catch( DAOException dex ) {
+            // log error ?
+        }
+
+        return cnt;
+        
+    }
+    
+    //---------------------------------------------------------------------
+
+    public void saveRole( Role role ) { 
+        try {          
+            super.saveOrUpdate( new DipRole( role ) );
+        } catch ( DAOException dex ) {
+            // log exception ?
+        }
+    }
+    
+
+    //---------------------------------------------------------------------
+    
+    public void updateRole( Role role ) { 
+        try {
+            super.saveOrUpdate( role );
+        } catch ( DAOException dex ) {
+            // log exception ?
+        }
+    }
+    
+    
+    //---------------------------------------------------------------------
+
+    public void deleteRole( Role role ) { 
+        try {
+            super.delete( role );
+        } catch ( DAOException dex ) {
+            // log exception ?
+        }
+    }
+
+    //---------------------------------------------------------------------
+    // usage/count: Users
+    //-------------------
+
+    public long getUserCount( Role role ) {
+        
+        long cnt = 0;
+        
+        try {
+            startOperation();
+            Query query =
+                session.createQuery( "select count(u) from DipUser u" +
+                                     " join u.roles as role" +
+                                     " where role.id = :rid");
+            query.setParameter( "rid", role.getId() );
+            query.setFirstResult( 0 );
+            cnt = (Long) query.uniqueResult();
+            tx.commit();
+
+        } catch( DAOException dex ) {
+            // log error ?
+        }
+
+        return cnt;
+    }
+    
+    //---------------------------------------------------------------------
+
+    public List<User> getUserList( Role role ) {
+
+        // NOTE: use sparingly - potentially can load all users
+
+        List<User> ulst = null;
+
+        try {
+            startOperation();
+            Query query =
+                session.createQuery( "select u from DipUser u" +
+                                     " join u.roles as role" +
+                                     " where role.id = :rid");
+            query.setParameter( "rid", role.getId() );
+            query.setFirstResult( 0 );
+            ulst = (List<User>) query.list();
+            tx.commit();
+
+        } catch( DAOException dex ) {
+            // log error ?
+        }
+        return ulst;
+    }
+
+    
+    //---------------------------------------------------------------------
+    // usage/count: Groups
+    //--------------------
+
+    public long getGroupCount( Role role ) {
+        
+        long cnt = 0;
+        
+        try {
+            startOperation();
+            Query query =
+                session.createQuery( "select count(g) from Group g" +
+                                     " join g.roles as role" +
+                                     " where role.id = :rid");
+            query.setParameter( "rid", role.getId() );
+            query.setFirstResult( 0 );
+            cnt = (Long) query.uniqueResult();
+            tx.commit();
+
+        } catch( DAOException dex ) {
+            // log error ?
+        }
+
+        return cnt;
+    }
+
+    //---------------------------------------------------------------------
+
+    public List<Group> getGroupList( Role role ) {
+
+        // NOTE: use sparingly - potentially can load all users
+
+        List<Group> ulst = null;
+
+        try {
+            startOperation();
+            Query query =
+                session.createQuery( "select g from Group g" +
+                                     " join g.roles as role" +
+                                     " where role.id = :rid");
+            query.setParameter( "rid", role.getId() );
+            query.setFirstResult( 0 );
+            ulst = (List<Group>) query.list();
+            tx.commit();
+
+        } catch( DAOException dex ) {
+            // log error ?
+        }
+
+        return ulst;
+    }
+}

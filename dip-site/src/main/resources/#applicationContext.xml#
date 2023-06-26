@@ -1,0 +1,415 @@
+dip-le?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx.xsd
+
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop.xsd" >
+
+   <!-- ============================================ portal/site context -->
+
+    <import resource="spring/context.xml" />
+
+    <!-- ================================ user management/authentication -->
+
+    <import resource="spring/usermgr.xml" />
+
+    <!-- ======================================= static/wiki-like  pages -->
+
+    <import resource="spring/pages.xml" />
+                                                                           
+    <!-- ========================================== *Record-based pages -->
+
+    <import resource="spring/record.xml" />
+                                                                           
+    <!-- ====================================== external link resolution -->
+
+    <import resource="spring/elink.xml" />
+                                                                           
+    <!-- ================================================ download pages -->
+
+    <import resource="spring/download.xml" />
+                                                                           
+   <!-- ===================================== tabs/servers configuration -->
+
+    <import resource="spring/recordservices.xml" /> 
+
+
+   <!-- ======================================================= Event Logger -->
+
+   <import resource="spring/aop-logger.xml" />
+
+   <!-- ========================================================== AGENT -->
+
+    <import resource="spring/agentconfig.xml" /> 
+
+   <!-- ==================================================== TABLE2 TEST --> 
+
+   <import resource="spring/tables.xml" />  
+
+   <!-- ======================================================= SERVICES --> 
+
+
+   <bean id="dipBlasterClient"
+          class="edu.ucla.mbi.service.BlasterClient">
+     <property name="endpoint" 
+               value="http://services.mbi.ucla.edu/blaster"/>
+     <property name="database" value="dip"/>
+    </bean>
+
+    <bean id="pflBlasterClient"
+          class="edu.ucla.mbi.service.BlasterClient">
+      <property name="endpoint" 
+                value="http://services.mbi.ucla.edu/blaster"/>
+      <property name="database" value="prolinks"/>
+    </bean>
+
+    <bean id="nrBlasterClient"
+          class="edu.ucla.mbi.service.BlasterClient">
+      <property name="endpoint" 
+                value="http://services.mbi.ucla.edu/blaster"/>
+      <property name="database" value="nr"/>
+    </bean>
+
+    <bean id="blasterService" init-method="initialize"
+          class="edu.ucla.mbi.service.DxfBlasterService">
+      <property name="bcMap">
+       <map>
+         <entry key="blast-dip"><ref bean="dipBlasterClient"/></entry>
+         <entry key="dip"><ref bean="dipBlasterClient"/></entry>
+
+         <entry key="pfl"><ref bean="pflBlasterClient"/></entry>
+         <entry key="nr"><ref bean="nrBlasterClient"/></entry>
+       </map>
+      </property>
+      <property name="xslt" value="xslt/blast2dxf.xml"/>
+    </bean>
+
+   <!-- ==================================================================== -->
+
+   <bean id="dipBlastCgiClient"
+          class="edu.ucla.mbi.service.BlastCgiClient">
+      <property name="endpoint" 
+                value="http://dip.doe-mbi.ucla.edu/dip/blast2.cgi"/>
+
+      <property name="database" value="dip3"/>
+      <property name="evalue" value="0.5"/>
+
+    </bean>
+
+    <bean id="blastCgiService" init-method="initialize"
+          class="edu.ucla.mbi.service.DxfBlastCgiService">
+      <property name="bcMap">
+       <map>
+         <entry key="dip-seq-query"><ref bean="dipBlastCgiClient"/></entry>
+       </map>
+      </property>
+      <property name="xslt" value="xslt/blast2dxf.xml"/>
+    </bean>
+
+  <!-- ==================================================================== -->
+
+    <bean id="dipMotifRegexClient"
+          class="edu.ucla.mbi.service.MotifCgiClient">
+      <property name="endpoint" 
+                value="http://dip.doe-mbi.ucla.edu/dip/motif.cgi"/>
+      <property name="database" value="dip"/>
+      <property name="queryType" value="regex"/>
+      <property name="maxhits" value="100"/>
+    </bean>
+
+    <bean id="dipMotifIdClient"
+          class="edu.ucla.mbi.service.MotifCgiClient">
+      <property name="endpoint" 
+                value="http://dip.doe-mbi.ucla.edu/dip/motif.cgi"/>
+      <property name="database" value="dip"/>
+      <property name="queryType" value="ns:ac"/>
+      <property name="maxhits" value="100"/>
+    </bean>
+
+    <bean id="motifCgiService" init-method="initialize"
+          class="edu.ucla.mbi.service.DxfMotifCgiService">
+      <property name="clientMap">
+       <map>
+         <entry key="dip-motif-query">
+           <ref bean="dipMotifRegexClient"/>
+         </entry>
+         <entry key="dip-motif-nsac">
+           <ref bean="dipMotifIdClient"/>
+         </entry>
+       </map>
+      </property>
+      <property name="xslt" value="xslt/motif2dxf.xml"/>
+    </bean>
+
+  <!-- ==================================================================== -->
+
+
+    <bean id="dipDbService" init-method="initialize"
+          class="edu.ucla.mbi.service.DipDbSoapService">
+<!--     <property name="endpoint" value="${dipdb.endpoint}"/> -->
+     <property name="legacyEndpoint" value="${dipdb.legacyEndpoint}"/>
+    </bean>
+
+  <!-- ==================================================================== -->
+
+    <bean id="dipImexXpsqService" init-method="initialize"
+          class="edu.ucla.mbi.service.DxfPsqService">
+      <property name="endpoint" value="${dipdb.xpsq-dip-imex-endpoint}"/> 
+      <property name="xslt" value="xslt/psq-dip-imex2dxf.xml"/>
+      <property name="proxyService" ref="ncbiDbService"/>
+
+    </bean>
+
+    <bean id="dipAllXpsqService" init-method="initialize"
+          class="edu.ucla.mbi.service.DxfPsqService">
+      <property name="endpoint" value="${dipdb.xpsq-dip-all-endpoint}"/> 
+      <property name="xslt" value="xslt/psq-dip-imex2dxf.xml"/>
+
+    </bean>
+
+
+  <!-- ==================================================================== -->
+  <!-- ==================================================================== -->
+
+    <bean id="dipImexService" init-method="initialize"
+          class="edu.ucla.mbi.service.DxfChainService">
+
+      <property name="dxfChain">
+        <list>
+          <map>
+            <entry key="service" value-ref="dipImexXpsqService"/>
+            <entry key="method" value="query"/> 
+            <entry key="debug" value="dipImexXpsqService"/> 
+          </map>
+          <map>
+            <entry key="service" value-ref="dipDbService"/> 
+             <entry key="method" value="nsac-query"/> <!-- or "nsac-node" -->
+            <!-- <entry name="query-type" value="nsac-query"/>  -->
+            <!-- <entry name="query-detail" value="nsac-query"/> -->
+            <entry key="part-merge-mode" value="replace"/>
+            <entry key="debug" value="dipDbService"/>
+          </map>
+         </list>
+      </property>
+    </bean>
+
+    <bean id="dipChainService" init-method="initialize"
+          class="edu.ucla.mbi.service.DxfChainService">
+
+      <property name="dxfChain">
+        <list>
+          <map>
+            <entry key="service" value-ref="dipDbService"/>
+            <entry key="method" value="query"/> 
+            <entry key="debug" value="dipDbService:query"/> 
+          </map>
+          <map>
+            <entry key="service" value-ref="dipDbService"/> 
+             <entry key="method" value="nsac-node"/> <!-- or "nsac-node" -->
+            <!-- <entry name="query-type" value="nsac-query"/>  -->
+            <!--<entry name="query-detail" value="full"/> -->
+            <entry key="part-merge-mode" value="replace"/>
+            <entry key="debug" value="dipDbService:nsac-query"/>
+          </map>
+         </list>
+      </property>
+    </bean>
+
+  <!-- ==================================================================== -->
+  <!-- ==================================================================== -->
+
+    <bean id="ncbiDbService" init-method="initialize"
+          class="edu.ucla.mbi.service.NcbiDbSoapService">
+     <property name="endpoint" value="${ncbidb.endpoint}"/>
+    </bean>
+
+    <bean id="ebiDbService" init-method="initialize"
+          class="edu.ucla.mbi.service.EbiDbSoapService">
+     <property name="endpoint" value="${ebidb.endpoint}"/>
+    </bean>
+
+    <bean id="prlDbService" init-method="initialize"
+          class="edu.ucla.mbi.service.ProlinksDbSoapService">
+     <property name="endpoint" value="${prldb.endpoint}"/>
+    </bean>
+
+
+  <!-- =========================================================== MEMCACHED --> 
+    
+    <bean id="mcClient" class="edu.ucla.mbi.portal.cache.McClient">
+       <property name="mcf"> 
+          <ref bean="memcachedCliFactory"/>
+       </property>
+       <property name="ttl" value="864000" /> 
+    </bean>
+   
+    <bean id="memcachedCliFactory" 
+          class="net.spy.memcached.spring.MemcachedClientFactoryBean">
+     <property name="servers" value="10.1.4.111:11211"/>
+     <property name="protocol" value="BINARY"/>
+     <property name="transcoder">
+       <bean class="net.spy.memcached.transcoders.SerializingTranscoder">
+         <property name="compressionThreshold" value="1024"/>
+       </bean>
+     </property>
+     <property name="opTimeout" value="1000"/>
+     <property name="timeoutExceptionThreshold" value="1998"/>
+     <property name="hashAlg">
+       <value type="net.spy.memcached.DefaultHashAlgorithm">KETAMA_HASH</value>
+     </property>
+     <property name="locatorType" value="CONSISTENT"/> 
+     <property name="failureMode" value="Redistribute"/>
+     <property name="useNagleAlgorithm" value="false"/>
+   </bean>
+
+  <!-- ======================================================== PROXY ACTION -->
+
+    <bean id="proxyContext" scope="prototype"
+        class="edu.ucla.mbi.util.context.ActionContext">
+
+     <property name="cache" value="on"/>
+
+      <property name="config">
+        <map>
+         <entry key="ebi">
+          <ref bean="ebiDbService"/>
+         </entry>
+         <entry key="ncbi">
+          <ref bean="ncbiDbService"/>
+         </entry>
+        </map> 
+      </property>
+    </bean>
+
+  <!-- ======================================================== QUERY ACTION -->
+
+    <bean id="queryContext" scope="prototype"
+        class="edu.ucla.mbi.util.context.ActionContext">
+      <property name="cache" value="on"/>
+      <property name="cacheClient" ref="mcClient"/> 
+      <property name="agent" value="on"/>
+      <property name="config">
+        <map>
+         <entry key="dip"><ref bean="dipDbService"/></entry>
+         <entry key="blast"><ref bean="blasterService"/></entry>
+         <entry key="service">
+          <map>
+           <entry key="record">
+            <ref bean="dipDbService"/>      <!-- NOTE: to be replaced by 
+                                                       dip-proxy client -->
+           </entry>
+           <entry key="query">
+            <map> 
+             <entry key="default-type" value="dip" />
+
+             <entry key="dip">              <!-- NOTE: same as text-dip -->
+              <ref bean="dipDbService"/>
+             </entry>
+
+             <entry key="dip-txt-query"><ref bean="dipDbService"/></entry>
+<!--         <entry key="dip-txt-query"><ref bean="dipChainService"/></entry> -->
+
+             <entry key="dip-seq-query"><ref bean="blastCgiService"/></entry>
+<!--         <entry key="dip-seq-query"><ref bean="blasterService"/></entry> -->
+
+
+
+             <entry key="blast-dip"><ref bean="blasterService"/></entry>
+             <entry key="blast-pfs"><ref bean="blasterService"/></entry>
+             <entry key="blast-imex"><ref bean="blasterService"/></entry>
+
+             <entry key="text-dip"><ref bean="dipDbService"/></entry>
+             <entry key="text-pfs"><ref bean="dipDbService"/></entry>
+
+             <entry key="dip-motif-query"><ref bean="motifCgiService"/></entry>
+             <entry key="dip-motif-nsac"><ref bean="motifCgiService"/></entry>
+
+             <entry key="dip-xpsq-query"><ref bean="dipImexXpsqService"/></entry> 
+
+
+<!--             <entry key="dip-imex-query"><ref bean="dipImexService"/></entry>   -->
+
+             <entry key="dip-imex-miql"><ref bean="dipImexXpsqService"/></entry>  
+             <entry key="dip-all-miql"><ref bean="dipAllXpsqService"/></entry>  
+
+             <entry key="dip-chain-query"><ref bean="dipChainService"/></entry>
+
+             <entry key="psq-dip">
+               <ref bean="dipDbService"/>   <!-- NOTE: to be replaced by
+                                                       xpsq client -->
+             </entry>
+             <entry key="psq-pfs">
+              <ref bean="dipDbService"/>    <!-- NOTE: to be replaced by
+                                                       xpsq client -->
+             </entry>
+             <entry key="psq-imex">
+              <ref bean="dipDbService"/>    <!-- NOTE: to be replaced by
+                                                       xpsq client -->
+             </entry>
+            </map> 
+           </entry>
+          </map>
+         </entry>
+        </map>
+      </property>
+    </bean>
+
+<!-- ========================================================== NEWS MANAGER -->
+
+     <bean id="newsManager" class="edu.ucla.mbi.util.NewsManager">
+
+     </bean>
+
+<!-- ================================================= NOTIFIACATION MANAGER -->
+
+    <bean id="notificationManager" init-method="initialize"
+       class="edu.ucla.mbi.util.NotificationManager">
+
+      <property name="queueDir" value="/var/dip-site/queue" />
+
+    </bean>
+
+<!-- ========================================================= WATCH MANAGER -->
+
+    <bean id="watchManager" init-method="initialize" destroy-method="cleanup"
+          class="edu.ucla.mbi.util.WatchManager">
+
+      <property name="userContext" ref="userContext"/>
+
+    </bean>
+
+<!-- ================================================================ AOP/CI -->
+
+    <bean id="extLinkTracker"
+          class="edu.ucla.mbi.dip.ci.ExtLinkTracker">
+<!--      <property name="trackerService" ref="trackerService"/>  -->
+    </bean>
+
+    <bean id="dipRecordTracker"
+          class="edu.ucla.mbi.dip.ci.DipRecordTracker">
+<!--      <property name="trackerService" ref="trackerService"/>  -->
+    </bean>
+   
+   <!-- ========================================================= ACTIONS -->
+    
+    <!--  global configuration of actions -->
+
+    <bean id="actionContext" scope="prototype"
+        class="edu.ucla.mbi.util.context.ActionContext">
+      <property name="cache" value="on"/>
+      <property name="cacheClient" ref="mcClient"/>      
+      <property name="agent" value="on"/>
+    </bean>
+    
+    <!-- record action: returns database record -->
+
+</beans>
+

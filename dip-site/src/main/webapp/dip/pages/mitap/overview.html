@@ -1,0 +1,75 @@
+<center>
+<table border="0" width="90%" cellpadding="5" style="border: solid 2px red;">
+  <tr>
+   <td align="right">
+     <b>NOTE:</b> 
+   </td>  
+    <td align="left">
+     This is work in progress. Some features might not operate as expected.
+     We will appreciate any
+      <A href="feedback">comments</A> 
+     about bugs, desired features, etc...
+     
+   </td>
+  </tr>
+</table>
+</center>
+<br/>
+<p>MiTap is an add-on module for the 
+<A href="http://www.mozilla.com/en-US/firefox">Firefox</A> browser. 
+When used together with the 
+<A href="http://dip.doe-mbi.ucla.edu/misink/About.cgi">MiSink</A> 
+plugin it provides means for interactive import of interaction 
+data from virtaully any Web page into 
+<a href="http://www.cytoscape.org/">Cytoscape</a>. This is
+possible even in case of Web sites such as
+<A HREF="http://www.ncbi.nlm.nih.gov/sites/entrez?db=PubMed">PubMed</A>,
+<A HREF="http://expasy.org">SwissProt</A>/<A href="http://uniprot.org">UniProt</A>,
+<A HREF="http://www.yeastgenome.org">SGD</A>
+that, natively, do not suppot Cytoscape integration. 
+
+<p>MiTap operates in the background by scanning the incoming Web 
+pages (A) for patterns it can recognize as potentially leading to 
+information about proteins and their interactions. Once found, these 
+patterns are used to query public repositories of biological data. 
+Information found this way is presented to the user within MiTap 
+sidebar as a hierarchical tree (B). The user can follow the links 
+provided within MiTap sidebar (C) to retrieve directly information 
+available from the original data providers or import the retrieved 
+interaction network into Cytoscape (D).
+
+<p> In addition, individual elements of the MiTap tree can be annotated
+by the user; the contents of the MiTap sidebar can be saved to a local 
+file and then retrieved for future use.
+<br/><br/>
+<center>
+ <table border="1" cellpadding="5">
+  <tr>
+   <td align="center">
+    <A>
+     <img border="0" src="dip/images/mitap/MiTap1c.png" alt="overview"/>
+    </A>
+   </td>
+  </tr>
+  <tr>
+   <td align="left">
+    <p><b>A.</b> Incoming Web pages are initially scanned according to 
+    a set of rules specified in MiTap configuration file. Once the
+    initial hits are found, relevant servers (also specified in the 
+    configuration file) are contacted to retrieve detailed information 
+    about individual information sources, proteins and interactions.
+
+    <p><b>B.</b> Retrieved information is provided as a hierarchical 
+    tree within MiTap side panel. 
+
+    <p><b>C.</b> Detailed information about the highlighted tree element
+    shown within the bottom panel.
+
+    <p><b>D.</b> Original information source reached by following the links 
+    provided within the information panel
+
+    <p><b>E.</b> Fragment of the interaction network incorporated into 
+    Cytoscape directly from MiTap.
+   </td>
+  </tr>
+ </table>

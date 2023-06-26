@@ -1,0 +1,121 @@
+
+
+<!-- My overrides for the colors of tabview -->
+<link rel="stylesheet" type="text/css" href="skin/pfl/css/prolinks.css" />
+<script>var myTabs = new YAHOO.widget.TabView("prolinks_query");</script>
+
+<br />
+
+<div id="pl_form_frame">
+ 
+  <form action="php_query" method="post">
+  <!-- <form action="http://10.1.216.102/prolinks_dev/php/query.php" method="post"> -->
+
+    <div class="pl_form_title">
+       <b>Enter one or more keywords associated with your protein</b>
+    </div>
+
+    <div id="pl_text_field_1">
+      Type your query
+      (<a class="pl_general" 
+          onclick="YAHOO.mbi.modal.help( 'Query Syntax', 'pl_help_solr_search' ); return false" 
+          href="">?</a>):
+      <input class="pl_query_width" type="text" name="input" value="Rv3858c" />
+    </div>
+
+    
+    <p>
+      <div class="yui-skin-sam">
+        <div class="yui-navset">
+      
+      
+          <ul class="yui-nav">
+            <li class="selected"><a href="#tab1"><em>Search parameters</em></a></li>
+          </ul>
+      
+      
+          <!-- the div for the content of the only one tab -->
+          <div class="yui-content">
+
+            <div class="pl_tabview_button_area">
+
+              <p>
+                Confidence value
+                (<a class="pl_general" 
+                    onclick="YAHOO.mbi.modal.help( 'Confidence Value', 'pl_help_cvalue' ); return false" 
+                   href="">?</a>):<br />
+                <input class="pl_tabview_control" type="text" name="c_value" value="0.6">
+              </p>          
+
+
+	      <p>
+                Network distance
+                (<a class="pl_general" 
+                    onclick="YAHOO.mbi.modal.help( 'Network Distance', 'pl_help_network_distance_prm' ); return false" 
+                    href="">?</a>):<br />
+                <select class="pl_tabview_control" name="depth">
+                  <option value="1" selected> 1  </option>
+                  <option value="2">          2  </option>
+                  <option value="3">          3  </option>
+                  <option value="4">          4  </option>
+                </select>
+              </p>
+
+              
+              <p>
+                Identify links with
+                (<a class="pl_general" 
+                    onclick="YAHOO.mbi.modal.help( 'Identify Links with', 'pl_help_links_tag' ); return false" 
+                    href="">?</a>):<br />
+                <select class="pl_tabview_control" name="out_type">
+                  <option value="name" selected> Gene name </option>
+                  <option value="refseq">  NCBI refseq     </option>
+                  <option value="lt">      Locus Tag       </option>
+                  <option value="gi">      NCBI gi         </option>
+                  <option value="sp">      SwissProt ID    </option>
+                </select>
+              </p>
+
+              
+              <p>
+                Linkages per page
+                (<a class="pl_general" 
+                    onclick="YAHOO.mbi.modal.help('Number of links per page', 'pl_help_links_per_page'); return false" 
+                    href="">?</a>):<br />
+                <select class="pl_tabview_control" name="links_per_page">
+		  <option value="10" selected> 10 </option>
+                  <option value="15">          15 </option>
+                  <option value="20">          20 </option>
+                  <option value="30">          30 </option>
+                  <option value="50">          50 </option>
+                  <option value="70">          70 </option>
+                  <option value="100">        100 </option>
+                </select>
+              </p>
+            </div> <!-- div for class pl_tabview_button_form1 -->
+
+          </div> <!-- div for class yui-content -->
+        </div> <!-- div for class yui-navset -->
+      </div> <!-- div for class yui-skin-sam -->
+    </p>
+
+
+    <!-- The reset and search buttons -->
+    <div id="pl_reset_search_containiner">
+
+      <div id="pl_search_button">
+        <input type="submit" id="search" name="search" value="Search ProLinks"/>
+      </div>
+
+      <div id="pl_reset_button">
+        <input type="reset" value="Reset defaults">
+      </div>
+      <input type="hidden" name="form" value="main">
+    </div>
+
+  </form>
+</div> <!-- div for the form frame -->
+
+
+<!-- To avoid content be blocked by the footer -->
+<br /><br /><br /><br /><br /><br /><br />

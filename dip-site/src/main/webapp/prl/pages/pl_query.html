@@ -1,0 +1,95 @@
+
+    <link rel="stylesheet" type="text/css" href="skin/pfl/css/prolinks.css" />
+
+    <br />
+    <h1>Advanced searches in ProLinks</h1>
+
+
+    <table width="96%">
+      <tr>
+	<th align="right" class="mp">
+	  <a class="pl_results" href="page?id=pl_db_id">
+	    <b>Protein keywords:</b>
+	  </a>
+	</th>
+	<td align="left" class="mp">
+	  Search ProLinks by submitting indentifiers, names, 
+	  genomes, or any combination thereof, that can be used to 
+	  identify a protein
+	  (<a class="pl_general" 
+	    onclick="YAHOO.mbi.modal.help( 'Protein Identifiers', 'pl_help_pid' ); return false" 
+	    href="">click here</a>
+	  for a list of suported database IDs). Complex queries including logical 
+	  operators and wildcards are supported (see the 
+	  <a href="page?id=pl_tutorial">tutorial</a> for more details).
+	</td>
+      </tr>
+
+      <tr>
+	<th align="right" class="mp">
+	  <a class="pl_results" href="page?site=prl&id=pl_mult_prot">
+	    <b>Multiple protein IDs:</b>
+	  </a>
+	</th>
+	<td align="left" class="mp">
+	  Search ProLinks in batch mode by submitting multiple 
+	  protein IDs or by uploading a file with the IDs. 
+	  Results are returned via e-mail.
+	</td>
+      </tr>
+
+      <tr>
+	<th align="right" class="mp">
+	  <a class="pl_results" href="page?site=prl&id=pl_common">
+	    <b>Functional linkages shared among proteins:</b>
+	  </a>
+	</th>
+	<td align="left" class="mp">
+	  Find the set of functional linkages that is common to 
+	  several query proteins. Protein IDs must be provided
+	  either directly or by uploading a file with the IDs.
+	  Results are returned via e-mail.
+	</td>
+      </tr>
+
+
+      <tr>
+	<th align="right" class="mp">
+	  <a class="pl_results" href="page?site=prl&id=pl_connections">
+	    <b>Paths of functional linkages connecting two proteins:</b>
+	  </a>
+	</th>
+	<td align="left" class="mp">
+	  Find the set of functional linkages that connects two
+	  proteins. For example, for two query proteins <B>A</B>
+	  and <b>E</b>, ProLinks could find that they are
+	  connected by proteins B, C, and D, that is:
+	  <div align="center"> 
+	    <b>A</b> -- B -- C -- D -- <b>E</b> 
+	  </div>
+	</td>
+      </tr>
+
+      <tr>
+	<th align="right" class="mp">
+	  <a class="pl_results" href="page?site=prl&id=pl_prot_seq">
+	    <b>Submit a protein sequence:</b>
+	  </a>
+	</th>
+	<td align="left" class="mp">
+	  A user-suplied input protein sequence is blasted against all procaryotic 
+	  proteins in ProLinks, the most significant hits are then
+	  returned to the user sorted by statistical significance. Finally
+	  the user must select any of the returned hits and submit it to 
+	  ProLinks to search for functional linkages. 
+	</td>
+      </tr>
+    </table>
+
+
+    <!-- To avoid content be blocked by the footer -->
+    <br /><br /><br /><br /><br /><br /><br />
+
+
+
+

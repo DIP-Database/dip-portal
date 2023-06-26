@@ -1,0 +1,72 @@
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ncbi.proxy.mbi.ucla.edu/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns3="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://mbi.ucla.edu/proxy/ncbi" name="NcbiCachingImplService" targetNamespace="http://ncbi.proxy.mbi.ucla.edu/">
+  <wsdl:import location="http://10.1.1.112:8080/dip-proxy/ws/soap/ncbi-service?wsdl=NcbiProxyPortType.wsdl" namespace="http://mbi.ucla.edu/proxy/ncbi">
+    </wsdl:import>
+  <wsdl:binding name="NcbiCachingImplServiceSoapBinding" type="ns1:NcbiProxyPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="getGene">
+      <soap:operation soapAction="http://dip.doe-mbi.ucla.edu/services/dxf14/getGene" style="document"></soap:operation>
+      <wsdl:input name="getGene">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getGeneResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="ProxyFault">
+        <soap:fault name="ProxyFault" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getJournal">
+      <soap:operation soapAction="http://dip.doe-mbi.ucla.edu/services/dxf14/getJournal" style="document"></soap:operation>
+      <wsdl:input name="getJournal">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getJournalResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="ProxyFault">
+        <soap:fault name="ProxyFault" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getRefseq">
+      <soap:operation soapAction="http://dip.doe-mbi.ucla.edu/services/dxf14/getRefseq" style="document"></soap:operation>
+      <wsdl:input name="getRefseq">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getRefseqResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="ProxyFault">
+        <soap:fault name="ProxyFault" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTaxon">
+      <soap:operation soapAction="http://dip.doe-mbi.ucla.edu/services/dxf14/getTaxon" style="document"></soap:operation>
+      <wsdl:input name="getTaxon">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTaxonResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="ProxyFault">
+        <soap:fault name="ProxyFault" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPubmedArticle">
+      <soap:operation soapAction="http://dip.doe-mbi.ucla.edu/services/dxf14/getPubmedArticle" style="document"></soap:operation>
+      <wsdl:input name="getPubmedArticle">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getPubmedArticleResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="ProxyFault">
+        <soap:fault name="ProxyFault" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NcbiCachingImplService">
+    <wsdl:port binding="tns:NcbiCachingImplServiceSoapBinding" name="NcbiCachingImplPort">
+      <soap:address location="http://10.1.1.112:8080/dip-proxy/ws/soap/ncbi-service"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

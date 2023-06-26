@@ -1,0 +1,14 @@
+{
+  serviceConfig:{
+    endpoint:[
+      {"url":"http://dip.doe-mbi.ucla.edu/dip-legacy/dxf",
+       "priority":1.0
+      },
+      {"url":"http://dip.doe-mbi.ucla.edu:50606/axis2/services/dipPublic",
+       "priority":1.0
+      }
+    ] 
+  }
+}
+
+

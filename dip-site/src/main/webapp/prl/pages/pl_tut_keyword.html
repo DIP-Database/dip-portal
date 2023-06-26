@@ -1,0 +1,467 @@
+
+    <link rel="stylesheet" type="text/css" href="skin/pfl/css/prolinks.css" />
+      
+      <div id="pl_tutorial_page">
+
+	<br />
+
+	<table class="pl_outer_frame">
+
+
+	  <!-- The header -->
+	  <tr>
+	    <td class="pl_tutorial_header_row pl_arrow_cell">
+	      <a href="page?id=pl_tut_write_query">
+		<img class="pl_tut_arrow" 
+                       src="images/pl_tut_left_arrow.png" 
+		     width="60px"
+		       alt="Previous tutorial" />
+	      </a>
+	    </td>
+
+	    <td class="pl_tutorial_header_row"> 
+	      <b>Submit keywords associated with a  protein</b>
+	    </td>
+
+	    <td class="pl_tutorial_header_row pl_arrow_cell"> 
+	      <a href="page?id=pl_tut_mult_prot">
+		<img class="pl_tut_arrow"  
+                       src="images/pl_tut_right_arrow.png" 
+		     width="60px"
+		  alt="Next tutorial" />
+	      </a>
+	    </td>
+	  </tr>
+
+
+
+	  <!-- The body of the tutorial from here -->
+	  <tr>
+	    <td class="pl_tutorial_body_row" colspan="3">
+	      <table class="pl_tutorial_inner_frame">
+		<tr>
+		  <td class="pl_tutorial_info_data">
+
+
+		    <!-- Tutorial organization -->
+		    <br />
+		    This tutorial is divided in 3 sections:
+		    <ul>
+
+		      <li>
+			<a class="pl_general" 
+			  href="#form">The input form:</a>
+			General description of the input form.
+			<br />
+                        <ul>
+			  <li>
+			    <a class="pl_general" href="#parameters">
+			      Search Parameters</a>
+			  </li>
+			</ul>
+                        <br/>
+		      </li>
+
+		      <li>
+			<a class="pl_general" href="#results">
+			  Inferences of functional linkages:</a> 
+			Detailed descriptions of the output table with
+			the inferred functional linkages.
+			<br />
+
+			<ul>
+			  <li>
+			    <a class="pl_general" href="#navigation">
+			      Page navigation</a>
+			  </li>
+			</ul>
+			<br />
+		      </li>
+
+		      <li>
+			<a class="pl_general" href="#cytoscape">Network 
+			  graph of functional interactions:</a>
+			Step by step instructions about how to obtain a 
+			a graphical display of the network of inferred
+			functional linkages.
+			<br /><br />
+		      </li>
+		    </ul>
+
+		    <!-- Description of the input form -->
+		    <a name="form"></a>
+		    <h2>The input form</h2>
+		    
+		    <p>
+		      The input forms for all advanced queries are organized 
+		      in three main sections: User input, search parameters 
+		      and ouput format options (see
+		      <a class="pl_general" href="#figure1">Figure 1</a>).
+		      You can submit a
+		      <a class="pl_general" 
+			onclick="YAHOO.mbi.modal.help( 'Protein Identifiers', 'pl_help_pid' ); return false" 
+			href="">a protein identifier</a>
+		      or keywords as explained in the corresponding
+		      <a class="pl_tutorial" href="page?id=pl_tut_write_query"
+			target="_blank">tutorial</a>. You can also
+		      <a onclick="YAHOO.mbi.modal.help( 'Query syntax', 'pl_help_solr_search' ); return false" 
+			href="">Click here</a> for tips for a few example queries.
+		    </p>
+
+                    <br />
+
+                    <a name="figure1"></a>
+    	            <table width="70%" border="0px" cellpadding="5" cellspacing="0" align="center">                
+		      <tr>
+			<td align="center">
+			  <a href="images/pl_keyword_form.png" target="_blank">
+			    <img class="pl_tut_image" 
+			         src="images/pl_keyword_form.png" 
+			         width="50%"
+			         alt="Submit a protein keyword" /> 
+			  </a>
+			</td>
+                      </tr>
+		      
+		      <tr>
+			<td align="left" valign="top">
+			  <b>Figure 1.</b>
+			  <u><i>Input form</i></u>. The user must provide 
+                          <a class="pl_general" href="page?id=pl_tut_write_query">
+			    keywords</a> related to the protein of interest. The figure
+			  shows a default example with the locus tag  that 
+			  we will submit to ProLinks. By clicking on any question 
+			  mark, a popup window will open with an explanation of the 
+			  corresponding topic.
+			</td>
+		      </tr>
+		    </table>
+
+		    <br /><br />
+
+		    <a name="parameters"></a>
+		    <h3>&nbsp;&nbsp;&nbsp;Search Parameters</h3>
+
+		    <p>
+		      There are four parameters to control the search
+		      for linkages and how results will be presented: 
+		    <ul>
+		      <li>
+		        <p>
+		          <b>Confidence value.</b> Given that all inference
+                          methods differ in their underlying assumptions and
+                          statistical approaches their respective scores 
+                          (i.e. P-values) are not comparable. We created a 
+                          new standarized metric to allow comparisons between 
+                          methods, and to quantify our global confidence that 
+                          a given inference is a true positive. We call this 
+                          score the ProLinks <i>Confidence Value</i>, and it is 
+                          derived from the recovery rate of 
+                          <a class="pl_general"
+		             href="http://www.genome.jp/kegg/pathway.html"
+		             target="_blank">KEGG pathways</a>, 
+                          <a class="pl_general"
+		             href="http://dip.doe-mbi.ucla.edu/dip/Main.cgi"
+		             target="_blank">DIP</a> core interactions, and
+                          known <a class="pl_general"
+		                   href="http://regulondb.ccg.unam.mx"
+		                   target="_blank">operons</a>. For each method, 
+			  we calculate the probability that inferred linkages
+                          are true positives given their recovery rates and
+		          their P-values. We recomend starting your search 
+                          with <b><i>0.6</i></b> and depending on the number 
+                          of linkages returned, work your way down to <b><i>0.4</i></b>.
+		        </p>
+		      </li>
+
+		      <li>
+			<p>
+                          <b>Network Distance.</b> This refers to how deep in 
+                          the network of functional associations we are going to 
+			  search for proteins linked to the query protein. 
+                          For example, at depth 1 we are looking at
+		          direct links (e.g. <b>A&rarr;B</b>) and for depth > 1 
+                          we find increasing levels of indirect links (e.g.
+                          <b>A&rarr;</b>b<b>&rarr;C</b>, 
+                          <b>A&rarr;</b>b<b>&rarr;</b>c<b>&rarr;D</b>, etc.)
+			 </p>
+		      </li>
+
+
+		      <li>
+			<p>
+                          <b>Identify links with.</b> The tag ProLinks will use 
+                          to identify each linked protein when displaying the 
+			  inferred linkages.
+			</p>
+		      </li>
+
+		      <li>
+			<p>
+                          <b>Linkages per page.</b> Number of links that will be
+                          displayed per page when ProLinks returns the inferences
+			  for the query protein.
+			</p>
+		      </li>
+		    </ul>
+		    </p>
+
+		    <br /><br />
+
+		    <a name="results"></a>
+		    <h2>Inferences of functional linkages</h2>
+
+
+		    <p>
+		      Let's use the parameters shown in 
+		      <a class="pl_general" href="#figure1">Figure 1</a>,
+		      and search for linkages up to 2 edges away from
+		      the query (Network distance = 2). We obtain 
+                      the inferences presented in 
+		      <a class="pl_general" href="#figure2">Figure 2</a>. 
+		    </p>
+
+
+                    <a name="figure2"></a>
+    	            <table width="70%" border="0px" cellpadding="5" cellspacing="0" align="center">                
+		      <tr>
+			<td align="center">
+			  <a href="images/pl_tut_kywd_ln_2.png" 
+			     target="_blank">
+			     <img class="pl_tut_image" 
+                                  src="images/pl_tut_kywd_ln_2.png" 
+			          width="50%"
+			          alt="Linkages at depth 2" /> 
+			  </a>
+			</td>
+                      </tr>
+		      
+		      <tr>
+			<td align="left" valign="top">
+			  <b>Figure 2.</b>
+			  <u><i>Linkages at network distance 2</i></u>. Inferred linkages
+			  for input RefSeq NP_414777. Notice, 
+                          the hyperlinks on the organism's name and the columns 
+			  <b><i>Query Gene Name</i></b> and <b><i>Linked Gene Name</i></b> 
+			  in the results table. The links in these columns point to 
+			  the respective NCBI RefSeq records of the linked proteins.
+			  (click on the figure to see the full size image).
+
+			</td>
+		      </tr>
+		    </table>
+		    <br />
+
+		    <p>
+		      The table can be sorted by the values in each column by clicking
+		      on the up (<img src="images/pl_sort_up.png"
+	                              width="13px"
+                                      title="Ascending sort arrow"
+                                      alt="Ascending sort arrow" />) and down 
+                      (<img src="images/pl_sort_down.png"
+	                    width="13px"
+                            title="Ascending sort arrow"
+                            alt="Ascending sort arrow" />)
+                      arrows in the caption of some columns column.
+                    </p>
+
+                    <p>
+                      Now, if we run another search and increase the depth of 
+		      search (network distance) to 3, we'll obtain the results 
+                      presented in <a class="pl_general" href="#figure3">Figure 3</a>. 
+		    </p>
+
+                    <a name="figure3"></a>
+    	            <table width="70%" border="0px" cellpadding="5" cellspacing="0" align="center">                
+		      <tr>
+			<td align="CENTER">
+			  <a href="images/pl_tut_kywd_ln_3.png" target="_blank">
+			    <img class="pl_tut_image" 
+                                 src="images/pl_tut_kywd_ln_3.png" 
+			         width="50%"
+			         alt="Linkages at depth 3" /> 
+			  </a>
+			</td>
+                      </tr>
+		      
+		      <tr>
+			<td align="left" valign="top">
+			  <b>Figure 3.</b>
+			  <u><i>Linkages at network distance 3</i></u>. Inferred linkages
+			  for input RefSeq NP_414777.
+			  (click on the figure to see the full size image).
+			</td>
+		      </tr>
+		    </table>
+		    <br /><br />
+
+
+
+		    <a name="navigation"></a>
+		    <h3>
+		      &nbsp;&nbsp;&nbsp;Page navigation
+		    </h3>
+		    
+		    <p>
+		      When the number of inferred linkages is greater than
+                      the number specified in the input form 
+                      (see <a class="pl_general" href="#figure1">Figure 1</a>),
+                      the results are paginated. In both cases, 
+                      <a class="pl_general" href="#figure2">Figure 2</a>
+		      and <a class="pl_general" href="#figure2">Figure 3</a>
+                      return more than 10 linkages. You can browse through the 
+                      inferred functional linkages by clicking in the 
+                      arrows in the footer of the  results table. 
+                      The arrow <b>></b> takes you to the <i>next page</i>,
+		      <b><</b> retrieves the <i>previous page</i>, 
+		      <b>>></b> sends you to the <i>last page</i>, <b><<</b> 
+		      takes you back to the <i>first page</i>, and if present,
+                      the <b>all</b> link will show all linkages found in 
+                      one single page.
+		    </p>
+
+		    <br /><br />
+
+
+
+		    <a name="cytoscape"></a>
+		    <h2>The network of functional interactions</h2>
+
+		    <p>
+		      During the process of interpreting functional
+		      linkages, it may be helpful to visualize the
+		      linkages as a network of interactions.  To
+		      achieve this, we use the <a class="pl_general"
+			href="http://dip.doe-mbi.ucla.edu/dip/Software.cgi"
+			target="_blank">MiSink plugin</a> (see the 
+		      <a class="pl_general"
+			href="http://bioinformatics.oxfordjournals.org/content/23/16/2193.long"
+			target="_blank">article</a> for details) to
+		      submit the inferred linkages to <a class="pl_general"
+			href="http://www.cytoscape.org/"
+			target="_blank">Cytoscape</a> (an interactive
+		      tool for visualizing biological networks). 
+		      The following  icon is located at the top right corner 
+		      of the results table. By clicking on the icon the 
+		      linkages in the current table of inferences is 
+		      submitted to Cytoscape.
+		    </p>
+
+		    <div style="text-align:center;">
+		      <img src="images/main_software_40.png" 
+			   alt="Icon to communicate ProLinks with Cytoscape" /> 
+		    </div>
+
+		    <br />
+
+		    <p>
+		      In order to be able to successfully visualize
+		      the network, it is <b>MANDATORY</b> that both
+		      <a class="pl_general"
+			href="http://dip.doe-mbi.ucla.edu/dip/Software.cgi"
+			target="_blank">MiSink</a> and 
+		      <a class="pl_general"
+			href="http://www.cytoscape.org/"
+			target="_blank">Cytoscape</a> are installed and 
+		      running at the time you click on the icon. 
+		      If Cytoscape is running and MiSink is properly
+		      installed, by clicking on the network icon in 
+		      <a class="pl_general" href="#figure2">Figure 2</a> and
+		      <a class="pl_general" href="#figure3">Figure 3</a>,
+		      the inferred linkages in each table will be sent to 
+		      Cytoscape. 
+                    </p>
+
+                    <p>
+                      When you click on the network icon, only the current
+                      page of linkages are sent to Cytoscape. That is  why 
+		      you need  to display <b>all</b> linkages in one page 
+                      if you want Cytoscape to plot the network including 
+		      all inferred linkages. 
+		      <a class="pl_general" href="#figure4_5">Figure 4</a> and
+		      <a class="pl_general" href="#figure4_5">Figure 5</a>
+		      show the corresponding networks.
+		    </p>
+		    
+
+
+		    <a name="figure4_5"></a>
+    	            <table border="0px" cellpadding="5" cellspacing="0" align="center">                
+		      <tr>
+			<td align="center" width="50%">
+			  <a href="images/pl_kywd_cyto_1.png" target="_blank">
+			     <img class="pl_tut_image"
+                                  src="images/pl_kywd_cyto_1.png" 
+			          width="60%"
+			          alt="Cytoscape network 1" /> 
+			  </a>
+			</td>
+
+			<td align="CENTER" width="50%">
+			  <a href="images/pl_kywd_cyto_2.png" target="_blank">
+			    <img class="pl_tut_image"
+                                 src="images/pl_kywd_cyto_2.png" 
+			         width="60%"
+			         alt="Cytoscape network 2" /> 
+			  </a>
+			</td>
+                      </tr>
+		      
+		      <tr>
+			<td align="left" valign="top">
+			  <b>Figure 4.</b> <u><i>Cytoscape network
+			  for depth 2</i></u>. The yellow node is the query
+			  protein (click on the figure to see the 
+			  full size image).
+			</td>
+
+			<td align="left" valign="top">
+			  <b>Figure 5.</b> <u><i>Cytoscape network for
+			    depth 3</i></u>. The yellow node is the 
+                          query protein (click on the figure to see the 
+                          full size image).
+			</td>
+		      </tr>
+		    </table>
+
+
+		  </td>
+		</tr>
+	      </table>
+	    </td>
+	  </tr>
+
+	  
+
+	  <!-- The footer  -->
+	  <tr>
+	    <td class="pl_tutorial_header_row pl_arrow_cell">
+	      <a href="page?id=pl_tut_write_query">
+		<img class="pl_tut_arrow" 
+                       src="images/pl_tut_left_arrow.png" 
+		     width="60px"
+		       alt="Previous tutorial" />
+	      </a>
+	    </td>
+
+	    <td class="pl_tutorial_header_row"> 
+	      <b>Tutorial Navigation bar</b>
+	      <br />
+	      (<a class="pl_general" href="page?id=pl_tut_adv_search">
+		Advanced search Tutorials</a>)
+	    </td>
+
+	    <td class="pl_tutorial_header_row pl_arrow_cell"> 
+	      <a href="page?id=pl_tut_mult_prot">
+		<img class="pl_tut_arrow"
+                       src="images/pl_tut_right_arrow.png" 
+		     width="60px"
+		      alt="Next tutorial" />
+	      </a>
+	    </td>
+	  </tr>
+	</table>
+      </div>
+
+      <!-- To avoid content be blocked by the footer -->
+      <br /><br /><br /><br /><br /><br /><br />

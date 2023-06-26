@@ -1,0 +1,41 @@
+<div style="padding:0 0 10em 1em; width: 80em;">
+ <div id="misink-tabs"></div>
+
+ <script type="text/javascript">
+ (function() {
+    var tabView = new YAHOO.widget.TabView();
+    
+    tabView.addTab( new YAHOO.widget.Tab({
+        label: 'Overview',
+        dataSrc: 'page?id=misink-overview\&big=false',
+        cacheData: true,
+        active: true
+    }));
+
+    tabView.addTab( new YAHOO.widget.Tab({
+        label: 'Install',
+        dataSrc: 'page?id=misink-install\&big=false',
+        cacheData: true
+    }));
+
+    tabView.addTab( new YAHOO.widget.Tab({
+        label: 'Guide',
+        dataSrc: 'page?id=misink-guide\&big=false',
+        cacheData: true
+    }));
+
+    tabView.addTab( new YAHOO.widget.Tab({
+        label: 'Documentation',
+        dataSrc: 'page?id=misink-documentation\&big=false',
+        cacheData: true
+    }));
+
+    tabView.addTab( new YAHOO.widget.Tab({
+        label: 'FAQ',
+        dataSrc: 'page?id=misink-faq\&big=false',
+        cacheData: true
+    }));
+
+    tabView.appendTo('misink-tabs');
+ })();
+</script>

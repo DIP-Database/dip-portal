@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+<!-- DIP: sequence query model -->
+
+ <bean id="dipSeqQueryModel" scope="prototype"
+       class="edu.ucla.mbi.service.RecordModel">
+
+  <property name="dxfService">
+    <ref bean="dipDbService"/>
+  </property>
+
+  <property name="modelConfig">
+   <map>
+    <!-- node record views: key="N" -->
+
+    <entry key="seq-query-result">           
+     <list>
+<!--
+      <map>                                 
+       <entry key="name" value="details"/>  
+       <entry key="active" value="true"/>   
+       <entry key="label" value="Summary"/> 
+       <entry key="panel" value="on"/>      
+       <entry key="export" value="single"/> 
+
+       <entry key="view-type" value="detail"/>   
+       <entry key="view-as-tile" value="false"/> 
+       <entry key="view-def" value="node-list"/> 
+       <entry key="service">                     
+        <ref bean="dipDbService"/>                         
+       </entry>
+       <entry key="service-type" >               
+        <value>nodelist</value>
+       </entry>
+       <entry key="service-tag" value="deep"/>   
+      </map>
+-->
+      <map>                                          <!-- TQ#1 proteins view -->
+       <entry key="name" value="proteins"/>                   <!-- view name -->
+       <entry key="active" value="true"/>                   <!-- active flag -->
+       <entry key="label" value="Proteins"/>                      <!-- label -->
+       <entry key="panel" value="on"/>           <!-- side panel: none:on:off-->
+       <entry key="export" value="multi"/>     <!-- export: none:single:multi-->
+       <entry key="view-type" value="table"/>                  <!-- view type-->
+       <entry key="view-def" value="seq-query-hit-list"/>          <!-- view -->
+       <entry key="service">                                <!-- data source -->
+        <ref bean="dipDbService"/>
+       </entry>
+       <entry key="service-type">                           <!-- source type -->
+        <value>reflist</value>
+       </entry>
+       <entry key="service-tag" value="N"/>                   <!-- souce tag -->
+      </map>
+
+      <map>                                       <!-- N#2 interactions view -->
+       <entry key="name" value="interactions"/>               <!-- view name -->
+       <entry key="active" value="true"/>                   <!-- active flag -->
+       <entry key="label" value="Interactions"/>                  <!-- label -->
+       <entry key="panel" value="on"/>           <!-- side panel: none:on:off-->
+       <entry key="export" value="multi"/>    <!-- export: none:single:multi-->
+       <entry key="view-type" value="table"/>                  <!-- view type-->
+       <entry key="view-def" value="edge-list"/>                   <!-- view -->
+       <entry key="service">                                <!-- data source -->
+        <ref bean="dipDbService"/>
+       </entry>
+       <entry key="service-type">                           <!-- source type -->
+        <value>reflist</value>
+       </entry>
+       <entry key="service-tag" value="E"/>                   <!-- souce tag -->
+      </map>
+
+      <map>                                        <!-- N#3 experiments view -->
+       <entry key="name" value="experiments"/>                <!-- view name -->
+       <entry key="active" value="true"/>                   <!-- active flag -->
+       <entry key="label" value="Experiments"/>                   <!-- label -->
+       <entry key="panel" value="on"/>           <!-- side panel: none:on:off-->
+       <entry key="export" value="none"/>      <!-- export: none:single:multi-->
+       <entry key="view-type" value="table"/>                  <!-- view type-->
+       <entry key="view-def" value="evidence-list"/>               <!-- view -->
+       <entry key="service">                                <!-- data source -->
+        <ref bean="dipDbService"/>
+       </entry>
+       <entry key="service-type">                           <!-- source type -->
+        <value>reflist</value>
+       </entry>
+       <entry key="service-tag" value="X"/>                  <!-- source tag -->
+      </map>
+
+      <map>                                           <!-- N#4 articles view -->
+       <entry key="name" value="articles"/>                   <!-- view name -->
+       <entry key="active" value="true"/>                   <!-- active flag -->
+       <entry key="label" value="Articles"/>                      <!-- label -->
+       <entry key="panel" value="on"/>           <!-- side panel: none:on:off-->
+       <entry key="export" value="none"/>      <!-- export: none:single:multi-->
+       <entry key="view-type" value="table"/>                  <!-- view type-->
+       <entry key="view-def" value="source-list"/>                 <!-- view -->
+       <entry key="service">                                <!-- data source -->
+        <ref bean="dipDbService"/>
+       </entry>
+       <entry key="service-type">                           <!-- source type -->
+        <value>reflist</value>
+       </entry>
+       <entry key="service-tag" value="S"/>                   <!-- souce tag -->
+      </map>
+     </list>
+    </entry>
+   </map>
+  </property>
+ </bean>
+
+</beans>
+

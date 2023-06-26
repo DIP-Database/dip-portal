@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-2.5.xsd" >
+
+  <!-- data model definitions: describes views (==tabs) for each record type  -->    
+ 
+  <import resource="record-models.xml" /> 
+
+
+  <!-- DIP: text query action -->
+    
+  <bean id="queryAction" scope="prototype"
+        class="edu.ucla.mbi.dip.struts.action.QueryAction">
+    
+    <property name="context" ref="queryContext"/>
+    <property name="portalContext" ref="portalContext"/>   
+
+    <!-- data model/table view -->
+    <property name="model" ref="dipTxtQueryModel"/>
+    <property name="tableContext" ref="tableContext"/>
+
+    <property name="mst" value="0:1:1"/>
+    <property name="rtp" value="txt-query-result"/>
+      
+    <!-- background agent configuration -->
+    <property name="dipAgentConfig"  ref="agentConf"/>
+       
+    <property name="sknDef" value="dip"/>
+    <property name="siteDef" value="dip"/>
+  </bean>
+
+
+  <!-- xpsq-based query action -->
+  
+  <bean id="xpsqAction" scope="prototype"
+        class="edu.ucla.mbi.dip.struts.action.QueryAction">
+    
+    <property name="context" ref="queryContext"/>
+    <property name="portalContext" ref="portalContext"/>   
+
+    <!-- data model/table view -->
+
+ <!--   <property name="model" ref="dipTxtQueryModel"/> -->
+    <property name="model" ref="dipMiqlQueryModel"/>
+
+    <property name="tableContext" ref="tableContext"/>
+
+<!--    <property name="rtp" value="txt-query-result" /> -->
+    <property name="rtp" value="miql-query-result" />
+
+    <property name="mst" value="0:1:2"/>
+      
+    <!-- background agent configuration -->
+    <property name="dipAgentConfig"  ref="agentConf"/>
+       
+    <property name="sknDef" value="dip"/>
+    <property name="siteDef" value="dip"/>
+  </bean>
+
+
+  <!-- DIP: sequence query action -->
+  
+  <bean id="sequenceQueryAction" scope="prototype"
+        class="edu.ucla.mbi.dip.struts.action.QueryAction">
+    
+    <property name="context" ref="queryContext"/>
+    <property name="portalContext" ref="portalContext"/>   
+
+    <!-- data model/table view -->
+    <property name="model" ref="dipSeqQueryModel"/>
+    <property name="tableContext" ref="tableContext"/>
+    <property name="rtp" value="seq-query-result" />
+
+    <property name="mst" value="0:1:1"/>
+      
+    <!-- background agent configuration -->
+    <property name="dipAgentConfig"  ref="agentConf"/>
+       
+    <property name="sknDef" value="dip"/>
+    <property name="siteDef" value="dip"/>
+  </bean>
+
+
+ <!-- DIP: record action -->
+
+  <bean id="recordAction" scope="prototype"
+      class="edu.ucla.mbi.portal.struts.action.RecordAction"> 
+      
+    <property name="context" ref="actionContext"/>
+    <property name="portalContext" ref="portalContext"/>
+          
+    <!-- data model/table view -->
+    <property name="model" ref="dipRecordModel"/>      
+    <property name="tableContext" ref="tableContext"/>
+    <property name="mst" value="0:1:1"/>
+    
+    <!-- background agent configuration -->
+    <property name="agentConfig" ref="agentConf"/>
+ 
+    <property name="sknDef" value="dip"/>
+    <property name="siteDef" value="dip"/>
+  </bean>
+
+
+  <!-- REST-like, json interface to proxy -->
+
+  <bean id="proxyAction" scope="prototype"
+      class="edu.ucla.mbi.portal.struts.action.ProxyAction"> 
+      
+    <property name="context" ref="proxyContext"/>
+    <property name="portalContext" ref="portalContext"/>
+          
+    <!-- data model/table view -->
+    <property name="model" ref="dipRecordModel"/>      
+    <property name="tableContext" ref="tableContext"/>
+    <property name="mst" value="0:1:1"/>
+  
+    <property name="sknDef" value="dip"/>
+    <property name="siteDef" value="dip"/>
+  </bean>
+
+ <!-- ====================================================================== -->
+
+  <bean id="tableContext" scope="prototype" init-method="initialize"
+       class="edu.ucla.mbi.util.struts.interceptor.TableViewJsonContext">
+    <property name="jsonContext" ref="recordViewContext"/>
+  </bean>
+
+  <bean id="recordViewContext" class="edu.ucla.mbi.util.context.JsonContext">
+    <property name="config">
+      <map>
+        <entry key="json-config" value="/etc/recordview.json"/>
+      </map>
+    </property>
+  </bean>
+
+  <bean id="exportContext" class="edu.ucla.mbi.util.context.JsonContext">
+    <property name="config">
+      <map>
+        <entry key="json-config" value="/etc/export.json"/>
+      </map>
+    </property>
+  </bean>
+
+  <bean id="graphvizContext" class="edu.ucla.mbi.util.context.JsonContext">
+    <property name="config">
+      <map>
+        <entry key="json-config" value="/etc/graphview.json"/>
+      </map>
+    </property>
+  </bean>
+
+
+ <!--  NetTransformer(s) -->
+
+  <bean id="nullTransformer" 
+        class="edu.ucla.mbi.dip.transform.NullTransformer" />
+
+  <bean id="dotTransformer" 
+        class="edu.ucla.mbi.dip.transform.DotTransformer" />
+
+  <bean id="grvTransformer" 
+        class="edu.ucla.mbi.dip.transform.GraphvizTransformer">
+    <property name="graphvizContext" ref="graphvizContext"/>   
+  </bean>
+
+ <!-- export interceptor -->
+
+  <bean id="netExportInterceptor" scope="singleton"
+       class="edu.ucla.mbi.dip.struts.interceptor.NetExportInterceptor">
+    <property name="exportContext" ref="exportContext"/>
+    <property name="exportTransformer">
+      <map>
+        <entry key="dot"><ref bean="dotTransformer"/></entry>
+        <entry key="grv"><ref bean="grvTransformer"/></entry>
+        <entry key="mif"><ref bean="nullTransformer"/></entry>
+        <entry key="d3j"><ref bean="dotTransformer"/></entry>
+        <entry key="mitab"><ref bean="nullTransformer"/></entry>
+      </map>
+    </property>
+    
+  </bean>
+
+ <!-- graph action -->
+
+  <bean id="graphAction" scope="prototype"
+        class="edu.ucla.mbi.portal.struts.action.GraphAction">
+
+    <property name="context" ref="actionContext"/>
+    <property name="portalContext" ref="portalContext"/>      
+
+    <property name="graphContext" ref="graphvizContext"/>    
+
+    <property name="sknDef" value="dip"/>
+    <property name="siteDef" value="dip"/>
+
+  </bean>
+
+ <!-- ProLinks: prlRecord action -->
+    
+  <bean id="prlRecordAction" scope="prototype"
+      class="edu.ucla.mbi.portal.struts.action.RecordAction">
+
+    <property name="portalContext" ref="portalContext"/>      
+    <property name="context" ref="actionContext"/>
+
+          
+    <!-- data model/table view -->
+    <property name="model" ref="prlRecordModel"/>      
+    <property name="tableContext" ref="tableContext"/>
+
+    <!-- background agent configuration -->
+    <property name="agentConfig" ref="agentConf"/>
+  
+    <property name="sknDef" value="prl"/>
+    <property name="siteDef" value="prl"/>
+  </bean>
+    
+
+ <!-- stat action -->
+
+  <bean id="statAction" scope="prototype"
+        class="edu.ucla.mbi.dip.struts.action.StatAction">      
+    <property name="dipDbService" ref="dipDbService"/>
+    <property name="statsContext" ref="statsContext"/>
+
+    <property name="portalContext"       ref="portalContext"/>
+
+    <property name="userContext" ref="userContext"/>
+    <property name="mst" value="3:2:1"/>
+
+    <property name="sknDef" value="dip"/>
+    <property name="siteDef" value="dip"/>
+  </bean>
+
+  <!-- table manager action -->
+
+  <bean id="tableMgrAction" scope="prototype"
+        class="edu.ucla.mbi.dip.struts.action.TableMgrAction">
+ 
+    <property name="context" ref="actionContext"/>
+    <property name="portalContext" ref="portalContext"/> 
+      
+    <!-- data model/table view -->
+
+    <property name="tableContext" ref="tableContext"/>
+          
+    <property name="sknDef" value="dip"/>
+    <property name="siteDef" value="dip"/>
+  </bean>
+</beans>
+

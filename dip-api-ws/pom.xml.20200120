@@ -1,0 +1,409 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>edu.ucla.mbi.dip</groupId>
+  <artifactId>dip-api-ws</artifactId>
+  <packaging>jar</packaging>
+  <version>0.03</version>
+  <name>dip-api-ws</name>
+
+  <url>http://imex.mbi.ucla.edu/trac/dip</url>
+<!--
+ <parent>
+   <groupId>edu.ucla.mbi.dip</groupId>
+   <artifactId>dip-ws</artifactId>
+   <version>0.01</version>
+  </parent>
+-->
+  <dependencies>
+
+   <dependency>
+    <groupId>com.sun.xml.ws</groupId>
+    <artifactId>jaxws-rt</artifactId>
+    <version>2.1.4</version>
+   </dependency>
+
+   <dependency>
+    <groupId>commons-logging</groupId>
+    <artifactId>commons-logging</artifactId>
+    <version>1.1.1</version>
+   </dependency>
+
+   <dependency>
+    <groupId>commons-cli</groupId>
+    <artifactId>commons-cli</artifactId>
+    <version>1.2</version>
+   </dependency>
+ 
+   <dependency>
+     <groupId>junit</groupId>
+     <artifactId>junit</artifactId>
+     <version>3.8.1</version>
+    <scope>test</scope>
+   </dependency>
+  </dependencies>
+
+ <build>
+   <finalName>dip-services</finalName>
+
+   <plugins>
+<!--
+    <plugin>
+     <groupId>org.jvnet.jaxb2.maven2</groupId>
+     <artifactId>maven-jaxb2-plugin</artifactId>
+     <version>0.7.4</version>
+     <executions>
+      <execution>
+       <goals>
+        <goal>generate</goal>
+       </goals>
+      </execution>
+     </executions>
+    </plugin>
+-->
+    <plugin>
+     <groupId>org.codehaus.mojo</groupId>
+     <artifactId>jaxws-maven-plugin</artifactId> 
+     <version>1.9</version>
+     <executions>
+      <execution>
+       <id>dipws</id>
+       <goals>
+        <goal>wsimport</goal>
+       </goals>
+       <configuration>
+        <verbose>false</verbose>
+        <bindingFiles>
+         <bindingFile>DXF1.4.jxb</bindingFile>
+         <bindingFile>services.jxb</bindingFile>
+         <bindingFile>dipws.jxb</bindingFile>
+        </bindingFiles> 
+        <wsdlFiles>
+          <wsdlFile>dipws.wsdl</wsdlFile> 
+        </wsdlFiles>        
+        <staleFile>${basedir}/target/.dipws.staleFlag</staleFile>
+        <keep>true</keep>
+       </configuration>
+      </execution>
+
+      <execution>
+       <id>dipreg</id>
+       <goals>
+        <goal>wsimport</goal>
+       </goals>
+       <configuration>
+        <verbose>false</verbose>
+        <bindingFiles>
+         <bindingFile>dipreg.jxb</bindingFile>
+         <bindingFile>dipregns.jxb</bindingFile>
+        </bindingFiles> 
+        <wsdlFiles>
+          <wsdlFile>dipreg.wsdl</wsdlFile>
+        </wsdlFiles>
+        <staleFile>${basedir}/target/.dipreg.staleFlag</staleFile>
+        <keep>true</keep>
+       </configuration>
+      </execution>
+
+      <execution>
+       <id>dip-proxy</id>
+       <goals>
+        <goal>wsimport</goal>
+       </goals>
+       <configuration>
+        <verbose>false</verbose>
+        <bindingFiles>
+         <bindingFile>DXF1.4.jxb</bindingFile>
+
+         <bindingFile>services.jxb</bindingFile> 
+
+         <!--<bindingFile>Fault.jxb</bindingFile> -->
+
+         <bindingFile>DipService14.jxb</bindingFile>
+        </bindingFiles> 
+        <wsdlFiles>
+          <wsdlFile>DipService14.wsdl</wsdlFile> 
+        </wsdlFiles>
+        <staleFile>${basedir}/target/.dip-proxy.staleFlag</staleFile>
+        <keep>true</keep>
+       </configuration>
+      </execution>
+
+<!--
+      <execution>
+       <id>dip-proxy-cxf</id>
+       <goals>
+        <goal>wsimport</goal>
+       </goals>
+       <configuration>
+        <verbose>false</verbose>
+        <bindingFiles>
+         <bindingFile>DXF1.4.jxb</bindingFile>
+         <bindingFile>services.jxb</bindingFile> 
+        </bindingFiles> 
+        <wsdlFiles>
+          <wsdlFile>dip-service-cxf.wsdl</wsdlFile> 
+        </wsdlFiles>
+        <staleFile>${basedir}/target/.dip-proxy-cxf.staleFlag</staleFile>
+        <keep>true</keep>
+       </configuration>
+      </execution>
+-->
+      <execution>
+       <id>dip-direct</id>
+       <goals>
+        <goal>wsimport</goal>
+       </goals>
+       <configuration>
+        <verbose>false</verbose>
+        <bindingFiles>
+         <bindingFile>DXF1.4.jxb</bindingFile>
+         <bindingFile>DipDirect14.jxb</bindingFile>
+        </bindingFiles> 
+        <wsdlFiles>
+          <wsdlFile>DipDirect14.wsdl</wsdlFile> 
+        </wsdlFiles>
+        <wsdlLocation>WEB-INF/wsdl/DipDirect14.wsdl</wsdlLocation>
+        <staleFile>${basedir}/target/.dip-direct.staleFlag</staleFile>
+        <keep>true</keep>
+       </configuration>
+      </execution>
+
+      <execution>
+       <id>dip-legacy</id>
+       <goals>
+        <goal>wsimport</goal>
+       </goals>
+       <configuration>
+        <verbose>false</verbose>
+        <bindingFiles>
+         <bindingFile>DXF1.4.jxb</bindingFile>
+         <bindingFile>diplegacy.jxb</bindingFile>
+        </bindingFiles> 
+        <wsdlFiles>
+          <wsdlFile>DipLegacyService.wsdl</wsdlFile> 
+        </wsdlFiles>
+        <wsdlLocation>WEB-INF/wsdl/DipLegacyService.wsd</wsdlLocation>
+        <staleFile>${basedir}/target/.dip-legacy.staleFlag</staleFile>
+        <keep>true</keep>
+       </configuration>
+      </execution>
+
+      <execution>
+       <id>proxy</id>
+       <goals>
+        <goal>wsimport</goal>
+       </goals>
+       <configuration>
+        <verbose>false</verbose>
+        <bindingFiles>
+         <bindingFile>DXF1.4.jxb</bindingFile>
+<!--         <bindingFile>services.jxb</bindingFile> -->
+           <bindingFile>Fault.jxb</bindingFile>
+         <bindingFile>ProxyService14.jxb</bindingFile>
+        </bindingFiles> 
+        <wsdlFiles>
+          <wsdlFile>ProxyService14.wsdl</wsdlFile> 
+        </wsdlFiles>
+        <staleFile>${basedir}/target/.-proxy.staleFlag</staleFile>
+        <keep>true</keep>
+       </configuration>
+      </execution>
+
+
+      <execution>
+       <id>ncbi-proxy</id>
+       <goals>
+        <goal>wsimport</goal>
+       </goals>
+       <configuration>
+        <verbose>false</verbose>
+        <bindingFiles>
+         <bindingFile>DXF1.4.jxb</bindingFile>
+          <bindingFile>Fault.jxb</bindingFile>
+         <bindingFile>NcbiService14.jxb</bindingFile>
+        </bindingFiles> 
+        <wsdlFiles>
+          <wsdlFile>NcbiService14.wsdl</wsdlFile> 
+        </wsdlFiles>
+        <staleFile>${basedir}/target/.proxy.staleFlag</staleFile>
+        <keep>true</keep>
+       </configuration>
+      </execution>
+
+<!--
+      <execution>
+       <id>ncbi-proxy-cxf</id>
+       <goals>
+        <goal>wsimport</goal>
+       </goals>
+       <configuration>
+        <verbose>false</verbose>
+        <bindingFiles>
+         <bindingFile>DXF1.4.jxb</bindingFile>
+          <bindingFile>Fault.jxb</bindingFile>
+        </bindingFiles> 
+        <wsdlFiles>
+          <wsdlFile>ncbi-service-cxf.wsdl</wsdlFile> 
+        </wsdlFiles>
+        <staleFile>${basedir}/target/.ncbi-proxy-cxf.staleFlag</staleFile>
+        <keep>true</keep>
+       </configuration>
+      </execution>
+-->
+
+      <execution>
+       <id>ebi-proxy</id>
+       <goals>
+        <goal>wsimport</goal>
+       </goals>
+       <configuration>
+        <verbose>false</verbose>
+        <bindingFiles>
+         <bindingFile>DXF1.4.jxb</bindingFile>
+         <!--<bindingFile>services.jxb</bindingFile> -->
+         
+         <bindingFile>Fault.jxb</bindingFile>
+
+         <bindingFile>EbiService14.jxb</bindingFile>
+        </bindingFiles> 
+        <wsdlFiles>
+          <wsdlFile>EbiService14.wsdl</wsdlFile> 
+        </wsdlFiles>
+        <staleFile>${basedir}/target/.ebi-proxy.staleFlag</staleFile>
+        <keep>true</keep>
+       </configuration>
+      </execution>
+<!--
+      <execution>
+       <id>ebi-proxy-cxf</id>
+       <goals>
+        <goal>wsimport</goal>
+       </goals>
+       <configuration>
+        <verbose>false</verbose>
+        <bindingFiles>
+         <bindingFile>DXF1.4.jxb</bindingFile>
+         <bindingFile>Fault.jxb</bindingFile>
+        </bindingFiles> 
+        <wsdlFiles>
+          <wsdlFile>ebi-service-cxf.wsdl</wsdlFile> 
+        </wsdlFiles>
+        <staleFile>${basedir}/target/.ebi-proxy-cxf.staleFlag</staleFile>
+        <keep>true</keep>
+       </configuration>
+      </execution>
+-->
+      <execution>
+       <id>dht-proxy</id>
+       <goals>
+        <goal>wsimport</goal>
+       </goals>
+       <configuration>
+        <verbose>false</verbose>
+        <bindingFiles>
+         <bindingFile>DXF1.4.jxb</bindingFile>
+          <bindingFile>services.jxb</bindingFile> 
+
+         <!--<bindingFile>Fault.jxb</bindingFile> -->
+
+         <bindingFile>DhtService14.jxb</bindingFile>
+        </bindingFiles> 
+        <wsdlFiles>
+          <wsdlFile>DhtService14.wsdl</wsdlFile> 
+        </wsdlFiles>
+        <staleFile>${basedir}/target/.dht-proxy.staleFlag</staleFile>
+        <keep>true</keep>
+       </configuration>
+      </execution>
+
+      <execution>
+       <id>prolinks-proxy</id>
+       <goals>
+        <goal>wsimport</goal>
+       </goals>
+       <configuration>
+        <verbose>false</verbose>
+        <bindingFiles>
+         <bindingFile>DXF1.4.jxb</bindingFile>
+<!--         <bindingFile>services.jxb</bindingFile> -->
+
+         <bindingFile>Fault.jxb</bindingFile>
+
+         <bindingFile>ProlinksService14.jxb</bindingFile>
+        </bindingFiles> 
+        <wsdlFiles>
+          <wsdlFile>ProlinksService14.wsdl</wsdlFile> 
+        </wsdlFiles>
+        <keep>true</keep>
+        <staleFile>${basedir}/target/.prolinks-proxy.staleFlag</staleFile>
+       </configuration>
+      </execution>
+<!--
+      <execution>
+       <id>prolinks-proxy-cxf</id>
+       <goals>
+        <goal>wsimport</goal>
+       </goals>
+       <configuration>
+        <verbose>false</verbose>
+        <bindingFiles>
+         <bindingFile>DXF1.4.jxb</bindingFile>
+         <bindingFile>Fault.jxb</bindingFile>
+        </bindingFiles> 
+        <wsdlFiles>
+          <wsdlFile>prolinks-service-cxf.wsdl</wsdlFile> 
+        </wsdlFiles>
+        <keep>true</keep>
+        <staleFile>${basedir}/target/.prolinks-proxy-cxf.staleFlag</staleFile>
+       </configuration>
+      </execution>
+-->
+     </executions>
+    </plugin>
+<!--
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <verbose>true</verbose>
+          <fork>true</fork>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+    </plugin>
+-->
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+         <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+    </plugin>
+
+   </plugins>
+
+  </build>
+
+  <distributionManagement>
+    <repository>
+      <id>public</id>
+      <name>IMEx Public Maven Reopsitory</name>
+      <url>http://imex.mbi.ucla.edu/archiva/repository/imex-public/</url>
+    </repository>
+
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>Archiva Managed Snapshot Repository</name>
+      <url>http://imex.mbi.ucla.edu/archiva/repository/snapshots/</url>
+    </snapshotRepository>
+
+  </distributionManagement>
+
+</project>
+

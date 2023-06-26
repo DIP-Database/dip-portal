@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-2.5.xsd" >
+
+<!-- Site configuration --> 
+
+  <bean id="portalContext" class="edu.ucla.mbi.util.context.PortalContext">    
+    <property name="portal">
+      <map>
+        <entry key="skin-path" value="/skin" />
+        <entry key="image-path" value="/images" />
+      </map>
+    </property>
+    <property name="site">
+      <map>
+        <entry key="dip">
+          <map>
+           <entry key="name" value="DIP" />          
+           <entry key="skin" value="dip" />          
+           <entry key="menu-config"><ref bean="dipMenuContext"/></entry>
+           <entry key="page-config"><ref bean="dipPageContext"/></entry>
+           <entry key="news-config"><ref bean="dipNewsContext"/></entry>  
+          </map>
+        </entry> 
+        <entry key="prl">
+         <map>
+           <entry key="name" value="ProLinks" />
+           <entry key="skin" value="${prolinks.skin}" />
+           <entry key="menu-config"><ref bean="prlMenuContext"/></entry>
+           <entry key="page-config"><ref bean="prlPageContext"/></entry>
+           <entry key="news-config"><ref bean="prlNewsContext"/></entry>
+         </map>
+        </entry>
+      </map>
+    </property>
+    
+  </bean>
+
+ <!-- DIP site -->
+
+  <bean id="dipPageContext" class="edu.ucla.mbi.util.context.JsonContext">    
+    <property name="config">
+      <map>
+        <entry key="json-config" value="/etc/dip/pages.json"/>
+      </map>
+    </property>
+
+  </bean>
+  
+  <bean id="dipMenuContext" class="edu.ucla.mbi.util.context.JsonContext">
+    <property name="config">
+      <map>
+        <entry key="json-config" value="/etc/dip/menu.json"/>
+      </map>
+    </property>
+  </bean>
+
+  <bean id="dipNewsContext" class="edu.ucla.mbi.util.context.JsonContext">
+    <property name="config">
+      <map>
+       <entry key="json-config" value="/etc/dip/news/news.json"/>
+      </map>
+    </property>
+  </bean>
+
+  <bean id="statsContext" class="edu.ucla.mbi.util.context.JsonContext">
+    <property name="config">
+      <map>
+        <entry key="json-config" value="/etc/stats.json"/>
+      </map>
+    </property>
+  </bean>
+
+ <!-- ProLinks site -->
+
+ <bean id="prlPageContext" class="edu.ucla.mbi.util.context.JsonContext">    
+    <property name="config">
+      <map>
+        <entry key="json-config" value="/etc/prl/pages.json"/>
+      </map>
+    </property>
+
+  </bean>
+  
+  <bean id="prlMenuContext" class="edu.ucla.mbi.util.context.JsonContext">
+    <property name="config">
+      <map>
+        <entry key="json-config" value="/etc/prl/menu.json"/>
+      </map>
+    </property>
+  </bean>
+
+  <bean id="prlNewsContext" class="edu.ucla.mbi.util.context.JsonContext">
+    <property name="config">
+      <map>
+       <entry key="json-config" value="/etc/prl/news/news.json"/>
+      </map>
+    </property>
+  </bean>
+  
+</beans> 

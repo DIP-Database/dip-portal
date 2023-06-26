@@ -1,0 +1,89 @@
+<div class="dip-page-main">
+<p>
+ The terminology describing interaction types reflects the amount of information 
+provided by the individual experiments used to measure an interaction.  An 
+experiment may provide only very general information (e.g. that a set of 
+proteins may be purified together) or may provide detailed information about 
+specific physical contacts or covalent bonds.  The table below defines the terms
+used within DIP; please note that these terms may convey different information 
+than their common usage might imply.
+</p>
+
+<br/>
+<center>
+ <IMG class="border" SRC="images/int_tp_640.png" WIDTH="640" HEIGHT="300"/>
+</center>
+<br/>
+<br/>
+
+<table align="center" width="95%" cellpadding="0" cellspacing="0" class="t2">
+<tr class="focus">
+  <th class="tcell2">Interaction Type</th>
+  <th class="tcell2">Description</th>
+  <th class="tcell2" nowrap>
+   <a href="http://www.ebi.ac.uk/ontology-lookup/browse.do?ontName=MI&termId=MI%3A0000&termName=molecular%20interaction">PSI-MI</a> Controlled<br/>Vocabulary Term
+  </th>
+</tr>
+
+<tr align=center>
+ <th class="tcell2">association</th>
+ <td class="tcell2" align="left">
+  DIP <i>'associations'</i> are groups of proteins that form
+  one or more physical complexes. <i>'Association'</i> is used when
+  experimental evidence is too weak to
+  guarantee that all reported interacting molecules are present within
+  the same physical complex.  For example, some affinity experiments
+  report interactions between a matrix-bound bait molecule (green 
+  in the figure) and additional prey molecules.  These experiments 
+  may not distinguish between prey molecules bound together in the 
+  same complex (i.e. yellow, red, and pink at the top of
+  the figure) and prey molecules bound in separate complexes (i.e.
+  red versus blue in the figure).  There is not enough information
+  to designate a <i>'physical'</i> interaction, so <i>'association'</i> 
+  is used instead.
+ </td>
+ <td class="tcell2">association (<a href="http://www.ebi.ac.uk/ontology-lookup/?termId=MI:0914">MI:0914</a>)</td>
+</tr>
+
+<tr align=center>
+ <th class="tcell2">physical</th>
+ <td class="tcell2" align="left">
+  <i>'Physical'</i> interactions in DIP describe a physical complex
+  formed by all of the listed molecules. In other words, 
+  each pair of interacting
+  molecules has been observed within the same physical complex.
+  An experiment reporting a <i>'physical'</i> interaction
+  does not eliminate the possiblity that additional unidentified
+  proteins provide a bridge connecting proteins 
+  within the complex.
+ </td>
+ <td class="tcell2">physical association (<a href="http://www.ebi.ac.uk/ontology-lookup/?termId=MI:0915">MI:0915</a>)</td>
+</tr>
+<tr align=center>
+ <th class="tcell2">direct</th>
+ <td class="tcell2" align="left">
+   Molecules participating in a <i>'direct'</i> interaction have been shown
+   to directly contact one-another (i.e. they have van der Waals contacts).
+   Note that a homo-oligomer indicates a <i>direct</i> 
+   interaction, even though some subunits may not be in direct contact.
+ </td>
+ <td class="tcell2">direct interaction (<a href="http://www.ebi.ac.uk/ontology-lookup/?termId=MI:0407">MI:0407</a>)</td>
+</tr>
+
+<tr align=center>
+ <th class="tcell2">covalent</th>
+ <td class="tcell2" align="left" >
+   In a <i>'covalent'</i> interaction, all participating molecules
+   are connected by covalent bonds.  For proteins, the most common
+   sub-type of covalent interaction is the disulfide bond (MI:0408), formed
+   by a sulfur-sulfur bond between two cysteins.
+ </td>
+ <td class="tcell2">covalent binding (<a href="http://www.ebi.ac.uk/ontology-lookup/?termId=MI:0195">MI:0195</a>)</td>
+</tr>
+</table>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</div>

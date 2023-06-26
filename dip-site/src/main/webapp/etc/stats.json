@@ -1,0 +1,80 @@
+{
+  statConfig:{
+    species:[
+      {name:"Drosophila melanogaster",
+       cname:"fruit fly",
+       taxid:7227,
+       active:true,
+       details:false       
+      },
+      {name:"Saccharomyces cerevisiae",
+       cname:"baker's yeast",
+       taxid:4932,
+       active:true,
+       details:false
+      },
+      {name:"Escherichia coli",
+       cname:"",
+       taxid:562,
+       active:true,
+       details:false
+      },
+      {name:"Caenorhabditis elegans",
+       cname:"",
+       taxid:6239,
+       active:true,
+       details:false
+      },
+      {name:"Homo sapiens",
+       cname:"Human",
+       taxid: 9606,
+       active:true,
+       details:false
+      },
+      {name:"Helicobacter pylori",
+       cname:"",
+       taxid:85962 ,
+       active:true,
+       details:false
+      },
+      {name:"Mus musculus",
+       cname:"house mouse",
+       taxid:10090,
+       active:true,
+       details:false
+      },
+      {name:"Rattus norvegicus",
+       cname:"Norway rat",
+       taxid:10116,
+       active:true,
+       details:false
+      },
+      {name:"Oryctolagus cuniculus",
+       cname:"rabbit",
+       taxid:9986,
+       active:false,
+       details:false
+      },
+      {name:"Bos taurus",
+       cname:"cattle",
+       taxid:9913,
+       active:false,
+       details:false
+      },
+      {name:"Schizosaccharomyces pombe",
+       cname:"fission yeast",
+       taxid:4896,
+       active:false,
+       details:false
+      },
+      {name:"Arabidopsis thaliana",
+       cname:"thale cress",
+       taxid:3702,
+       active:false,
+       details:false
+      }
+    ]
+  }
+}
+
+

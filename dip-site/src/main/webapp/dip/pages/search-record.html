@@ -1,0 +1,144 @@
+<script src="js/button-yui.js"></script>
+<div class="search_option">
+ <form id="query" name="query" action="query.action" method="get">
+  <div class="search_header">Text Search</div>
+  <div>
+   <table border="0" cellspacing="0"> 
+    <tr>
+     <td class="search_body" width="1%">        
+      <input type="text" name="query" size="128" maxlength="512" value="" class="search_query" id="query_query"/>
+     </td>
+     <td class="search_body" align="left">
+             <input type="hidden" name="mst" value="1:1:1" id="query_mst"/>
+             <input type="hidden" name="qt" value="dip-txt-query" id="query_md"/>
+             <input type="hidden" name="dl" value="full" id="query_dl"/>
+             <input type="hidden" name="sl" value="1" id="query_sl"/>
+             <input type="submit" id="query_Search" name="Search" value="Search" tabindex="3"/>
+     </td>
+     <td class="search_body" align="left" width="100%">
+             <a href="page?id=help">Help</a>; <a href="page?id=tutorial">Tutorial</a>
+     </td>
+    </tr>
+    <tr>
+     <td colspan="3" class="search_legend" align="left">
+             Enter names, keywords, or identifiers associated with a protein, gene,
+             interaction, or publication. 
+              (<a href="page?id=search">
+               See all identifier types recognized by DIP.
+              </a>)
+     </td>
+    </tr>
+   </table>
+  </div> 
+ </form> 
+</div>
+
+<div class="search_option">
+ <div class="search_header">Sequence Motif Search</div>
+  <table border="0" cellspacing="0">
+   <form id="query" name="query" action="sequenceQuery.action" method="get">
+    <tr>
+     <td class="search_body" width="1%">        
+      By motif/domain identifier<br/> 
+      <table cellpadding="0" cellspacing="0">
+       <tr>
+        <td valign="middle">
+         <div id="KPidButton" class="search_pattern_button"></div>
+         <script>window.addEventListener('load', function() {
+           var container = document.getElementById('KPidButton');
+           YAHOO. mbi.view.button.addSimpleSelectElement(container,
+              {
+                id: "KPidButton_MDB",
+                name:"MDB",
+                list:
+                [
+                 { "text":"ProSite", "value":"ProSite"},
+                 { "text":"InterPro", "value":"interpro"},
+                 { "text":"Pfam", "value":"pfam"},
+                 { "text":"PRINTS", "value":"prints"},
+                 { "text":"SMART", "value":"smart" },
+                ]
+              }
+            );
+           }, false)
+         </script>
+        </td>
+        <td valign="middle">
+         <input type="text" name="query" size="128" maxlength="512" value="" class="search_acc" id="query_query"/>
+        </td>
+       </tr>
+      </table>
+     </td>
+     <td class="search_body" align="left">
+       <input type="hidden" name="mst" value="1:1:1" id="query_mst"/>
+       <input type="hidden" name="qt" value="dip-motif-nsac" id="query_qt"/>
+       <input type="submit" id="query_Search" name="Search" value="Search" tabindex="3"/>
+     </td>
+     <td class="search_body" align="left" width="100%">
+             <a href="page?id=help">Help</a>; <a href="page?id=tutorial">Tutorial</a>
+     </td>
+    </tr>
+    <tr>
+     <td class="search_separator" colspan="3">or</td>
+    </tr>
+   </form> 
+
+   <form id="query" name="query" action="sequenceQuery.action" method="get">   
+    <tr>
+     <td class="search_body" width="1%">        
+       Custom pattern (RegEx)<br/> 
+       <input type="text" name="query" size="128" maxlength="512" value="" class="search_query" id="query_query"/>
+     </td>
+     <td class="search_body" align="left">
+      <input type="hidden" name="mst" value="1:1:1" id="query_mst"/>
+      <input type="hidden" name="qt" value="dip-motif-query" id="query_qt"/>
+      <input type="hidden" name="debugOn" value="true" id="query_debugOn"/>
+      <input type="submit" id="query_Search" name="Search" value="Search" tabindex="3"/>
+     </td>
+     <td class="search_body" align="left" width="100%">
+             <a href="page?id=help">Help</a>; <a href="page?id=tutorial">Tutorial</a>
+     </td>
+    </tr>
+
+    <tr>
+     <td colspan="3" class="search_legend" align="left">
+       Enter identifier of a known pattern or <a href="page?id=help-regex">regular expression</a> 
+       specifying a custom one. 
+       (<a href="page?id=search">See all identifier types recognized by DIP.</a>)
+     </td>
+    </tr>
+   </form> 
+   </table>
+  </div>
+</div>
+
+
+<div class="search_option">
+ <form id="query" name="query" action="sequenceQuery.action" method="post">  
+  <div class="search_header"> Sequence Search (BLAST)</div>
+  <div>
+   <table border="0" cellspacing="0">
+    <tr>
+     <td class="search_body" width="1%">
+         <textarea name="query"id="query_query" rows="8" cols="128" class="search_query"></textarea>
+     </td>
+     <td class="search_body" align="left">
+      <input type="hidden" name="mst" value="1:1:1" id="query_mst"/>
+      <input type="hidden" name="qt" value="dip-seq-query" id="query_qt"/>
+      <input type="hidden" name="debugOn" value="true" id="query_debugOn"/>
+      <input type="submit" id="query_Search" name="Search" value="Search" tabindex="3"/>
+     </td>
+      <td class="search_body" align="left" width="100%">
+             <a href="page?id=help">Help</a>; <a href="page?id=tutorial">Tutorial</a>
+     </td>
+    </tr>
+    <tr>
+     <td colspan="3" class="search_legend" align="left">
+       Enter sequence of the protein or its fragment using one letter amino-acid notation.
+     </td>
+    </tr>
+   </table>
+  </div> 
+ </form> 
+</div>
+

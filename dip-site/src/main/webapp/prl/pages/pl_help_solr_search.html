@@ -1,0 +1,119 @@
+<link rel="stylesheet" type="text/css" href="skin/pfl/css/prolinks.css" />
+
+<p>
+  Query processing in ProLinks is powered by 
+  <a class="pl_general" 
+      href="http://lucene.apache.org/solr/"
+      target="_blank">Solr</a>. Therefore 
+  complex queries can be formulated, which include 
+  the use of wildcards, logic operations, and special 
+  characters.
+</p>
+
+<br />
+<p> 
+  <b>Example 1: Default mode.</b>
+  <br />
+  The default behavior is to combine all keywords using 
+  <b>AND</b> logic. For example, to find all instances of
+  <b><i>carboxylases</i></b> enzymes in the set of 
+  <b><i>Escherichia</i></b> genomes available in ProLinks, 
+  we simply type the query:
+</p>
+
+<p class="pl_help_command">carboxylases escherichia</p>
+
+
+<br />
+<p>
+  <b>Example 2: logical operators and special characters.</b>
+  <br />
+  Find all proteins in <i>E. coli</i> K12 MG1655 whose name 
+  contains the letters 'hist'. Since there are
+  several <i>E. coli</i> genomes already sequenced, we will
+  use the substrain to identify the genome:
+</p>
+
+<p class="pl_help_command">hist<b>*</b> <b>AND</b> MG1655</p>
+
+<p>
+
+  Notice that the logical operators must be written with
+  capital letters (i.e. AND, OR, NOT). Alternatively we 
+  can force both terms in the results by using the plus 
+  sign as prefix:
+</p>
+
+<p class="pl_help_command"><b>+</b>hist<b>*</b> <b>+</b>MG1655</p>
+
+<p>
+  If you want to discard kinases from the results, 
+  the following two queries are equivalent:
+</p>
+
+<p class="pl_help_command">
+  hist<b>*</b> <b>AND</b> MG1655 <b>NOT</b> kinase
+</p>
+
+<p class="pl_help_command">    
+    <b>+</b>hist<b>*</b> <b>+</b>MG1655 <b>-</b>kinase
+</p>
+
+<p>
+  You will seldom have to use the plus sign, if at all, since 
+  by default all keywords typed should be in the results. 
+  So these queries can be simplified to:
+</p>
+
+<p class="pl_help_command">    
+    <b></b>hist<b>*</b> MG1655 <b>-</b>kinase
+</p>
+
+<br />
+<p>
+  <b>Example 3: field names, parenthesis and phrases.</b>
+  <br />
+  Solr uses field names to index information (e.g. label, taxid,
+  xref, taxon, etc.) To search for all <i>his</i> and 
+  <i>pro</i> genes in <i>E. coli</i> K12 MG1655 we can use
+  the following queries:
+</p>
+
+<p class="pl_help_command">
+  (<b>label:</b>his<b>?</b> <b>OR</B> <b>label:</b>pro<b>?</b>) <b>taxon:</b>MG1655
+</p>
+  
+<p class="pl_help_command" >
+  (<b>label:</b>his<b>?</b> <b>OR</b> <b>label:</b>pro<b>?</b>) <b>taxid:</b>511145
+</p>
+
+<p class="pl_help_command">
+  <b>label:</b>(his<b>? OR</b> pro<b>?</b>) <b>taxon:</b>MG1655
+</p>
+
+<p>Phrases must be quoted:</p>
+
+<p class="pl_help_command">
+    <b>label:</b>(his<b>* OR label:</b>pro<b>*</b>) <b>taxon:"</b>substr MG1655<b>"</b>
+</p>
+
+<p class="pl_help_command">
+   <b>"</b>DNA-binding response regulator<b>"</b> Escherichia </i>
+</p>
+
+<br /><br />
+<hr />
+<p><a class="pl_general" 
+       href="page?id=pl_tutorial" 
+     target="_blank">Check the tutorial</a> for more 
+   information.
+</p>
+
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

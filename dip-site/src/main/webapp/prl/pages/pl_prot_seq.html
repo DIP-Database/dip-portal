@@ -1,0 +1,138 @@
+
+
+<link rel="stylesheet" type="text/css" href="skin/pfl/css/prolinks.css" />
+<script>var myTabs = new YAHOO.widget.TabView("query_pl");</script>
+
+
+<br />
+
+<div id="pl_form_frame">
+
+   <form enctype="multipart/form-data" action="php_query" method="post">
+   <!-- <form action="http://10.1.216.102/prolinks_dev/php/query.php" method="post"> -->
+
+    <div class="pl_form_title">
+      <b> Submit a protein sequence to ProLinks</b>
+    </div>
+
+
+    <div id="pl_text_field_1">
+      Your sequence will be blasted agaist all proteins in ProLinks. 
+      Then you'll select the top match(es) to search for functional linkages
+      (<a class="pl_general" 
+	  onclick="YAHOO.mbi.modal.help( 'Submit a protein sequence', 'pl_help_submit_prot_seq' ); return false" 
+          href="">more info</a>).
+    </div>
+
+
+
+    <div class="yui-skin-sam">
+      <div id="query_pl" class="yui-navset">
+    
+    
+        <ul class="yui-nav">
+          <li class="selected"><a href="#tab1"><em>Protein sequence</em></a></li>
+          <li><a href="#tab2"><em>Blast parameters</em></a></li>
+        </ul>
+    
+    
+        <!-- the div for the content of the only one tab -->
+        <div class="yui-content">
+
+
+    	    <div class="pl_tabview_textarea_form"> 
+          
+            <p>
+    	      Type or copy/paste your protein sequence
+      	      (<a class="pl_general" 
+      	          onclick="YAHOO.mbi.modal.help( 'Fasta format', 'pl_help_fasta_fmt' ); return false" 
+      	          href="">see formats</a>):
+              <textarea id="pl_text_area" name="faa_seq"></textarea>
+            </p>
+            
+          
+            <p>
+    	      ... or upload a file with your sequence 
+      	      (<a class="pl_general" 
+      	          onclick="YAHOO.mbi.modal.help( 'Fasta format', 'pl_help_fasta_fmt' ); return false" 
+      	          href="">see formats</a>):
+          
+    	        <input type="file"   name="seq_file"      value="">
+    	        <input type="hidden" name="MAX_FILE_SIZE" value="50000" />
+    	      </p>
+          </div>
+          
+          
+          <div class="pl_tabview_button_area">
+          
+            <p>                
+              E-value
+      	      (<a class="pl_general" 
+      	         onclick="YAHOO.mbi.modal.help( 'Expected value', 'pl_help_evalue_match' ); return false" 
+      	         href="">?</a>):<br />
+              <input class="pl_tabview_control" type="text" name="evalue" value="1e-10">
+            </p>
+          
+            
+            <p>
+      	      % of identities in Query
+      	      (<a class="pl_general" 
+      	          onclick="YAHOO.mbi.modal.help( 'Global identities in the query sequence', 'pl_help_query_identitities' ); return false" 
+      	          href="">?</a>):<br />
+              <input class="pl_tabview_control" type="text" name="qry_id" value="70.0">
+            </p>
+
+
+            <p>
+              % of identities in Target
+      	      (<a class="pl_general" 
+      	          onclick="YAHOO.mbi.modal.help( 'Global identities in target protein', 'pl_help_target_identitities' ); return false" 
+      	          href="">?</a>):<br />
+              <input class="pl_tabview_control" type="text" name="tgt_id" value="40.0">
+            </p>
+
+
+            <p>
+
+      	      Matches per page 
+      	      (<a class="pl_general" 
+                  onclick="YAHOO.mbi.modal.help('Number of Blast matches per page', 'pl_help_matches_per_page'); return false" 
+                  href="">?</a>):<br />
+              <select class="pl_tabview_control" name="links_per_page">
+      	        <option value="15" selected> 15 </option>
+      	        <option value="20">          20 </option>
+      	        <option value="30">          30 </option>
+      	        <option value="50">          50 </option>
+      	        <option value="70">          70 </option>
+      	        <option value="100">        100 </option>
+                <option value="200">        200 </option>
+      	        <option value="all">        all </option>
+              </select>
+            </p>          
+          </div>
+  
+        </div> <!-- div for class yui-content -->
+      </div> <!-- div for class yui-navset -->
+    </div> <!-- div for class yui-skin-sam -->
+
+      
+
+    <!-- The reset and search buttons -->
+    <div id="pl_reset_search_containiner">
+
+      <div id="pl_search_button">
+        <input type="submit" id="search" name="search" value="Blast sequence"/>
+      </div>
+
+      <div id="pl_reset_button">
+        <input type="reset" value="Reset defaults">
+      </div>
+      <input type="hidden" name="form" value="blast">
+    </div>
+
+  </form>
+</div> <!-- div for the form frame -->
+
+
+<!-- To avoid content be blocked by the footer -->
+<br /><br /><br /><br /><br /><br /><br />
